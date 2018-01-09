@@ -794,7 +794,7 @@ Wire Wire Line
 Wire Wire Line
 	1900 1150 1400 1150
 Wire Wire Line
-	1400 1150 1400 1050
+	1400 1050 1400 5700
 Wire Wire Line
 	1400 1050 1250 1050
 Wire Wire Line
@@ -806,42 +806,26 @@ Wire Wire Line
 Wire Wire Line
 	800  1050 950  1050
 Wire Wire Line
-	1200 1700 1350 1700
-Wire Wire Line
 	1350 1300 1100 1300
 Wire Wire Line
 	1100 1300 1100 1250
-Connection ~ 1350 1700
-Wire Wire Line
-	1350 1950 600  1950
 Wire Wire Line
 	1900 1800 1900 1750
 Wire Wire Line
 	1900 1750 1750 1750
 Wire Wire Line
 	1900 1900 1750 1900
-Wire Wire Line
-	950  1750 1450 1750
 Connection ~ 1350 1750
 Wire Wire Line
 	1200 1900 1450 1900
 Connection ~ 1350 1900
 Wire Wire Line
 	1900 4050 1750 4050
-Connection ~ 1200 1950
-Wire Wire Line
-	1200 1800 1350 1800
-Connection ~ 1350 1800
-Connection ~ 1350 1950
 Connection ~ 800  1050
 Wire Wire Line
 	1100 650  1100 850 
 Wire Wire Line
 	600  650  8150 650 
-Connection ~ 1100 750 
-Wire Wire Line
-	1200 1700 1200 1800
-Connection ~ 1200 1750
 Wire Wire Line
 	1300 1600 1150 1600
 Wire Wire Line
@@ -852,12 +836,9 @@ Wire Wire Line
 	800  1400 800  550 
 Wire Wire Line
 	950  2050 850  2050
-Wire Wire Line
-	950  1750 950  2050
-Connection ~ 950  1950
 Connection ~ 750  1650
 Wire Wire Line
-	1350 1700 1350 1300
+	1350 1300 1350 1900
 Wire Wire Line
 	4700 3600 4550 3600
 Wire Wire Line
@@ -1212,13 +1193,7 @@ Wire Wire Line
 	2950 1050 2950 850 
 Connection ~ 2950 850 
 Wire Wire Line
-	1900 2000 1600 2000
-Wire Wire Line
 	1600 2000 1600 3850
-Wire Wire Line
-	1600 3850 1900 3850
-Wire Wire Line
-	1600 2950 600  2950
 Connection ~ 600  2950
 Connection ~ 1600 2950
 Wire Wire Line
@@ -1423,7 +1398,7 @@ Connection ~ 4050 6450
 Wire Wire Line
 	1100 7050 1250 7050
 Wire Wire Line
-	1100 2950 1100 7050
+	1100 1950 1100 7050
 Wire Wire Line
 	1550 6050 1550 5850
 Wire Wire Line
@@ -1482,4 +1457,46 @@ Connection ~ 1100 2950
 Connection ~ 1100 5750
 Wire Wire Line
 	5400 6500 10850 6500
+Wire Wire Line
+	1600 2950 1100 2950
+Connection ~ 1100 1950
+Wire Wire Line
+	600  1950 1200 1950
+Connection ~ 1200 1900
+Wire Wire Line
+	1350 1750 1450 1750
+Wire Wire Line
+	1200 1950 1200 1900
+Wire Wire Line
+	900  2050 900  1950
+Connection ~ 900  1950
+Connection ~ 900  2050
+$Comp
+L R R12
+U 1 1 5A58C111
+P 1750 3850
+F 0 "R12" V 1830 3850 50  0000 C CNN
+F 1 "R470" V 1750 3850 50  0000 C CNN
+F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_1206_RM10_HandSoldering" V 1680 3850 50  0001 C CNN
+F 3 "" H 1750 3850 50  0000 C CNN
+	1    1750 3850
+	0    1    1    0   
+$EndComp
+$Comp
+L R R11
+U 1 1 5A58C226
+P 1750 2000
+F 0 "R11" V 1830 2000 50  0000 C CNN
+F 1 "R470" V 1750 2000 50  0000 C CNN
+F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_1206_RM10_HandSoldering" V 1680 2000 50  0001 C CNN
+F 3 "" H 1750 2000 50  0000 C CNN
+	1    1750 2000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1400 5700 3750 5700
+Wire Wire Line
+	3750 5700 3750 6050
+Connection ~ 1400 1150
+NoConn ~ 3650 6050
 $EndSCHEMATC
