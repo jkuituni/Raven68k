@@ -549,50 +549,6 @@ FC0
 Text Label 8400 4500 0    60   ~ 0
 FC1
 $Comp
-L R R3
-U 1 1 5A56B70B
-P 4150 2600
-F 0 "R3" V 4230 2600 50  0000 C CNN
-F 1 "R470" V 4150 2600 50  0000 C CNN
-F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_1206_RM10_HandSoldering" V 4080 2600 50  0001 C CNN
-F 3 "" H 4150 2600 50  0000 C CNN
-	1    4150 2600
-	0    1    1    0   
-$EndComp
-$Comp
-L R R4
-U 1 1 5A56B7AF
-P 4150 2700
-F 0 "R4" V 4230 2700 50  0000 C CNN
-F 1 "R470" V 4150 2700 50  0000 C CNN
-F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_1206_RM10_HandSoldering" V 4080 2700 50  0001 C CNN
-F 3 "" H 4150 2700 50  0000 C CNN
-	1    4150 2700
-	0    1    1    0   
-$EndComp
-$Comp
-L R R5
-U 1 1 5A56B7E6
-P 4150 2800
-F 0 "R5" V 4230 2800 50  0000 C CNN
-F 1 "R470" V 4150 2800 50  0000 C CNN
-F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_1206_RM10_HandSoldering" V 4080 2800 50  0001 C CNN
-F 3 "" H 4150 2800 50  0000 C CNN
-	1    4150 2800
-	0    1    1    0   
-$EndComp
-$Comp
-L R R6
-U 1 1 5A56B820
-P 4150 2900
-F 0 "R6" V 4230 2900 50  0000 C CNN
-F 1 "R470" V 4150 2900 50  0000 C CNN
-F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_1206_RM10_HandSoldering" V 4080 2900 50  0001 C CNN
-F 3 "" H 4150 2900 50  0000 C CNN
-	1    4150 2900
-	0    1    1    0   
-$EndComp
-$Comp
 L R R7
 U 1 1 5A56B85D
 P 4150 3000
@@ -1078,16 +1034,10 @@ Wire Wire Line
 Wire Wire Line
 	1750 850  5400 850 
 Wire Wire Line
-	2950 5750 2950 5550
-Connection ~ 2950 5750
-Wire Wire Line
 	5400 850  5400 1250
 Connection ~ 600  6200
 Wire Wire Line
 	600  2000 600  6450
-Wire Wire Line
-	7000 6400 7000 6450
-Connection ~ 7000 6450
 Wire Wire Line
 	9900 6400 9900 6500
 Connection ~ 9900 6500
@@ -1113,9 +1063,6 @@ Connection ~ 5400 1150
 Wire Wire Line
 	9400 600  9400 550 
 Connection ~ 9400 550 
-Wire Wire Line
-	9300 600  9300 550 
-Connection ~ 9300 550 
 Wire Wire Line
 	10100 550  10100 600 
 Connection ~ 9500 550 
@@ -1213,14 +1160,6 @@ Wire Wire Line
 Wire Wire Line
 	8500 4500 8400 4500
 Wire Wire Line
-	3900 2600 4000 2600
-Wire Wire Line
-	3900 2700 4000 2700
-Wire Wire Line
-	3900 2800 4000 2800
-Wire Wire Line
-	3900 2900 4000 2900
-Wire Wire Line
 	3900 3000 4000 3000
 Wire Wire Line
 	3900 3100 4000 3100
@@ -1229,33 +1168,20 @@ Wire Wire Line
 Wire Wire Line
 	3900 3300 4000 3300
 Wire Wire Line
-	4300 2600 4350 2600
-Wire Wire Line
 	4350 3200 4300 3200
 Wire Wire Line
 	4350 3100 4300 3100
 Wire Wire Line
 	4350 3000 4300 3000
 Wire Wire Line
-	4350 2900 4300 2900
-Wire Wire Line
-	4350 2800 4300 2800
-Wire Wire Line
-	4300 2700 4350 2700
-Wire Wire Line
 	7700 4700 7950 4700
-Wire Wire Line
-	4350 2600 4350 3300
-Connection ~ 4350 2700
-Connection ~ 4350 2800
-Connection ~ 4350 2900
 Connection ~ 4350 3000
 Connection ~ 4350 3100
 Connection ~ 4350 3300
 Connection ~ 4350 3200
 Connection ~ 8150 6500
 Wire Wire Line
-	7000 6450 600  6450
+	600  6450 7000 6450
 Wire Wire Line
 	5400 5500 5400 6500
 Connection ~ 7050 650 
@@ -1370,9 +1296,6 @@ Wire Wire Line
 	2850 5550 2850 5750
 Connection ~ 2850 5750
 Wire Wire Line
-	5400 3250 5400 3300
-Connection ~ 5400 3300
-Wire Wire Line
 	5400 3450 5400 3500
 Wire Wire Line
 	9300 6400 9300 6500
@@ -1385,8 +1308,6 @@ Wire Wire Line
 Connection ~ 10000 6500
 Wire Wire Line
 	6500 3750 7050 3750
-Wire Wire Line
-	7050 3750 7050 3650
 Wire Wire Line
 	850  1600 850  1650
 Connection ~ 850  1650
@@ -1443,14 +1364,6 @@ Wire Wire Line
 	2350 6050 2350 5850
 Wire Wire Line
 	2250 6050 2250 5850
-Text Label 2550 6000 1    60   ~ 0
-A0
-Text Label 2450 6000 1    60   ~ 0
-A1
-Text Label 2350 6000 1    60   ~ 0
-A2
-Text Label 2250 6000 1    60   ~ 0
-A3
 Connection ~ 5400 6500
 Connection ~ 5400 5750
 Connection ~ 1100 2950
@@ -1498,5 +1411,61 @@ Wire Wire Line
 Wire Wire Line
 	3750 5700 3750 6050
 Connection ~ 1400 1150
-NoConn ~ 3650 6050
+$Comp
+L R R13
+U 1 1 5A5921D0
+P 4000 6000
+F 0 "R13" V 4080 6000 50  0000 C CNN
+F 1 "R470" V 4000 6000 50  0000 C CNN
+F 2 "Resistors_Universal:Resistor_SMD+THTuniversal_1206_RM10_HandSoldering" V 3930 6000 50  0001 C CNN
+F 3 "" H 4000 6000 50  0000 C CNN
+	1    4000 6000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3650 6050 3650 6000
+Wire Wire Line
+	3650 6000 3850 6000
+Wire Wire Line
+	4150 6000 4150 5750
+Connection ~ 4150 5750
+Wire Wire Line
+	4350 3000 4350 3300
+Wire Wire Line
+	3900 2600 4200 2600
+Wire Wire Line
+	3900 2700 4200 2700
+Wire Wire Line
+	3900 2800 4200 2800
+Wire Wire Line
+	3900 2900 4200 2900
+Text Label 4150 2600 2    60   ~ 0
+A16
+Text Label 4150 2700 2    60   ~ 0
+A17
+Text Label 4150 2800 2    60   ~ 0
+A18
+Text Label 4150 2900 2    60   ~ 0
+A19
+Text Label 2550 6050 1    60   ~ 0
+A1
+Text Label 2450 6050 1    60   ~ 0
+A2
+Text Label 2350 6050 1    60   ~ 0
+A3
+Text Label 2250 6050 1    60   ~ 0
+A4
+Wire Wire Line
+	7050 3750 7050 3650
+Wire Wire Line
+	7000 6450 7000 6400
+Wire Wire Line
+	2950 5550 2950 5750
+Connection ~ 2950 5750
+Wire Wire Line
+	9300 600  9300 550 
+Connection ~ 9300 550 
+Wire Wire Line
+	5400 3250 5400 3300
+Connection ~ 5400 3300
 $EndSCHEMATC
