@@ -1115,6 +1115,8 @@ Connection ~ 9800 6500
 Wire Wire Line
 	9700 6400 9700 6500
 Connection ~ 9700 6500
+Wire Wire Line
+	9600 6400 9600 6500
 Connection ~ 9600 6500
 Wire Wire Line
 	9500 6400 9500 6500
@@ -1363,6 +1365,4 @@ Wire Wire Line
 	7700 4700 7950 4700
 Text Label 7800 4700 0    60   ~ 0
 A16
-Wire Wire Line
-	9600 6400 9600 6500
 $EndSCHEMATC
