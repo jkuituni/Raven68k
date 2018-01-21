@@ -60,12 +60,13 @@
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
     <transform xil_pn:end_ts="1516307103" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1516307103">
       <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
     </transform>
     <transform xil_pn:end_ts="1516307103" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="53928080111629493" xil_pn:start_ts="1516307103">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1516538903" xil_pn:in_ck="2961809834611" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="449059427178206706" xil_pn:start_ts="1516538897">
+    <transform xil_pn:end_ts="1516565746" xil_pn:in_ck="2961809834611" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="449059427178206706" xil_pn:start_ts="1516565741">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -85,7 +86,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1516538907" xil_pn:in_ck="2961809825865" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="-7789384908474775783" xil_pn:start_ts="1516538903">
+    <transform xil_pn:end_ts="1516565750" xil_pn:in_ck="2961809825865" xil_pn:name="TRAN_ngdbuild" xil_pn:prop_ck="-7789384908474775783" xil_pn:start_ts="1516565746">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="CPLD.bld"/>
@@ -94,7 +95,7 @@
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
     </transform>
-    <transform xil_pn:end_ts="1516538913" xil_pn:in_ck="2961809825866" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="1107840223015232821" xil_pn:start_ts="1516538907">
+    <transform xil_pn:end_ts="1516565755" xil_pn:in_ck="2961809825866" xil_pn:name="TRANEXT_vm6File_xc9500xl" xil_pn:prop_ck="1107840223015232821" xil_pn:start_ts="1516565750">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -110,7 +111,7 @@
       <outfile xil_pn:name="CPLD_html"/>
       <outfile xil_pn:name="CPLD_pad.csv"/>
     </transform>
-    <transform xil_pn:end_ts="1516538915" xil_pn:in_ck="2961809834730" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1516538913">
+    <transform xil_pn:end_ts="1516565757" xil_pn:in_ck="2961809834730" xil_pn:name="TRANEXT_crtProg_xc9500" xil_pn:prop_ck="-6294026017969277533" xil_pn:start_ts="1516565755">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="CPLD.jed"/>

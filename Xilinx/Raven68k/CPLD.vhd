@@ -112,7 +112,9 @@ begin
 								when "00" =>
 									rssel <= '1';
 								when "01" =>
-									rtcsel <= '1';
+									if lds = '1' then
+										rtcsel <= '1';
+									end if;
 								when others => null;
 							 end case;
 							when others => null;
