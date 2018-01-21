@@ -55,10 +55,11 @@ architecture rtl of CPLD is
 
 -- Some internal signals used
 signal is_irq: std_logic := '0';
+signal is_memory: std_logic := '0';
 signal a0: std_logic := '0'; -- Unused currently!
 
 begin
-	process(dtack,rw,as,fc0,fc1,fc2,uds,lds,addr,is_irq,rsirq,rtcirq)
+	process(dtack,rw,as,fc0,fc1,fc2,uds,lds,addr,is_irq,is_memory,rsirq,rtcirq)
 	begin
 		-- Init the chip selection signals
 		romsel <= '0';
@@ -87,10 +88,14 @@ begin
 		
 		-- Handle R/W
 		we <= rw;
-		-- Handle DTACK
-		-- IF we're accessing memory and not 
-		-- servicing IRQ..
-		if is_irq = '0' then
+		
+		-- Determine, if we're accessing memory..
+		if as = '1' AND (lds = '1' OR uds ='1') then
+			is_memory <= '1';
+		end if;
+		
+		-- IF we're accessing memory, set DTACK
+		if is_memory = '1' then
 			dtack <= '1';
 		end if;
 		-- Handle a0. LDS and UDS are virtual a0
@@ -100,7 +105,7 @@ begin
 		a0 <= lds OR uds;
 		
 		-- Do initial memory decoding between RAM/ROM/IO
-		if is_irq = '0' AND as = '1' AND (lds = '1' OR uds ='1') then
+		if is_memory = '1' then
 			case addr(23 downto 16) is
 				when "00000000" =>
 					romsel <= '1';
