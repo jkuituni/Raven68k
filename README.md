@@ -6,9 +6,10 @@ the machine up and running uCLinux. The initial minimal specications for the mac
 - Motorola 68000 CPU 
 - 64kB of EEPROM for bootstrapping the Linux
 - 1MB of Static RAM
-- UART of some sort with USB adapter
-- Clock and Timer
-- Mass storage of some description
+- Motorola 68681 DUART with USB adapter on one UART and max233 on other
+- Dallas DS1501Y RealTimeClock
+- Classic 555 used for timer
+- Mass storage of some description. Most likely a basic IDE will be implemented.
 
 The project will be documented to a blog along with datasheets of all the components used.
  
