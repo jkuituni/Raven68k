@@ -4,7 +4,7 @@
 -- 
 -- Create Date:    22:13:30 01/18/2018 
 -- Design Name:    Raven68k CPLD
--- Module Name:    CPLD - Behavioral 
+-- Module Name:    CPLD - RTL 
 -- Project Name:   Raven68k
 -- Target Devices: XC9572XL
 -- Tool versions: 
@@ -46,7 +46,8 @@ entity CPLD is
 		-- Address signals
 		addr: in std_logic_vector(23 downto 5);
 		-- I/O Interrupts..
-		rsirq: in std_logic
+		rsirq: in std_logic;
+		rtcirq: in std_logic
   );
 end CPLD;
 
@@ -57,7 +58,7 @@ signal is_irq: std_logic := '0';
 signal a0: std_logic := '0'; -- Unused currently!
 
 begin
-	process(dtack,rw,as,fc0,fc1,fc2,uds,lds,addr,is_irq,rsirq)
+	process(dtack,rw,as,fc0,fc1,fc2,uds,lds,addr,is_irq,rsirq,rtcirq)
 	begin
 		-- Init the chip selection signals
 		romsel <= '0';
@@ -68,15 +69,20 @@ begin
 		-- Init the CPU control signals
 		dtack <= '0';
 		ipl0 <= '0';
-		ipl1 <= '1'; -- Always set to '1' in our case
 		ipl2 <= '1'; -- Always set to '1' in our case
 		
 		-- Handle IRQs..
 		irq_ack <= fc0 OR fc1 OR fc2;
-		is_irq <= rsirq;
+		is_irq <= rsirq OR rtcirq;
 		-- Handle 68681 DUART IRQ
 		if rsirq = '1' then
 			ipl0 <= '0'; -- IRQ level 1
+			ipl1 <= '1';
+		end if;
+		-- Handle DS1501Y RTC IRQ
+		if rtcirq = '1' then
+			ipl0 <= '1'; -- IRQ level 2
+			ipl1 <= '0';
 		end if;
 		
 		-- Handle R/W
