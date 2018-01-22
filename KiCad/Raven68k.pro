@@ -27,7 +27,7 @@ NetIExt=net
 version=1
 [eeschema]
 version=1
-LibDir=../../../kicad/kicad-symbols-master;../../../kicad/maxim;../../../kicad/silicon_labs;../../../kicad/xilinx
+LibDir=../../../kicad/kicad-symbols-master;../../kicad-libs/maxim;../../kicad-libs/silicon_labs;../../kicad-libs/xilinx
 [eeschema/libraries]
 LibName1=Memory_RAM
 LibName2=/Users/ccureau/kicad/kicad-symbols-master/Oscillator
