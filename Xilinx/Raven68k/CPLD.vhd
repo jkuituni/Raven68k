@@ -36,7 +36,7 @@ entity CPLD is
 		ipl0: out std_logic;
 		ipl1: out std_logic;
 		ipl2: out std_logic;
-		we: out std_logic;
+		oe: out std_logic;
 		-- Memory control signals
 		romsel: out std_logic;
 		ramsel: out std_logic;
@@ -87,7 +87,7 @@ begin
 		end if;
 		
 		-- Handle R/W
-		we <= rw;
+		oe <= not rw;
 		
 		-- Determine, if we're accessing memory..
 		if as = '1' AND (lds = '1' OR uds ='1') then
