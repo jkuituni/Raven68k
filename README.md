@@ -1,7 +1,7 @@
 # Raven68k
 Raven 68k is a Motorola 68000 based simple single board computer. The machine will serve as a learning tool 
 for building a 68000 based machine as well as for learning more about Linux. The goal is to eventually have 
-the machine up and running uCLinux. The initial minimal specications for the machine are:
+the machine up and running uCLinux. The initial minimal specifications for the machine are:
 
 - Motorola 68000 CPU 
 - 64kB of EEPROM for bootstrapping the Linux
