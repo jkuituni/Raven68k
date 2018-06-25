@@ -18,7 +18,6 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module mem_decoder(
-    input clk_in,
     input reset,
     input a7,
     input a8,
@@ -53,13 +52,18 @@ module mem_decoder(
         as_count   <= 4'b0000;
       end
 
-    always @(reset || as)
+    always @(posedge(reset), negedge(reset), posedge(as), negedge(as))
     begin
       if (!reset)
-        as_count <= 4'b0000;
+        begin
+          $display("NOT reset");
+          as_count <= 4'b0000;
+        end
 
       if (!reset || as)
         begin
+        $display("NOT reset OR as");
+        $monitor("%d %d", reset, as);
         ram_evn_cs <= 1'b1;
         ram_odd_cs <= 1'b1;
         rom_evn_cs <= 1'b1;
@@ -69,6 +73,7 @@ module mem_decoder(
 
       if (!as)
       begin
+        $display("NOT as");
         if (reset && (as_count < 4'b1000))    // First 8 cycles
           begin
             rom_evn_cs <= 1'b0;
