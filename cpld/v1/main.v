@@ -1,45 +1,44 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date:    12:29:19 06/22/2018 
-// Design Name: 
-// Module Name:    main 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
+// Company:
+// Engineer:
 //
-// Dependencies: 
+// Create Date:    12:29:19 06/22/2018
+// Design Name:
+// Module Name:    main
+// Project Name:
+// Target Devices:
+// Tool versions:
+// Description:
 //
-// Revision: 
+// Dependencies:
+//
+// Revision:
 // Revision 0.01 - File Created
-// Additional Comments: 
+// Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
-module main(
-	input duart_irq,
+
+module main (
 	input clk_in,
 	input reset,
-	output ipl0,
-	output ipl1,
-	output ipl2,
-	output clk_out
+	input clk_out
 	);
 
-	irq irq_module (
-    .duart_irq(duart_irq), 
-    .ipl0(ipl0),
-    .ipl1(ipl1),
-    .ipl2(ipl2)
-    );
-	
+	inout clk;
+	assign clk = (!clk_oe) ? clk_out : 1'bZ;
+
+
 	clock clock_module (
-    .clk(clk_in), 
-    .reset(reset), 
-    .clk_div(clk_out)
+    .clk_in(clk_in),
+    .reset(reset),
+    .clk_out(clk_out),
+		.oe(clk_oe)
     );
+
+	always @(clk)
+	  begin
+			//
+		end
 
 endmodule
-
