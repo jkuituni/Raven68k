@@ -3,6 +3,10 @@
 module tb_clock();
   reg clk_in, reset;
   wire clk_out;
+  inout clk_oe;
+
+  inout clk;
+  assign clk = clk_oe ? clk_out : 1'bz;
 
   initial begin
     clk_in = 0;
@@ -15,7 +19,8 @@ module tb_clock();
   clock UUT (
     .clk_in     ( clk_in ),
     .reset      ( reset ),
-    .clk_out    ( clk_out )
+    .clk_out    ( clk_out ),
+    .clk_oe     ( clk_oe )
   );
 
   always begin
@@ -25,7 +30,7 @@ module tb_clock();
       #20;
   end
 
-  always @(posedge(clk_in)) begin
+  always @(posedge(clk)) begin
     $dumpfile ("clock.vcd");
     $dumpvars(0,UUT);
     # 2000;

@@ -22,7 +22,7 @@ module clock (
     input clk_in,
     input reset,
     output reg clk_out,
-    output reg oe
+    output reg clk_oe
     );
 
 	localparam sys_clk = 50000000;			// 50MHz clock
@@ -31,21 +31,21 @@ module clock (
 	reg [4:0] count;
 
   initial begin
-    clk_out <= 0;
-    count <= 4'd0;
-    oe <= 1'b0;
+    clk_out = 0;
+    clk_oe = 0;
+    count = 4'd0;
   end
 
   always @(posedge(clk_in), negedge(reset))
 	begin
 		if (!reset) begin
-      clk_out <= 0;
-			count <= 4'd0;
+      clk_out = 0;
+			count = 4'd0;
 	  end else if (count == max-1) begin
 			count = 4'd0;
-      oe = 1'd1;
-      clk_out <= ~clk_out;
-      oe = 1'd0;
+      clk_oe = 0;
+      clk_out = ~clk_out;
+      clk_oe = 1;
 		end else begin
 			count = count + 1'd1;
     end

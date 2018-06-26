@@ -31,7 +31,8 @@ module mem_decoder(
     output reg ram_odd_cs,
     output reg rom_evn_cs,
     output reg rom_odd_cs,
-    output reg duart_cs
+    output reg duart_cs,
+    output reg mem_decode_oe
     );
 
     reg [3:0] as_count;
@@ -44,41 +45,40 @@ module mem_decoder(
 
     initial
       begin
-        ram_evn_cs <= 1'b1;
-        ram_odd_cs <= 1'b1;
-        rom_evn_cs <= 1'b1;
-        rom_odd_cs <= 1'b1;
-        duart_cs   <= 1'b1;
-        as_count   <= 4'b0000;
+        ram_evn_cs    = 1'b1;
+        ram_odd_cs    = 1'b1;
+        rom_evn_cs    = 1'b1;
+        rom_odd_cs    = 1'b1;
+        duart_cs      = 1'b1;
+        as_count      = 4'b0000;
+        mem_decode_oe = 1'b1;
       end
 
     always @(posedge(reset), negedge(reset), posedge(as), negedge(as))
     begin
       if (!reset)
-        begin
-          $display("NOT reset");
-          as_count <= 4'b0000;
-        end
+          as_count = 4'b0000;
 
       if (!reset || as)
         begin
-        $display("NOT reset OR as");
-        $monitor("%d %d", reset, as);
-        ram_evn_cs <= 1'b1;
-        ram_odd_cs <= 1'b1;
-        rom_evn_cs <= 1'b1;
-        rom_odd_cs <= 1'b1;
-        duart_cs   <= 1'b1;
+          mem_decode_oe = 1'b0;
+          ram_evn_cs    = 1'b1;
+          ram_odd_cs    = 1'b1;
+          rom_evn_cs    = 1'b1;
+          rom_odd_cs    = 1'b1;
+          duart_cs      = 1'b1;
+          mem_decode_oe = 1'b1;
         end
 
       if (!as)
       begin
-        $display("NOT as");
         if (reset && (as_count < 4'b1000))    // First 8 cycles
           begin
-            rom_evn_cs <= 1'b0;
-            rom_odd_cs <= 1'b0;
-            as_count <= as_count + 1'b1;
+            mem_decode_oe = 1'b0;
+            rom_evn_cs    = 1'b0;
+            rom_odd_cs    = 1'b0;
+            mem_decode_oe = 1'b1;
+            as_count = as_count + 1'b1;
           end
         else
           begin                               // Normal decoding
@@ -88,30 +88,36 @@ module mem_decoder(
                   begin
                     // for now, all we have is the DUART.
                     // fill in when we have more devices
-                    duart_cs <= 1'b0;
+                    mem_decode_oe = 1'b0;
+                    duart_cs      = 1'b0;
+                    mem_decode_oe = 1'b1;
                   end
                 else                          // ROM
                   begin
+                    mem_decode_oe = 1'b0;
                     if (uds == 1'b1)
-                      rom_evn_cs <= 1'b1;
+                      rom_evn_cs = 1'b1;
                     else
-                      rom_evn_cs <= 1'b0;
+                      rom_evn_cs = 1'b0;
                     if (lds == 1'b1)
-                      rom_odd_cs <= 1'b1;
+                      rom_odd_cs = 1'b1;
                     else
-                      rom_odd_cs <= 1'b0;
+                      rom_odd_cs = 1'b0;
+                    mem_decode_oe = 1'b1;
                   end
               end
             else                              // RAM
               begin
+                mem_decode_oe = 1'b0;
                 if (uds == 1'b1)
-                  ram_evn_cs <= 1'b1;
+                  ram_evn_cs = 1'b1;
                 else
-                  ram_evn_cs <= 1'b0;
+                  ram_evn_cs = 1'b0;
                 if (lds == 1'b1)
-                  ram_odd_cs <= 1'b1;
+                  ram_odd_cs = 1'b1;
                 else
-                  ram_odd_cs <= 1'b0;
+                  ram_odd_cs = 1'b0;
+                mem_decode_oe = 1'b1;
               end
           end
       end
