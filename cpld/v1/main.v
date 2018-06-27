@@ -32,6 +32,7 @@ module main (
 	input lds,
 	input uds,
 	input e,
+	input duart_dtack,
 	output clk_out,
 	output clk_oe,
 	output ipl0,
@@ -43,7 +44,8 @@ module main (
 	output rom_odd_cs,
 	output duart_cs,
 	output mem_decode_oe,
-	output berr
+	output berr,
+	output dtack
 	);
 
 	inout clk;
@@ -81,6 +83,17 @@ module main (
 			.as 		( as ),
 			.e 			( e ),
 			.berr 	( berr )
+			);
+
+		dtack dtack_module (
+			.clk          ( clk ),
+	    .reset        ( reset ),
+	    .ram_evn_cs   ( ram_cs_even ),
+	    .ram_odd_cs   ( ram_cs_odd ),
+	    .rom_evn_cs   ( rom_cs_even ),
+	    .rom_odd_cs   ( rom_cs_odd ),
+	    .duart_dtack  ( duart_dtack ),
+	    .dtack        ( dtack )
 			);
 
 	mem_decoder mem_decoder_module (
