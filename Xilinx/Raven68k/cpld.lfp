@@ -1,0 +1,5 @@
+# begin LFP file C:\Users\Chris\git\Raven68k\Xilinx\Raven68k\cpld.lfp
+designfile cpld.vhd
+parttype xc9572xl-vq44-5
+bus_delimiter 0;
+set_busdelim_onsave 1;
