@@ -1,0 +1,60 @@
+-- This VHDL was converted from Verilog using the
+-- Icarus Verilog VHDL Code Generator 0.9.7  (v0_9_7)
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use std.textio.all;
+
+-- Generated from Verilog module clock (clock.v:21)
+entity clock is
+  port (
+    clk_in : in std_logic;
+    clk_oe : out std_logic;
+    clk_out : out std_logic;
+    reset : in std_logic
+  );
+end entity; 
+
+-- Generated from Verilog module clock (clock.v:21)
+architecture FromVerilog of clock is
+  signal clk_oe_Reg : std_logic;
+  signal clk_out_Reg : std_logic;
+  signal count : unsigned(4 downto 0) := "00000";  -- Declared at clock.v:31
+begin
+  clk_oe <= clk_oe_Reg;
+  clk_out <= clk_out_Reg;
+  
+  -- Generated from initial process in clock (clock.v:33)
+  process is
+  begin
+    clk_out_Reg <= '0';
+    wait for 0 ns;
+    clk_oe_Reg <= '0';
+    wait;
+  end process;
+  
+  -- Generated from always process in clock (clock.v:39)
+  process is
+  begin
+    wait until (falling_edge(reset) or rising_edge(clk_in));
+    if ((not reset) = '1') then
+      clk_out_Reg <= '0';
+      wait for 0 ns;
+      count <= "00000";
+    else
+      if (Resize(count, 6) = "000100") then
+        count <= "00000";
+        wait for 0 ns;
+        clk_oe_Reg <= '0';
+        wait for 0 ns;
+        clk_out_Reg <= (not clk_out_Reg);
+        wait for 0 ns;
+        clk_oe_Reg <= '1';
+      else
+        count <= (count + "00001");
+      end if;
+    end if;
+  end process;
+end architecture;
+

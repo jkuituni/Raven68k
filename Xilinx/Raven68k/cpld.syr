@@ -1,18 +1,18 @@
 Release 10.1 - xst K.31 (lin)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 --> 
-Parameter TMPDIR set to /home/ccureau/xilinx-proj/cpld/cpld/xst/projnav.tmp
+Parameter TMPDIR set to /home/ccureau/git/Raven68k/Xilinx/Raven68k/xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> 
-Parameter xsthdpdir set to /home/ccureau/xilinx-proj/cpld/cpld/xst
+Parameter xsthdpdir set to /home/ccureau/git/Raven68k/Xilinx/Raven68k/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> 
 Reading design: cpld.prj
@@ -79,16 +79,16 @@ wysiwyg                            : NO
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "/home/ccureau/xilinx-proj/cpld/cpld/irq.vhd" in Library work.
+Compiling vhdl file "/home/ccureau/git/Raven68k/Xilinx/Raven68k/irq.vhd" in Library work.
 Architecture behavioral of Entity irq is up to date.
-Compiling vhdl file "/home/ccureau/xilinx-proj/cpld/cpld/bus_error.vhd" in Library work.
+Compiling vhdl file "/home/ccureau/git/Raven68k/Xilinx/Raven68k/bus_error.vhd" in Library work.
 Architecture behavioral of Entity bus_error is up to date.
-Compiling vhdl file "/home/ccureau/xilinx-proj/cpld/cpld/mem_decoder.vhd" in Library work.
+Compiling vhdl file "/home/ccureau/git/Raven68k/Xilinx/Raven68k/mem_decoder.vhd" in Library work.
 Architecture behavioral of Entity mem_decoder is up to date.
-Compiling vhdl file "/home/ccureau/xilinx-proj/cpld/cpld/dtack.vhd" in Library work.
+Compiling vhdl file "/home/ccureau/git/Raven68k/Xilinx/Raven68k/dtack.vhd" in Library work.
 Entity <dtack> compiled.
 Entity <dtack> (Architecture <behavioral>) compiled.
-Compiling vhdl file "/home/ccureau/xilinx-proj/cpld/cpld/cpld.vhd" in Library work.
+Compiling vhdl file "/home/ccureau/git/Raven68k/Xilinx/Raven68k/cpld.vhd" in Library work.
 Architecture behavioral of Entity cpld is up to date.
 
 =========================================================================
@@ -131,12 +131,12 @@ Entity <dtack> analyzed. Unit <dtack> generated.
 Performing bidirectional port resolution...
 
 Synthesizing Unit <irq>.
-    Related source file is "/home/ccureau/xilinx-proj/cpld/cpld/irq.vhd".
+    Related source file is "/home/ccureau/git/Raven68k/Xilinx/Raven68k/irq.vhd".
 Unit <irq> synthesized.
 
 
 Synthesizing Unit <bus_error>.
-    Related source file is "/home/ccureau/xilinx-proj/cpld/cpld/bus_error.vhd".
+    Related source file is "/home/ccureau/git/Raven68k/Xilinx/Raven68k/bus_error.vhd".
     Found 1-bit register for signal <berr>.
     Found 4-bit up counter for signal <berr_count>.
     Summary:
@@ -145,7 +145,7 @@ Unit <bus_error> synthesized.
 
 
 Synthesizing Unit <mem_decoder>.
-    Related source file is "/home/ccureau/xilinx-proj/cpld/cpld/mem_decoder.vhd".
+    Related source file is "/home/ccureau/git/Raven68k/Xilinx/Raven68k/mem_decoder.vhd".
 WARNING:Xst:647 - Input <a7> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <a8> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <a9> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -163,14 +163,12 @@ Unit <mem_decoder> synthesized.
 
 
 Synthesizing Unit <dtack>.
-    Related source file is "/home/ccureau/xilinx-proj/cpld/cpld/dtack.vhd".
-WARNING:Xst:647 - Input <duart_dtack> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Related source file is "/home/ccureau/git/Raven68k/Xilinx/Raven68k/dtack.vhd".
 Unit <dtack> synthesized.
 
 
 Synthesizing Unit <cpld>.
-    Related source file is "/home/ccureau/xilinx-proj/cpld/cpld/cpld.vhd".
-WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Related source file is "/home/ccureau/git/Raven68k/Xilinx/Raven68k/cpld.vhd".
 Unit <cpld> synthesized.
 
 
@@ -251,35 +249,35 @@ Clock Enable                       : YES
 wysiwyg                            : NO
 
 Design Statistics
-# IOs                              : 24
+# IOs                              : 25
 
 Cell Usage :
-# BELS                             : 54
-#      AND2                        : 13
+# BELS                             : 58
+#      AND2                        : 14
 #      AND5                        : 1
 #      GND                         : 3
-#      INV                         : 20
-#      OR2                         : 10
+#      INV                         : 22
+#      OR2                         : 11
 #      OR3                         : 1
 #      XOR2                        : 6
 # FlipFlops/Latches                : 14
 #      FD                          : 5
 #      FDCE                        : 9
-# IO Buffers                       : 19
-#      IBUF                        : 8
-#      OBUF                        : 11
+# IO Buffers                       : 22
+#      IBUF                        : 10
+#      OBUF                        : 12
 =========================================================================
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.77 secs
+Total REAL time to Xst completion: 3.00 secs
+Total CPU time to Xst completion: 2.48 secs
  
 --> 
 
 
-Total memory usage is 122308 kilobytes
+Total memory usage is 121060 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    6 (   0 filtered)
+Number of warnings :    4 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

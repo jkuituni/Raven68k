@@ -1,5 +1,5 @@
 CommandLine
-taengine -ise /home/ccureau/xilinx-proj/cpld/cpld/cpld.ise
+taengine -ise /home/ccureau/git/Raven68k/Xilinx/Raven68k/cpld.ise
 s
 FormatString
 taengine 

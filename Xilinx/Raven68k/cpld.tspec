@@ -1,9 +1,3 @@
-AUTO_TS_P2P:FROM:as:TO:dtack_out:1
-AUTO_TS_F2P:FROM:duart_cs_OBUF.Q:TO:dtack_out:1
-AUTO_TS_F2P:FROM:ram_evn_cs_OBUF.Q:TO:dtack_out:1
-AUTO_TS_F2P:FROM:ram_odd_cs_OBUF.Q:TO:dtack_out:1
-AUTO_TS_F2P:FROM:rom_evn_cs_OBUF.Q:TO:dtack_out:1
-AUTO_TS_F2P:FROM:rom_odd_cs_OBUF.Q:TO:dtack_out:1
 AUTO_TS_P2P:FROM:e:TO:berr:1
 AUTO_TS_F2P:FROM:berr_OBUF.Q:TO:berr:1
 AUTO_TS_P2P:FROM:as:TO:duart_cs:1
@@ -16,6 +10,14 @@ AUTO_TS_P2P:FROM:as:TO:rom_evn_cs:1
 AUTO_TS_F2P:FROM:rom_evn_cs_OBUF.Q:TO:rom_evn_cs:1
 AUTO_TS_P2P:FROM:as:TO:rom_odd_cs:1
 AUTO_TS_F2P:FROM:rom_odd_cs_OBUF.Q:TO:rom_odd_cs:1
+AUTO_TS_P2P:FROM:as:TO:dtack_out:1
+AUTO_TS_P2P:FROM:duart_dtack:TO:dtack_out:1
+AUTO_TS_F2P:FROM:duart_cs_OBUF.Q:TO:dtack_out:1
+AUTO_TS_F2P:FROM:ram_evn_cs_OBUF.Q:TO:dtack_out:1
+AUTO_TS_F2P:FROM:ram_odd_cs_OBUF.Q:TO:dtack_out:1
+AUTO_TS_F2P:FROM:rom_evn_cs_OBUF.Q:TO:dtack_out:1
+AUTO_TS_F2P:FROM:rom_odd_cs_OBUF.Q:TO:dtack_out:1
+AUTO_TS_P2P:FROM:clk:TO:clk_out:1
 AUTO_TS_P2P:FROM:duart_irq:TO:ipl<2>:1
 AUTO_TS_P2P:FROM:rw:TO:oe:1
 AUTO_TS_F2F:FROM:BUS_ERR/berr_count<0>.Q:TO:BUS_ERR/berr_count<0>.D:1

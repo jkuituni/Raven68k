@@ -3,9 +3,9 @@
 <script src="paths.js"></script><script src="eqns.js"></script><script>
       var design = "cpld";
       var device = "XC9572XL";
-      signals = new Array("BUS_ERRberr_count0_SPECSIG","BUS_ERRberr_count1_SPECSIG","BUS_ERRberr_count2_SPECSIG","BUS_ERRberr_count3_SPECSIG","MEM_DECODERas_count0_SPECSIG","MEM_DECODERas_count1_SPECSIG","MEM_DECODERas_count2_SPECSIG","MEM_DECODERas_count3_SPECSIG","berr","dtack_out","duart_cs","ipl0_SPECSIG","ipl1_SPECSIG","ipl2_SPECSIG","oe","ram_evn_cs","ram_odd_cs","rom_evn_cs","rom_odd_cs");
-      sigNegs = new Array("ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","ON","OFF","OFF","OFF","OFF","ON","ON","ON","ON");
-      sigTypes = new Array("T","D","T","T","T","T","T","T","D","","D","","","","","D","D","D","D");
+      signals = new Array("BUS_ERRberr_count0_SPECSIG","BUS_ERRberr_count1_SPECSIG","BUS_ERRberr_count2_SPECSIG","BUS_ERRberr_count3_SPECSIG","MEM_DECODERas_count0_SPECSIG","MEM_DECODERas_count1_SPECSIG","MEM_DECODERas_count2_SPECSIG","MEM_DECODERas_count3_SPECSIG","berr","clk_out","dtack_out","duart_cs","ipl0_SPECSIG","ipl1_SPECSIG","ipl2_SPECSIG","oe","ram_evn_cs","ram_odd_cs","rom_evn_cs","rom_odd_cs");
+      sigNegs = new Array("ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","ON","OFF","OFF","OFF","OFF","ON","ON","ON","ON");
+      sigTypes = new Array("T","D","T","T","T","T","T","T","D","","","D","","","","","D","D","D","D");
 
       
         specSig["GCKI_SPECSIG"]=new Array("GCK/I");
@@ -18,13 +18,11 @@
       
         specSig["MEM_DECODERas_count0_SPECSIG"]=new Array("MEM_DECODER/as_count<0>");
       
-        specSig["MEM_DECODERas_count2_SPECSIG"]=new Array("MEM_DECODER/as_count<2>");
-      
-        specSig["ipl1_SPECSIG"]=new Array("ipl<1>");
+        specSig["ipl2_SPECSIG"]=new Array("ipl<2>");
       
         specSig["ipl0_SPECSIG"]=new Array("ipl<0>");
       
-        specSig["ipl2_SPECSIG"]=new Array("ipl<2>");
+        specSig["ipl1_SPECSIG"]=new Array("ipl<1>");
       
         specSig["BUS_ERRberr_count2_SPECSIG"]=new Array("BUS_ERR/berr_count<2>");
       
@@ -32,11 +30,13 @@
       
         specSig["MEM_DECODERas_count3_SPECSIG"]=new Array("MEM_DECODER/as_count<3>");
       
+        specSig["MEM_DECODERas_count2_SPECSIG"]=new Array("MEM_DECODER/as_count<2>");
+      
         specSig["MEM_DECODERas_count1_SPECSIG"]=new Array("MEM_DECODER/as_count<1>");
       
             pterms["FB1_2_1"]=new Array("MEM_DECODERas_count3_SPECSIG","a21","a17");
           
-            pterms["FB1_8_1"]=new Array("MEM_DECODERas_count3_SPECSIG","/a21","/uds");
+            pterms["FB1_8_1"]=new Array("MEM_DECODERas_count3_SPECSIG","/a21","/lds");
           
             pterms["FB1_15_1"]=new Array("as","BUS_ERRberr_count3_SPECSIG");
           
@@ -58,35 +58,39 @@
           
             pterms["FB2_2_2"]=new Array("a21","/a17","/uds");
           
-            pterms["FB2_6_1"]=new Array("/MEM_DECODERas_count3_SPECSIG");
-          
-            pterms["FB2_6_2"]=new Array("a21","/a17","/lds");
+            pterms["FB2_6_1"]=new Array("/clk");
           
             pterms["FB2_14_1"]=new Array("/MEM_DECODERas_count3_SPECSIG");
           
-            pterms["FB2_15_1"]=new Array("MEM_DECODERas_count3_SPECSIG","/a21","/lds");
+            pterms["FB2_15_1"]=new Array("/duart_irq");
           
-            pterms["FB2_16_1"]=new Array("MEM_DECODERas_count0_SPECSIG","MEM_DECODERas_count1_SPECSIG","MEM_DECODERas_count2_SPECSIG");
+            pterms["FB2_16_1"]=new Array("MEM_DECODERas_count0_SPECSIG","MEM_DECODERas_count1_SPECSIG");
           
             pterms["FB2_16_2"]=new Array("/MEM_DECODERas_count3_SPECSIG");
           
-            pterms["FB2_17_1"]=new Array("MEM_DECODERas_count0_SPECSIG","MEM_DECODERas_count1_SPECSIG");
-          
-            pterms["FB2_17_2"]=new Array("/MEM_DECODERas_count3_SPECSIG");
+            pterms["FB2_17_1"]=new Array("/rw");
           
             pterms["FB2_18_1"]=new Array("MEM_DECODERas_count0_SPECSIG");
           
             pterms["FB2_18_2"]=new Array("/MEM_DECODERas_count3_SPECSIG");
           
-            pterms["FB3_11_1"]=new Array("/duart_irq");
+            pterms["FB3_2_1"]=new Array("/as","/berr");
           
-            pterms["FB3_15_1"]=new Array("/rw");
+            pterms["FB3_2_2"]=new Array("/as","/BUS_ERRberr_count0_SPECSIG","BUS_ERRberr_count1_SPECSIG","/BUS_ERRberr_count2_SPECSIG","BUS_ERRberr_count3_SPECSIG");
           
-            pterms["FB4_2_1"]=new Array("/as","/berr");
+            pterms["FB3_8_1"]=new Array("/duart_cs","duart_dtack");
           
-            pterms["FB4_2_2"]=new Array("/as","/BUS_ERRberr_count0_SPECSIG","BUS_ERRberr_count1_SPECSIG","/BUS_ERRberr_count2_SPECSIG","BUS_ERRberr_count3_SPECSIG");
+            pterms["FB3_8_2"]=new Array("duart_cs","ram_evn_cs","ram_odd_cs","rom_evn_cs","rom_odd_cs");
           
-            pterms["FB4_14_1"]=new Array("duart_cs","ram_evn_cs","ram_odd_cs","rom_evn_cs","rom_odd_cs");
+            pterms["FB3_11_1"]=new Array("/MEM_DECODERas_count3_SPECSIG");
+          
+            pterms["FB3_11_2"]=new Array("a21","/a17","/lds");
+          
+            pterms["FB4_14_1"]=new Array("MEM_DECODERas_count3_SPECSIG","/a21","/uds");
+          
+            pterms["FB4_18_1"]=new Array("MEM_DECODERas_count0_SPECSIG","MEM_DECODERas_count1_SPECSIG","MEM_DECODERas_count2_SPECSIG");
+          
+            pterms["FB4_18_2"]=new Array("/MEM_DECODERas_count3_SPECSIG");
           
           d2["duart_cs"]=new Array("FB1_2_1");
           
@@ -94,12 +98,12 @@
           clkNegs["duart_cs"]=1;
               gblclk["duart_cs"]=new Array("as");
             prld["duart_cs"]="GND";
-          d2["ram_evn_cs"]=new Array("FB1_8_1");
+          d2["ram_odd_cs"]=new Array("FB1_8_1");
           
-            d2imp["ram_evn_cs"]=new Array("1");
-          clkNegs["ram_evn_cs"]=1;
-              gblclk["ram_evn_cs"]=new Array("as");
-            prld["ram_evn_cs"]="GND";
+            d2imp["ram_odd_cs"]=new Array("1");
+          clkNegs["ram_odd_cs"]=1;
+              gblclk["ram_odd_cs"]=new Array("as");
+            prld["ram_odd_cs"]="GND";
           d2["BUS_ERRberr_count3_SPECSIG"]=new Array("FB1_15_1","FB1_15_2");
           
             d2imp["BUS_ERRberr_count3_SPECSIG"]=new Array("1","1");
@@ -130,12 +134,10 @@
           clkNegs["rom_evn_cs"]=1;
               gblclk["rom_evn_cs"]=new Array("as");
             prld["rom_evn_cs"]="GND";
-          d2["rom_odd_cs"]=new Array("FB2_6_1","FB2_6_2");
+          d2["clk_out"]=new Array("FB2_6_1");
           
-            d2imp["rom_odd_cs"]=new Array("1","1");
-          clkNegs["rom_odd_cs"]=1;
-              gblclk["rom_odd_cs"]=new Array("as");
-            prld["rom_odd_cs"]="GND";
+            d2imp["clk_out"]=new Array("1");
+          
           d2["MEM_DECODERas_count0_SPECSIG"]=new Array("VCC");
           
             d2imp["MEM_DECODERas_count0_SPECSIG"]=new Array("1");
@@ -146,32 +148,24 @@
           
             ceimp["MEM_DECODERas_count0_SPECSIG"]=new Array("1");
           prld["MEM_DECODERas_count0_SPECSIG"]="GND";
-          d2["ram_odd_cs"]=new Array("FB2_15_1");
+          d2["ipl2_SPECSIG"]=new Array("FB2_15_1");
           
-            d2imp["ram_odd_cs"]=new Array("1");
-          clkNegs["ram_odd_cs"]=1;
-              gblclk["ram_odd_cs"]=new Array("as");
-            prld["ram_odd_cs"]="GND";
-          d2["MEM_DECODERas_count3_SPECSIG"]=new Array("FB2_16_1");
+            d2imp["ipl2_SPECSIG"]=new Array("1");
           
-            d2imp["MEM_DECODERas_count3_SPECSIG"]=new Array("1");
-          clkNegs["MEM_DECODERas_count3_SPECSIG"]=1;
-              gblclk["MEM_DECODERas_count3_SPECSIG"]=new Array("as");
-            
-          ce["MEM_DECODERas_count3_SPECSIG"]=new Array("FB2_16_2");
-          
-            ceimp["MEM_DECODERas_count3_SPECSIG"]=new Array("1");
-          prld["MEM_DECODERas_count3_SPECSIG"]="GND";
-          d2["MEM_DECODERas_count2_SPECSIG"]=new Array("FB2_17_1");
+          d2["MEM_DECODERas_count2_SPECSIG"]=new Array("FB2_16_1");
           
             d2imp["MEM_DECODERas_count2_SPECSIG"]=new Array("1");
           clkNegs["MEM_DECODERas_count2_SPECSIG"]=1;
               gblclk["MEM_DECODERas_count2_SPECSIG"]=new Array("as");
             
-          ce["MEM_DECODERas_count2_SPECSIG"]=new Array("FB2_17_2");
+          ce["MEM_DECODERas_count2_SPECSIG"]=new Array("FB2_16_2");
           
             ceimp["MEM_DECODERas_count2_SPECSIG"]=new Array("1");
           prld["MEM_DECODERas_count2_SPECSIG"]="GND";
+          d2["oe"]=new Array("FB2_17_1");
+          
+            d2imp["oe"]=new Array("1");
+          
           d2["MEM_DECODERas_count1_SPECSIG"]=new Array("FB2_18_1");
           
             d2imp["MEM_DECODERas_count1_SPECSIG"]=new Array("1");
@@ -182,32 +176,46 @@
           
             ceimp["MEM_DECODERas_count1_SPECSIG"]=new Array("1");
           prld["MEM_DECODERas_count1_SPECSIG"]="GND";
-          d2["ipl1_SPECSIG"]=new Array("GND");
-          
-            d2imp["ipl1_SPECSIG"]=new Array("1");
-          
-          d2["ipl0_SPECSIG"]=new Array("GND");
-          
-            d2imp["ipl0_SPECSIG"]=new Array("1");
-          
-          d2["ipl2_SPECSIG"]=new Array("FB3_11_1");
-          
-            d2imp["ipl2_SPECSIG"]=new Array("1");
-          
-          d2["oe"]=new Array("FB3_15_1");
-          
-            d2imp["oe"]=new Array("1");
-          
-          d2["berr"]=new Array("FB4_2_1","FB4_2_2");
+          d2["berr"]=new Array("FB3_2_1","FB3_2_2");
           
             d2imp["berr"]=new Array("1","1");
           
               gblclk["berr"]=new Array("e");
             prld["berr"]="GND";
-          d2["dtack_out"]=new Array("FB4_14_1");
+          d2["dtack_out"]=new Array("FB3_8_1","FB3_8_2");
           
-            d2imp["dtack_out"]=new Array("1");
+            d2imp["dtack_out"]=new Array("1","1");
           
+          d2["rom_odd_cs"]=new Array("FB3_11_1","FB3_11_2");
+          
+            d2imp["rom_odd_cs"]=new Array("1","1");
+          clkNegs["rom_odd_cs"]=1;
+              gblclk["rom_odd_cs"]=new Array("as");
+            prld["rom_odd_cs"]="GND";
+          d2["ipl0_SPECSIG"]=new Array("GND");
+          
+            d2imp["ipl0_SPECSIG"]=new Array("1");
+          
+          d2["ipl1_SPECSIG"]=new Array("GND");
+          
+            d2imp["ipl1_SPECSIG"]=new Array("1");
+          
+          d2["ram_evn_cs"]=new Array("FB4_14_1");
+          
+            d2imp["ram_evn_cs"]=new Array("1");
+          clkNegs["ram_evn_cs"]=1;
+              gblclk["ram_evn_cs"]=new Array("as");
+            prld["ram_evn_cs"]="GND";
+          d2["MEM_DECODERas_count3_SPECSIG"]=new Array("FB4_18_1");
+          
+            d2imp["MEM_DECODERas_count3_SPECSIG"]=new Array("1");
+          clkNegs["MEM_DECODERas_count3_SPECSIG"]=1;
+              gblclk["MEM_DECODERas_count3_SPECSIG"]=new Array("as");
+            
+          ce["MEM_DECODERas_count3_SPECSIG"]=new Array("FB4_18_2");
+          
+            ceimp["MEM_DECODERas_count3_SPECSIG"]=new Array("1");
+          prld["MEM_DECODERas_count3_SPECSIG"]="GND";
 
       uimSignals = new Array();
 

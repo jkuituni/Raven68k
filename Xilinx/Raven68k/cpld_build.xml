@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<!DOCTYPE document SYSTEM 'file:////home/ccureau/Xilinx/10.1/ISE/chipviewer/data/xsl/buildXML.dtd'>
+<!DOCTYPE document SYSTEM 'file:////opt/Xilinx/10.1/ISE/chipviewer/data/xsl/buildXML.dtd'>
 
 <document>
 <design name='cpld'/>
 <rptdir name='cpld'/>
-<xilinx path='/home/ccureau/Xilinx/10.1/ISE:'/>
-<projDir path='/home/ccureau/xilinx-proj/cpld/cpld'/>
+<xilinx path='/opt/Xilinx/10.1/ISE:'/>
+<projDir path='/home/ccureau/git/Raven68k/Xilinx/Raven68k'/>
 <xslDir path='chipviewer/data/xsl'/>
 <fileDir path='/chipviewer/data/html'/>
 <dataFile file='index.htm'/>
@@ -188,7 +188,7 @@
     <output file='fbs_FB4.htm'/>
   </xslFile>
 </xmlFile>
-<xmlFile file='/home/ccureau/Xilinx/10.1/ISE/chipviewer/data/xsl/pinlegend.xml'>
+<xmlFile file='/opt/Xilinx/10.1/ISE/chipviewer/data/xsl/pinlegend.xml'>
   <xslFile file='legend.xsl'>
     <param name='device' value='XC9572XL-5-VQ44'/>
     <param name='verOn' value='0'/>
@@ -200,7 +200,7 @@
     <output file='pinlegendV.htm'/>
   </xslFile>
 </xmlFile>
-<xmlFile file='/home/ccureau/Xilinx/10.1/ISE/chipviewer/data/xsl/logiclegend.xml'>
+<xmlFile file='/opt/Xilinx/10.1/ISE/chipviewer/data/xsl/logiclegend.xml'>
   <xslFile file='legend.xsl'>
     <param name='device' value='XC9572XL-5-VQ44'/>
     <param name='verOn' value='0'/>

@@ -837,6 +837,7 @@ proc restore { { project_dir "" } } {
 
   set user_files { 
       "bus_error.vhd" 
+      "cpld.ucf" 
       "cpld.vhd" 
       "dtack.vhd" 
       "irq.vhd" 

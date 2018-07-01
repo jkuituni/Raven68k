@@ -28,6 +28,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity cpld is
     Port ( clk : in  STD_LOGIC;
+			  clk_out : out  STD_LOGIC;
 			  duart_dtack : in  STD_LOGIC;
 			  duart_irq : in  STD_LOGIC;
            rw : in  STD_LOGIC;
@@ -105,12 +106,14 @@ begin
 		dtack => dtack_out
 	);
 	
-	process (rw, decoder_duart_cs, decoder_ram_evn_cs, decoder_ram_odd_cs, 
+	process (rw, clk, decoder_duart_cs, decoder_ram_evn_cs, decoder_ram_odd_cs, 
 				decoder_rom_evn_cs, decoder_rom_odd_cs)
 	begin
 		
 		-- always set
 		oe <= not rw;
+		clk_out <= not clk;
+		
 		duart_cs <= decoder_duart_cs;
 		ram_odd_cs <= decoder_ram_odd_cs;
 		ram_evn_cs <= decoder_ram_evn_cs;

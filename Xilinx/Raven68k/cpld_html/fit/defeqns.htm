@@ -43,8 +43,12 @@ FDCPE_berr: FDCPE port map (berr,berr_D,e,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	BUS_ERR/berr_count(1) AND NOT BUS_ERR/berr_count(2) AND BUS_ERR/berr_count(3)));
 </td></tr><tr><td>
 </td></tr><tr><td>
-dtack_out <= (duart_cs AND ram_evn_cs AND ram_odd_cs AND rom_evn_cs AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	rom_odd_cs);
+clk_out <= NOT clk;
+</td></tr><tr><td>
+</td></tr><tr><td>
+dtack_out <= ((NOT duart_cs AND duart_dtack)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (duart_cs AND ram_evn_cs AND ram_odd_cs AND rom_evn_cs AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	rom_odd_cs));
 </td></tr><tr><td>
 FDCPE_duart_cs: FDCPE port map (duart_cs,duart_cs_D,NOT as,'0','0');
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;duart_cs_D <= (MEM_DECODER/as_count(3) AND a21 AND a17);

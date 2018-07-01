@@ -1,7 +1,7 @@
 Release 8.1i - Fit K.31
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 7- 1-2018  1:21PM
+ 7- 1-2018  3:02PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -22,44 +22,44 @@ P1|TIE||I/O/GCK3||||||||||
 P2|TIE||I/O||||||||||
 P3|TIE||I/O||||||||||
 P4|GND||GND||||||||||
-P5|ipl<1>|O|I/O|OUTPUT|||||||||
-P6|a21|I|I/O|INPUT|||||||||
-P7|ipl<0>|O|I/O|OUTPUT|||||||||
+P5|berr|O|I/O|OUTPUT|||||||||
+P6|a17|I|I/O|INPUT|||||||||
+P7|dtack_out|O|I/O|OUTPUT|||||||||
 P8|TIE||I/O||||||||||
 P9|TDI||TDI||||||||||
 P10|TMS||TMS||||||||||
 P11|TCK||TCK||||||||||
-P12|ipl<2>|O|I/O|OUTPUT|||||||||
-P13|a17|I|I/O|INPUT|||||||||
-P14|oe|O|I/O|OUTPUT|||||||||
+P12|rom_odd_cs|O|I/O|OUTPUT|||||||||
+P13|a21|I|I/O|INPUT|||||||||
+P14|ipl<0>|O|I/O|OUTPUT|||||||||
 P15|VCC||VCCINT||||||||||
 P16|TIE||I/O||||||||||
 P17|GND||GND||||||||||
 P18|TIE||I/O||||||||||
-P19|berr|O|I/O|OUTPUT|||||||||
+P19|ipl<1>|O|I/O|OUTPUT|||||||||
 P20|TIE||I/O||||||||||
-P21|TIE||I/O||||||||||
+P21|duart_irq|I|I/O|INPUT|||||||||
 P22|TIE||I/O||||||||||
-P23|dtack_out|O|I/O|OUTPUT|||||||||
+P23|ram_evn_cs|O|I/O|OUTPUT|||||||||
 P24|TDO||TDO||||||||||
 P25|GND||GND||||||||||
 P26|VCC||VCCIO||||||||||
 P27|TIE||I/O||||||||||
-P28|uds|I|I/O|INPUT|||||||||
+P28|lds|I|I/O|INPUT|||||||||
 P29|rom_evn_cs|O|I/O|OUTPUT|||||||||
 P30|TIE||I/O||||||||||
-P31|rom_odd_cs|O|I/O|OUTPUT|||||||||
-P32|duart_irq|I|I/O|INPUT|||||||||
-P33|lds|I|I/O/GSR|INPUT|||||||||
-P34|rw|I|I/O/GTS2|INPUT|||||||||
+P31|clk_out|O|I/O|OUTPUT|||||||||
+P32|uds|I|I/O|INPUT|||||||||
+P33|clk|I|I/O/GSR|INPUT|||||||||
+P34|duart_dtack|I|I/O/GTS2|INPUT|||||||||
 P35|VCC||VCCINT||||||||||
 P36|TIE||I/O/GTS1||||||||||
-P37|ram_odd_cs|O|I/O|OUTPUT|||||||||
-P38|TIE||I/O||||||||||
+P37|ipl<2>|O|I/O|OUTPUT|||||||||
+P38|oe|O|I/O|OUTPUT|||||||||
 P39|duart_cs|O|I/O|OUTPUT|||||||||
-P40|TIE||I/O||||||||||
+P40|rw|I|I/O|INPUT|||||||||
 P41|TIE||I/O||||||||||
-P42|ram_evn_cs|O|I/O|OUTPUT|||||||||
+P42|ram_odd_cs|O|I/O|OUTPUT|||||||||
 P43|as|GCK/I|I/O/GCK1||||||||||
 P44|e|GCK|I/O/GCK2||||||||||
 
