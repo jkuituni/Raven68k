@@ -1,0 +1,32 @@
+Release 10.1 - xst K.31 (lin)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to ./xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> 
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "/home/ccureau/xilinx-proj/cpld/cpld/irq.vhd" in Library work.
+Entity <irq> compiled.
+WARNING:HDLParsers:1406 - "/home/ccureau/xilinx-proj/cpld/cpld/irq.vhd" Line 43. No sensitivity list and no wait in the process
+Entity <irq> (Architecture <behavioral>) compiled.
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+
+
+Total memory usage is 113116 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

@@ -1,0 +1,89 @@
+<html><head><link type='text/css' href='style.css' rel='stylesheet'></head><body class='pgBgnd'>
+<h3 align='center'>Equations</h3>
+<table width='90%' align='center' border='1' cellpadding='0' cellspacing='0'>
+<tr><td>
+</td></tr><tr><td>
+********** Mapped Logic **********
+</td></tr><tr><td>
+FTCPE_BUS_ERR/berr_count0: FTCPE port map (BUS_ERR/berr_count(0),BUS_ERR/berr_count_T(0),e,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BUS_ERR/berr_count_T(0) <= ((as AND NOT BUS_ERR/berr_count(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT BUS_ERR/berr_count(0) AND BUS_ERR/berr_count(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT BUS_ERR/berr_count(2) AND BUS_ERR/berr_count(3)));
+</td></tr><tr><td>
+FDCPE_BUS_ERR/berr_count1: FDCPE port map (BUS_ERR/berr_count(1),BUS_ERR/berr_count_D(1),e,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BUS_ERR/berr_count_D(1) <= ((NOT as AND BUS_ERR/berr_count(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT BUS_ERR/berr_count(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT as AND NOT BUS_ERR/berr_count(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	BUS_ERR/berr_count(1)));
+</td></tr><tr><td>
+FTCPE_BUS_ERR/berr_count2: FTCPE port map (BUS_ERR/berr_count(2),BUS_ERR/berr_count_T(2),e,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BUS_ERR/berr_count_T(2) <= ((as AND BUS_ERR/berr_count(2))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT as AND BUS_ERR/berr_count(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	BUS_ERR/berr_count(1)));
+</td></tr><tr><td>
+FTCPE_BUS_ERR/berr_count3: FTCPE port map (BUS_ERR/berr_count(3),BUS_ERR/berr_count_T(3),e,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BUS_ERR/berr_count_T(3) <= ((as AND BUS_ERR/berr_count(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT as AND BUS_ERR/berr_count(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	BUS_ERR/berr_count(1) AND BUS_ERR/berr_count(2)));
+</td></tr><tr><td>
+FTCPE_MEM_DECODER/as_count0: FTCPE port map (MEM_DECODER/as_count(0),'1',NOT as,'0','0',NOT MEM_DECODER/as_count(3));
+</td></tr><tr><td>
+FTCPE_MEM_DECODER/as_count1: FTCPE port map (MEM_DECODER/as_count(1),MEM_DECODER/as_count(0),NOT as,'0','0',NOT MEM_DECODER/as_count(3));
+</td></tr><tr><td>
+FTCPE_MEM_DECODER/as_count2: FTCPE port map (MEM_DECODER/as_count(2),MEM_DECODER/as_count_T(2),NOT as,'0','0',NOT MEM_DECODER/as_count(3));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER/as_count_T(2) <= (MEM_DECODER/as_count(0) AND MEM_DECODER/as_count(1));
+</td></tr><tr><td>
+FTCPE_MEM_DECODER/as_count3: FTCPE port map (MEM_DECODER/as_count(3),MEM_DECODER/as_count_T(3),NOT as,'0','0',NOT MEM_DECODER/as_count(3));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER/as_count_T(3) <= (MEM_DECODER/as_count(0) AND MEM_DECODER/as_count(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	MEM_DECODER/as_count(2));
+</td></tr><tr><td>
+FDCPE_berr: FDCPE port map (berr,berr_D,e,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;berr_D <= ((NOT as AND NOT berr)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT as AND NOT BUS_ERR/berr_count(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	BUS_ERR/berr_count(1) AND NOT BUS_ERR/berr_count(2) AND BUS_ERR/berr_count(3)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+dtack_out <= (duart_cs AND ram_evn_cs AND ram_odd_cs AND rom_evn_cs AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	rom_odd_cs);
+</td></tr><tr><td>
+FDCPE_duart_cs: FDCPE port map (duart_cs,duart_cs_D,NOT as,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;duart_cs_D <= (MEM_DECODER/as_count(3) AND a21 AND a17);
+</td></tr><tr><td>
+</td></tr><tr><td>
+ipl(0) <= '0';
+</td></tr><tr><td>
+</td></tr><tr><td>
+ipl(1) <= '0';
+</td></tr><tr><td>
+</td></tr><tr><td>
+ipl(2) <= NOT duart_irq;
+</td></tr><tr><td>
+</td></tr><tr><td>
+oe <= NOT rw;
+</td></tr><tr><td>
+FDCPE_ram_evn_cs: FDCPE port map (ram_evn_cs,ram_evn_cs_D,NOT as,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ram_evn_cs_D <= (MEM_DECODER/as_count(3) AND NOT a21 AND NOT uds);
+</td></tr><tr><td>
+FDCPE_ram_odd_cs: FDCPE port map (ram_odd_cs,ram_odd_cs_D,NOT as,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ram_odd_cs_D <= (MEM_DECODER/as_count(3) AND NOT a21 AND NOT lds);
+</td></tr><tr><td>
+FDCPE_rom_evn_cs: FDCPE port map (rom_evn_cs,rom_evn_cs_D,NOT as,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rom_evn_cs_D <= ((NOT MEM_DECODER/as_count(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (a21 AND NOT a17 AND NOT uds));
+</td></tr><tr><td>
+FDCPE_rom_odd_cs: FDCPE port map (rom_odd_cs,rom_odd_cs_D,NOT as,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rom_odd_cs_D <= ((NOT MEM_DECODER/as_count(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (a21 AND NOT a17 AND NOT lds));
+</td></tr><tr><td>
+Register Legend:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FDCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FTCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LDCP  (Q,D,G,CLR,PRE); 
+</td></tr><tr><td>
+</td></tr>
+</table>
+<form><span class="pgRef"><table width="90%" align="center"><tr>
+<td align="left"><input type="button" onclick="javascript:parent.leftnav.showTop()" onmouseover="window.status='goto top of page'; return true;" onmouseout="window.status=''" value="back to top"></td>
+<td align="right"><input type="button" onclick="window.print()" onmouseover="window.status='print page'; return true;" onmouseout="window.status=''" value="print page"></td>
+</tr></table></span></form>
+</body></html>

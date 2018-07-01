@@ -1,0 +1,6 @@
+CommandLine
+taengine -ise /home/ccureau/xilinx-proj/cpld/cpld/cpld.ise
+s
+FormatString
+taengine 
+s

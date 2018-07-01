@@ -1,0 +1,44 @@
+Pin Freeze File:  version K.31
+
+9572XL44VQ XC9572XL-5-VQ44
+a17 S:PIN13
+a21 S:PIN6
+as S:PIN43
+duart_irq S:PIN32
+e S:PIN44
+lds S:PIN33
+rw S:PIN34
+uds S:PIN28
+berr S:PIN19
+dtack_out S:PIN23
+duart_cs S:PIN39
+ipl<1> S:PIN5
+ipl<0> S:PIN7
+ipl<2> S:PIN12
+oe S:PIN14
+ram_evn_cs S:PIN42
+ram_odd_cs S:PIN37
+rom_evn_cs S:PIN29
+rom_odd_cs S:PIN31
+
+
+;The remaining section of the .gyd file is for documentation purposes only.
+;It shows where your internal equations were placed in the last successful fit.
+
+PARTITION FB1_2 duart_cs_OBUF
+PARTITION FB1_8 ram_evn_cs_OBUF
+PARTITION FB1_15 BUS_ERR/berr_count<3> BUS_ERR/berr_count<2> BUS_ERR/berr_count<1> BUS_ERR/berr_count<0>
+		
+PARTITION FB2_2 rom_evn_cs_OBUF
+PARTITION FB2_6 rom_odd_cs_OBUF
+PARTITION FB2_14 MEM_DECODER/as_count<0> ram_odd_cs_OBUF MEM_DECODER/as_count<3> MEM_DECODER/as_count<2>
+		 MEM_DECODER/as_count<1>
+PARTITION FB3_2 ipl_0_OBUF
+PARTITION FB3_8 ipl_0_OBUF$BUF0
+PARTITION FB3_11 ipl_2_OBUF
+PARTITION FB3_15 oe_OBUF
+
+PARTITION FB4_2 berr_OBUF
+PARTITION FB4_14 dtack_out_OBUF
+
+

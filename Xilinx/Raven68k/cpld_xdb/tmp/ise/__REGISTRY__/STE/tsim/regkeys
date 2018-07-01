@@ -1,0 +1,6 @@
+CommandLine
+/home/ccureau/Xilinx/10.1/ISE/bin/lin/unwrapped/tsim -ise /home/ccureau/xilinx-proj/cpld/cpld/cpld.ise -intstyle ise cpld cpld.nga
+s
+FormatString
+tsim <design[.vm6]> [--intstyle ise|xflow|silent] [<outfile>] 
+s

@@ -1,0 +1,6 @@
+CommandLine
+/home/ccureau/Xilinx/10.1/ISE/bin/lin/unwrapped/xst -ise /home/ccureau/xilinx-proj/cpld/cpld/cpld.ise -intstyle ise -ifn /home/ccureau/xilinx-proj/cpld/cpld/cpld.xst -ofn /home/ccureau/xilinx-proj/cpld/cpld/cpld.syr -finalclean 1
+s
+FormatString
+xst [-ifn <InputFile>] [-ofn <OutputFile>] [-ise <iseProjectFile>] [--quiet] [-intstyle <Style>] [--deb <DebugLevel>] [--finalclean <Clean>] [--PcubeFlow] [--globOptFlow] [--XstNtrc]
+s

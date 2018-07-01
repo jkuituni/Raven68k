@@ -1,0 +1,6 @@
+CommandLine
+/home/ccureau/Xilinx/10.1/ISE/bin/lin/unwrapped/XSLTProcess -ise /home/ccureau/xilinx-proj/cpld/cpld/cpld.ise cpld_build.xml
+s
+FormatString
+xsltprocess [--intstyle ise|xflow|silent] <xmlfile> [-a] [-w] [--libxslt <limit:-1,10>] 
+s
