@@ -1,11 +1,11 @@
-Release 10.1 ngdbuild K.31 (lin)
+Release 10.1 ngdbuild K.31 (nt64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
-Command Line: /opt/Xilinx/10.1/ISE/bin/lin/unwrapped/ngdbuild -ise
-/home/ccureau/git/Raven68k/Xilinx/Raven68k/cpld.ise -intstyle ise -dd _ngo -i -p
-xc9572xl-VQ44-5 cpld.ngc cpld.ngd
+Command Line: C:\Xilinx\10.1\ISE\bin\nt64\unwrapped\ngdbuild.exe -ise
+C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise -intstyle ise -dd _ngo -i
+-p xc9572xl-VQ44-5 cpld.ngc cpld.ngd
 
-Reading NGO file "/home/ccureau/git/Raven68k/Xilinx/Raven68k/cpld.ngc" ...
+Reading NGO file "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ngc" ...
 Reading in constraint information from 'cpld.ucf'...
 Gathering constraint information from source properties...
 Done.
@@ -28,7 +28,7 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   0
 
-Total memory usage is 66524 kilobytes
+Total memory usage is 125364 kilobytes
 
 Writing NGD file "cpld.ngd" ...
 

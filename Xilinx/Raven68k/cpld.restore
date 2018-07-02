@@ -841,7 +841,9 @@ proc restore { { project_dir "" } } {
       "cpld.vhd" 
       "dtack.vhd" 
       "irq.vhd" 
-      "mem_decoder.vhd"}
+      "mem_decoder.vhd" 
+      "tb_dtack.vhd" 
+      "tb_mem_decoder.vhd"}
 
   HandleException {
     AddUserFiles $iProjHelper $user_files

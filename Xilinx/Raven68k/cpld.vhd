@@ -28,7 +28,6 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity cpld is
     Port ( clk : in  STD_LOGIC;
-			  clk_out : out  STD_LOGIC;
 			  duart_dtack : in  STD_LOGIC;
 			  duart_irq : in  STD_LOGIC;
            rw : in  STD_LOGIC;
@@ -44,6 +43,7 @@ entity cpld is
 			  a9 : in  STD_LOGIC;
 			  a17 : in  STD_LOGIC;
 			  a21 : in  STD_LOGIC;
+			  clk_out : out  STD_LOGIC;
 			  ipl : out STD_LOGIC_VECTOR(2 downto 0);
            oe : out  STD_LOGIC;
 			  rom_evn_cs : inout  STD_LOGIC;
@@ -59,11 +59,11 @@ end cpld;
 architecture Behavioral of cpld is
 
 	-- internal signals
-	signal decoder_duart_cs : STD_LOGIC;
-	signal decoder_rom_evn_cs : STD_LOGIC;
-	signal decoder_rom_odd_cs : STD_LOGIC;
-	signal decoder_ram_evn_cs : STD_LOGIC;
-	signal decoder_ram_odd_cs : STD_LOGIC;
+	signal decoder_duart_cs : STD_LOGIC := '1';
+	signal decoder_rom_evn_cs : STD_LOGIC := '1';
+	signal decoder_rom_odd_cs : STD_LOGIC := '1';
+	signal decoder_ram_evn_cs : STD_LOGIC := '1';
+	signal decoder_ram_odd_cs : STD_LOGIC := '1';
 	
 begin
 
@@ -110,6 +110,13 @@ begin
 				decoder_rom_evn_cs, decoder_rom_odd_cs)
 	begin
 		
+--		-- initial state
+--		decoder_duart_cs <= '1';
+--		decoder_ram_odd_cs <= '1';
+--		decoder_ram_evn_cs <= '1';
+--		decoder_rom_odd_cs <= '1';
+--		decoder_rom_evn_cs <= '1';
+		
 		-- always set
 		oe <= not rw;
 		clk_out <= not clk;
@@ -119,13 +126,6 @@ begin
 		ram_evn_cs <= decoder_ram_evn_cs;
 		rom_odd_cs <= decoder_rom_odd_cs;
 		rom_evn_cs <= decoder_rom_evn_cs;
-		
-		-- process reset
---		if reset = '0' then
---		 -- 
---		else
---		 
---		end if;
 		
 	end process;
 

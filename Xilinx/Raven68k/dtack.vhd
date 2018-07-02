@@ -42,11 +42,14 @@ architecture Behavioral of dtack is
 begin
 	process (duart_dtack, duart_cs, ram_evn_cs, ram_odd_cs, rom_evn_cs, rom_odd_cs)
 	begin
+	
+		-- initial state
 		dtack <= '1';
 		
 		-- at 4MHz, one clock period is 250ns.
 		-- we can ground DTACK (for now)
 		-- At 6MHz or higher, ROM needs a clock or two
+
 		if duart_cs = '0' then
 			dtack <= duart_dtack;
 		elsif (ram_evn_cs = '0' or ram_odd_cs = '0'

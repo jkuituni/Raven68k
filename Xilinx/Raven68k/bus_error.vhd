@@ -36,11 +36,11 @@ architecture Behavioral of bus_error is
 
 	-- internal signals
 	signal berr_count : STD_LOGIC_VECTOR(3 downto 0) := "0000";
-	
+
 begin
-	process (e, as)
+	process (e, as) is
 	begin
-			
+
 		if rising_edge(e) then
 			if as = '1' then
 				berr <= '1';

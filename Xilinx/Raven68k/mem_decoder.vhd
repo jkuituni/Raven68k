@@ -48,16 +48,11 @@ architecture Behavioral of mem_decoder is
 	signal as_count : STD_LOGIC_VECTOR(3 downto 0) := "0000";
 	
 begin
+	
 	process (as)
 	begin
-		if falling_edge(as) then
-			-- initialize all cs lines
-			ram_evn_cs <= '1';
-			ram_odd_cs <= '1';
-			rom_evn_cs <= '1';
-			rom_odd_cs <= '1';
-			duart_cs <= '1';
-			
+		
+		if as = '1' then
 			if as_count < "1000" then
 				rom_evn_cs <= '0';
 				rom_odd_cs <= '0';
@@ -66,8 +61,8 @@ begin
 				if a21 = '1' then
 					if a17 = '1' then					-- I/O devices
 						duart_cs <= '0';
-					else									-- ROM access
-						if uds = '0' then
+					else
+						if uds = '0' then				-- ROM access
 							rom_evn_cs <= '0';
 						else
 							rom_evn_cs <= '1';
@@ -91,6 +86,12 @@ begin
 					end if;
 				end if;
 			end if;
+		else
+			ram_evn_cs <= '1';
+			ram_odd_cs <= '1';
+			rom_evn_cs <= '1';
+			rom_odd_cs <= '1';
+			duart_cs <= '1';		
 		end if;
 
 	end process;

@@ -3,7 +3,7 @@
  
 cpldfit:  version K.31                              Xilinx Inc.
                                   Fitter Report
-Design Name: cpld                                Date:  7- 1-2018,  3:02PM
+Design Name: cpld                                Date:  7- 2-2018, 10:12AM
 Device Used: XC9572XL-5-VQ44
 Fitting Status: Successful
 
@@ -11,25 +11,24 @@ Fitting Status: Successful
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-20 /72  ( 28%) 29  /360  (  8%) 40 /216 ( 19%)   14 /72  ( 19%) 22 /34  ( 65%)
+25 /72  ( 35%) 60  /360  ( 17%) 46 /216 ( 21%)   9  /72  ( 12%) 22 /34  ( 65%)
 
 ** Function Block Resources **
 
 Function    Mcells      FB Inps     Pterms      IO          
 Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
-FB1           6/18        9/54       10/90       2/ 9
-FB2           7/18        9/54       10/90       4/ 9
-FB3           4/18       16/54        6/90       4/ 9
-FB4           3/18        6/54        3/90       2/ 7
+FB1           9/18        8/54       15/90       1/ 9
+FB2           5/18       18/54       19/90       5/ 9
+FB3           5/18       10/54       14/90       0/ 9
+FB4           6/18       10/54       12/90       6/ 7
              -----       -----       -----      -----    
-             20/72       40/216      29/360     12/34 
+             25/72       46/216      60/360     12/34 
 
 * - Resource is exhausted
 
 ** Global Control Resources **
 
-Signal 'as' mapped onto global clock net GCK1.
-Signal 'e' mapped onto global clock net GCK2.
+Global clock net(s) unused.
 Global output enable net(s) unused.
 Global set/reset net(s) unused.
 
@@ -37,10 +36,10 @@ Global set/reset net(s) unused.
 
 Signal Type    Required     Mapped  |  Pin Type            Used    Total 
 ------------------------------------|------------------------------------
-Input         :    8           8    |  I/O              :    18      28
+Input         :   10          10    |  I/O              :    20      28
 Output        :   12          12    |  GCK/IO           :     2       3
-Bidirectional :    0           0    |  GTS/IO           :     1       2
-GCK           :    2           2    |  GSR/IO           :     1       1
+Bidirectional :    0           0    |  GTS/IO           :     0       2
+GCK           :    0           0    |  GSR/IO           :     0       1
 GTS           :    0           0    |
 GSR           :    0           0    |
                  ----        ----
@@ -48,55 +47,76 @@ GSR           :    0           0    |
 
 ** Power Data **
 
-There are 20 macrocells in high performance mode (MCHP).
+There are 25 macrocells in high performance mode (MCHP).
 There are 0 macrocells in low power mode (MCLP).
 End of Mapped Resource Summary
+**************************  Errors and Warnings  ***************************
+
+INFO:Cpld - Inferring BUFG constraint for signal 'clk' based upon the LOC
+   constraint 'P43'. It is recommended that you declare this BUFG explicitedly
+   in your design. Note that for certain device families the output of a BUFG
+   constraint can not drive a gated clock, and the BUFG constraint will be
+   ignored.
+WARNING:Cpld:1007 - Removing unused input(s) 'a7'.  The input(s) are unused
+   after optimization. Please verify functionality via simulation.
+WARNING:Cpld:1007 - Removing unused input(s) 'a8'.  The input(s) are unused
+   after optimization. Please verify functionality via simulation.
+WARNING:Cpld:1007 - Removing unused input(s) 'a9'.  The input(s) are unused
+   after optimization. Please verify functionality via simulation.
+WARNING:Cpld:1239 - The global clock designation (BUFG) on signal 'clk_IBUF' is
+   ignored. Most likely the signal is gated and therefore cannot be used as a
+   global control signal.
 *************************  Summary of Mapped Logic  ************************
 
 ** 12 Outputs **
 
-Signal                   Total Total Loc     Pin  Pin     Pin     Pwr  Slew Reg Init
-Name                     Pts   Inps          No.  Type    Use     Mode Rate State
-duart_cs                 1     3     FB1_2   39   I/O     O       STD  FAST RESET
-ram_odd_cs               1     3     FB1_8   42   I/O     O       STD  FAST RESET
-rom_evn_cs               2     4     FB2_2   29   I/O     O       STD  FAST RESET
-clk_out                  1     1     FB2_6   31   I/O     O       STD  FAST 
-ipl<2>                   1     1     FB2_15  37   I/O     O       STD  FAST 
-oe                       1     1     FB2_17  38   I/O     O       STD  FAST 
-berr                     2     6     FB3_2   5    I/O     O       STD  FAST RESET
-dtack_out                2     6     FB3_8   7    I/O     O       STD  FAST 
-rom_odd_cs               2     4     FB3_11  12   I/O     O       STD  FAST RESET
-ipl<0>                   0     0     FB3_15  14   I/O     O       STD  FAST 
-ipl<1>                   0     0     FB4_2   19   I/O     O       STD  FAST 
-ram_evn_cs               1     3     FB4_14  23   I/O     O       STD  FAST RESET
+Signal                                                                                    Total Total Loc     Pin  Pin     Pin     Pwr  Slew Reg Init
+Name                                                                                      Pts   Inps          No.  Type    Use     Mode Rate State
+clk_out                                                                                   1     1     FB1_11  44   GCK/I/O O       STD  FAST 
+ram_evn_cs                                                                                5     5     FB2_2   29   I/O     O       STD  FAST 
+ram_odd_cs                                                                                5     5     FB2_5   30   I/O     O       STD  FAST 
+berr                                                                                      3     7     FB2_6   31   I/O     O       STD  FAST RESET
+duart_cs                                                                                  4     5     FB2_8   32   I/O     O       STD  FAST 
+dtack_out                                                                                 2     6     FB2_15  37   I/O     O       STD  FAST 
+ipl<2>                                                                                    1     1     FB4_5   20   I/O     O       STD  FAST 
+ipl<1>                                                                                    0     0     FB4_8   21   I/O     O       STD  FAST 
+ipl<0>                                                                                    0     0     FB4_11  22   I/O     O       STD  FAST 
+oe                                                                                        1     1     FB4_14  23   I/O     O       STD  FAST 
+rom_evn_cs                                                                                5     6     FB4_15  27   I/O     O       STD  FAST 
+rom_odd_cs                                                                                5     6     FB4_17  28   I/O     O       STD  FAST 
 
-** 8 Buried Nodes **
+** 13 Buried Nodes **
 
-Signal                   Total Total Loc     Pwr  Reg Init
-Name                     Pts   Inps          Mode State
-BUS_ERR/berr_count<3>    2     5     FB1_15  STD  RESET
-BUS_ERR/berr_count<2>    2     4     FB1_16  STD  RESET
-BUS_ERR/berr_count<1>    2     3     FB1_17  STD  RESET
-BUS_ERR/berr_count<0>    2     5     FB1_18  STD  RESET
-MEM_DECODER/as_count<0>  1     1     FB2_14  STD  RESET
-MEM_DECODER/as_count<2>  2     3     FB2_16  STD  RESET
-MEM_DECODER/as_count<1>  2     2     FB2_18  STD  RESET
-MEM_DECODER/as_count<3>  2     4     FB4_18  STD  RESET
+Signal                                                                                    Total Total Loc     Pwr  Reg Init
+Name                                                                                      Pts   Inps          Mode State
+MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2  1     3     FB1_10  STD  
+MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2  1     2     FB1_12  STD  
+$OpTx$$OpTx$FX_DC$11_INV$39                                                               1     2     FB1_13  STD  
+MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF                                      2     4     FB1_14  STD  
+MEM_DECODER/as_count<3>                                                                   2     6     FB1_15  STD  RESET
+MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF                                      3     5     FB1_16  STD  
+MEM_DECODER/as_count<2>                                                                   2     4     FB1_17  STD  RESET
+MEM_DECODER/as_count<0>                                                                   2     3     FB1_18  STD  RESET
+MEM_DECODER/as_count<1>                                                                   2     5     FB3_14  STD  RESET
+BUS_ERR/berr_count<3>                                                                     3     6     FB3_15  STD  RESET
+BUS_ERR/berr_count<2>                                                                     3     5     FB3_16  STD  RESET
+BUS_ERR/berr_count<1>                                                                     3     4     FB3_17  STD  RESET
+BUS_ERR/berr_count<0>                                                                     3     6     FB3_18  STD  RESET
 
 ** 10 Inputs **
 
-Signal                   Loc     Pin  Pin     Pin     
-Name                             No.  Type    Use     
-rw                       FB1_5   40   I/O     I
-as                       FB1_9   43~  GCK/I/O GCK/I
-e                        FB1_11  44~  GCK/I/O GCK
-uds                      FB2_8   32   I/O     I
-clk                      FB2_9   33   GSR/I/O I
-duart_dtack              FB2_11  34   GTS/I/O I
-a17                      FB3_5   6    I/O     I
-a21                      FB3_14  13   I/O     I
-duart_irq                FB4_8   21   I/O     I
-lds                      FB4_17  28   I/O     I
+Signal                                                                                    Loc     Pin  Pin     Pin     
+Name                                                                                              No.  Type    Use     
+clk                                                                                       FB1_9   43   GCK/I/O I
+duart_dtack                                                                               FB1_15  2    I/O     I
+duart_irq                                                                                 FB1_17  3    I/O     I
+rw                                                                                        FB3_2   5    I/O     I
+as                                                                                        FB3_5   6    I/O     I
+lds                                                                                       FB3_8   7    I/O     I
+uds                                                                                       FB3_9   8    I/O     I
+e                                                                                         FB3_11  12   I/O     I
+a17                                                                                       FB3_16  18   I/O     I
+a21                                                                                       FB4_2   19   I/O     I
 
 Legend:
 Pin No. - ~ - User Assigned
@@ -114,178 +134,199 @@ Pin Type/Use - I  - Input             GCK - Global Clock
 X            - Signal used as input to the macrocell logic.
 Pin No.      - ~  - User Assigned
 *********************************** FB1  ***********************************
-Number of function block inputs used/remaining:               9/45
-Number of signals used by logic mapping into function block:  9
+Number of function block inputs used/remaining:               8/46
+Number of signals used by logic mapping into function block:  8
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB1_1         (b)     
-duart_cs              1       0     0   4     FB1_2   39    I/O     O
+(unused)              0       0     0   5     FB1_2   39    I/O     
 (unused)              0       0     0   5     FB1_3         (b)     
 (unused)              0       0     0   5     FB1_4         (b)     
-(unused)              0       0     0   5     FB1_5   40    I/O     I
+(unused)              0       0     0   5     FB1_5   40    I/O     
 (unused)              0       0     0   5     FB1_6   41    I/O     
 (unused)              0       0     0   5     FB1_7         (b)     
-ram_odd_cs            1       0     0   4     FB1_8   42    I/O     O
-(unused)              0       0     0   5     FB1_9   43    GCK/I/O GCK/I
-(unused)              0       0     0   5     FB1_10        (b)     
-(unused)              0       0     0   5     FB1_11  44    GCK/I/O GCK
-(unused)              0       0     0   5     FB1_12        (b)     
-(unused)              0       0     0   5     FB1_13        (b)     
-(unused)              0       0     0   5     FB1_14  1     GCK/I/O 
-BUS_ERR/berr_count<3>
-                      2       0     0   3     FB1_15  2     I/O     (b)
-BUS_ERR/berr_count<2>
-                      2       0     0   3     FB1_16        (b)     (b)
-BUS_ERR/berr_count<1>
-                      2       0     0   3     FB1_17  3     I/O     (b)
-BUS_ERR/berr_count<0>
+(unused)              0       0     0   5     FB1_8   42    I/O     
+(unused)              0       0     0   5     FB1_9   43    GCK/I/O I
+MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2
+                      1       0     0   4     FB1_10        (b)     (b)
+clk_out               1       0     0   4     FB1_11  44    GCK/I/O O
+MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2
+                      1       0     0   4     FB1_12        (b)     (b)
+$OpTx$$OpTx$FX_DC$11_INV$39
+                      1       0     0   4     FB1_13        (b)     (b)
+MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF
+                      2       0     0   3     FB1_14  1     GCK/I/O (b)
+MEM_DECODER/as_count<3>
+                      2       0     0   3     FB1_15  2     I/O     I
+MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF
+                      3       0     0   2     FB1_16        (b)     (b)
+MEM_DECODER/as_count<2>
+                      2       0     0   3     FB1_17  3     I/O     I
+MEM_DECODER/as_count<0>
                       2       0     0   3     FB1_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: BUS_ERR/berr_count<0>   4: BUS_ERR/berr_count<3>     7: a21 
-  2: BUS_ERR/berr_count<1>   5: MEM_DECODER/as_count<3>   8: as 
-  3: BUS_ERR/berr_count<2>   6: a17                       9: lds 
+  1: MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2   4: MEM_DECODER/as_count<2>                                7: as 
+  2: MEM_DECODER/as_count<0>                                                                    5: MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF   8: clk 
+  3: MEM_DECODER/as_count<1>                                                                    6: MEM_DECODER/as_count<3>                              
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-duart_cs             ....XXX................................. 3
-ram_odd_cs           ....X.X.X............................... 3
-BUS_ERR/berr_count<3> 
-                     XXXX...X................................ 5
-BUS_ERR/berr_count<2> 
-                     XXX....X................................ 4
-BUS_ERR/berr_count<1> 
-                     XX.....X................................ 3
-BUS_ERR/berr_count<0> 
-                     XXXX...X................................ 5
+MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 
+                     .XXX.................................... 3
+clk_out              .......X................................ 1
+MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 
+                     .XX..................................... 2
+$OpTx$$OpTx$FX_DC$11_INV$39 
+                     .XX..................................... 2
+MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF 
+                     .XX..XX................................. 4
+MEM_DECODER/as_count<3> 
+                     XXXX.XX................................. 6
+MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF 
+                     .XXX.XX................................. 5
+MEM_DECODER/as_count<2> 
+                     X...XXX................................. 4
+MEM_DECODER/as_count<0> 
+                     .X...XX................................. 3
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB2  ***********************************
-Number of function block inputs used/remaining:               9/45
-Number of signals used by logic mapping into function block:  9
+Number of function block inputs used/remaining:               18/36
+Number of signals used by logic mapping into function block:  18
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB2_1         (b)     
-rom_evn_cs            2       0     0   3     FB2_2   29    I/O     O
+ram_evn_cs            5       0     0   0     FB2_2   29    I/O     O
 (unused)              0       0     0   5     FB2_3         (b)     
 (unused)              0       0     0   5     FB2_4         (b)     
-(unused)              0       0     0   5     FB2_5   30    I/O     
-clk_out               1       0     0   4     FB2_6   31    I/O     O
+ram_odd_cs            5       0     0   0     FB2_5   30    I/O     O
+berr                  3       0     0   2     FB2_6   31    I/O     O
 (unused)              0       0     0   5     FB2_7         (b)     
-(unused)              0       0     0   5     FB2_8   32    I/O     I
-(unused)              0       0     0   5     FB2_9   33    GSR/I/O I
+duart_cs              4       0     0   1     FB2_8   32    I/O     O
+(unused)              0       0     0   5     FB2_9   33    GSR/I/O 
 (unused)              0       0     0   5     FB2_10        (b)     
-(unused)              0       0     0   5     FB2_11  34    GTS/I/O I
+(unused)              0       0     0   5     FB2_11  34    GTS/I/O 
 (unused)              0       0     0   5     FB2_12        (b)     
 (unused)              0       0     0   5     FB2_13        (b)     
-MEM_DECODER/as_count<0>
-                      1       0     0   4     FB2_14  36    GTS/I/O (b)
-ipl<2>                1       0     0   4     FB2_15  37    I/O     O
-MEM_DECODER/as_count<2>
-                      2       0     0   3     FB2_16        (b)     (b)
-oe                    1       0     0   4     FB2_17  38    I/O     O
-MEM_DECODER/as_count<1>
-                      2       0     0   3     FB2_18        (b)     (b)
+(unused)              0       0     0   5     FB2_14  36    GTS/I/O 
+dtack_out             2       0     0   3     FB2_15  37    I/O     O
+(unused)              0       0     0   5     FB2_16        (b)     
+(unused)              0       0     0   5     FB2_17  38    I/O     
+(unused)              0       0     0   5     FB2_18        (b)     
 
 Signals Used by Logic in Function Block
-  1: MEM_DECODER/as_count<0>   4: a17                7: duart_irq 
-  2: MEM_DECODER/as_count<1>   5: a21                8: rw 
-  3: MEM_DECODER/as_count<3>   6: clk                9: uds 
+  1: BUS_ERR/berr_count<0>     7: a21               13: lds 
+  2: BUS_ERR/berr_count<1>     8: as                14: ram_evn_cs 
+  3: BUS_ERR/berr_count<2>     9: berr              15: ram_odd_cs 
+  4: BUS_ERR/berr_count<3>    10: duart_cs          16: rom_evn_cs 
+  5: MEM_DECODER/as_count<3>  11: duart_dtack       17: rom_odd_cs 
+  6: a17                      12: e                 18: uds 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-rom_evn_cs           ..XXX...X............................... 4
-clk_out              .....X.................................. 1
-MEM_DECODER/as_count<0> 
-                     ..X..................................... 1
-ipl<2>               ......X................................. 1
-MEM_DECODER/as_count<2> 
-                     XXX..................................... 3
-oe                   .......X................................ 1
-MEM_DECODER/as_count<1> 
-                     X.X..................................... 2
+ram_evn_cs           ....X.XX.....X...X...................... 5
+ram_odd_cs           ....X.XX....X.X......................... 5
+berr                 XXXX...XX..X............................ 7
+duart_cs             ....XXXX.X.............................. 5
+dtack_out            .........XX..XXXX....................... 6
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB3  ***********************************
-Number of function block inputs used/remaining:               16/38
-Number of signals used by logic mapping into function block:  16
+Number of function block inputs used/remaining:               10/44
+Number of signals used by logic mapping into function block:  10
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB3_1         (b)     
-berr                  2       0     0   3     FB3_2   5     I/O     O
+(unused)              0       0     0   5     FB3_2   5     I/O     I
 (unused)              0       0     0   5     FB3_3         (b)     
 (unused)              0       0     0   5     FB3_4         (b)     
 (unused)              0       0     0   5     FB3_5   6     I/O     I
 (unused)              0       0     0   5     FB3_6         (b)     
 (unused)              0       0     0   5     FB3_7         (b)     
-dtack_out             2       0     0   3     FB3_8   7     I/O     O
-(unused)              0       0     0   5     FB3_9   8     I/O     
+(unused)              0       0     0   5     FB3_8   7     I/O     I
+(unused)              0       0     0   5     FB3_9   8     I/O     I
 (unused)              0       0     0   5     FB3_10        (b)     
-rom_odd_cs            2       0     0   3     FB3_11  12    I/O     O
+(unused)              0       0     0   5     FB3_11  12    I/O     I
 (unused)              0       0     0   5     FB3_12        (b)     
 (unused)              0       0     0   5     FB3_13        (b)     
-(unused)              0       0     0   5     FB3_14  13    I/O     I
-ipl<0>                0       0     0   5     FB3_15  14    I/O     O
-(unused)              0       0     0   5     FB3_16  18    I/O     
-(unused)              0       0     0   5     FB3_17  16    I/O     
-(unused)              0       0     0   5     FB3_18        (b)     
+MEM_DECODER/as_count<1>
+                      2       0     0   3     FB3_14  13    I/O     (b)
+BUS_ERR/berr_count<3>
+                      3       0     0   2     FB3_15  14    I/O     (b)
+BUS_ERR/berr_count<2>
+                      3       0     0   2     FB3_16  18    I/O     I
+BUS_ERR/berr_count<1>
+                      3       0     0   2     FB3_17  16    I/O     (b)
+BUS_ERR/berr_count<0>
+                      3       0     0   2     FB3_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: BUS_ERR/berr_count<0>     7: a21               12: lds 
-  2: BUS_ERR/berr_count<1>     8: as                13: ram_evn_cs 
-  3: BUS_ERR/berr_count<2>     9: berr              14: ram_odd_cs 
-  4: BUS_ERR/berr_count<3>    10: duart_cs          15: rom_evn_cs 
-  5: MEM_DECODER/as_count<3>  11: duart_dtack       16: rom_odd_cs 
-  6: a17                     
+  1: $OpTx$$OpTx$FX_DC$11_INV$39   5: BUS_ERR/berr_count<3>                                                                      8: MEM_DECODER/as_count<3> 
+  2: BUS_ERR/berr_count<0>         6: MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2   9: as 
+  3: BUS_ERR/berr_count<1>         7: MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF                                      10: e 
+  4: BUS_ERR/berr_count<2>       
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-berr                 XXXX...XX............................... 6
-dtack_out            .........XX.XXXX........................ 6
-rom_odd_cs           ....XXX....X............................ 4
-ipl<0>               ........................................ 0
+MEM_DECODER/as_count<1> 
+                     X....XXXX............................... 5
+BUS_ERR/berr_count<3> 
+                     .XXXX...XX.............................. 6
+BUS_ERR/berr_count<2> 
+                     .XXX....XX.............................. 5
+BUS_ERR/berr_count<1> 
+                     .XX.....XX.............................. 4
+BUS_ERR/berr_count<0> 
+                     .XXXX...XX.............................. 6
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB4  ***********************************
-Number of function block inputs used/remaining:               6/48
-Number of signals used by logic mapping into function block:  6
+Number of function block inputs used/remaining:               10/44
+Number of signals used by logic mapping into function block:  10
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB4_1         (b)     
-ipl<1>                0       0     0   5     FB4_2   19    I/O     O
+(unused)              0       0     0   5     FB4_2   19    I/O     I
 (unused)              0       0     0   5     FB4_3         (b)     
 (unused)              0       0     0   5     FB4_4         (b)     
-(unused)              0       0     0   5     FB4_5   20    I/O     
+ipl<2>                1       0     0   4     FB4_5   20    I/O     O
 (unused)              0       0     0   5     FB4_6         (b)     
 (unused)              0       0     0   5     FB4_7         (b)     
-(unused)              0       0     0   5     FB4_8   21    I/O     I
+ipl<1>                0       0     0   5     FB4_8   21    I/O     O
 (unused)              0       0     0   5     FB4_9         (b)     
 (unused)              0       0     0   5     FB4_10        (b)     
-(unused)              0       0     0   5     FB4_11  22    I/O     
+ipl<0>                0       0     0   5     FB4_11  22    I/O     O
 (unused)              0       0     0   5     FB4_12        (b)     
 (unused)              0       0     0   5     FB4_13        (b)     
-ram_evn_cs            1       0     0   4     FB4_14  23    I/O     O
-(unused)              0       0     0   5     FB4_15  27    I/O     
+oe                    1       0     0   4     FB4_14  23    I/O     O
+rom_evn_cs            5       0     0   0     FB4_15  27    I/O     O
 (unused)              0       0     0   5     FB4_16        (b)     
-(unused)              0       0     0   5     FB4_17  28    I/O     I
-MEM_DECODER/as_count<3>
-                      2       0     0   3     FB4_18        (b)     (b)
+rom_odd_cs            5       0     0   0     FB4_17  28    I/O     O
+(unused)              0       0     0   5     FB4_18        (b)     
 
 Signals Used by Logic in Function Block
-  1: MEM_DECODER/as_count<0>   3: MEM_DECODER/as_count<2>   5: a21 
-  2: MEM_DECODER/as_count<1>   4: MEM_DECODER/as_count<3>   6: uds 
+  1: MEM_DECODER/as_count<3>   5: duart_irq          8: rom_odd_cs 
+  2: a17                       6: lds                9: rw 
+  3: a21                       7: rom_evn_cs        10: uds 
+  4: as                      
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
+ipl<2>               ....X................................... 1
 ipl<1>               ........................................ 0
-ram_evn_cs           ...XXX.................................. 3
-MEM_DECODER/as_count<3> 
-                     XXXX.................................... 4
+ipl<0>               ........................................ 0
+oe                   ........X............................... 1
+rom_evn_cs           XXXX..X..X.............................. 6
+rom_odd_cs           XXXX.X.X................................ 6
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *******************************  Equations  ********************************
 
 ********** Mapped Logic **********
+
+
+$OpTx$$OpTx$FX_DC$11_INV$39 <= (NOT MEM_DECODER/as_count(0) AND NOT MEM_DECODER/as_count(1));
 
 FTCPE_BUS_ERR/berr_count0: FTCPE port map (BUS_ERR/berr_count(0),BUS_ERR/berr_count_T(0),e,'0','0');
 BUS_ERR/berr_count_T(0) <= ((as AND NOT BUS_ERR/berr_count(0))
@@ -308,16 +349,49 @@ BUS_ERR/berr_count_T(3) <= ((as AND BUS_ERR/berr_count(3))
 	OR (NOT as AND BUS_ERR/berr_count(0) AND 
 	BUS_ERR/berr_count(1) AND BUS_ERR/berr_count(2)));
 
-FTCPE_MEM_DECODER/as_count0: FTCPE port map (MEM_DECODER/as_count(0),'1',NOT as,'0','0',NOT MEM_DECODER/as_count(3));
 
-FTCPE_MEM_DECODER/as_count1: FTCPE port map (MEM_DECODER/as_count(1),MEM_DECODER/as_count(0),NOT as,'0','0',NOT MEM_DECODER/as_count(3));
+MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 <= (MEM_DECODER/as_count(0) AND MEM_DECODER/as_count(1));
 
-FTCPE_MEM_DECODER/as_count2: FTCPE port map (MEM_DECODER/as_count(2),MEM_DECODER/as_count_T(2),NOT as,'0','0',NOT MEM_DECODER/as_count(3));
-MEM_DECODER/as_count_T(2) <= (MEM_DECODER/as_count(0) AND MEM_DECODER/as_count(1));
 
-FTCPE_MEM_DECODER/as_count3: FTCPE port map (MEM_DECODER/as_count(3),MEM_DECODER/as_count_T(3),NOT as,'0','0',NOT MEM_DECODER/as_count(3));
-MEM_DECODER/as_count_T(3) <= (MEM_DECODER/as_count(0) AND MEM_DECODER/as_count(1) AND 
+MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 <= (MEM_DECODER/as_count(0) AND MEM_DECODER/as_count(1) AND 
 	MEM_DECODER/as_count(2));
+
+FDCPE_MEM_DECODER/as_count0: FDCPE port map (MEM_DECODER/as_count(0),'0','0',MEM_DECODER/as_count_CLR(0),MEM_DECODER/as_count_PRE(0));
+MEM_DECODER/as_count_CLR(0) <= (as AND NOT MEM_DECODER/as_count(3) AND 
+	MEM_DECODER/as_count(0));
+MEM_DECODER/as_count_PRE(0) <= (as AND NOT MEM_DECODER/as_count(3) AND 
+	NOT MEM_DECODER/as_count(0));
+
+
+MEM_DECODER/as_count(1)/MEM_DECODER/as_count(1)_SETF <= ((as AND NOT MEM_DECODER/as_count(3) AND 
+	MEM_DECODER/as_count(0) AND NOT MEM_DECODER/as_count(1))
+	OR (as AND NOT MEM_DECODER/as_count(3) AND 
+	NOT MEM_DECODER/as_count(0) AND MEM_DECODER/as_count(1)));
+
+FDCPE_MEM_DECODER/as_count1: FDCPE port map (MEM_DECODER/as_count(1),'0','0',MEM_DECODER/as_count_CLR(1),MEM_DECODER/as_count_PRE(1));
+MEM_DECODER/as_count_CLR(1) <= (as AND NOT MEM_DECODER/as_count(3) AND 
+	NOT MEM_DECODER/as_count(1)/MEM_DECODER/as_count(1)_SETF);
+MEM_DECODER/as_count_PRE(1) <= (as AND NOT MEM_DECODER/as_count(3) AND 
+	NOT MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 AND NOT $OpTx$$OpTx$FX_DC$11_INV$39);
+
+
+MEM_DECODER/as_count(2)/MEM_DECODER/as_count(2)_RSTF <= ((as AND NOT MEM_DECODER/as_count(3) AND 
+	NOT MEM_DECODER/as_count(0) AND NOT MEM_DECODER/as_count(2))
+	OR (as AND NOT MEM_DECODER/as_count(3) AND 
+	NOT MEM_DECODER/as_count(1) AND NOT MEM_DECODER/as_count(2))
+	OR (as AND NOT MEM_DECODER/as_count(3) AND 
+	MEM_DECODER/as_count(0) AND MEM_DECODER/as_count(1) AND MEM_DECODER/as_count(2)));
+
+FDCPE_MEM_DECODER/as_count2: FDCPE port map (MEM_DECODER/as_count(2),'0','0',MEM_DECODER/as_count(2)/MEM_DECODER/as_count(2)_RSTF,MEM_DECODER/as_count_PRE(2));
+MEM_DECODER/as_count_PRE(2) <= (as AND NOT MEM_DECODER/as_count(3) AND 
+	NOT MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 AND 
+	NOT MEM_DECODER/as_count(2)/MEM_DECODER/as_count(2)_RSTF);
+
+FDCPE_MEM_DECODER/as_count3: FDCPE port map (MEM_DECODER/as_count(3),'0','0',MEM_DECODER/as_count_CLR(3),MEM_DECODER/as_count_PRE(3));
+MEM_DECODER/as_count_CLR(3) <= (as AND NOT MEM_DECODER/as_count(3) AND 
+	NOT MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2);
+MEM_DECODER/as_count_PRE(3) <= (as AND NOT MEM_DECODER/as_count(3) AND 
+	MEM_DECODER/as_count(0) AND MEM_DECODER/as_count(1) AND MEM_DECODER/as_count(2));
 
 FDCPE_berr: FDCPE port map (berr,berr_D,e,'0','0');
 berr_D <= ((NOT as AND NOT berr)
@@ -332,8 +406,11 @@ dtack_out <= ((NOT duart_cs AND duart_dtack)
 	OR (duart_cs AND ram_evn_cs AND ram_odd_cs AND rom_evn_cs AND 
 	rom_odd_cs));
 
-FDCPE_duart_cs: FDCPE port map (duart_cs,duart_cs_D,NOT as,'0','0');
-duart_cs_D <= (MEM_DECODER/as_count(3) AND a21 AND a17);
+
+duart_cs <= ((NOT as)
+	OR (duart_cs AND NOT a17)
+	OR (duart_cs AND NOT MEM_DECODER/as_count(3))
+	OR (duart_cs AND NOT a21));
 
 
 ipl(0) <= '0';
@@ -347,19 +424,35 @@ ipl(2) <= NOT duart_irq;
 
 oe <= NOT rw;
 
-FDCPE_ram_evn_cs: FDCPE port map (ram_evn_cs,ram_evn_cs_D,NOT as,'0','0');
-ram_evn_cs_D <= (MEM_DECODER/as_count(3) AND NOT a21 AND NOT uds);
 
-FDCPE_ram_odd_cs: FDCPE port map (ram_odd_cs,ram_odd_cs_D,NOT as,'0','0');
-ram_odd_cs_D <= (MEM_DECODER/as_count(3) AND NOT a21 AND NOT lds);
+ram_evn_cs <= ((NOT as)
+	OR (ram_evn_cs AND NOT MEM_DECODER/as_count(3))
+	OR (ram_evn_cs AND a21)
+	OR (ram_evn_cs AND MEM_DECODER/as_count(3) AND uds)
+	OR (MEM_DECODER/as_count(3) AND NOT a21 AND uds));
 
-FDCPE_rom_evn_cs: FDCPE port map (rom_evn_cs,rom_evn_cs_D,NOT as,'0','0');
-rom_evn_cs_D <= ((NOT MEM_DECODER/as_count(3))
-	OR (a21 AND NOT a17 AND NOT uds));
 
-FDCPE_rom_odd_cs: FDCPE port map (rom_odd_cs,rom_odd_cs_D,NOT as,'0','0');
-rom_odd_cs_D <= ((NOT MEM_DECODER/as_count(3))
-	OR (a21 AND NOT a17 AND NOT lds));
+ram_odd_cs <= ((NOT as)
+	OR (ram_odd_cs AND NOT MEM_DECODER/as_count(3))
+	OR (ram_odd_cs AND a21)
+	OR (ram_odd_cs AND MEM_DECODER/as_count(3) AND lds)
+	OR (MEM_DECODER/as_count(3) AND NOT a21 AND lds));
+
+
+rom_evn_cs <= ((NOT as)
+	OR (rom_evn_cs AND a17 AND MEM_DECODER/as_count(3))
+	OR (rom_evn_cs AND MEM_DECODER/as_count(3) AND NOT a21)
+	OR (rom_evn_cs AND MEM_DECODER/as_count(3) AND a21 AND 
+	uds)
+	OR (NOT a17 AND MEM_DECODER/as_count(3) AND a21 AND uds));
+
+
+rom_odd_cs <= ((NOT as)
+	OR (rom_odd_cs AND a17 AND MEM_DECODER/as_count(3))
+	OR (rom_odd_cs AND MEM_DECODER/as_count(3) AND NOT a21)
+	OR (rom_odd_cs AND MEM_DECODER/as_count(3) AND a21 AND 
+	lds)
+	OR (NOT a17 AND MEM_DECODER/as_count(3) AND a21 AND lds));
 
 Register Legend:
  FDCPE (Q,D,C,CLR,PRE,CE); 
@@ -390,28 +483,28 @@ Device : XC9572XL-5-VQ44
 
 Pin Signal                         Pin Signal                        
 No. Name                           No. Name                          
-  1 KPR                              23 ram_evn_cs                    
-  2 KPR                              24 TDO                           
-  3 KPR                              25 GND                           
+  1 KPR                              23 oe                            
+  2 duart_dtack                      24 TDO                           
+  3 duart_irq                        25 GND                           
   4 GND                              26 VCC                           
-  5 berr                             27 KPR                           
-  6 a17                              28 lds                           
-  7 dtack_out                        29 rom_evn_cs                    
-  8 KPR                              30 KPR                           
-  9 TDI                              31 clk_out                       
- 10 TMS                              32 uds                           
- 11 TCK                              33 clk                           
- 12 rom_odd_cs                       34 duart_dtack                   
- 13 a21                              35 VCC                           
- 14 ipl<0>                           36 KPR                           
- 15 VCC                              37 ipl<2>                        
- 16 KPR                              38 oe                            
- 17 GND                              39 duart_cs                      
- 18 KPR                              40 rw                            
- 19 ipl<1>                           41 KPR                           
- 20 KPR                              42 ram_odd_cs                    
- 21 duart_irq                        43 as                            
- 22 KPR                              44 e                             
+  5 rw                               27 rom_evn_cs                    
+  6 as                               28 rom_odd_cs                    
+  7 lds                              29 ram_evn_cs                    
+  8 uds                              30 ram_odd_cs                    
+  9 TDI                              31 berr                          
+ 10 TMS                              32 duart_cs                      
+ 11 TCK                              33 KPR                           
+ 12 e                                34 KPR                           
+ 13 KPR                              35 VCC                           
+ 14 KPR                              36 KPR                           
+ 15 VCC                              37 dtack_out                     
+ 16 KPR                              38 KPR                           
+ 17 GND                              39 KPR                           
+ 18 a17                              40 KPR                           
+ 19 a21                              41 KPR                           
+ 20 ipl<2>                           42 KPR                           
+ 21 ipl<1>                           43 clk                           
+ 22 ipl<0>                           44 clk_out                       
 
 
 Legend :  NC  = Not Connected, unbonded pin

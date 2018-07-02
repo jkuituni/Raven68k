@@ -1,21 +1,18 @@
-Release 10.1 - xst K.31 (lin)
+Release 10.1 - xst K.31 (nt64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
---> 
-Parameter TMPDIR set to /home/ccureau/git/Raven68k/Xilinx/Raven68k/xst/projnav.tmp
+--> Parameter TMPDIR set to C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.28 secs
  
---> 
-Parameter xsthdpdir set to /home/ccureau/git/Raven68k/Xilinx/Raven68k/xst
+--> Parameter xsthdpdir set to C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.28 secs
  
---> 
-Reading design: cpld.prj
+--> Reading design: cpld.prj
 
 TABLE OF CONTENTS
   1) Synthesis Options Summary
@@ -79,17 +76,18 @@ wysiwyg                            : NO
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "/home/ccureau/git/Raven68k/Xilinx/Raven68k/irq.vhd" in Library work.
-Architecture behavioral of Entity irq is up to date.
-Compiling vhdl file "/home/ccureau/git/Raven68k/Xilinx/Raven68k/bus_error.vhd" in Library work.
+Compiling vhdl file "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/irq.vhd" in Library work.
+Entity <irq> compiled.
+Entity <irq> (Architecture <behavioral>) compiled.
+Compiling vhdl file "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/bus_error.vhd" in Library work.
 Architecture behavioral of Entity bus_error is up to date.
-Compiling vhdl file "/home/ccureau/git/Raven68k/Xilinx/Raven68k/mem_decoder.vhd" in Library work.
+Compiling vhdl file "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/mem_decoder.vhd" in Library work.
 Architecture behavioral of Entity mem_decoder is up to date.
-Compiling vhdl file "/home/ccureau/git/Raven68k/Xilinx/Raven68k/dtack.vhd" in Library work.
-Entity <dtack> compiled.
-Entity <dtack> (Architecture <behavioral>) compiled.
-Compiling vhdl file "/home/ccureau/git/Raven68k/Xilinx/Raven68k/cpld.vhd" in Library work.
-Architecture behavioral of Entity cpld is up to date.
+Compiling vhdl file "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/dtack.vhd" in Library work.
+Architecture behavioral of Entity dtack is up to date.
+Compiling vhdl file "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.vhd" in Library work.
+Entity <cpld> compiled.
+Entity <cpld> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -118,6 +116,8 @@ Analyzing Entity <bus_error> in library <work> (Architecture <Behavioral>).
 Entity <bus_error> analyzed. Unit <bus_error> generated.
 
 Analyzing Entity <mem_decoder> in library <work> (Architecture <Behavioral>).
+WARNING:Xst:819 - "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/mem_decoder.vhd" line 52: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <as_count>, <a21>, <a17>, <uds>, <lds>
 Entity <mem_decoder> analyzed. Unit <mem_decoder> generated.
 
 Analyzing Entity <dtack> in library <work> (Architecture <Behavioral>).
@@ -131,12 +131,12 @@ Entity <dtack> analyzed. Unit <dtack> generated.
 Performing bidirectional port resolution...
 
 Synthesizing Unit <irq>.
-    Related source file is "/home/ccureau/git/Raven68k/Xilinx/Raven68k/irq.vhd".
+    Related source file is "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/irq.vhd".
 Unit <irq> synthesized.
 
 
 Synthesizing Unit <bus_error>.
-    Related source file is "/home/ccureau/git/Raven68k/Xilinx/Raven68k/bus_error.vhd".
+    Related source file is "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/bus_error.vhd".
     Found 1-bit register for signal <berr>.
     Found 4-bit up counter for signal <berr_count>.
     Summary:
@@ -145,30 +145,33 @@ Unit <bus_error> synthesized.
 
 
 Synthesizing Unit <mem_decoder>.
-    Related source file is "/home/ccureau/git/Raven68k/Xilinx/Raven68k/mem_decoder.vhd".
+    Related source file is "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/mem_decoder.vhd".
 WARNING:Xst:647 - Input <a7> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <a8> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <a9> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 1-bit register for signal <rom_evn_cs>.
-    Found 1-bit register for signal <rom_odd_cs>.
-    Found 1-bit register for signal <duart_cs>.
-    Found 1-bit register for signal <ram_evn_cs>.
-    Found 1-bit register for signal <ram_odd_cs>.
-    Found 4-bit up counter for signal <as_count>.
-    Found 4-bit comparator less for signal <rom_odd_cs$cmp_lt0000> created at line 61.
+INFO:Xst:1608 - Relative priorities of control signals on register <rom_odd_cs> differ from those commonly found in the selected device family. This will result in additional logic around the register.
+INFO:Xst:1608 - Relative priorities of control signals on register <rom_evn_cs> differ from those commonly found in the selected device family. This will result in additional logic around the register.
+WARNING:Xst:737 - Found 1-bit latch for signal <rom_odd_cs>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 4-bit latch for signal <as_count>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ram_evn_cs>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ram_odd_cs>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <duart_cs>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rom_evn_cs>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 4-bit adder for signal <as_count$add0000> created at line 59.
+    Found 4-bit comparator less for signal <as_count$cmp_lt0000> created at line 56.
     Summary:
-	inferred   1 Counter(s).
+	inferred   1 Adder/Subtractor(s).
 	inferred   1 Comparator(s).
 Unit <mem_decoder> synthesized.
 
 
 Synthesizing Unit <dtack>.
-    Related source file is "/home/ccureau/git/Raven68k/Xilinx/Raven68k/dtack.vhd".
+    Related source file is "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/dtack.vhd".
 Unit <dtack> synthesized.
 
 
 Synthesizing Unit <cpld>.
-    Related source file is "/home/ccureau/git/Raven68k/Xilinx/Raven68k/cpld.vhd".
+    Related source file is "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.vhd".
 Unit <cpld> synthesized.
 
 
@@ -176,10 +179,15 @@ Unit <cpld> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Counters                                             : 2
- 4-bit up counter                                      : 2
-# Registers                                            : 6
- 1-bit register                                        : 6
+# Adders/Subtractors                                   : 1
+ 4-bit adder                                           : 1
+# Counters                                             : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 1
+ 1-bit register                                        : 1
+# Latches                                              : 6
+ 1-bit latch                                           : 5
+ 4-bit latch                                           : 1
 # Comparators                                          : 1
  4-bit comparator less                                 : 1
 
@@ -194,10 +202,15 @@ Macro Statistics
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Counters                                             : 2
- 4-bit up counter                                      : 2
-# Registers                                            : 6
- Flip-Flops                                            : 6
+# Adders/Subtractors                                   : 1
+ 4-bit adder                                           : 1
+# Counters                                             : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 1
+ Flip-Flops                                            : 1
+# Latches                                              : 6
+ 1-bit latch                                           : 5
+ 4-bit latch                                           : 1
 
 =========================================================================
 
@@ -210,17 +223,13 @@ Optimizing unit <cpld> ...
 
 Optimizing unit <irq> ...
 
+Optimizing unit <mem_decoder> ...
+
 Optimizing unit <bus_error> ...
   implementation constraint: INIT=r	 : berr_count_0
   implementation constraint: INIT=r	 : berr_count_1
   implementation constraint: INIT=r	 : berr_count_2
   implementation constraint: INIT=r	 : berr_count_3
-
-Optimizing unit <mem_decoder> ...
-  implementation constraint: INIT=r	 : as_count_2
-  implementation constraint: INIT=r	 : as_count_1
-  implementation constraint: INIT=r	 : as_count_3
-  implementation constraint: INIT=r	 : as_count_0
 
 =========================================================================
 *                           Partition Report                             *
@@ -252,32 +261,32 @@ Design Statistics
 # IOs                              : 25
 
 Cell Usage :
-# BELS                             : 58
-#      AND2                        : 14
+# BELS                             : 64
+#      AND2                        : 23
 #      AND5                        : 1
-#      GND                         : 3
-#      INV                         : 22
-#      OR2                         : 11
-#      OR3                         : 1
+#      GND                         : 2
+#      INV                         : 23
+#      OR2                         : 9
 #      XOR2                        : 6
 # FlipFlops/Latches                : 14
-#      FD                          : 5
-#      FDCE                        : 9
+#      FDCE                        : 5
+#      LD                          : 4
+#      LDCP                        : 2
+#      LDP                         : 3
 # IO Buffers                       : 22
 #      IBUF                        : 10
 #      OBUF                        : 12
 =========================================================================
 
 
-Total REAL time to Xst completion: 3.00 secs
-Total CPU time to Xst completion: 2.48 secs
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 9.22 secs
  
 --> 
 
-
-Total memory usage is 121060 kilobytes
+Total memory usage is 215876 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    4 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of warnings :   11 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
 

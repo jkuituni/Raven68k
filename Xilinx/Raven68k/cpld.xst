@@ -1,5 +1,5 @@
-set -tmpdir "/home/ccureau/git/Raven68k/Xilinx/Raven68k/xst/projnav.tmp"
-set -xsthdpdir "/home/ccureau/git/Raven68k/Xilinx/Raven68k/xst"
+set -tmpdir "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/xst"
 run
 -ifn cpld.prj
 -ifmt mixed

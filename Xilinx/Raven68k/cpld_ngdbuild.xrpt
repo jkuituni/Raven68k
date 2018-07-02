@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<document OS="lin" product="ISE" version="10.1">
+<document OS="nt64" product="ISE" version="10.1">
 
   <!--The data in this file is primarily intended for consumption by Xilinx tools.
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="NgdBuild" timeStamp="Sun Jul  1 15:02:42 2018">
+  <application stringID="NgdBuild" timeStamp="Mon Jul 02 10:12:14 2018">
     <task stringID="NGDBUILD_REPORT">
       <section stringID="NGDBUILD_DESIGN_SUMMARY">
         <item dataType="int" stringID="NGDBUILD_NUM_ERRORS" value="0"/>

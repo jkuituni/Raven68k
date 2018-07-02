@@ -32,27 +32,25 @@ entity irq is
            ipl : out STD_LOGIC_VECTOR(2 downto 0));
 end irq;
 
-
-
 architecture Behavioral of irq is
 
 	-- internal signals
-	signal irq : STD_LOGIC_VECTOR(2 downto 0);
+	signal t_irq : STD_LOGIC_VECTOR(2 downto 0) := "000";
 	
 begin
 	process (duart_irq)
 	begin
+	
 		-- initial state
-		irq <= "000";
+		t_irq <= "000";
 		
 		-- only duart has an IRQ at the moment
 		if duart_irq = '1' then
-			irq <= "000";
-		else if duart_irq = '0' then
-			irq <= "100"; 					-- irq 5
+			t_irq <= "000";
+		elsif duart_irq = '0' then
+			t_irq <= "100"; 						-- IRQ 5
 		end if;
-		end if;
-		ipl <= irq;
+		ipl <= t_irq;
 		
 	end process;
 
