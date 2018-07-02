@@ -65,22 +65,68 @@ architecture Behavioral of cpld is
 	signal decoder_ram_evn_cs : STD_LOGIC;
 	signal decoder_ram_odd_cs : STD_LOGIC;
 	
+	-- components
+	COMPONENT irq
+	PORT(
+		duart_irq : IN std_logic;          
+		ipl : OUT std_logic_vector(2 downto 0)
+		);
+	END COMPONENT;
+	
+	COMPONENT bus_error
+	PORT(
+		e : IN std_logic;
+		as : IN std_logic;          
+		berr : OUT std_logic
+		);
+	END COMPONENT;
+
+	COMPONENT mem_decoder
+	PORT(
+		as : IN std_logic;
+		lds : IN std_logic;
+		uds : IN std_logic;
+		a7 : IN std_logic;
+		a8 : IN std_logic;
+		a9 : IN std_logic;
+		a17 : IN std_logic;
+		a21 : IN std_logic;          
+		duart_cs : OUT std_logic;
+		rom_evn_cs : OUT std_logic;
+		rom_odd_cs : OUT std_logic;
+		ram_evn_cs : OUT std_logic;
+		ram_odd_cs : OUT std_logic
+		);
+	END COMPONENT;
+
+	COMPONENT dtack
+	PORT(
+		duart_dtack : IN std_logic;
+		ram_evn_cs : IN std_logic;
+		ram_odd_cs : IN std_logic;
+		rom_evn_cs : IN std_logic;
+		rom_odd_cs : IN std_logic;
+		duart_cs : IN std_logic;          
+		dtack : OUT std_logic
+		);
+	END COMPONENT;
+	
 begin
 
 	-- instantiate modules
 	
-	IRQ : entity irq PORT MAP(
+	IRQ_MOD : irq PORT MAP(
 		duart_irq => duart_irq,
 		ipl => ipl
 	);
 		
-	BUS_ERR : entity bus_error PORT MAP(
+	BUS_ERR_MOD : bus_error PORT MAP(
 		e => e,
 		as => as,
 		berr => berr
 	);
 	
-	MEM_DECODER: entity mem_decoder PORT MAP(
+	MEM_DECODER_MOD : mem_decoder PORT MAP(
 		as => as,
 		lds => lds,
 		uds => uds,
@@ -96,7 +142,7 @@ begin
 		ram_odd_cs => decoder_ram_odd_cs
 	);
 	
-	DTACK: entity dtack PORT MAP(
+	DTACK_MOD : dtack PORT MAP(
 		duart_dtack => duart_dtack,
 		ram_evn_cs => decoder_ram_evn_cs,
 		ram_odd_cs => decoder_ram_odd_cs,

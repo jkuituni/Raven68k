@@ -28,16 +28,16 @@ rom_odd_cs S:PIN28
 ;The remaining section of the .gyd file is for documentation purposes only.
 ;It shows where your internal equations were placed in the last successful fit.
 
-PARTITION FB1_10 MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 clk_out_OBUF MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 $OpTx$$OpTx$FX_DC$11_INV$39
-		 MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF MEM_DECODER/as_count<3> MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF MEM_DECODER/as_count<2>
-		 MEM_DECODER/as_count<0>
+PARTITION FB1_10 MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 clk_out_OBUF MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 $OpTx$$OpTx$FX_DC$11_INV$39
+		 MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF MEM_DECODER_MOD/as_count<3> MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF MEM_DECODER_MOD/as_count<2>
+		 MEM_DECODER_MOD/as_count<0>
 PARTITION FB2_2 ram_evn_cs_OBUF
 PARTITION FB2_5 ram_odd_cs_OBUF berr_OBUF
 PARTITION FB2_8 duart_cs_OBUF
 PARTITION FB2_15 dtack_out_OBUF
 
-PARTITION FB3_14 MEM_DECODER/as_count<1> BUS_ERR/berr_count<3> BUS_ERR/berr_count<2> BUS_ERR/berr_count<1>
-		 BUS_ERR/berr_count<0>
+PARTITION FB3_14 MEM_DECODER_MOD/as_count<1> BUS_ERR_MOD/berr_count<3> BUS_ERR_MOD/berr_count<2> BUS_ERR_MOD/berr_count<1>
+		 BUS_ERR_MOD/berr_count<0>
 PARTITION FB4_5 ipl_2_OBUF
 PARTITION FB4_8 ipl_0_OBUF
 PARTITION FB4_11 ipl_0_OBUF$BUF0

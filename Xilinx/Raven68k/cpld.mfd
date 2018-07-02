@@ -3,186 +3,189 @@ MDF_INFO | cpld | XC9572XL-5-VQ44
 MACROCELL | 1 | 7 | duart_cs_OBUF
 ATTRIBUTES | 396034 | 0
 OUTPUTMC | 2 | 1 | 7 | 1 | 14
-INPUTS | 5 | as  | duart_cs  | a21  | MEM_DECODER/as_count<3>  | a17
+INPUTS | 5 | as  | duart_cs  | a21  | MEM_DECODER_MOD/as_count<3>  | a17
 INPUTMC | 2 | 1 | 7 | 0 | 14
 INPUTP | 3 | 31 | 62 | 59
 EQ | 4 | 
    duart_cs = !as
 	# duart_cs & !a17
-	# duart_cs & !MEM_DECODER/as_count<3>
+	# duart_cs & !MEM_DECODER_MOD/as_count<3>
 	# duart_cs & !a21;
 
 MACROCELL | 1 | 1 | ram_evn_cs_OBUF
 ATTRIBUTES | 396034 | 0
 OUTPUTMC | 2 | 1 | 1 | 1 | 14
-INPUTS | 5 | as  | ram_evn_cs  | MEM_DECODER/as_count<3>  | a21  | uds
+INPUTS | 5 | as  | ram_evn_cs  | MEM_DECODER_MOD/as_count<3>  | a21  | uds
 INPUTMC | 2 | 1 | 1 | 0 | 14
 INPUTP | 3 | 31 | 62 | 38
 EQ | 5 | 
    ram_evn_cs = !as
-	# ram_evn_cs & !MEM_DECODER/as_count<3>
+	# ram_evn_cs & !MEM_DECODER_MOD/as_count<3>
 	# ram_evn_cs & a21
-	# ram_evn_cs & MEM_DECODER/as_count<3> & uds
-	# MEM_DECODER/as_count<3> & !a21 & uds;
+	# ram_evn_cs & MEM_DECODER_MOD/as_count<3> & uds
+	# MEM_DECODER_MOD/as_count<3> & !a21 & uds;
 
 MACROCELL | 1 | 4 | ram_odd_cs_OBUF
 ATTRIBUTES | 396034 | 0
 OUTPUTMC | 2 | 1 | 4 | 1 | 14
-INPUTS | 5 | as  | ram_odd_cs  | MEM_DECODER/as_count<3>  | a21  | lds
+INPUTS | 5 | as  | ram_odd_cs  | MEM_DECODER_MOD/as_count<3>  | a21  | lds
 INPUTMC | 2 | 1 | 4 | 0 | 14
 INPUTP | 3 | 31 | 62 | 33
 EQ | 5 | 
    ram_odd_cs = !as
-	# ram_odd_cs & !MEM_DECODER/as_count<3>
+	# ram_odd_cs & !MEM_DECODER_MOD/as_count<3>
 	# ram_odd_cs & a21
-	# ram_odd_cs & MEM_DECODER/as_count<3> & lds
-	# MEM_DECODER/as_count<3> & !a21 & lds;
+	# ram_odd_cs & MEM_DECODER_MOD/as_count<3> & lds
+	# MEM_DECODER_MOD/as_count<3> & !a21 & lds;
 
 MACROCELL | 3 | 14 | rom_evn_cs_OBUF
 ATTRIBUTES | 396034 | 0
 OUTPUTMC | 2 | 3 | 14 | 1 | 14
-INPUTS | 6 | as  | rom_evn_cs  | a17  | MEM_DECODER/as_count<3>  | a21  | uds
+INPUTS | 6 | as  | rom_evn_cs  | a17  | MEM_DECODER_MOD/as_count<3>  | a21  | uds
 INPUTMC | 2 | 3 | 14 | 0 | 14
 INPUTP | 4 | 31 | 59 | 62 | 38
 EQ | 6 | 
    rom_evn_cs = !as
-	# rom_evn_cs & a17 & MEM_DECODER/as_count<3>
-	# rom_evn_cs & MEM_DECODER/as_count<3> & !a21
-	# rom_evn_cs & MEM_DECODER/as_count<3> & a21 & 
+	# rom_evn_cs & a17 & MEM_DECODER_MOD/as_count<3>
+	# rom_evn_cs & MEM_DECODER_MOD/as_count<3> & !a21
+	# rom_evn_cs & MEM_DECODER_MOD/as_count<3> & a21 & 
 	uds
-	# !a17 & MEM_DECODER/as_count<3> & a21 & uds;
+	# !a17 & MEM_DECODER_MOD/as_count<3> & a21 & uds;
 
 MACROCELL | 3 | 16 | rom_odd_cs_OBUF
 ATTRIBUTES | 396034 | 0
 OUTPUTMC | 2 | 3 | 16 | 1 | 14
-INPUTS | 6 | as  | rom_odd_cs  | a17  | MEM_DECODER/as_count<3>  | a21  | lds
+INPUTS | 6 | as  | rom_odd_cs  | a17  | MEM_DECODER_MOD/as_count<3>  | a21  | lds
 INPUTMC | 2 | 3 | 16 | 0 | 14
 INPUTP | 4 | 31 | 59 | 62 | 33
 EQ | 6 | 
    rom_odd_cs = !as
-	# rom_odd_cs & a17 & MEM_DECODER/as_count<3>
-	# rom_odd_cs & MEM_DECODER/as_count<3> & !a21
-	# rom_odd_cs & MEM_DECODER/as_count<3> & a21 & 
+	# rom_odd_cs & a17 & MEM_DECODER_MOD/as_count<3>
+	# rom_odd_cs & MEM_DECODER_MOD/as_count<3> & !a21
+	# rom_odd_cs & MEM_DECODER_MOD/as_count<3> & a21 & 
 	lds
-	# !a17 & MEM_DECODER/as_count<3> & a21 & lds;
+	# !a17 & MEM_DECODER_MOD/as_count<3> & a21 & lds;
 
-MACROCELL | 2 | 17 | BUS_ERR/berr_count<0>
+MACROCELL | 2 | 17 | BUS_ERR_MOD/berr_count<0>
 ATTRIBUTES | 4326176 | 0
 OUTPUTMC | 5 | 2 | 17 | 2 | 16 | 2 | 15 | 2 | 14 | 1 | 5
-INPUTS | 6 | as  | BUS_ERR/berr_count<0>  | BUS_ERR/berr_count<1>  | BUS_ERR/berr_count<2>  | BUS_ERR/berr_count<3>  | e
+INPUTS | 6 | as  | BUS_ERR_MOD/berr_count<0>  | BUS_ERR_MOD/berr_count<1>  | BUS_ERR_MOD/berr_count<2>  | BUS_ERR_MOD/berr_count<3>  | e
 INPUTMC | 4 | 2 | 17 | 2 | 16 | 2 | 15 | 2 | 14
 INPUTP | 2 | 31 | 46
-EQ | 4 | 
-   !BUS_ERR/berr_count<0>.T = as & !BUS_ERR/berr_count<0>
-	# !BUS_ERR/berr_count<0> & BUS_ERR/berr_count<1> & 
-	!BUS_ERR/berr_count<2> & BUS_ERR/berr_count<3>;
-   BUS_ERR/berr_count<0>.CLK = e;
+EQ | 5 | 
+   !BUS_ERR_MOD/berr_count<0>.T = as & !BUS_ERR_MOD/berr_count<0>
+	# !BUS_ERR_MOD/berr_count<0> & 
+	BUS_ERR_MOD/berr_count<1> & !BUS_ERR_MOD/berr_count<2> & 
+	BUS_ERR_MOD/berr_count<3>;
+   BUS_ERR_MOD/berr_count<0>.CLK = e;
 
-MACROCELL | 2 | 16 | BUS_ERR/berr_count<1>
+MACROCELL | 2 | 16 | BUS_ERR_MOD/berr_count<1>
 ATTRIBUTES | 8520480 | 0
 OUTPUTMC | 5 | 2 | 17 | 2 | 16 | 2 | 15 | 2 | 14 | 1 | 5
-INPUTS | 4 | as  | BUS_ERR/berr_count<0>  | BUS_ERR/berr_count<1>  | e
+INPUTS | 4 | as  | BUS_ERR_MOD/berr_count<0>  | BUS_ERR_MOD/berr_count<1>  | e
 INPUTMC | 2 | 2 | 17 | 2 | 16
 INPUTP | 2 | 31 | 46
 EQ | 5 | 
-   BUS_ERR/berr_count<1>.D = !as & BUS_ERR/berr_count<0> & 
-	!BUS_ERR/berr_count<1>
-	# !as & !BUS_ERR/berr_count<0> & 
-	BUS_ERR/berr_count<1>;
-   BUS_ERR/berr_count<1>.CLK = e;
+   BUS_ERR_MOD/berr_count<1>.D = !as & BUS_ERR_MOD/berr_count<0> & 
+	!BUS_ERR_MOD/berr_count<1>
+	# !as & !BUS_ERR_MOD/berr_count<0> & 
+	BUS_ERR_MOD/berr_count<1>;
+   BUS_ERR_MOD/berr_count<1>.CLK = e;
 
-MACROCELL | 2 | 15 | BUS_ERR/berr_count<2>
+MACROCELL | 2 | 15 | BUS_ERR_MOD/berr_count<2>
 ATTRIBUTES | 4326176 | 0
 OUTPUTMC | 4 | 2 | 17 | 2 | 15 | 2 | 14 | 1 | 5
-INPUTS | 5 | as  | BUS_ERR/berr_count<0>  | BUS_ERR/berr_count<1>  | BUS_ERR/berr_count<2>  | e
+INPUTS | 5 | as  | BUS_ERR_MOD/berr_count<0>  | BUS_ERR_MOD/berr_count<1>  | BUS_ERR_MOD/berr_count<2>  | e
 INPUTMC | 3 | 2 | 17 | 2 | 16 | 2 | 15
 INPUTP | 2 | 31 | 46
 EQ | 4 | 
-   BUS_ERR/berr_count<2>.T = as & BUS_ERR/berr_count<2>
-	# !as & BUS_ERR/berr_count<0> & 
-	BUS_ERR/berr_count<1>;
-   BUS_ERR/berr_count<2>.CLK = e;
+   BUS_ERR_MOD/berr_count<2>.T = as & BUS_ERR_MOD/berr_count<2>
+	# !as & BUS_ERR_MOD/berr_count<0> & 
+	BUS_ERR_MOD/berr_count<1>;
+   BUS_ERR_MOD/berr_count<2>.CLK = e;
 
-MACROCELL | 2 | 14 | BUS_ERR/berr_count<3>
+MACROCELL | 2 | 14 | BUS_ERR_MOD/berr_count<3>
 ATTRIBUTES | 4326176 | 0
 OUTPUTMC | 3 | 2 | 17 | 2 | 14 | 1 | 5
-INPUTS | 6 | as  | BUS_ERR/berr_count<0>  | BUS_ERR/berr_count<1>  | BUS_ERR/berr_count<2>  | BUS_ERR/berr_count<3>  | e
+INPUTS | 6 | as  | BUS_ERR_MOD/berr_count<0>  | BUS_ERR_MOD/berr_count<1>  | BUS_ERR_MOD/berr_count<2>  | BUS_ERR_MOD/berr_count<3>  | e
 INPUTMC | 4 | 2 | 17 | 2 | 16 | 2 | 15 | 2 | 14
 INPUTP | 2 | 31 | 46
 EQ | 4 | 
-   BUS_ERR/berr_count<3>.T = as & BUS_ERR/berr_count<3>
-	# !as & BUS_ERR/berr_count<0> & 
-	BUS_ERR/berr_count<1> & BUS_ERR/berr_count<2>;
-   BUS_ERR/berr_count<3>.CLK = e;
+   BUS_ERR_MOD/berr_count<3>.T = as & BUS_ERR_MOD/berr_count<3>
+	# !as & BUS_ERR_MOD/berr_count<0> & 
+	BUS_ERR_MOD/berr_count<1> & BUS_ERR_MOD/berr_count<2>;
+   BUS_ERR_MOD/berr_count<3>.CLK = e;
 
 MACROCELL | 1 | 5 | berr_OBUF
 ATTRIBUTES | 8782626 | 0
 OUTPUTMC | 1 | 1 | 5
-INPUTS | 7 | as  | berr  | BUS_ERR/berr_count<0>  | BUS_ERR/berr_count<1>  | BUS_ERR/berr_count<2>  | BUS_ERR/berr_count<3>  | e
+INPUTS | 7 | as  | berr  | BUS_ERR_MOD/berr_count<0>  | BUS_ERR_MOD/berr_count<1>  | BUS_ERR_MOD/berr_count<2>  | BUS_ERR_MOD/berr_count<3>  | e
 INPUTMC | 5 | 1 | 5 | 2 | 17 | 2 | 16 | 2 | 15 | 2 | 14
 INPUTP | 2 | 31 | 46
-EQ | 4 | 
+EQ | 5 | 
    !berr.D = !as & !berr
-	# !as & !BUS_ERR/berr_count<0> & 
-	BUS_ERR/berr_count<1> & !BUS_ERR/berr_count<2> & BUS_ERR/berr_count<3>;
+	# !as & !BUS_ERR_MOD/berr_count<0> & 
+	BUS_ERR_MOD/berr_count<1> & !BUS_ERR_MOD/berr_count<2> & 
+	BUS_ERR_MOD/berr_count<3>;
    berr.CLK = e;
 
-MACROCELL | 0 | 14 | MEM_DECODER/as_count<3>
+MACROCELL | 0 | 14 | MEM_DECODER_MOD/as_count<3>
 ATTRIBUTES | 8520624 | 0
 OUTPUTMC | 11 | 1 | 7 | 1 | 1 | 1 | 4 | 3 | 14 | 3 | 16 | 0 | 14 | 0 | 17 | 2 | 13 | 0 | 16 | 0 | 13 | 0 | 15
-INPUTS | 6 | as  | MEM_DECODER/as_count<3>  | MEM_DECODER/as_count<0>  | MEM_DECODER/as_count<1>  | MEM_DECODER/as_count<2>  | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2
+INPUTS | 6 | as  | MEM_DECODER_MOD/as_count<3>  | MEM_DECODER_MOD/as_count<0>  | MEM_DECODER_MOD/as_count<1>  | MEM_DECODER_MOD/as_count<2>  | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2
 INPUTMC | 5 | 0 | 14 | 0 | 17 | 2 | 13 | 0 | 16 | 0 | 9
 INPUTP | 1 | 31
-EQ | 6 | 
-   MEM_DECODER/as_count<3>.D = Gnd;
-   MEM_DECODER/as_count<3>.CLK = Gnd;
-   MEM_DECODER/as_count<3>.AP = as & !MEM_DECODER/as_count<3> & 
-	MEM_DECODER/as_count<0> & MEM_DECODER/as_count<1> & MEM_DECODER/as_count<2>;
-   MEM_DECODER/as_count<3>.AR = as & !MEM_DECODER/as_count<3> & 
-	!MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2;
+EQ | 7 | 
+   MEM_DECODER_MOD/as_count<3>.D = Gnd;
+   MEM_DECODER_MOD/as_count<3>.CLK = Gnd;
+   MEM_DECODER_MOD/as_count<3>.AP = as & !MEM_DECODER_MOD/as_count<3> & 
+	MEM_DECODER_MOD/as_count<0> & MEM_DECODER_MOD/as_count<1> & 
+	MEM_DECODER_MOD/as_count<2>;
+   MEM_DECODER_MOD/as_count<3>.AR = as & !MEM_DECODER_MOD/as_count<3> & 
+	!MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2;
 
-MACROCELL | 0 | 17 | MEM_DECODER/as_count<0>
+MACROCELL | 0 | 17 | MEM_DECODER_MOD/as_count<0>
 ATTRIBUTES | 8520624 | 0
 OUTPUTMC | 7 | 0 | 14 | 0 | 17 | 0 | 9 | 0 | 11 | 0 | 12 | 0 | 13 | 0 | 15
-INPUTS | 3 | as  | MEM_DECODER/as_count<3>  | MEM_DECODER/as_count<0>
+INPUTS | 3 | as  | MEM_DECODER_MOD/as_count<3>  | MEM_DECODER_MOD/as_count<0>
 INPUTMC | 2 | 0 | 14 | 0 | 17
 INPUTP | 1 | 31
 EQ | 6 | 
-   MEM_DECODER/as_count<0>.D = Gnd;
-   MEM_DECODER/as_count<0>.CLK = Gnd;
-   MEM_DECODER/as_count<0>.AP = as & !MEM_DECODER/as_count<3> & 
-	!MEM_DECODER/as_count<0>;
-   MEM_DECODER/as_count<0>.AR = as & !MEM_DECODER/as_count<3> & 
-	MEM_DECODER/as_count<0>;
+   MEM_DECODER_MOD/as_count<0>.D = Gnd;
+   MEM_DECODER_MOD/as_count<0>.CLK = Gnd;
+   MEM_DECODER_MOD/as_count<0>.AP = as & !MEM_DECODER_MOD/as_count<3> & 
+	!MEM_DECODER_MOD/as_count<0>;
+   MEM_DECODER_MOD/as_count<0>.AR = as & !MEM_DECODER_MOD/as_count<3> & 
+	MEM_DECODER_MOD/as_count<0>;
 
-MACROCELL | 2 | 13 | MEM_DECODER/as_count<1>
+MACROCELL | 2 | 13 | MEM_DECODER_MOD/as_count<1>
 ATTRIBUTES | 8520624 | 0
 OUTPUTMC | 6 | 0 | 14 | 0 | 9 | 0 | 11 | 0 | 12 | 0 | 13 | 0 | 15
-INPUTS | 5 | as  | MEM_DECODER/as_count<3>  | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2  | $OpTx$$OpTx$FX_DC$11_INV$39  | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF
+INPUTS | 5 | as  | MEM_DECODER_MOD/as_count<3>  | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2  | $OpTx$$OpTx$FX_DC$11_INV$39  | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF
 INPUTMC | 4 | 0 | 14 | 0 | 11 | 0 | 12 | 0 | 13
 INPUTP | 1 | 31
 EQ | 6 | 
-   MEM_DECODER/as_count<1>.D = Gnd;
-   MEM_DECODER/as_count<1>.CLK = Gnd;
-   MEM_DECODER/as_count<1>.AP = as & !MEM_DECODER/as_count<3> & 
-	!MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 & !$OpTx$$OpTx$FX_DC$11_INV$39;
-   MEM_DECODER/as_count<1>.AR = as & !MEM_DECODER/as_count<3> & 
-	!MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF;
+   MEM_DECODER_MOD/as_count<1>.D = Gnd;
+   MEM_DECODER_MOD/as_count<1>.CLK = Gnd;
+   MEM_DECODER_MOD/as_count<1>.AP = as & !MEM_DECODER_MOD/as_count<3> & 
+	!MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 & !$OpTx$$OpTx$FX_DC$11_INV$39;
+   MEM_DECODER_MOD/as_count<1>.AR = as & !MEM_DECODER_MOD/as_count<3> & 
+	!MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF;
 
-MACROCELL | 0 | 16 | MEM_DECODER/as_count<2>
+MACROCELL | 0 | 16 | MEM_DECODER_MOD/as_count<2>
 ATTRIBUTES | 8520624 | 0
 OUTPUTMC | 3 | 0 | 14 | 0 | 9 | 0 | 15
-INPUTS | 4 | as  | MEM_DECODER/as_count<3>  | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2  | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF
+INPUTS | 4 | as  | MEM_DECODER_MOD/as_count<3>  | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2  | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF
 INPUTMC | 3 | 0 | 14 | 0 | 9 | 0 | 15
 INPUTP | 1 | 31
 EQ | 7 | 
-   MEM_DECODER/as_count<2>.D = Gnd;
-   MEM_DECODER/as_count<2>.CLK = Gnd;
-   MEM_DECODER/as_count<2>.AP = as & !MEM_DECODER/as_count<3> & 
-	!MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 & 
-	!MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF;
-   MEM_DECODER/as_count<2>.AR = 
-	MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF;
+   MEM_DECODER_MOD/as_count<2>.D = Gnd;
+   MEM_DECODER_MOD/as_count<2>.CLK = Gnd;
+   MEM_DECODER_MOD/as_count<2>.AP = as & !MEM_DECODER_MOD/as_count<3> & 
+	!MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 & 
+	!MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF;
+   MEM_DECODER_MOD/as_count<2>.AR = 
+	MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF;
 
 MACROCELL | 1 | 14 | dtack_out_OBUF
 ATTRIBUTES | 264962 | 0
@@ -227,56 +230,59 @@ INPUTS | 0
 EQ | 1 | 
    ipl<0> = Gnd;
 
-MACROCELL | 0 | 9 | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2
+MACROCELL | 0 | 9 | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2
 ATTRIBUTES | 133888 | 0
 OUTPUTMC | 2 | 0 | 14 | 0 | 16
-INPUTS | 3 | MEM_DECODER/as_count<0>  | MEM_DECODER/as_count<1>  | MEM_DECODER/as_count<2>
+INPUTS | 3 | MEM_DECODER_MOD/as_count<0>  | MEM_DECODER_MOD/as_count<1>  | MEM_DECODER_MOD/as_count<2>
 INPUTMC | 3 | 0 | 17 | 2 | 13 | 0 | 16
 EQ | 2 | 
-   MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 = MEM_DECODER/as_count<0> & MEM_DECODER/as_count<1> & 
-	MEM_DECODER/as_count<2>;
+   MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 = MEM_DECODER_MOD/as_count<0> & 
+	MEM_DECODER_MOD/as_count<1> & MEM_DECODER_MOD/as_count<2>;
 
-MACROCELL | 0 | 11 | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2
+MACROCELL | 0 | 11 | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2
 ATTRIBUTES | 133888 | 0
 OUTPUTMC | 1 | 2 | 13
-INPUTS | 2 | MEM_DECODER/as_count<0>  | MEM_DECODER/as_count<1>
+INPUTS | 2 | MEM_DECODER_MOD/as_count<0>  | MEM_DECODER_MOD/as_count<1>
 INPUTMC | 2 | 0 | 17 | 2 | 13
-EQ | 1 | 
-   MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 = MEM_DECODER/as_count<0> & MEM_DECODER/as_count<1>;
+EQ | 2 | 
+   MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 = MEM_DECODER_MOD/as_count<0> & 
+	MEM_DECODER_MOD/as_count<1>;
 
 MACROCELL | 0 | 12 | $OpTx$$OpTx$FX_DC$11_INV$39
 ATTRIBUTES | 133888 | 0
 OUTPUTMC | 1 | 2 | 13
-INPUTS | 2 | MEM_DECODER/as_count<0>  | MEM_DECODER/as_count<1>
+INPUTS | 2 | MEM_DECODER_MOD/as_count<0>  | MEM_DECODER_MOD/as_count<1>
 INPUTMC | 2 | 0 | 17 | 2 | 13
-EQ | 1 | 
-   $OpTx$$OpTx$FX_DC$11_INV$39 = !MEM_DECODER/as_count<0> & !MEM_DECODER/as_count<1>;
+EQ | 2 | 
+   $OpTx$$OpTx$FX_DC$11_INV$39 = !MEM_DECODER_MOD/as_count<0> & 
+	!MEM_DECODER_MOD/as_count<1>;
 
-MACROCELL | 0 | 13 | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF
+MACROCELL | 0 | 13 | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF
 ATTRIBUTES | 133888 | 0
 OUTPUTMC | 1 | 2 | 13
-INPUTS | 4 | as  | MEM_DECODER/as_count<3>  | MEM_DECODER/as_count<0>  | MEM_DECODER/as_count<1>
+INPUTS | 4 | as  | MEM_DECODER_MOD/as_count<3>  | MEM_DECODER_MOD/as_count<0>  | MEM_DECODER_MOD/as_count<1>
 INPUTMC | 3 | 0 | 14 | 0 | 17 | 2 | 13
 INPUTP | 1 | 31
 EQ | 4 | 
-   MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF = as & !MEM_DECODER/as_count<3> & 
-	MEM_DECODER/as_count<0> & !MEM_DECODER/as_count<1>
-	# as & !MEM_DECODER/as_count<3> & 
-	!MEM_DECODER/as_count<0> & MEM_DECODER/as_count<1>;
+   MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF = as & !MEM_DECODER_MOD/as_count<3> & 
+	MEM_DECODER_MOD/as_count<0> & !MEM_DECODER_MOD/as_count<1>
+	# as & !MEM_DECODER_MOD/as_count<3> & 
+	!MEM_DECODER_MOD/as_count<0> & MEM_DECODER_MOD/as_count<1>;
 
-MACROCELL | 0 | 15 | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF
+MACROCELL | 0 | 15 | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF
 ATTRIBUTES | 133888 | 0
 OUTPUTMC | 1 | 0 | 16
-INPUTS | 5 | as  | MEM_DECODER/as_count<3>  | MEM_DECODER/as_count<0>  | MEM_DECODER/as_count<2>  | MEM_DECODER/as_count<1>
+INPUTS | 5 | as  | MEM_DECODER_MOD/as_count<3>  | MEM_DECODER_MOD/as_count<0>  | MEM_DECODER_MOD/as_count<2>  | MEM_DECODER_MOD/as_count<1>
 INPUTMC | 4 | 0 | 14 | 0 | 17 | 0 | 16 | 2 | 13
 INPUTP | 1 | 31
-EQ | 6 | 
-   MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF = as & !MEM_DECODER/as_count<3> & 
-	!MEM_DECODER/as_count<0> & !MEM_DECODER/as_count<2>
-	# as & !MEM_DECODER/as_count<3> & 
-	!MEM_DECODER/as_count<1> & !MEM_DECODER/as_count<2>
-	# as & !MEM_DECODER/as_count<3> & 
-	MEM_DECODER/as_count<0> & MEM_DECODER/as_count<1> & MEM_DECODER/as_count<2>;
+EQ | 7 | 
+   MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF = as & !MEM_DECODER_MOD/as_count<3> & 
+	!MEM_DECODER_MOD/as_count<0> & !MEM_DECODER_MOD/as_count<2>
+	# as & !MEM_DECODER_MOD/as_count<3> & 
+	!MEM_DECODER_MOD/as_count<1> & !MEM_DECODER_MOD/as_count<2>
+	# as & !MEM_DECODER_MOD/as_count<3> & 
+	MEM_DECODER_MOD/as_count<0> & MEM_DECODER_MOD/as_count<1> & 
+	MEM_DECODER_MOD/as_count<2>;
 
 PIN | as | 64 | 0 | N/A | 31 | 16 | 1 | 7 | 1 | 1 | 1 | 4 | 3 | 14 | 3 | 16 | 2 | 17 | 2 | 16 | 2 | 15 | 2 | 14 | 1 | 5 | 0 | 14 | 0 | 17 | 2 | 13 | 0 | 16 | 0 | 13 | 0 | 15
 PIN | a21 | 64 | 0 | N/A | 62 | 5 | 1 | 7 | 1 | 1 | 1 | 4 | 3 | 14 | 3 | 16

@@ -32,7 +32,7 @@ NODE | duart_cs_OBUF | 1726 | ? | 0 | 1032 | cpld_COPY_0_COPY_0 | NULL | duart_c
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a21_IBUF | 1747 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a21_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a17_IBUF | 1740 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a17_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
@@ -48,7 +48,7 @@ NODE | duart_cs_OBUF | 1726 | ? | 0 | 1032 | cpld_COPY_0_COPY_0 | NULL | duart_c
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a21_IBUF | 1747 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a21_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a17_IBUF | 1740 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a17_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
@@ -58,7 +58,7 @@ OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
 SIGNAL | NODE | duart_cs_OBUF.D2 | 1789 | ? | 0 | 4096 | duart_cs_OBUF | NULL | NULL | duart_cs_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_FALSE | as_IBUF
 SPPTERM | 2 | IV_TRUE | duart_cs_OBUF | IV_FALSE | a17_IBUF
-SPPTERM | 2 | IV_TRUE | duart_cs_OBUF | IV_FALSE | MEM_DECODER/as_count<3>
+SPPTERM | 2 | IV_TRUE | duart_cs_OBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3>
 SPPTERM | 2 | IV_TRUE | duart_cs_OBUF | IV_FALSE | a21_IBUF
 
 SRFF_INSTANCE | duart_cs_OBUF.REG | duart_cs_OBUF | 0 | 1 | 1
@@ -79,7 +79,7 @@ NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF |
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | ram_evn_cs_OBUF | 1728 | ? | 0 | 1032 | cpld_COPY_0_COPY_0 | NULL | ram_evn_cs_OBUF.Q | ram_evn_cs_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a21_IBUF | 1747 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a21_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
@@ -95,7 +95,7 @@ NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF |
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | ram_evn_cs_OBUF | 1728 | ? | 0 | 1032 | cpld_COPY_0_COPY_0 | NULL | ram_evn_cs_OBUF.Q | ram_evn_cs_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a21_IBUF | 1747 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a21_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
@@ -106,10 +106,10 @@ SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
 SIGNAL | NODE | ram_evn_cs_OBUF.D2 | 1793 | ? | 0 | 4096 | ram_evn_cs_OBUF | NULL | NULL | ram_evn_cs_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_FALSE | as_IBUF
-SPPTERM | 2 | IV_TRUE | ram_evn_cs_OBUF | IV_FALSE | MEM_DECODER/as_count<3>
+SPPTERM | 2 | IV_TRUE | ram_evn_cs_OBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3>
 SPPTERM | 2 | IV_TRUE | ram_evn_cs_OBUF | IV_TRUE | a21_IBUF
-SPPTERM | 3 | IV_TRUE | ram_evn_cs_OBUF | IV_TRUE | MEM_DECODER/as_count<3> | IV_TRUE | uds_IBUF
-SPPTERM | 3 | IV_TRUE | MEM_DECODER/as_count<3> | IV_FALSE | a21_IBUF | IV_TRUE | uds_IBUF
+SPPTERM | 3 | IV_TRUE | ram_evn_cs_OBUF | IV_TRUE | MEM_DECODER_MOD/as_count<3> | IV_TRUE | uds_IBUF
+SPPTERM | 3 | IV_TRUE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | a21_IBUF | IV_TRUE | uds_IBUF
 
 SRFF_INSTANCE | ram_evn_cs_OBUF.REG | ram_evn_cs_OBUF | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
@@ -129,7 +129,7 @@ NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF |
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | ram_odd_cs_OBUF | 1730 | ? | 0 | 1032 | cpld_COPY_0_COPY_0 | NULL | ram_odd_cs_OBUF.Q | ram_odd_cs_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a21_IBUF | 1747 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a21_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
@@ -145,7 +145,7 @@ NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF |
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | ram_odd_cs_OBUF | 1730 | ? | 0 | 1032 | cpld_COPY_0_COPY_0 | NULL | ram_odd_cs_OBUF.Q | ram_odd_cs_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a21_IBUF | 1747 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a21_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
@@ -156,10 +156,10 @@ SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
 SIGNAL | NODE | ram_odd_cs_OBUF.D2 | 1797 | ? | 0 | 4096 | ram_odd_cs_OBUF | NULL | NULL | ram_odd_cs_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_FALSE | as_IBUF
-SPPTERM | 2 | IV_TRUE | ram_odd_cs_OBUF | IV_FALSE | MEM_DECODER/as_count<3>
+SPPTERM | 2 | IV_TRUE | ram_odd_cs_OBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3>
 SPPTERM | 2 | IV_TRUE | ram_odd_cs_OBUF | IV_TRUE | a21_IBUF
-SPPTERM | 3 | IV_TRUE | ram_odd_cs_OBUF | IV_TRUE | MEM_DECODER/as_count<3> | IV_TRUE | lds_IBUF
-SPPTERM | 3 | IV_TRUE | MEM_DECODER/as_count<3> | IV_FALSE | a21_IBUF | IV_TRUE | lds_IBUF
+SPPTERM | 3 | IV_TRUE | ram_odd_cs_OBUF | IV_TRUE | MEM_DECODER_MOD/as_count<3> | IV_TRUE | lds_IBUF
+SPPTERM | 3 | IV_TRUE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | a21_IBUF | IV_TRUE | lds_IBUF
 
 SRFF_INSTANCE | ram_odd_cs_OBUF.REG | ram_odd_cs_OBUF | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
@@ -175,7 +175,7 @@ NODE | rom_evn_cs_OBUF | 1732 | ? | 0 | 1032 | cpld_COPY_0_COPY_0 | NULL | rom_e
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a17_IBUF | 1740 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a17_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a21_IBUF | 1747 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a21_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
@@ -193,7 +193,7 @@ NODE | rom_evn_cs_OBUF | 1732 | ? | 0 | 1032 | cpld_COPY_0_COPY_0 | NULL | rom_e
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a17_IBUF | 1740 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a17_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a21_IBUF | 1747 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a21_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
@@ -204,10 +204,10 @@ SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
 SIGNAL | NODE | rom_evn_cs_OBUF.D2 | 1801 | ? | 0 | 4096 | rom_evn_cs_OBUF | NULL | NULL | rom_evn_cs_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_FALSE | as_IBUF
-SPPTERM | 3 | IV_TRUE | rom_evn_cs_OBUF | IV_TRUE | a17_IBUF | IV_TRUE | MEM_DECODER/as_count<3>
-SPPTERM | 3 | IV_TRUE | rom_evn_cs_OBUF | IV_TRUE | MEM_DECODER/as_count<3> | IV_FALSE | a21_IBUF
-SPPTERM | 4 | IV_TRUE | rom_evn_cs_OBUF | IV_TRUE | MEM_DECODER/as_count<3> | IV_TRUE | a21_IBUF | IV_TRUE | uds_IBUF
-SPPTERM | 4 | IV_FALSE | a17_IBUF | IV_TRUE | MEM_DECODER/as_count<3> | IV_TRUE | a21_IBUF | IV_TRUE | uds_IBUF
+SPPTERM | 3 | IV_TRUE | rom_evn_cs_OBUF | IV_TRUE | a17_IBUF | IV_TRUE | MEM_DECODER_MOD/as_count<3>
+SPPTERM | 3 | IV_TRUE | rom_evn_cs_OBUF | IV_TRUE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | a21_IBUF
+SPPTERM | 4 | IV_TRUE | rom_evn_cs_OBUF | IV_TRUE | MEM_DECODER_MOD/as_count<3> | IV_TRUE | a21_IBUF | IV_TRUE | uds_IBUF
+SPPTERM | 4 | IV_FALSE | a17_IBUF | IV_TRUE | MEM_DECODER_MOD/as_count<3> | IV_TRUE | a21_IBUF | IV_TRUE | uds_IBUF
 
 SRFF_INSTANCE | rom_evn_cs_OBUF.REG | rom_evn_cs_OBUF | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
@@ -223,7 +223,7 @@ NODE | rom_odd_cs_OBUF | 1734 | ? | 0 | 1032 | cpld_COPY_0_COPY_0 | NULL | rom_o
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a17_IBUF | 1740 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a17_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a21_IBUF | 1747 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a21_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
@@ -241,7 +241,7 @@ NODE | rom_odd_cs_OBUF | 1734 | ? | 0 | 1032 | cpld_COPY_0_COPY_0 | NULL | rom_o
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a17_IBUF | 1740 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a17_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | a21_IBUF | 1747 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | a21_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
@@ -252,10 +252,10 @@ SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
 SIGNAL | NODE | rom_odd_cs_OBUF.D2 | 1805 | ? | 0 | 4096 | rom_odd_cs_OBUF | NULL | NULL | rom_odd_cs_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 1 | IV_FALSE | as_IBUF
-SPPTERM | 3 | IV_TRUE | rom_odd_cs_OBUF | IV_TRUE | a17_IBUF | IV_TRUE | MEM_DECODER/as_count<3>
-SPPTERM | 3 | IV_TRUE | rom_odd_cs_OBUF | IV_TRUE | MEM_DECODER/as_count<3> | IV_FALSE | a21_IBUF
-SPPTERM | 4 | IV_TRUE | rom_odd_cs_OBUF | IV_TRUE | MEM_DECODER/as_count<3> | IV_TRUE | a21_IBUF | IV_TRUE | lds_IBUF
-SPPTERM | 4 | IV_FALSE | a17_IBUF | IV_TRUE | MEM_DECODER/as_count<3> | IV_TRUE | a21_IBUF | IV_TRUE | lds_IBUF
+SPPTERM | 3 | IV_TRUE | rom_odd_cs_OBUF | IV_TRUE | a17_IBUF | IV_TRUE | MEM_DECODER_MOD/as_count<3>
+SPPTERM | 3 | IV_TRUE | rom_odd_cs_OBUF | IV_TRUE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | a21_IBUF
+SPPTERM | 4 | IV_TRUE | rom_odd_cs_OBUF | IV_TRUE | MEM_DECODER_MOD/as_count<3> | IV_TRUE | a21_IBUF | IV_TRUE | lds_IBUF
+SPPTERM | 4 | IV_FALSE | a17_IBUF | IV_TRUE | MEM_DECODER_MOD/as_count<3> | IV_TRUE | a21_IBUF | IV_TRUE | lds_IBUF
 
 SRFF_INSTANCE | rom_odd_cs_OBUF.REG | rom_odd_cs_OBUF | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
@@ -269,189 +269,189 @@ NODE | e | 1778 | PI | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100
 OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
 NODE | e_IBUF | 1735 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | e_IBUF | 0 | 5 | II_IMUX
 
-MACROCELL_INSTANCE | Inv+PrldLow+Tff+OptxMapped | BUS_ERR/berr_count<0> | cpld_COPY_0_COPY_0 | 2155877632 | 6 | 1
+MACROCELL_INSTANCE | Inv+PrldLow+Tff+OptxMapped | BUS_ERR_MOD/berr_count<0> | cpld_COPY_0_COPY_0 | 2155877632 | 6 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<0>.Q | BUS_ERR/berr_count<0> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<0>.Q | BUS_ERR_MOD/berr_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<1>.Q | BUS_ERR/berr_count<1> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<1>.Q | BUS_ERR_MOD/berr_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<2>.Q | BUS_ERR/berr_count<2> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<2>.Q | BUS_ERR_MOD/berr_count<2> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<3>.Q | BUS_ERR/berr_count<3> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<3>.Q | BUS_ERR_MOD/berr_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | e_IBUF | 1735 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | e_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | BUS_ERR/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<0>.Q | BUS_ERR/berr_count<0> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<0>.Q | BUS_ERR_MOD/berr_count<0> | 1 | 0 | MC_UIM
 
-SIGNAL_INSTANCE | BUS_ERR/berr_count<0>.SI | BUS_ERR/berr_count<0> | 0 | 6 | 3
+SIGNAL_INSTANCE | BUS_ERR_MOD/berr_count<0>.SI | BUS_ERR_MOD/berr_count<0> | 0 | 6 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<0>.Q | BUS_ERR/berr_count<0> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<0>.Q | BUS_ERR_MOD/berr_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<1>.Q | BUS_ERR/berr_count<1> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<1>.Q | BUS_ERR_MOD/berr_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<2>.Q | BUS_ERR/berr_count<2> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<2>.Q | BUS_ERR_MOD/berr_count<2> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<3>.Q | BUS_ERR/berr_count<3> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<3>.Q | BUS_ERR_MOD/berr_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | e_IBUF | 1735 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | e_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | BUS_ERR/berr_count<0>.D1 | 1808 | ? | 0 | 4096 | BUS_ERR/berr_count<0> | NULL | NULL | BUS_ERR/berr_count<0>.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<0>.D1 | 1808 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<0> | NULL | NULL | BUS_ERR_MOD/berr_count<0>.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | BUS_ERR/berr_count<0>.D2 | 1809 | ? | 0 | 4096 | BUS_ERR/berr_count<0> | NULL | NULL | BUS_ERR/berr_count<0>.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 2 | IV_TRUE | as_IBUF | IV_FALSE | BUS_ERR/berr_count<0>
-SPPTERM | 4 | IV_FALSE | BUS_ERR/berr_count<0> | IV_TRUE | BUS_ERR/berr_count<1> | IV_FALSE | BUS_ERR/berr_count<2> | IV_TRUE | BUS_ERR/berr_count<3>
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<0>.D2 | 1809 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<0> | NULL | NULL | BUS_ERR_MOD/berr_count<0>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | as_IBUF | IV_FALSE | BUS_ERR_MOD/berr_count<0>
+SPPTERM | 4 | IV_FALSE | BUS_ERR_MOD/berr_count<0> | IV_TRUE | BUS_ERR_MOD/berr_count<1> | IV_FALSE | BUS_ERR_MOD/berr_count<2> | IV_TRUE | BUS_ERR_MOD/berr_count<3>
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | BUS_ERR/berr_count<0>.CLKF | 1810 | ? | 0 | 4096 | BUS_ERR/berr_count<0> | NULL | NULL | BUS_ERR/berr_count<0>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<0>.CLKF | 1810 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<0> | NULL | NULL | BUS_ERR_MOD/berr_count<0>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | e_IBUF
 
-SRFF_INSTANCE | BUS_ERR/berr_count<0>.REG | BUS_ERR/berr_count<0> | 0 | 2 | 1
+SRFF_INSTANCE | BUS_ERR_MOD/berr_count<0>.REG | BUS_ERR_MOD/berr_count<0> | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | BUS_ERR/berr_count<0>.D | 1807 | ? | 0 | 0 | BUS_ERR/berr_count<0> | NULL | NULL | BUS_ERR/berr_count<0>.XOR | 0 | 7 | ALU_F
+NODE | BUS_ERR_MOD/berr_count<0>.D | 1807 | ? | 0 | 0 | BUS_ERR_MOD/berr_count<0> | NULL | NULL | BUS_ERR_MOD/berr_count<0>.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | BUS_ERR/berr_count<0>.CLKF | 1810 | ? | 0 | 4096 | BUS_ERR/berr_count<0> | NULL | NULL | BUS_ERR/berr_count<0>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<0>.CLKF | 1810 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<0> | NULL | NULL | BUS_ERR_MOD/berr_count<0>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | e_IBUF
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | BUS_ERR/berr_count<0>.Q | 1811 | ? | 0 | 0 | BUS_ERR/berr_count<0> | NULL | NULL | BUS_ERR/berr_count<0>.REG | 0 | 8 | SRFF_Q
+NODE | BUS_ERR_MOD/berr_count<0>.Q | 1811 | ? | 0 | 0 | BUS_ERR_MOD/berr_count<0> | NULL | NULL | BUS_ERR_MOD/berr_count<0>.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | PrldLow+OptxMapped | BUS_ERR/berr_count<1> | cpld_COPY_0_COPY_0 | 2155873280 | 4 | 1
+MACROCELL_INSTANCE | PrldLow+OptxMapped | BUS_ERR_MOD/berr_count<1> | cpld_COPY_0_COPY_0 | 2155873280 | 4 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<0>.Q | BUS_ERR/berr_count<0> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<0>.Q | BUS_ERR_MOD/berr_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<1>.Q | BUS_ERR/berr_count<1> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<1>.Q | BUS_ERR_MOD/berr_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | e_IBUF | 1735 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | e_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | BUS_ERR/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<1>.Q | BUS_ERR/berr_count<1> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<1>.Q | BUS_ERR_MOD/berr_count<1> | 1 | 0 | MC_UIM
 
-SIGNAL_INSTANCE | BUS_ERR/berr_count<1>.SI | BUS_ERR/berr_count<1> | 0 | 4 | 3
+SIGNAL_INSTANCE | BUS_ERR_MOD/berr_count<1>.SI | BUS_ERR_MOD/berr_count<1> | 0 | 4 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<0>.Q | BUS_ERR/berr_count<0> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<0>.Q | BUS_ERR_MOD/berr_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<1>.Q | BUS_ERR/berr_count<1> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<1>.Q | BUS_ERR_MOD/berr_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | e_IBUF | 1735 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | e_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | BUS_ERR/berr_count<1>.D1 | 1813 | ? | 0 | 4096 | BUS_ERR/berr_count<1> | NULL | NULL | BUS_ERR/berr_count<1>.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<1>.D1 | 1813 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<1> | NULL | NULL | BUS_ERR_MOD/berr_count<1>.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | BUS_ERR/berr_count<1>.D2 | 1814 | ? | 0 | 4096 | BUS_ERR/berr_count<1> | NULL | NULL | BUS_ERR/berr_count<1>.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 3 | IV_FALSE | as_IBUF | IV_TRUE | BUS_ERR/berr_count<0> | IV_FALSE | BUS_ERR/berr_count<1>
-SPPTERM | 3 | IV_FALSE | as_IBUF | IV_FALSE | BUS_ERR/berr_count<0> | IV_TRUE | BUS_ERR/berr_count<1>
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<1>.D2 | 1814 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<1> | NULL | NULL | BUS_ERR_MOD/berr_count<1>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | as_IBUF | IV_TRUE | BUS_ERR_MOD/berr_count<0> | IV_FALSE | BUS_ERR_MOD/berr_count<1>
+SPPTERM | 3 | IV_FALSE | as_IBUF | IV_FALSE | BUS_ERR_MOD/berr_count<0> | IV_TRUE | BUS_ERR_MOD/berr_count<1>
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | BUS_ERR/berr_count<1>.CLKF | 1815 | ? | 0 | 4096 | BUS_ERR/berr_count<1> | NULL | NULL | BUS_ERR/berr_count<1>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<1>.CLKF | 1815 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<1> | NULL | NULL | BUS_ERR_MOD/berr_count<1>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | e_IBUF
 
-SRFF_INSTANCE | BUS_ERR/berr_count<1>.REG | BUS_ERR/berr_count<1> | 0 | 2 | 1
+SRFF_INSTANCE | BUS_ERR_MOD/berr_count<1>.REG | BUS_ERR_MOD/berr_count<1> | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | BUS_ERR/berr_count<1>.D | 1812 | ? | 0 | 0 | BUS_ERR/berr_count<1> | NULL | NULL | BUS_ERR/berr_count<1>.XOR | 0 | 7 | ALU_F
+NODE | BUS_ERR_MOD/berr_count<1>.D | 1812 | ? | 0 | 0 | BUS_ERR_MOD/berr_count<1> | NULL | NULL | BUS_ERR_MOD/berr_count<1>.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | BUS_ERR/berr_count<1>.CLKF | 1815 | ? | 0 | 4096 | BUS_ERR/berr_count<1> | NULL | NULL | BUS_ERR/berr_count<1>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<1>.CLKF | 1815 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<1> | NULL | NULL | BUS_ERR_MOD/berr_count<1>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | e_IBUF
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | BUS_ERR/berr_count<1>.Q | 1816 | ? | 0 | 0 | BUS_ERR/berr_count<1> | NULL | NULL | BUS_ERR/berr_count<1>.REG | 0 | 8 | SRFF_Q
+NODE | BUS_ERR_MOD/berr_count<1>.Q | 1816 | ? | 0 | 0 | BUS_ERR_MOD/berr_count<1> | NULL | NULL | BUS_ERR_MOD/berr_count<1>.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | BUS_ERR/berr_count<2> | cpld_COPY_0_COPY_0 | 2155877376 | 5 | 1
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | BUS_ERR_MOD/berr_count<2> | cpld_COPY_0_COPY_0 | 2155877376 | 5 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<0>.Q | BUS_ERR/berr_count<0> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<0>.Q | BUS_ERR_MOD/berr_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<1>.Q | BUS_ERR/berr_count<1> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<1>.Q | BUS_ERR_MOD/berr_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<2>.Q | BUS_ERR/berr_count<2> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<2>.Q | BUS_ERR_MOD/berr_count<2> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | e_IBUF | 1735 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | e_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | BUS_ERR/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<2>.Q | BUS_ERR/berr_count<2> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<2>.Q | BUS_ERR_MOD/berr_count<2> | 1 | 0 | MC_UIM
 
-SIGNAL_INSTANCE | BUS_ERR/berr_count<2>.SI | BUS_ERR/berr_count<2> | 0 | 5 | 3
+SIGNAL_INSTANCE | BUS_ERR_MOD/berr_count<2>.SI | BUS_ERR_MOD/berr_count<2> | 0 | 5 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<0>.Q | BUS_ERR/berr_count<0> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<0>.Q | BUS_ERR_MOD/berr_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<1>.Q | BUS_ERR/berr_count<1> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<1>.Q | BUS_ERR_MOD/berr_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<2>.Q | BUS_ERR/berr_count<2> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<2>.Q | BUS_ERR_MOD/berr_count<2> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | e_IBUF | 1735 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | e_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | BUS_ERR/berr_count<2>.D1 | 1818 | ? | 0 | 4096 | BUS_ERR/berr_count<2> | NULL | NULL | BUS_ERR/berr_count<2>.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<2>.D1 | 1818 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<2> | NULL | NULL | BUS_ERR_MOD/berr_count<2>.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | BUS_ERR/berr_count<2>.D2 | 1819 | ? | 0 | 4096 | BUS_ERR/berr_count<2> | NULL | NULL | BUS_ERR/berr_count<2>.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 2 | IV_TRUE | as_IBUF | IV_TRUE | BUS_ERR/berr_count<2>
-SPPTERM | 3 | IV_FALSE | as_IBUF | IV_TRUE | BUS_ERR/berr_count<0> | IV_TRUE | BUS_ERR/berr_count<1>
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<2>.D2 | 1819 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<2> | NULL | NULL | BUS_ERR_MOD/berr_count<2>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | as_IBUF | IV_TRUE | BUS_ERR_MOD/berr_count<2>
+SPPTERM | 3 | IV_FALSE | as_IBUF | IV_TRUE | BUS_ERR_MOD/berr_count<0> | IV_TRUE | BUS_ERR_MOD/berr_count<1>
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | BUS_ERR/berr_count<2>.CLKF | 1820 | ? | 0 | 4096 | BUS_ERR/berr_count<2> | NULL | NULL | BUS_ERR/berr_count<2>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<2>.CLKF | 1820 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<2> | NULL | NULL | BUS_ERR_MOD/berr_count<2>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | e_IBUF
 
-SRFF_INSTANCE | BUS_ERR/berr_count<2>.REG | BUS_ERR/berr_count<2> | 0 | 2 | 1
+SRFF_INSTANCE | BUS_ERR_MOD/berr_count<2>.REG | BUS_ERR_MOD/berr_count<2> | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | BUS_ERR/berr_count<2>.D | 1817 | ? | 0 | 0 | BUS_ERR/berr_count<2> | NULL | NULL | BUS_ERR/berr_count<2>.XOR | 0 | 7 | ALU_F
+NODE | BUS_ERR_MOD/berr_count<2>.D | 1817 | ? | 0 | 0 | BUS_ERR_MOD/berr_count<2> | NULL | NULL | BUS_ERR_MOD/berr_count<2>.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | BUS_ERR/berr_count<2>.CLKF | 1820 | ? | 0 | 4096 | BUS_ERR/berr_count<2> | NULL | NULL | BUS_ERR/berr_count<2>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<2>.CLKF | 1820 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<2> | NULL | NULL | BUS_ERR_MOD/berr_count<2>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | e_IBUF
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | BUS_ERR/berr_count<2>.Q | 1821 | ? | 0 | 0 | BUS_ERR/berr_count<2> | NULL | NULL | BUS_ERR/berr_count<2>.REG | 0 | 8 | SRFF_Q
+NODE | BUS_ERR_MOD/berr_count<2>.Q | 1821 | ? | 0 | 0 | BUS_ERR_MOD/berr_count<2> | NULL | NULL | BUS_ERR_MOD/berr_count<2>.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | BUS_ERR/berr_count<3> | cpld_COPY_0_COPY_0 | 2155877376 | 6 | 1
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | BUS_ERR_MOD/berr_count<3> | cpld_COPY_0_COPY_0 | 2155877376 | 6 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<0>.Q | BUS_ERR/berr_count<0> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<0>.Q | BUS_ERR_MOD/berr_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<1>.Q | BUS_ERR/berr_count<1> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<1>.Q | BUS_ERR_MOD/berr_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<2>.Q | BUS_ERR/berr_count<2> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<2>.Q | BUS_ERR_MOD/berr_count<2> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<3>.Q | BUS_ERR/berr_count<3> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<3>.Q | BUS_ERR_MOD/berr_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | e_IBUF | 1735 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | e_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | BUS_ERR/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<3>.Q | BUS_ERR/berr_count<3> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<3>.Q | BUS_ERR_MOD/berr_count<3> | 1 | 0 | MC_UIM
 
-SIGNAL_INSTANCE | BUS_ERR/berr_count<3>.SI | BUS_ERR/berr_count<3> | 0 | 6 | 3
+SIGNAL_INSTANCE | BUS_ERR_MOD/berr_count<3>.SI | BUS_ERR_MOD/berr_count<3> | 0 | 6 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<0>.Q | BUS_ERR/berr_count<0> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<0>.Q | BUS_ERR_MOD/berr_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<1>.Q | BUS_ERR/berr_count<1> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<1>.Q | BUS_ERR_MOD/berr_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<2>.Q | BUS_ERR/berr_count<2> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<2>.Q | BUS_ERR_MOD/berr_count<2> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<3>.Q | BUS_ERR/berr_count<3> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<3>.Q | BUS_ERR_MOD/berr_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | e_IBUF | 1735 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | e_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | BUS_ERR/berr_count<3>.D1 | 1823 | ? | 0 | 4096 | BUS_ERR/berr_count<3> | NULL | NULL | BUS_ERR/berr_count<3>.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<3>.D1 | 1823 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<3> | NULL | NULL | BUS_ERR_MOD/berr_count<3>.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | BUS_ERR/berr_count<3>.D2 | 1824 | ? | 0 | 4096 | BUS_ERR/berr_count<3> | NULL | NULL | BUS_ERR/berr_count<3>.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 2 | IV_TRUE | as_IBUF | IV_TRUE | BUS_ERR/berr_count<3>
-SPPTERM | 4 | IV_FALSE | as_IBUF | IV_TRUE | BUS_ERR/berr_count<0> | IV_TRUE | BUS_ERR/berr_count<1> | IV_TRUE | BUS_ERR/berr_count<2>
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<3>.D2 | 1824 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<3> | NULL | NULL | BUS_ERR_MOD/berr_count<3>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | as_IBUF | IV_TRUE | BUS_ERR_MOD/berr_count<3>
+SPPTERM | 4 | IV_FALSE | as_IBUF | IV_TRUE | BUS_ERR_MOD/berr_count<0> | IV_TRUE | BUS_ERR_MOD/berr_count<1> | IV_TRUE | BUS_ERR_MOD/berr_count<2>
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | BUS_ERR/berr_count<3>.CLKF | 1825 | ? | 0 | 4096 | BUS_ERR/berr_count<3> | NULL | NULL | BUS_ERR/berr_count<3>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<3>.CLKF | 1825 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<3> | NULL | NULL | BUS_ERR_MOD/berr_count<3>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | e_IBUF
 
-SRFF_INSTANCE | BUS_ERR/berr_count<3>.REG | BUS_ERR/berr_count<3> | 0 | 2 | 1
+SRFF_INSTANCE | BUS_ERR_MOD/berr_count<3>.REG | BUS_ERR_MOD/berr_count<3> | 0 | 2 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | BUS_ERR/berr_count<3>.D | 1822 | ? | 0 | 0 | BUS_ERR/berr_count<3> | NULL | NULL | BUS_ERR/berr_count<3>.XOR | 0 | 7 | ALU_F
+NODE | BUS_ERR_MOD/berr_count<3>.D | 1822 | ? | 0 | 0 | BUS_ERR_MOD/berr_count<3> | NULL | NULL | BUS_ERR_MOD/berr_count<3>.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | BUS_ERR/berr_count<3>.CLKF | 1825 | ? | 0 | 4096 | BUS_ERR/berr_count<3> | NULL | NULL | BUS_ERR/berr_count<3>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | BUS_ERR_MOD/berr_count<3>.CLKF | 1825 | ? | 0 | 4096 | BUS_ERR_MOD/berr_count<3> | NULL | NULL | BUS_ERR_MOD/berr_count<3>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | e_IBUF
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | BUS_ERR/berr_count<3>.Q | 1826 | ? | 0 | 0 | BUS_ERR/berr_count<3> | NULL | NULL | BUS_ERR/berr_count<3>.REG | 0 | 8 | SRFF_Q
+NODE | BUS_ERR_MOD/berr_count<3>.Q | 1826 | ? | 0 | 0 | BUS_ERR_MOD/berr_count<3> | NULL | NULL | BUS_ERR_MOD/berr_count<3>.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | Inv+PrldLow+OptxMapped | berr_OBUF | cpld_COPY_0_COPY_0 | 2155873536 | 7 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
@@ -459,13 +459,13 @@ NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF |
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | berr_OBUF.UIM | 1742 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | berr_OBUF.Q | berr_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<0>.Q | BUS_ERR/berr_count<0> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<0>.Q | BUS_ERR_MOD/berr_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<1>.Q | BUS_ERR/berr_count<1> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<1>.Q | BUS_ERR_MOD/berr_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<2>.Q | BUS_ERR/berr_count<2> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<2>.Q | BUS_ERR_MOD/berr_count<2> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<3>.Q | BUS_ERR/berr_count<3> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<3>.Q | BUS_ERR_MOD/berr_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | e_IBUF | 1735 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | e_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
@@ -479,13 +479,13 @@ NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF |
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | berr_OBUF.UIM | 1742 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | berr_OBUF.Q | berr_OBUF | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<0>.Q | BUS_ERR/berr_count<0> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<0> | 1736 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<0>.Q | BUS_ERR_MOD/berr_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<1>.Q | BUS_ERR/berr_count<1> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<1> | 1737 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<1>.Q | BUS_ERR_MOD/berr_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<2>.Q | BUS_ERR/berr_count<2> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<2> | 1738 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<2>.Q | BUS_ERR_MOD/berr_count<2> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | BUS_ERR/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR/berr_count<3>.Q | BUS_ERR/berr_count<3> | 1 | 0 | MC_UIM
+NODE | BUS_ERR_MOD/berr_count<3> | 1739 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | BUS_ERR_MOD/berr_count<3>.Q | BUS_ERR_MOD/berr_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | e_IBUF | 1735 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | e_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
@@ -494,7 +494,7 @@ SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
 SIGNAL | NODE | berr_OBUF.D2 | 1829 | ? | 0 | 4096 | berr_OBUF | NULL | NULL | berr_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 2 | IV_FALSE | as_IBUF | IV_FALSE | berr_OBUF.UIM
-SPPTERM | 5 | IV_FALSE | as_IBUF | IV_FALSE | BUS_ERR/berr_count<0> | IV_TRUE | BUS_ERR/berr_count<1> | IV_FALSE | BUS_ERR/berr_count<2> | IV_TRUE | BUS_ERR/berr_count<3>
+SPPTERM | 5 | IV_FALSE | as_IBUF | IV_FALSE | BUS_ERR_MOD/berr_count<0> | IV_TRUE | BUS_ERR_MOD/berr_count<1> | IV_FALSE | BUS_ERR_MOD/berr_count<2> | IV_TRUE | BUS_ERR_MOD/berr_count<3>
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
 SIGNAL | NODE | berr_OBUF.CLKF | 1830 | ? | 0 | 4096 | berr_OBUF | NULL | NULL | berr_OBUF.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 1 | IV_TRUE | e_IBUF
@@ -508,221 +508,221 @@ SPPTERM | 1 | IV_TRUE | e_IBUF
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
 NODE | berr_OBUF.Q | 1831 | ? | 0 | 0 | berr_OBUF | NULL | NULL | berr_OBUF.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | PrldLow+OptxMapped | MEM_DECODER/as_count<3> | cpld_COPY_0_COPY_0 | 2155873280 | 6 | 1
+MACROCELL_INSTANCE | PrldLow+OptxMapped | MEM_DECODER_MOD/as_count<3> | cpld_COPY_0_COPY_0 | 2155873280 | 6 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>.Q | MEM_DECODER/as_count<1> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>.Q | MEM_DECODER_MOD/as_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<2>.Q | MEM_DECODER/as_count<2> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<2>.Q | MEM_DECODER_MOD/as_count<2> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.UIM | 1772 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.Q | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.UIM | 1772 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.Q | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 
-SIGNAL_INSTANCE | MEM_DECODER/as_count<3>.SI | MEM_DECODER/as_count<3> | 0 | 6 | 5
+SIGNAL_INSTANCE | MEM_DECODER_MOD/as_count<3>.SI | MEM_DECODER_MOD/as_count<3> | 0 | 6 | 5
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>.Q | MEM_DECODER/as_count<1> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>.Q | MEM_DECODER_MOD/as_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<2>.Q | MEM_DECODER/as_count<2> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<2>.Q | MEM_DECODER_MOD/as_count<2> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.UIM | 1772 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.Q | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.UIM | 1772 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.Q | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | MEM_DECODER/as_count<3>.D1 | 1833 | ? | 0 | 4096 | MEM_DECODER/as_count<3> | NULL | NULL | MEM_DECODER/as_count<3>.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<3>.D1 | 1833 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<3> | NULL | NULL | MEM_DECODER_MOD/as_count<3>.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | MEM_DECODER/as_count<3>.D2 | 1834 | ? | 0 | 6144 | MEM_DECODER/as_count<3> | NULL | NULL | MEM_DECODER/as_count<3>.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<3>.D2 | 1834 | ? | 0 | 6144 | MEM_DECODER_MOD/as_count<3> | NULL | NULL | MEM_DECODER_MOD/as_count<3>.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | MEM_DECODER/as_count<3>.CLKF | 1835 | ? | 0 | 6144 | MEM_DECODER/as_count<3> | NULL | NULL | MEM_DECODER/as_count<3>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<3>.CLKF | 1835 | ? | 0 | 6144 | MEM_DECODER_MOD/as_count<3> | NULL | NULL | MEM_DECODER_MOD/as_count<3>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 5 | 9 | MC_SI_SETF
-SIGNAL | NODE | MEM_DECODER/as_count<3>.SETF | 1836 | ? | 0 | 4096 | MEM_DECODER/as_count<3> | NULL | NULL | MEM_DECODER/as_count<3>.SI | 5 | 9 | MC_SI_SETF
-SPPTERM | 5 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_TRUE | MEM_DECODER/as_count<0> | IV_TRUE | MEM_DECODER/as_count<1> | IV_TRUE | MEM_DECODER/as_count<2>
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<3>.SETF | 1836 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<3> | NULL | NULL | MEM_DECODER_MOD/as_count<3>.SI | 5 | 9 | MC_SI_SETF
+SPPTERM | 5 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_TRUE | MEM_DECODER_MOD/as_count<0> | IV_TRUE | MEM_DECODER_MOD/as_count<1> | IV_TRUE | MEM_DECODER_MOD/as_count<2>
 OUTPUT_NODE_TYPE | 6 | 9 | MC_SI_RSTF
-SIGNAL | NODE | MEM_DECODER/as_count<3>.RSTF | 1837 | ? | 0 | 4096 | MEM_DECODER/as_count<3> | NULL | NULL | MEM_DECODER/as_count<3>.SI | 6 | 9 | MC_SI_RSTF
-SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_FALSE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.UIM
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<3>.RSTF | 1837 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<3> | NULL | NULL | MEM_DECODER_MOD/as_count<3>.SI | 6 | 9 | MC_SI_RSTF
+SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.UIM
 
-SRFF_INSTANCE | MEM_DECODER/as_count<3>.REG | MEM_DECODER/as_count<3> | 0 | 4 | 1
+SRFF_INSTANCE | MEM_DECODER_MOD/as_count<3>.REG | MEM_DECODER_MOD/as_count<3> | 0 | 4 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | MEM_DECODER/as_count<3>.D | 1832 | ? | 0 | 0 | MEM_DECODER/as_count<3> | NULL | NULL | MEM_DECODER/as_count<3>.XOR | 0 | 7 | ALU_F
+NODE | MEM_DECODER_MOD/as_count<3>.D | 1832 | ? | 0 | 0 | MEM_DECODER_MOD/as_count<3> | NULL | NULL | MEM_DECODER_MOD/as_count<3>.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | MEM_DECODER/as_count<3>.CLKF | 1835 | ? | 0 | 6144 | MEM_DECODER/as_count<3> | NULL | NULL | MEM_DECODER/as_count<3>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<3>.CLKF | 1835 | ? | 0 | 6144 | MEM_DECODER_MOD/as_count<3> | NULL | NULL | MEM_DECODER_MOD/as_count<3>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 0 | IV_ZERO
 INPUT_NODE_TYPE | 2 | 8 | SRFF_S
-SIGNAL | NODE | MEM_DECODER/as_count<3>.SETF | 1836 | ? | 0 | 4096 | MEM_DECODER/as_count<3> | NULL | NULL | MEM_DECODER/as_count<3>.SI | 5 | 9 | MC_SI_SETF
-SPPTERM | 5 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_TRUE | MEM_DECODER/as_count<0> | IV_TRUE | MEM_DECODER/as_count<1> | IV_TRUE | MEM_DECODER/as_count<2>
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<3>.SETF | 1836 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<3> | NULL | NULL | MEM_DECODER_MOD/as_count<3>.SI | 5 | 9 | MC_SI_SETF
+SPPTERM | 5 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_TRUE | MEM_DECODER_MOD/as_count<0> | IV_TRUE | MEM_DECODER_MOD/as_count<1> | IV_TRUE | MEM_DECODER_MOD/as_count<2>
 INPUT_NODE_TYPE | 3 | 8 | SRFF_R
-SIGNAL | NODE | MEM_DECODER/as_count<3>.RSTF | 1837 | ? | 0 | 4096 | MEM_DECODER/as_count<3> | NULL | NULL | MEM_DECODER/as_count<3>.SI | 6 | 9 | MC_SI_RSTF
-SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_FALSE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.UIM
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<3>.RSTF | 1837 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<3> | NULL | NULL | MEM_DECODER_MOD/as_count<3>.SI | 6 | 9 | MC_SI_RSTF
+SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.UIM
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | MEM_DECODER/as_count<3>.Q | 1838 | ? | 0 | 0 | MEM_DECODER/as_count<3> | NULL | NULL | MEM_DECODER/as_count<3>.REG | 0 | 8 | SRFF_Q
+NODE | MEM_DECODER_MOD/as_count<3>.Q | 1838 | ? | 0 | 0 | MEM_DECODER_MOD/as_count<3> | NULL | NULL | MEM_DECODER_MOD/as_count<3>.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | PrldLow+OptxMapped | MEM_DECODER/as_count<0> | cpld_COPY_0_COPY_0 | 2155873280 | 3 | 1
+MACROCELL_INSTANCE | PrldLow+OptxMapped | MEM_DECODER_MOD/as_count<0> | cpld_COPY_0_COPY_0 | 2155873280 | 3 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 
-SIGNAL_INSTANCE | MEM_DECODER/as_count<0>.SI | MEM_DECODER/as_count<0> | 0 | 3 | 5
+SIGNAL_INSTANCE | MEM_DECODER_MOD/as_count<0>.SI | MEM_DECODER_MOD/as_count<0> | 0 | 3 | 5
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | MEM_DECODER/as_count<0>.D1 | 1840 | ? | 0 | 4096 | MEM_DECODER/as_count<0> | NULL | NULL | MEM_DECODER/as_count<0>.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<0>.D1 | 1840 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<0> | NULL | NULL | MEM_DECODER_MOD/as_count<0>.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | MEM_DECODER/as_count<0>.D2 | 1841 | ? | 0 | 6144 | MEM_DECODER/as_count<0> | NULL | NULL | MEM_DECODER/as_count<0>.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<0>.D2 | 1841 | ? | 0 | 6144 | MEM_DECODER_MOD/as_count<0> | NULL | NULL | MEM_DECODER_MOD/as_count<0>.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | MEM_DECODER/as_count<0>.CLKF | 1842 | ? | 0 | 6144 | MEM_DECODER/as_count<0> | NULL | NULL | MEM_DECODER/as_count<0>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<0>.CLKF | 1842 | ? | 0 | 6144 | MEM_DECODER_MOD/as_count<0> | NULL | NULL | MEM_DECODER_MOD/as_count<0>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 5 | 9 | MC_SI_SETF
-SIGNAL | NODE | MEM_DECODER/as_count<0>.SETF | 1843 | ? | 0 | 4096 | MEM_DECODER/as_count<0> | NULL | NULL | MEM_DECODER/as_count<0>.SI | 5 | 9 | MC_SI_SETF
-SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_FALSE | MEM_DECODER/as_count<0>
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<0>.SETF | 1843 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<0> | NULL | NULL | MEM_DECODER_MOD/as_count<0>.SI | 5 | 9 | MC_SI_SETF
+SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | MEM_DECODER_MOD/as_count<0>
 OUTPUT_NODE_TYPE | 6 | 9 | MC_SI_RSTF
-SIGNAL | NODE | MEM_DECODER/as_count<0>.RSTF | 1844 | ? | 0 | 4096 | MEM_DECODER/as_count<0> | NULL | NULL | MEM_DECODER/as_count<0>.SI | 6 | 9 | MC_SI_RSTF
-SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_TRUE | MEM_DECODER/as_count<0>
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<0>.RSTF | 1844 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<0> | NULL | NULL | MEM_DECODER_MOD/as_count<0>.SI | 6 | 9 | MC_SI_RSTF
+SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_TRUE | MEM_DECODER_MOD/as_count<0>
 
-SRFF_INSTANCE | MEM_DECODER/as_count<0>.REG | MEM_DECODER/as_count<0> | 0 | 4 | 1
+SRFF_INSTANCE | MEM_DECODER_MOD/as_count<0>.REG | MEM_DECODER_MOD/as_count<0> | 0 | 4 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | MEM_DECODER/as_count<0>.D | 1839 | ? | 0 | 0 | MEM_DECODER/as_count<0> | NULL | NULL | MEM_DECODER/as_count<0>.XOR | 0 | 7 | ALU_F
+NODE | MEM_DECODER_MOD/as_count<0>.D | 1839 | ? | 0 | 0 | MEM_DECODER_MOD/as_count<0> | NULL | NULL | MEM_DECODER_MOD/as_count<0>.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | MEM_DECODER/as_count<0>.CLKF | 1842 | ? | 0 | 6144 | MEM_DECODER/as_count<0> | NULL | NULL | MEM_DECODER/as_count<0>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<0>.CLKF | 1842 | ? | 0 | 6144 | MEM_DECODER_MOD/as_count<0> | NULL | NULL | MEM_DECODER_MOD/as_count<0>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 0 | IV_ZERO
 INPUT_NODE_TYPE | 2 | 8 | SRFF_S
-SIGNAL | NODE | MEM_DECODER/as_count<0>.SETF | 1843 | ? | 0 | 4096 | MEM_DECODER/as_count<0> | NULL | NULL | MEM_DECODER/as_count<0>.SI | 5 | 9 | MC_SI_SETF
-SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_FALSE | MEM_DECODER/as_count<0>
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<0>.SETF | 1843 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<0> | NULL | NULL | MEM_DECODER_MOD/as_count<0>.SI | 5 | 9 | MC_SI_SETF
+SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | MEM_DECODER_MOD/as_count<0>
 INPUT_NODE_TYPE | 3 | 8 | SRFF_R
-SIGNAL | NODE | MEM_DECODER/as_count<0>.RSTF | 1844 | ? | 0 | 4096 | MEM_DECODER/as_count<0> | NULL | NULL | MEM_DECODER/as_count<0>.SI | 6 | 9 | MC_SI_RSTF
-SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_TRUE | MEM_DECODER/as_count<0>
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<0>.RSTF | 1844 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<0> | NULL | NULL | MEM_DECODER_MOD/as_count<0>.SI | 6 | 9 | MC_SI_RSTF
+SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_TRUE | MEM_DECODER_MOD/as_count<0>
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | MEM_DECODER/as_count<0>.Q | 1845 | ? | 0 | 0 | MEM_DECODER/as_count<0> | NULL | NULL | MEM_DECODER/as_count<0>.REG | 0 | 8 | SRFF_Q
+NODE | MEM_DECODER_MOD/as_count<0>.Q | 1845 | ? | 0 | 0 | MEM_DECODER_MOD/as_count<0> | NULL | NULL | MEM_DECODER_MOD/as_count<0>.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | PrldLow+OptxMapped | MEM_DECODER/as_count<1> | cpld_COPY_0_COPY_0 | 2155873280 | 5 | 1
+MACROCELL_INSTANCE | PrldLow+OptxMapped | MEM_DECODER_MOD/as_count<1> | cpld_COPY_0_COPY_0 | 2155873280 | 5 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.UIM | 1773 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.Q | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.UIM | 1773 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.Q | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | $OpTx$$OpTx$FX_DC$11_INV$39.UIM | 1774 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | $OpTx$$OpTx$FX_DC$11_INV$39.Q | $OpTx$$OpTx$FX_DC$11_INV$39 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.UIM | 1775 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.Q | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.UIM | 1775 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.Q | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | MEM_DECODER/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>.Q | MEM_DECODER/as_count<1> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>.Q | MEM_DECODER_MOD/as_count<1> | 1 | 0 | MC_UIM
 
-SIGNAL_INSTANCE | MEM_DECODER/as_count<1>.SI | MEM_DECODER/as_count<1> | 0 | 5 | 5
+SIGNAL_INSTANCE | MEM_DECODER_MOD/as_count<1>.SI | MEM_DECODER_MOD/as_count<1> | 0 | 5 | 5
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.UIM | 1773 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.Q | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.UIM | 1773 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.Q | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | $OpTx$$OpTx$FX_DC$11_INV$39.UIM | 1774 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | $OpTx$$OpTx$FX_DC$11_INV$39.Q | $OpTx$$OpTx$FX_DC$11_INV$39 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.UIM | 1775 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.Q | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.UIM | 1775 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.Q | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | MEM_DECODER/as_count<1>.D1 | 1847 | ? | 0 | 4096 | MEM_DECODER/as_count<1> | NULL | NULL | MEM_DECODER/as_count<1>.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<1>.D1 | 1847 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<1> | NULL | NULL | MEM_DECODER_MOD/as_count<1>.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | MEM_DECODER/as_count<1>.D2 | 1848 | ? | 0 | 6144 | MEM_DECODER/as_count<1> | NULL | NULL | MEM_DECODER/as_count<1>.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<1>.D2 | 1848 | ? | 0 | 6144 | MEM_DECODER_MOD/as_count<1> | NULL | NULL | MEM_DECODER_MOD/as_count<1>.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | MEM_DECODER/as_count<1>.CLKF | 1849 | ? | 0 | 6144 | MEM_DECODER/as_count<1> | NULL | NULL | MEM_DECODER/as_count<1>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<1>.CLKF | 1849 | ? | 0 | 6144 | MEM_DECODER_MOD/as_count<1> | NULL | NULL | MEM_DECODER_MOD/as_count<1>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 5 | 9 | MC_SI_SETF
-SIGNAL | NODE | MEM_DECODER/as_count<1>.SETF | 1850 | ? | 0 | 4096 | MEM_DECODER/as_count<1> | NULL | NULL | MEM_DECODER/as_count<1>.SI | 5 | 9 | MC_SI_SETF
-SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_FALSE | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.UIM | IV_FALSE | $OpTx$$OpTx$FX_DC$11_INV$39.UIM
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<1>.SETF | 1850 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<1> | NULL | NULL | MEM_DECODER_MOD/as_count<1>.SI | 5 | 9 | MC_SI_SETF
+SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.UIM | IV_FALSE | $OpTx$$OpTx$FX_DC$11_INV$39.UIM
 OUTPUT_NODE_TYPE | 6 | 9 | MC_SI_RSTF
-SIGNAL | NODE | MEM_DECODER/as_count<1>.RSTF | 1851 | ? | 0 | 4096 | MEM_DECODER/as_count<1> | NULL | NULL | MEM_DECODER/as_count<1>.SI | 6 | 9 | MC_SI_RSTF
-SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_FALSE | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.UIM
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<1>.RSTF | 1851 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<1> | NULL | NULL | MEM_DECODER_MOD/as_count<1>.SI | 6 | 9 | MC_SI_RSTF
+SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.UIM
 
-SRFF_INSTANCE | MEM_DECODER/as_count<1>.REG | MEM_DECODER/as_count<1> | 0 | 4 | 1
+SRFF_INSTANCE | MEM_DECODER_MOD/as_count<1>.REG | MEM_DECODER_MOD/as_count<1> | 0 | 4 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | MEM_DECODER/as_count<1>.D | 1846 | ? | 0 | 0 | MEM_DECODER/as_count<1> | NULL | NULL | MEM_DECODER/as_count<1>.XOR | 0 | 7 | ALU_F
+NODE | MEM_DECODER_MOD/as_count<1>.D | 1846 | ? | 0 | 0 | MEM_DECODER_MOD/as_count<1> | NULL | NULL | MEM_DECODER_MOD/as_count<1>.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | MEM_DECODER/as_count<1>.CLKF | 1849 | ? | 0 | 6144 | MEM_DECODER/as_count<1> | NULL | NULL | MEM_DECODER/as_count<1>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<1>.CLKF | 1849 | ? | 0 | 6144 | MEM_DECODER_MOD/as_count<1> | NULL | NULL | MEM_DECODER_MOD/as_count<1>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 0 | IV_ZERO
 INPUT_NODE_TYPE | 2 | 8 | SRFF_S
-SIGNAL | NODE | MEM_DECODER/as_count<1>.SETF | 1850 | ? | 0 | 4096 | MEM_DECODER/as_count<1> | NULL | NULL | MEM_DECODER/as_count<1>.SI | 5 | 9 | MC_SI_SETF
-SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_FALSE | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.UIM | IV_FALSE | $OpTx$$OpTx$FX_DC$11_INV$39.UIM
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<1>.SETF | 1850 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<1> | NULL | NULL | MEM_DECODER_MOD/as_count<1>.SI | 5 | 9 | MC_SI_SETF
+SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.UIM | IV_FALSE | $OpTx$$OpTx$FX_DC$11_INV$39.UIM
 INPUT_NODE_TYPE | 3 | 8 | SRFF_R
-SIGNAL | NODE | MEM_DECODER/as_count<1>.RSTF | 1851 | ? | 0 | 4096 | MEM_DECODER/as_count<1> | NULL | NULL | MEM_DECODER/as_count<1>.SI | 6 | 9 | MC_SI_RSTF
-SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_FALSE | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.UIM
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<1>.RSTF | 1851 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<1> | NULL | NULL | MEM_DECODER_MOD/as_count<1>.SI | 6 | 9 | MC_SI_RSTF
+SPPTERM | 3 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.UIM
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | MEM_DECODER/as_count<1>.Q | 1852 | ? | 0 | 0 | MEM_DECODER/as_count<1> | NULL | NULL | MEM_DECODER/as_count<1>.REG | 0 | 8 | SRFF_Q
+NODE | MEM_DECODER_MOD/as_count<1>.Q | 1852 | ? | 0 | 0 | MEM_DECODER_MOD/as_count<1> | NULL | NULL | MEM_DECODER_MOD/as_count<1>.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | PrldLow+OptxMapped | MEM_DECODER/as_count<2> | cpld_COPY_0_COPY_0 | 2155873280 | 4 | 1
+MACROCELL_INSTANCE | PrldLow+OptxMapped | MEM_DECODER_MOD/as_count<2> | cpld_COPY_0_COPY_0 | 2155873280 | 4 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.UIM | 1772 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.Q | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.UIM | 1772 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.Q | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.UIM | 1776 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.Q | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.UIM | 1776 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.Q | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | MEM_DECODER/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<2>.Q | MEM_DECODER/as_count<2> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<2>.Q | MEM_DECODER_MOD/as_count<2> | 1 | 0 | MC_UIM
 
-SIGNAL_INSTANCE | MEM_DECODER/as_count<2>.SI | MEM_DECODER/as_count<2> | 0 | 4 | 5
+SIGNAL_INSTANCE | MEM_DECODER_MOD/as_count<2>.SI | MEM_DECODER_MOD/as_count<2> | 0 | 4 | 5
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.UIM | 1772 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.Q | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.UIM | 1772 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.Q | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.UIM | 1776 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.Q | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.UIM | 1776 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.Q | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | MEM_DECODER/as_count<2>.D1 | 1854 | ? | 0 | 4096 | MEM_DECODER/as_count<2> | NULL | NULL | MEM_DECODER/as_count<2>.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<2>.D1 | 1854 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<2> | NULL | NULL | MEM_DECODER_MOD/as_count<2>.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | MEM_DECODER/as_count<2>.D2 | 1855 | ? | 0 | 6144 | MEM_DECODER/as_count<2> | NULL | NULL | MEM_DECODER/as_count<2>.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<2>.D2 | 1855 | ? | 0 | 6144 | MEM_DECODER_MOD/as_count<2> | NULL | NULL | MEM_DECODER_MOD/as_count<2>.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | MEM_DECODER/as_count<2>.CLKF | 1856 | ? | 0 | 6144 | MEM_DECODER/as_count<2> | NULL | NULL | MEM_DECODER/as_count<2>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<2>.CLKF | 1856 | ? | 0 | 6144 | MEM_DECODER_MOD/as_count<2> | NULL | NULL | MEM_DECODER_MOD/as_count<2>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 5 | 9 | MC_SI_SETF
-SIGNAL | NODE | MEM_DECODER/as_count<2>.SETF | 1857 | ? | 0 | 4096 | MEM_DECODER/as_count<2> | NULL | NULL | MEM_DECODER/as_count<2>.SI | 5 | 9 | MC_SI_SETF
-SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_FALSE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.UIM | IV_FALSE | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.UIM
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<2>.SETF | 1857 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<2> | NULL | NULL | MEM_DECODER_MOD/as_count<2>.SI | 5 | 9 | MC_SI_SETF
+SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.UIM | IV_FALSE | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.UIM
 OUTPUT_NODE_TYPE | 6 | 9 | MC_SI_RSTF
-SIGNAL | NODE | MEM_DECODER/as_count<2>.RSTF | 1858 | ? | 0 | 4096 | MEM_DECODER/as_count<2> | NULL | NULL | MEM_DECODER/as_count<2>.SI | 6 | 9 | MC_SI_RSTF
-SPPTERM | 1 | IV_TRUE | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.UIM
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<2>.RSTF | 1858 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<2> | NULL | NULL | MEM_DECODER_MOD/as_count<2>.SI | 6 | 9 | MC_SI_RSTF
+SPPTERM | 1 | IV_TRUE | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.UIM
 
-SRFF_INSTANCE | MEM_DECODER/as_count<2>.REG | MEM_DECODER/as_count<2> | 0 | 4 | 1
+SRFF_INSTANCE | MEM_DECODER_MOD/as_count<2>.REG | MEM_DECODER_MOD/as_count<2> | 0 | 4 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | MEM_DECODER/as_count<2>.D | 1853 | ? | 0 | 0 | MEM_DECODER/as_count<2> | NULL | NULL | MEM_DECODER/as_count<2>.XOR | 0 | 7 | ALU_F
+NODE | MEM_DECODER_MOD/as_count<2>.D | 1853 | ? | 0 | 0 | MEM_DECODER_MOD/as_count<2> | NULL | NULL | MEM_DECODER_MOD/as_count<2>.XOR | 0 | 7 | ALU_F
 INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | MEM_DECODER/as_count<2>.CLKF | 1856 | ? | 0 | 6144 | MEM_DECODER/as_count<2> | NULL | NULL | MEM_DECODER/as_count<2>.SI | 3 | 9 | MC_SI_CLKF
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<2>.CLKF | 1856 | ? | 0 | 6144 | MEM_DECODER_MOD/as_count<2> | NULL | NULL | MEM_DECODER_MOD/as_count<2>.SI | 3 | 9 | MC_SI_CLKF
 SPPTERM | 0 | IV_ZERO
 INPUT_NODE_TYPE | 2 | 8 | SRFF_S
-SIGNAL | NODE | MEM_DECODER/as_count<2>.SETF | 1857 | ? | 0 | 4096 | MEM_DECODER/as_count<2> | NULL | NULL | MEM_DECODER/as_count<2>.SI | 5 | 9 | MC_SI_SETF
-SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_FALSE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.UIM | IV_FALSE | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.UIM
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<2>.SETF | 1857 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<2> | NULL | NULL | MEM_DECODER_MOD/as_count<2>.SI | 5 | 9 | MC_SI_SETF
+SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.UIM | IV_FALSE | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.UIM
 INPUT_NODE_TYPE | 3 | 8 | SRFF_R
-SIGNAL | NODE | MEM_DECODER/as_count<2>.RSTF | 1858 | ? | 0 | 4096 | MEM_DECODER/as_count<2> | NULL | NULL | MEM_DECODER/as_count<2>.SI | 6 | 9 | MC_SI_RSTF
-SPPTERM | 1 | IV_TRUE | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.UIM
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<2>.RSTF | 1858 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<2> | NULL | NULL | MEM_DECODER_MOD/as_count<2>.SI | 6 | 9 | MC_SI_RSTF
+SPPTERM | 1 | IV_TRUE | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.UIM
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | MEM_DECODER/as_count<2>.Q | 1859 | ? | 0 | 0 | MEM_DECODER/as_count<2> | NULL | NULL | MEM_DECODER/as_count<2>.REG | 0 | 8 | SRFF_Q
+NODE | MEM_DECODER_MOD/as_count<2>.Q | 1859 | ? | 0 | 0 | MEM_DECODER_MOD/as_count<2> | NULL | NULL | MEM_DECODER_MOD/as_count<2>.REG | 0 | 8 | SRFF_Q
 
 INPUT_INSTANCE | 0 | 0 | NULL | duart_dtack_IBUF | cpld_COPY_0_COPY_0 | 16 | 1 | 1
 INPUT_NODE_TYPE | 0 | 5 | II_IN
@@ -965,81 +965,81 @@ NODE | ipl_0_OBUF$BUF0 | 1759 | ? | 0 | 16384 | cpld_COPY_0_COPY_0 | NULL | ipl_
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
 NODE | ipl<0> | 1771 | PO | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | ipl<0> | 0 | 6 | OI_OUT
 
-MACROCELL_INSTANCE | SoftPfbk | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 | cpld_COPY_0_COPY_0 | 2181038080 | 3 | 1
+MACROCELL_INSTANCE | SoftPfbk | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 | cpld_COPY_0_COPY_0 | 2181038080 | 3 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>.Q | MEM_DECODER/as_count<1> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>.Q | MEM_DECODER_MOD/as_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<2>.Q | MEM_DECODER/as_count<2> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<2>.Q | MEM_DECODER_MOD/as_count<2> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.UIM | 1772 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.Q | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.UIM | 1772 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.Q | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 | 1 | 0 | MC_UIM
 
-SIGNAL_INSTANCE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.SI | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 | 0 | 3 | 2
+SIGNAL_INSTANCE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.SI | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 | 0 | 3 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>.Q | MEM_DECODER/as_count<1> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>.Q | MEM_DECODER_MOD/as_count<1> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<2>.Q | MEM_DECODER/as_count<2> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<2>.Q | MEM_DECODER_MOD/as_count<2> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.D1 | 1885 | ? | 0 | 4096 | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 | NULL | NULL | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.D1 | 1885 | ? | 0 | 4096 | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 | NULL | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.D2 | 1886 | ? | 0 | 4096 | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 | NULL | NULL | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 3 | IV_TRUE | MEM_DECODER/as_count<0> | IV_TRUE | MEM_DECODER/as_count<1> | IV_TRUE | MEM_DECODER/as_count<2>
+SIGNAL | NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.D2 | 1886 | ? | 0 | 4096 | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 | NULL | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_TRUE | MEM_DECODER_MOD/as_count<0> | IV_TRUE | MEM_DECODER_MOD/as_count<1> | IV_TRUE | MEM_DECODER_MOD/as_count<2>
 
-SRFF_INSTANCE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.REG | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 | 0 | 1 | 1
+SRFF_INSTANCE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.REG | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.D | 1884 | ? | 0 | 0 | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 | NULL | NULL | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.XOR | 0 | 7 | ALU_F
+NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.D | 1884 | ? | 0 | 0 | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 | NULL | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.Q | 1887 | ? | 0 | 0 | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 | NULL | NULL | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.REG | 0 | 8 | SRFF_Q
+NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.Q | 1887 | ? | 0 | 0 | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 | NULL | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | SoftPfbk | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 | cpld_COPY_0_COPY_0 | 2181038080 | 2 | 1
+MACROCELL_INSTANCE | SoftPfbk | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 | cpld_COPY_0_COPY_0 | 2181038080 | 2 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>.Q | MEM_DECODER/as_count<1> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>.Q | MEM_DECODER_MOD/as_count<1> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.UIM | 1773 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.Q | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.UIM | 1773 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.Q | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 | 1 | 0 | MC_UIM
 
-SIGNAL_INSTANCE | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.SI | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 | 0 | 2 | 2
+SIGNAL_INSTANCE | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.SI | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 | 0 | 2 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>.Q | MEM_DECODER/as_count<1> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>.Q | MEM_DECODER_MOD/as_count<1> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.D1 | 1889 | ? | 0 | 4096 | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 | NULL | NULL | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.D1 | 1889 | ? | 0 | 4096 | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 | NULL | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.D2 | 1890 | ? | 0 | 4096 | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 | NULL | NULL | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 2 | IV_TRUE | MEM_DECODER/as_count<0> | IV_TRUE | MEM_DECODER/as_count<1>
+SIGNAL | NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.D2 | 1890 | ? | 0 | 4096 | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 | NULL | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | MEM_DECODER_MOD/as_count<0> | IV_TRUE | MEM_DECODER_MOD/as_count<1>
 
-SRFF_INSTANCE | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.REG | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 | 0 | 1 | 1
+SRFF_INSTANCE | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.REG | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.D | 1888 | ? | 0 | 0 | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 | NULL | NULL | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.XOR | 0 | 7 | ALU_F
+NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.D | 1888 | ? | 0 | 0 | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 | NULL | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.Q | 1891 | ? | 0 | 0 | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 | NULL | NULL | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.REG | 0 | 8 | SRFF_Q
+NODE | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.Q | 1891 | ? | 0 | 0 | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 | NULL | NULL | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | SoftPfbk | $OpTx$$OpTx$FX_DC$11_INV$39 | cpld_COPY_0_COPY_0 | 2181038080 | 2 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>.Q | MEM_DECODER/as_count<1> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>.Q | MEM_DECODER_MOD/as_count<1> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
 NODE | $OpTx$$OpTx$FX_DC$11_INV$39.UIM | 1774 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | $OpTx$$OpTx$FX_DC$11_INV$39.Q | $OpTx$$OpTx$FX_DC$11_INV$39 | 1 | 0 | MC_UIM
 
 SIGNAL_INSTANCE | $OpTx$$OpTx$FX_DC$11_INV$39.SI | $OpTx$$OpTx$FX_DC$11_INV$39 | 0 | 2 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>.Q | MEM_DECODER/as_count<1> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>.Q | MEM_DECODER_MOD/as_count<1> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
 SIGNAL | NODE | $OpTx$$OpTx$FX_DC$11_INV$39.D1 | 1893 | ? | 0 | 4096 | $OpTx$$OpTx$FX_DC$11_INV$39 | NULL | NULL | $OpTx$$OpTx$FX_DC$11_INV$39.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
 SIGNAL | NODE | $OpTx$$OpTx$FX_DC$11_INV$39.D2 | 1894 | ? | 0 | 4096 | $OpTx$$OpTx$FX_DC$11_INV$39 | NULL | NULL | $OpTx$$OpTx$FX_DC$11_INV$39.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 2 | IV_FALSE | MEM_DECODER/as_count<0> | IV_FALSE | MEM_DECODER/as_count<1>
+SPPTERM | 2 | IV_FALSE | MEM_DECODER_MOD/as_count<0> | IV_FALSE | MEM_DECODER_MOD/as_count<1>
 
 SRFF_INSTANCE | $OpTx$$OpTx$FX_DC$11_INV$39.REG | $OpTx$$OpTx$FX_DC$11_INV$39 | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
@@ -1047,92 +1047,92 @@ NODE | $OpTx$$OpTx$FX_DC$11_INV$39.D | 1892 | ? | 0 | 0 | $OpTx$$OpTx$FX_DC$11_I
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
 NODE | $OpTx$$OpTx$FX_DC$11_INV$39.Q | 1895 | ? | 0 | 0 | $OpTx$$OpTx$FX_DC$11_INV$39 | NULL | NULL | $OpTx$$OpTx$FX_DC$11_INV$39.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | SoftPfbk | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF | cpld_COPY_0_COPY_0 | 2181038080 | 4 | 1
+MACROCELL_INSTANCE | SoftPfbk | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF | cpld_COPY_0_COPY_0 | 2181038080 | 4 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>.Q | MEM_DECODER/as_count<1> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>.Q | MEM_DECODER_MOD/as_count<1> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.UIM | 1775 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.Q | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.UIM | 1775 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.Q | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF | 1 | 0 | MC_UIM
 
-SIGNAL_INSTANCE | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.SI | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF | 0 | 4 | 2
+SIGNAL_INSTANCE | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.SI | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF | 0 | 4 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>.Q | MEM_DECODER/as_count<1> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>.Q | MEM_DECODER_MOD/as_count<1> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.D1 | 1897 | ? | 0 | 4096 | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF | NULL | NULL | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.D1 | 1897 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF | NULL | NULL | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.D2 | 1898 | ? | 0 | 4096 | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF | NULL | NULL | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_TRUE | MEM_DECODER/as_count<0> | IV_FALSE | MEM_DECODER/as_count<1>
-SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_FALSE | MEM_DECODER/as_count<0> | IV_TRUE | MEM_DECODER/as_count<1>
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.D2 | 1898 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF | NULL | NULL | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_TRUE | MEM_DECODER_MOD/as_count<0> | IV_FALSE | MEM_DECODER_MOD/as_count<1>
+SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | MEM_DECODER_MOD/as_count<0> | IV_TRUE | MEM_DECODER_MOD/as_count<1>
 
-SRFF_INSTANCE | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.REG | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF | 0 | 1 | 1
+SRFF_INSTANCE | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.REG | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.D | 1896 | ? | 0 | 0 | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF | NULL | NULL | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.XOR | 0 | 7 | ALU_F
+NODE | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.D | 1896 | ? | 0 | 0 | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF | NULL | NULL | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.Q | 1899 | ? | 0 | 0 | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF | NULL | NULL | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.REG | 0 | 8 | SRFF_Q
+NODE | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.Q | 1899 | ? | 0 | 0 | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF | NULL | NULL | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | SoftPfbk | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF | cpld_COPY_0_COPY_0 | 2181038080 | 5 | 1
+MACROCELL_INSTANCE | SoftPfbk | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF | cpld_COPY_0_COPY_0 | 2181038080 | 5 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<2>.Q | MEM_DECODER/as_count<2> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<2>.Q | MEM_DECODER_MOD/as_count<2> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>.Q | MEM_DECODER/as_count<1> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>.Q | MEM_DECODER_MOD/as_count<1> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.UIM | 1776 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.Q | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.UIM | 1776 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.Q | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF | 1 | 0 | MC_UIM
 
-SIGNAL_INSTANCE | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.SI | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF | 0 | 5 | 2
+SIGNAL_INSTANCE | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.SI | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF | 0 | 5 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
 NODE | as_IBUF | 1724 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | NULL | as_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<3>.Q | MEM_DECODER/as_count<3> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<3> | 1743 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<3>.Q | MEM_DECODER_MOD/as_count<3> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<0>.Q | MEM_DECODER/as_count<0> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<0> | 1744 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<0>.Q | MEM_DECODER_MOD/as_count<0> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<2>.Q | MEM_DECODER/as_count<2> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<2> | 1746 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<2>.Q | MEM_DECODER_MOD/as_count<2> | 1 | 0 | MC_UIM
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | MEM_DECODER/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER/as_count<1>.Q | MEM_DECODER/as_count<1> | 1 | 0 | MC_UIM
+NODE | MEM_DECODER_MOD/as_count<1> | 1745 | ? | 0 | 0 | cpld_COPY_0_COPY_0 | NULL | MEM_DECODER_MOD/as_count<1>.Q | MEM_DECODER_MOD/as_count<1> | 1 | 0 | MC_UIM
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.D1 | 1901 | ? | 0 | 4096 | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF | NULL | NULL | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.D1 | 1901 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF | NULL | NULL | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.D2 | 1902 | ? | 0 | 4096 | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF | NULL | NULL | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_FALSE | MEM_DECODER/as_count<0> | IV_FALSE | MEM_DECODER/as_count<2>
-SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_FALSE | MEM_DECODER/as_count<1> | IV_FALSE | MEM_DECODER/as_count<2>
-SPPTERM | 5 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER/as_count<3> | IV_TRUE | MEM_DECODER/as_count<0> | IV_TRUE | MEM_DECODER/as_count<1> | IV_TRUE | MEM_DECODER/as_count<2>
+SIGNAL | NODE | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.D2 | 1902 | ? | 0 | 4096 | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF | NULL | NULL | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | MEM_DECODER_MOD/as_count<0> | IV_FALSE | MEM_DECODER_MOD/as_count<2>
+SPPTERM | 4 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_FALSE | MEM_DECODER_MOD/as_count<1> | IV_FALSE | MEM_DECODER_MOD/as_count<2>
+SPPTERM | 5 | IV_TRUE | as_IBUF | IV_FALSE | MEM_DECODER_MOD/as_count<3> | IV_TRUE | MEM_DECODER_MOD/as_count<0> | IV_TRUE | MEM_DECODER_MOD/as_count<1> | IV_TRUE | MEM_DECODER_MOD/as_count<2>
 
-SRFF_INSTANCE | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.REG | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF | 0 | 1 | 1
+SRFF_INSTANCE | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.REG | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.D | 1900 | ? | 0 | 0 | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF | NULL | NULL | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.XOR | 0 | 7 | ALU_F
+NODE | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.D | 1900 | ? | 0 | 0 | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF | NULL | NULL | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.Q | 1903 | ? | 0 | 0 | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF | NULL | NULL | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.REG | 0 | 8 | SRFF_Q
+NODE | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.Q | 1903 | ? | 0 | 0 | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF | NULL | NULL | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.REG | 0 | 8 | SRFF_Q
 
 FB_INSTANCE | FOOBAR1_ | cpld_COPY_0_COPY_0 | 0 | 0 | 0
 FBPIN | 9 | NULL | 0 | clk_IBUF | 1 | NULL | 0 | 43 | 57344
-FBPIN | 10 | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2 | 1 | NULL | 0 | NULL | 0
+FBPIN | 10 | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 | 1 | NULL | 0 | NULL | 0
 FBPIN | 11 | clk_out_OBUF | 1 | NULL | 0 | clk_out | 1 | 44 | 57344
-FBPIN | 12 | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2 | 1 | NULL | 0 | NULL | 0
+FBPIN | 12 | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 | 1 | NULL | 0 | NULL | 0
 FBPIN | 13 | $OpTx$$OpTx$FX_DC$11_INV$39 | 1 | NULL | 0 | NULL | 0
-FBPIN | 14 | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF | 1 | NULL | 0 | NULL | 0 | 1 | 57344
-FBPIN | 15 | MEM_DECODER/as_count<3> | 1 | duart_dtack_IBUF | 1 | NULL | 0 | 2 | 49152
-FBPIN | 16 | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF | 1 | NULL | 0 | NULL | 0
-FBPIN | 17 | MEM_DECODER/as_count<2> | 1 | duart_irq_IBUF | 1 | NULL | 0 | 3 | 49152
-FBPIN | 18 | MEM_DECODER/as_count<0> | 1 | NULL | 0 | NULL | 0
+FBPIN | 14 | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF | 1 | NULL | 0 | NULL | 0 | 1 | 57344
+FBPIN | 15 | MEM_DECODER_MOD/as_count<3> | 1 | duart_dtack_IBUF | 1 | NULL | 0 | 2 | 49152
+FBPIN | 16 | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF | 1 | NULL | 0 | NULL | 0
+FBPIN | 17 | MEM_DECODER_MOD/as_count<2> | 1 | duart_irq_IBUF | 1 | NULL | 0 | 3 | 49152
+FBPIN | 18 | MEM_DECODER_MOD/as_count<0> | 1 | NULL | 0 | NULL | 0
 
 FB_INSTANCE | FOOBAR2_ | cpld_COPY_0_COPY_0 | 0 | 0 | 0
 FBPIN | 2 | ram_evn_cs_OBUF | 1 | NULL | 0 | ram_evn_cs | 1 | 29 | 49152
@@ -1147,11 +1147,11 @@ FBPIN | 5 | NULL | 0 | as_IBUF | 1 | NULL | 0 | 6 | 49152
 FBPIN | 8 | NULL | 0 | lds_IBUF | 1 | NULL | 0 | 7 | 49152
 FBPIN | 9 | NULL | 0 | uds_IBUF | 1 | NULL | 0 | 8 | 49152
 FBPIN | 11 | NULL | 0 | e_IBUF | 1 | NULL | 0 | 12 | 49152
-FBPIN | 14 | MEM_DECODER/as_count<1> | 1 | NULL | 0 | NULL | 0 | 13 | 49152
-FBPIN | 15 | BUS_ERR/berr_count<3> | 1 | NULL | 0 | NULL | 0 | 14 | 49152
-FBPIN | 16 | BUS_ERR/berr_count<2> | 1 | a17_IBUF | 1 | NULL | 0 | 18 | 49152
-FBPIN | 17 | BUS_ERR/berr_count<1> | 1 | NULL | 0 | NULL | 0 | 16 | 49152
-FBPIN | 18 | BUS_ERR/berr_count<0> | 1 | NULL | 0 | NULL | 0
+FBPIN | 14 | MEM_DECODER_MOD/as_count<1> | 1 | NULL | 0 | NULL | 0 | 13 | 49152
+FBPIN | 15 | BUS_ERR_MOD/berr_count<3> | 1 | NULL | 0 | NULL | 0 | 14 | 49152
+FBPIN | 16 | BUS_ERR_MOD/berr_count<2> | 1 | a17_IBUF | 1 | NULL | 0 | 18 | 49152
+FBPIN | 17 | BUS_ERR_MOD/berr_count<1> | 1 | NULL | 0 | NULL | 0 | 16 | 49152
+FBPIN | 18 | BUS_ERR_MOD/berr_count<0> | 1 | NULL | 0 | NULL | 0
 
 FB_INSTANCE | FOOBAR4_ | cpld_COPY_0_COPY_0 | 0 | 0 | 0
 FBPIN | 2 | NULL | 0 | a21_IBUF | 1 | NULL | 0 | 19 | 49152
@@ -1166,27 +1166,27 @@ FB_INSTANCE | INPUTPINS_FOOBAR5_ | cpld_COPY_0_COPY_0 | 0 | 0 | 0
 
 BUSINFO | IPL<2:0> | 3 | 0 | 1 | ipl<0> | 2 | ipl<1> | 1 | ipl<2> | 0
 
-FB_ORDER_OF_INPUTS | FOOBAR1_ | 9 | MEM_DECODER/Madd_as_count_add0000__and0001/MEM_DECODER/Madd_as_count_add0000__and0001_D2.UIM | NULL | 14 | MEM_DECODER/as_count<3> | NULL | 15 | MEM_DECODER/as_count<2>/MEM_DECODER/as_count<2>_RSTF.UIM | NULL | 21 | as | 6 | 23 | MEM_DECODER/as_count<0> | NULL
-FB_ORDER_OF_INPUTS | FOOBAR1_ | 25 | MEM_DECODER/as_count<1> | NULL | 32 | MEM_DECODER/as_count<2> | NULL | 53 | clk | 43
+FB_ORDER_OF_INPUTS | FOOBAR1_ | 9 | MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2.UIM | NULL | 14 | MEM_DECODER_MOD/as_count<3> | NULL | 15 | MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF.UIM | NULL | 21 | as | 6 | 23 | MEM_DECODER_MOD/as_count<0> | NULL
+FB_ORDER_OF_INPUTS | FOOBAR1_ | 25 | MEM_DECODER_MOD/as_count<1> | NULL | 32 | MEM_DECODER_MOD/as_count<2> | NULL | 53 | clk | 43
 
 FB_IMUX_INDEX | FOOBAR1_ | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 9 | -1 | -1 | -1 | -1 | 14 | 15 | -1 | -1 | -1 | -1 | -1 | 138 | -1 | 17 | -1 | 49 | -1 | -1 | -1 | -1 | -1 | -1 | 16 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 120
 
 
 FB_ORDER_OF_INPUTS | FOOBAR2_ | 1 | ram_evn_cs_OBUF | NULL | 3 | a17 | 18 | 4 | ram_odd_cs_OBUF | NULL | 5 | e | 12 | 7 | duart_cs_OBUF | NULL
-FB_ORDER_OF_INPUTS | FOOBAR2_ | 11 | uds | 8 | 14 | MEM_DECODER/as_count<3> | NULL | 15 | BUS_ERR/berr_count<2> | NULL | 16 | BUS_ERR/berr_count<1> | NULL | 17 | BUS_ERR/berr_count<0> | NULL
-FB_ORDER_OF_INPUTS | FOOBAR2_ | 20 | BUS_ERR/berr_count<3> | NULL | 21 | as | 6 | 23 | rom_evn_cs_OBUF | NULL | 25 | lds | 7 | 26 | berr_OBUF.UIM | NULL
+FB_ORDER_OF_INPUTS | FOOBAR2_ | 11 | uds | 8 | 14 | MEM_DECODER_MOD/as_count<3> | NULL | 15 | BUS_ERR_MOD/berr_count<2> | NULL | 16 | BUS_ERR_MOD/berr_count<1> | NULL | 17 | BUS_ERR_MOD/berr_count<0> | NULL
+FB_ORDER_OF_INPUTS | FOOBAR2_ | 20 | BUS_ERR_MOD/berr_count<3> | NULL | 21 | as | 6 | 23 | rom_evn_cs_OBUF | NULL | 25 | lds | 7 | 26 | berr_OBUF.UIM | NULL
 FB_ORDER_OF_INPUTS | FOOBAR2_ | 27 | duart_dtack | 2 | 34 | a21 | 19 | 45 | rom_odd_cs_OBUF | NULL
 
 FB_IMUX_INDEX | FOOBAR2_ | -1 | 19 | -1 | 111 | 22 | 131 | -1 | 25 | -1 | -1 | -1 | 137 | -1 | -1 | 14 | 51 | 52 | 53 | -1 | -1 | 50 | 138 | -1 | 68 | -1 | 142 | 23 | 130 | -1 | -1 | -1 | -1 | -1 | -1 | 105 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 70 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1
 
 
-FB_ORDER_OF_INPUTS | FOOBAR3_ | 5 | e | 12 | 11 | MEM_DECODER/Madd_as_count_add0000__and0000/MEM_DECODER/Madd_as_count_add0000__and0000_D2.UIM | NULL | 12 | $OpTx$$OpTx$FX_DC$11_INV$39.UIM | NULL | 13 | MEM_DECODER/as_count<1>/MEM_DECODER/as_count<1>_SETF.UIM | NULL | 14 | MEM_DECODER/as_count<3> | NULL
-FB_ORDER_OF_INPUTS | FOOBAR3_ | 16 | BUS_ERR/berr_count<1> | NULL | 17 | BUS_ERR/berr_count<0> | NULL | 20 | BUS_ERR/berr_count<3> | NULL | 21 | as | 6 | 23 | BUS_ERR/berr_count<2> | NULL
+FB_ORDER_OF_INPUTS | FOOBAR3_ | 5 | e | 12 | 11 | MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2.UIM | NULL | 12 | $OpTx$$OpTx$FX_DC$11_INV$39.UIM | NULL | 13 | MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF.UIM | NULL | 14 | MEM_DECODER_MOD/as_count<3> | NULL
+FB_ORDER_OF_INPUTS | FOOBAR3_ | 16 | BUS_ERR_MOD/berr_count<1> | NULL | 17 | BUS_ERR_MOD/berr_count<0> | NULL | 20 | BUS_ERR_MOD/berr_count<3> | NULL | 21 | as | 6 | 23 | BUS_ERR_MOD/berr_count<2> | NULL
 
 FB_IMUX_INDEX | FOOBAR3_ | -1 | -1 | -1 | -1 | -1 | 131 | -1 | -1 | -1 | -1 | -1 | 11 | 12 | 13 | 14 | -1 | 52 | 53 | -1 | -1 | 50 | 138 | -1 | 51 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1
 
 
-FB_ORDER_OF_INPUTS | FOOBAR4_ | 3 | a17 | 18 | 8 | rw | 5 | 11 | uds | 8 | 14 | MEM_DECODER/as_count<3> | NULL | 21 | as | 6
+FB_ORDER_OF_INPUTS | FOOBAR4_ | 3 | a17 | 18 | 8 | rw | 5 | 11 | uds | 8 | 14 | MEM_DECODER_MOD/as_count<3> | NULL | 21 | as | 6
 FB_ORDER_OF_INPUTS | FOOBAR4_ | 23 | rom_evn_cs_OBUF | NULL | 25 | lds | 7 | 34 | a21 | 19 | 44 | duart_irq | 3 | 45 | rom_odd_cs_OBUF | NULL
 
 FB_IMUX_INDEX | FOOBAR4_ | -1 | -1 | -1 | 111 | -1 | -1 | -1 | -1 | 134 | -1 | -1 | 137 | -1 | -1 | 14 | -1 | -1 | -1 | -1 | -1 | -1 | 138 | -1 | 68 | -1 | 142 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 105 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 132 | 70 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1

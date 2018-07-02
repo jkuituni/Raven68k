@@ -3,14 +3,14 @@ Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.22 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.20 secs
  
 --> Parameter xsthdpdir set to C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.25 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.22 secs
  
 --> Reading design: cpld.prj
 
@@ -77,8 +77,7 @@ wysiwyg                            : NO
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/irq.vhd" in Library work.
-Entity <irq> compiled.
-Entity <irq> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity irq is up to date.
 Compiling vhdl file "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/bus_error.vhd" in Library work.
 Architecture behavioral of Entity bus_error is up to date.
 Compiling vhdl file "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/mem_decoder.vhd" in Library work.
@@ -86,20 +85,21 @@ Architecture behavioral of Entity mem_decoder is up to date.
 Compiling vhdl file "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/dtack.vhd" in Library work.
 Architecture behavioral of Entity dtack is up to date.
 Compiling vhdl file "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.vhd" in Library work.
-Architecture behavioral of Entity cpld is up to date.
+Entity <cpld> compiled.
+Entity <cpld> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
 Analyzing hierarchy for entity <cpld> in library <work> (architecture <behavioral>).
 
-Analyzing hierarchy for entity <irq> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <irq> in library <work> (architecture <behavioral>).
 
-Analyzing hierarchy for entity <bus_error> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <bus_error> in library <work> (architecture <behavioral>).
 
-Analyzing hierarchy for entity <mem_decoder> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <mem_decoder> in library <work> (architecture <behavioral>).
 
-Analyzing hierarchy for entity <dtack> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <dtack> in library <work> (architecture <behavioral>).
 
 
 =========================================================================
@@ -108,16 +108,16 @@ Analyzing hierarchy for entity <dtack> in library <work> (architecture <Behavior
 Analyzing Entity <cpld> in library <work> (Architecture <behavioral>).
 Entity <cpld> analyzed. Unit <cpld> generated.
 
-Analyzing Entity <irq> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <irq> in library <work> (Architecture <behavioral>).
 Entity <irq> analyzed. Unit <irq> generated.
 
-Analyzing Entity <bus_error> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <bus_error> in library <work> (Architecture <behavioral>).
 Entity <bus_error> analyzed. Unit <bus_error> generated.
 
-Analyzing Entity <mem_decoder> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <mem_decoder> in library <work> (Architecture <behavioral>).
 Entity <mem_decoder> analyzed. Unit <mem_decoder> generated.
 
-Analyzing Entity <dtack> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <dtack> in library <work> (Architecture <behavioral>).
 Entity <dtack> analyzed. Unit <dtack> generated.
 
 
@@ -276,12 +276,12 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 11.00 secs
-Total CPU time to Xst completion: 10.91 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 6.69 secs
  
 --> 
 
-Total memory usage is 216004 kilobytes
+Total memory usage is 216132 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   10 (   0 filtered)
