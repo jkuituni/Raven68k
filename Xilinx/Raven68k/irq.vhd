@@ -45,7 +45,7 @@ begin
 		t_irq <= "000";
 		
 		-- only duart has an IRQ at the moment
-		if duart_irq = '1' then
+		if duart_irq = '0' then
 			t_irq <= "000";
 		elsif duart_irq = '0' then
 			t_irq <= "100"; 						-- IRQ 5
