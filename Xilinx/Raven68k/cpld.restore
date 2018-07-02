@@ -842,6 +842,7 @@ proc restore { { project_dir "" } } {
       "dtack.vhd" 
       "irq.vhd" 
       "mem_decoder.vhd" 
+      "tb_cpld.vhd" 
       "tb_dtack.vhd" 
       "tb_mem_decoder.vhd"}
 
@@ -858,7 +859,7 @@ proc restore { { project_dir "" } } {
   } "A problem occured while restoring imported files."
 
   set process_props { 
-      "A" "" "" "" "PROP_BehavioralSimTop" "Architecture|cpld|Behavioral" 
+      "A" "" "" "" "PROP_BehavioralSimTop" "Architecture|tb_cpld|behavior" 
       "A" "" "" "" "PROP_CPLDFitkeepio" "false" 
       "A" "" "" "" "PROP_CPLDFitterminate_xc9500xl" "Keeper" 
       "A" "" "" "" "PROP_CompxlibAbelLib" "true" 
@@ -884,7 +885,7 @@ proc restore { { project_dir "" } } {
       "A" "" "" "" "PROP_PartitionCreateDelete" "" 
       "A" "" "" "" "PROP_PartitionForceSynth" "" 
       "A" "" "" "" "PROP_PlsClockEnable" "true" 
-      "A" "" "" "" "PROP_PostFitSimTop" "Architecture|cpld|Behavioral" 
+      "A" "" "" "" "PROP_PostFitSimTop" "Architecture|tb_cpld|behavior" 
       "A" "" "" "" "PROP_PostParSimTop" "" 
       "A" "" "" "" "PROP_SimDo" "true" 
       "A" "" "" "" "PROP_SimModelGenerateTestbenchFile" "false" 

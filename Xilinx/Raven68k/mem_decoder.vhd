@@ -49,7 +49,7 @@ architecture Behavioral of mem_decoder is
 	
 begin
 	
-	process (as)
+	process (as, a21, a17, uds, lds, as_count)
 	begin
 		
 		if as = '1' then

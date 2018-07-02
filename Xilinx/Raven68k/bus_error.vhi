@@ -1,5 +1,5 @@
 
--- VHDL Instantiation Created from source file bus_error.vhd -- 15:43:06 06/30/2018
+-- VHDL Instantiation Created from source file bus_error.vhd -- 11:16:34 07/02/2018
 --
 -- Notes: 
 -- 1) This instantiation template has been automatically generated using types

@@ -4,13 +4,13 @@ Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.28 secs
+Total CPU time to Xst completion: 0.22 secs
  
 --> Parameter xsthdpdir set to C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/xst
 
 
 Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.28 secs
+Total CPU time to Xst completion: 0.25 secs
  
 --> Reading design: cpld.prj
 
@@ -86,8 +86,7 @@ Architecture behavioral of Entity mem_decoder is up to date.
 Compiling vhdl file "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/dtack.vhd" in Library work.
 Architecture behavioral of Entity dtack is up to date.
 Compiling vhdl file "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.vhd" in Library work.
-Entity <cpld> compiled.
-Entity <cpld> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity cpld is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -116,8 +115,6 @@ Analyzing Entity <bus_error> in library <work> (Architecture <Behavioral>).
 Entity <bus_error> analyzed. Unit <bus_error> generated.
 
 Analyzing Entity <mem_decoder> in library <work> (Architecture <Behavioral>).
-WARNING:Xst:819 - "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/mem_decoder.vhd" line 52: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <as_count>, <a21>, <a17>, <uds>, <lds>
 Entity <mem_decoder> analyzed. Unit <mem_decoder> generated.
 
 Analyzing Entity <dtack> in library <work> (Architecture <Behavioral>).
@@ -279,14 +276,14 @@ Cell Usage :
 =========================================================================
 
 
-Total REAL time to Xst completion: 10.00 secs
-Total CPU time to Xst completion: 9.22 secs
+Total REAL time to Xst completion: 11.00 secs
+Total CPU time to Xst completion: 10.91 secs
  
 --> 
 
-Total memory usage is 215876 kilobytes
+Total memory usage is 216004 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   11 (   0 filtered)
+Number of warnings :   10 (   0 filtered)
 Number of infos    :    2 (   0 filtered)
 
