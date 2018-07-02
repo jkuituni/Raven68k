@@ -318,3 +318,53 @@ XSLTProcess -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" cpld_bui
 tsim -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise cpld cpld.nga
 taengine -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -f cpld -w --format html1 -l C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld_html/tim/timing_report.htm
 hprep6 -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -s IEEE1149 -n cpld -i cpld
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+ngdbuild -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -dd _ngo  -i -p xc9572xl-VQ44-5 "cpld.ngc" cpld.ngd
+cpldfit -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -p xc9572xl-5-VQ44 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew fast -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper cpld.ngd
+XSLTProcess -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" cpld_build.xml
+tsim -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise cpld cpld.nga
+taengine -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -f cpld -w --format html1 -l C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld_html/tim/timing_report.htm
+hprep6 -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -s IEEE1149 -n cpld -i cpld
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+ngdbuild -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -dd _ngo  -i -p xc9572xl-VQ44-5 "cpld.ngc" cpld.ngd
+cpldfit -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -p xc9572xl-5-VQ44 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew fast -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper cpld.ngd
+XSLTProcess -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" cpld_build.xml
+tsim -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise cpld cpld.nga
+taengine -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -f cpld -w --format html1 -l C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld_html/tim/timing_report.htm
+hprep6 -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -s IEEE1149 -n cpld -i cpld
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+ngdbuild -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -dd _ngo  -i -p xc9572xl-VQ44-5 "cpld.ngc" cpld.ngd
+cpldfit -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -p xc9572xl-5-VQ44 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew fast -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper cpld.ngd
+XSLTProcess -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" cpld_build.xml
+tsim -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise cpld cpld.nga
+taengine -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -f cpld -w --format html1 -l C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld_html/tim/timing_report.htm
+hprep6 -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -s IEEE1149 -n cpld -i cpld
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+ngdbuild -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -dd _ngo  -i -p xc9572xl-VQ44-5 "cpld.ngc" cpld.ngd
+cpldfit -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -p xc9572xl-5-VQ44 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew fast -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper cpld.ngd
+XSLTProcess -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" cpld_build.xml
+tsim -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise cpld cpld.nga
+taengine -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -f cpld -w --format html1 -l C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld_html/tim/timing_report.htm
+hprep6 -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -s IEEE1149 -n cpld -i cpld
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+xst -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -ifn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst" -ofn "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr"
+ngdbuild -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -dd _ngo  -i -p xc9572xl-VQ44-5 "cpld.ngc" cpld.ngd
+cpldfit -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -p xc9572xl-5-VQ44 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew fast -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper cpld.ngd
+XSLTProcess -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" cpld_build.xml
+tsim -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise cpld cpld.nga
+taengine -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -intstyle ise -f cpld -w --format html1 -l C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld_html/tim/timing_report.htm
+hprep6 -ise "C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise" -s IEEE1149 -n cpld -i cpld

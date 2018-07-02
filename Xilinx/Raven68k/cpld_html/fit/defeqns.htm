@@ -6,7 +6,7 @@
 ********** Mapped Logic **********
 </td></tr><tr><td>
 </td></tr><tr><td>
-$OpTx$$OpTx$FX_DC$11_INV$39 <= (NOT MEM_DECODER_MOD/as_count(0) AND 
+$OpTx$$OpTx$FX_DC$19_INV$47 <= (NOT MEM_DECODER_MOD/as_count(0) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT MEM_DECODER_MOD/as_count(1));
 </td></tr><tr><td>
 FTCPE_BUS_ERR_MOD/berr_count0: FTCPE port map (BUS_ERR_MOD/berr_count(0),BUS_ERR_MOD/berr_count_T(0),e,'0','0');
@@ -40,41 +40,41 @@ MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	MEM_DECODER_MOD/as_count(1) AND MEM_DECODER_MOD/as_count(2));
 </td></tr><tr><td>
 FDCPE_MEM_DECODER_MOD/as_count0: FDCPE port map (MEM_DECODER_MOD/as_count(0),'0','0',MEM_DECODER_MOD/as_count_CLR(0),MEM_DECODER_MOD/as_count_PRE(0));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_CLR(0) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_CLR(0) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	MEM_DECODER_MOD/as_count(0));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_PRE(0) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_PRE(0) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT MEM_DECODER_MOD/as_count(0));
 </td></tr><tr><td>
 </td></tr><tr><td>
-MEM_DECODER_MOD/as_count(1)/MEM_DECODER_MOD/as_count(1)_SETF <= ((as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+MEM_DECODER_MOD/as_count(1)/MEM_DECODER_MOD/as_count(1)_SETF <= ((NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	MEM_DECODER_MOD/as_count(0) AND NOT MEM_DECODER_MOD/as_count(1))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT MEM_DECODER_MOD/as_count(0) AND MEM_DECODER_MOD/as_count(1)));
 </td></tr><tr><td>
 FDCPE_MEM_DECODER_MOD/as_count1: FDCPE port map (MEM_DECODER_MOD/as_count(1),'0','0',MEM_DECODER_MOD/as_count_CLR(1),MEM_DECODER_MOD/as_count_PRE(1));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_CLR(1) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_CLR(1) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT MEM_DECODER_MOD/as_count(1)/MEM_DECODER_MOD/as_count(1)_SETF);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_PRE(1) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 AND NOT $OpTx$$OpTx$FX_DC$11_INV$39);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_PRE(1) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 AND NOT $OpTx$$OpTx$FX_DC$19_INV$47);
 </td></tr><tr><td>
 </td></tr><tr><td>
-MEM_DECODER_MOD/as_count(2)/MEM_DECODER_MOD/as_count(2)_RSTF <= ((as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+MEM_DECODER_MOD/as_count(2)/MEM_DECODER_MOD/as_count(2)_RSTF <= ((NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT MEM_DECODER_MOD/as_count(0) AND NOT MEM_DECODER_MOD/as_count(2))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT MEM_DECODER_MOD/as_count(1) AND NOT MEM_DECODER_MOD/as_count(2))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	MEM_DECODER_MOD/as_count(0) AND MEM_DECODER_MOD/as_count(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	MEM_DECODER_MOD/as_count(2)));
 </td></tr><tr><td>
 FDCPE_MEM_DECODER_MOD/as_count2: FDCPE port map (MEM_DECODER_MOD/as_count(2),'0','0',MEM_DECODER_MOD/as_count(2)/MEM_DECODER_MOD/as_count(2)_RSTF,MEM_DECODER_MOD/as_count_PRE(2));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_PRE(2) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_PRE(2) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT MEM_DECODER_MOD/as_count(2)/MEM_DECODER_MOD/as_count(2)_RSTF);
 </td></tr><tr><td>
 FDCPE_MEM_DECODER_MOD/as_count3: FDCPE port map (MEM_DECODER_MOD/as_count(3),'0','0',MEM_DECODER_MOD/as_count_CLR(3),MEM_DECODER_MOD/as_count_PRE(3));
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_CLR(3) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_CLR(3) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2);
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_PRE(3) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEM_DECODER_MOD/as_count_PRE(3) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	MEM_DECODER_MOD/as_count(0) AND MEM_DECODER_MOD/as_count(1) AND 
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	MEM_DECODER_MOD/as_count(2));
 </td></tr><tr><td>
@@ -88,15 +88,14 @@ FDCPE_berr: FDCPE port map (berr,berr_D,e,'0','0');
 clk_out <= NOT clk;
 </td></tr><tr><td>
 </td></tr><tr><td>
-dtack_out <= ((NOT duart_cs AND duart_dtack)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (duart_cs AND ram_evn_cs AND ram_odd_cs AND rom_evn_cs AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	rom_odd_cs));
+dtack_out <= ((as)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (a21 AND a17 AND MEM_DECODER_MOD/as_count(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	duart_dtack)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT a21 AND MEM_DECODER_MOD/as_count(3) AND uds AND lds)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT a17 AND MEM_DECODER_MOD/as_count(3) AND uds AND lds));
 </td></tr><tr><td>
 </td></tr><tr><td>
-duart_cs <= ((NOT as)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (duart_cs AND NOT a17)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (duart_cs AND NOT MEM_DECODER_MOD/as_count(3))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (duart_cs AND NOT a21));
+duart_cs <= NOT ((NOT as AND a21 AND a17 AND MEM_DECODER_MOD/as_count(3)));
 </td></tr><tr><td>
 </td></tr><tr><td>
 ipl(0) <= '0';
@@ -111,34 +110,18 @@ ipl(2) <= NOT duart_irq;
 oe <= NOT rw;
 </td></tr><tr><td>
 </td></tr><tr><td>
-ram_evn_cs <= ((NOT as)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (ram_evn_cs AND NOT MEM_DECODER_MOD/as_count(3))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (ram_evn_cs AND a21)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (ram_evn_cs AND MEM_DECODER_MOD/as_count(3) AND uds)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (MEM_DECODER_MOD/as_count(3) AND NOT a21 AND uds));
+ram_evn_cs <= NOT ((NOT as AND NOT a21 AND MEM_DECODER_MOD/as_count(3) AND NOT uds));
 </td></tr><tr><td>
 </td></tr><tr><td>
-ram_odd_cs <= ((NOT as)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (ram_odd_cs AND NOT MEM_DECODER_MOD/as_count(3))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (ram_odd_cs AND a21)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (ram_odd_cs AND MEM_DECODER_MOD/as_count(3) AND lds)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (MEM_DECODER_MOD/as_count(3) AND NOT a21 AND lds));
+ram_odd_cs <= NOT ((NOT as AND NOT a21 AND MEM_DECODER_MOD/as_count(3) AND NOT lds));
 </td></tr><tr><td>
 </td></tr><tr><td>
-rom_evn_cs <= ((NOT as)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (rom_evn_cs AND a17 AND MEM_DECODER_MOD/as_count(3))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (rom_evn_cs AND MEM_DECODER_MOD/as_count(3) AND NOT a21)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (rom_evn_cs AND MEM_DECODER_MOD/as_count(3) AND a21 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	uds)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT a17 AND MEM_DECODER_MOD/as_count(3) AND a21 AND uds));
+rom_evn_cs <= NOT (((NOT as AND NOT MEM_DECODER_MOD/as_count(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT as AND a21 AND NOT a17 AND NOT uds)));
 </td></tr><tr><td>
 </td></tr><tr><td>
-rom_odd_cs <= ((NOT as)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (rom_odd_cs AND a17 AND MEM_DECODER_MOD/as_count(3))
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (rom_odd_cs AND MEM_DECODER_MOD/as_count(3) AND NOT a21)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (rom_odd_cs AND MEM_DECODER_MOD/as_count(3) AND a21 AND 
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	lds)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT a17 AND MEM_DECODER_MOD/as_count(3) AND a21 AND lds));
+rom_odd_cs <= NOT (((NOT as AND NOT MEM_DECODER_MOD/as_count(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT as AND a21 AND NOT a17 AND NOT lds)));
 </td></tr><tr><td>
 Register Legend:
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FDCPE (Q,D,C,CLR,PRE,CE); 

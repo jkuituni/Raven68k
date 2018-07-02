@@ -2,6 +2,8 @@ AUTO_TS_P2P:FROM:as:TO:duart_cs:1
 AUTO_TS_P2P:FROM:a21:TO:duart_cs:1
 AUTO_TS_P2P:FROM:a17:TO:duart_cs:1
 AUTO_TS_F2P:FROM:MEM_DECODER_MOD/as_count<3>.Q:TO:duart_cs:1
+AUTO_TS_P2P:FROM:e:TO:berr:1
+AUTO_TS_F2P:FROM:berr_OBUF.Q:TO:berr:1
 AUTO_TS_P2P:FROM:as:TO:ram_evn_cs:1
 AUTO_TS_P2P:FROM:a21:TO:ram_evn_cs:1
 AUTO_TS_P2P:FROM:uds:TO:ram_evn_cs:1
@@ -20,8 +22,6 @@ AUTO_TS_P2P:FROM:a21:TO:rom_odd_cs:1
 AUTO_TS_P2P:FROM:a17:TO:rom_odd_cs:1
 AUTO_TS_P2P:FROM:lds:TO:rom_odd_cs:1
 AUTO_TS_F2P:FROM:MEM_DECODER_MOD/as_count<3>.Q:TO:rom_odd_cs:1
-AUTO_TS_P2P:FROM:e:TO:berr:1
-AUTO_TS_F2P:FROM:berr_OBUF.Q:TO:berr:1
 AUTO_TS_P2P:FROM:as:TO:dtack_out:1
 AUTO_TS_P2P:FROM:a21:TO:dtack_out:1
 AUTO_TS_P2P:FROM:a17:TO:dtack_out:1

@@ -1,7 +1,7 @@
  
 cpldfit:  version K.31                              Xilinx Inc.
                                   Fitter Report
-Design Name: cpld                                Date:  7- 2-2018, 12:24PM
+Design Name: cpld                                Date:  7- 2-2018,  3:26PM
 Device Used: XC9572XL-5-VQ44
 Fitting Status: Successful
 
@@ -9,18 +9,18 @@ Fitting Status: Successful
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-25 /72  ( 35%) 60  /360  ( 17%) 46 /216 ( 21%)   9  /72  ( 12%) 22 /34  ( 65%)
+25 /72  ( 35%) 45  /360  ( 12%) 41 /216 ( 19%)   9  /72  ( 12%) 22 /34  ( 65%)
 
 ** Function Block Resources **
 
 Function    Mcells      FB Inps     Pterms      IO          
 Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
-FB1           9/18        8/54       15/90       1/ 9
-FB2           5/18       18/54       19/90       5/ 9
+FB1           5/18        8/54        9/90       1/ 9
+FB2           5/18       13/54       10/90       5/ 9
 FB3           5/18       10/54       14/90       0/ 9
-FB4           6/18       10/54       12/90       6/ 7
+FB4          10/18       10/54       12/90       6/ 7
              -----       -----       -----      -----    
-             25/72       46/216      60/360     12/34 
+             25/72       41/216      45/360     12/34 
 
 * - Resource is exhausted
 
@@ -71,35 +71,35 @@ WARNING:Cpld:1239 - The global clock designation (BUFG) on signal 'clk_IBUF' is
 Signal                                                                                            Total Total Loc     Pin  Pin     Pin     Pwr  Slew Reg Init
 Name                                                                                              Pts   Inps          No.  Type    Use     Mode Rate State
 clk_out                                                                                           1     1     FB1_11  44   GCK/I/O O       STD  FAST 
-ram_evn_cs                                                                                        5     5     FB2_2   29   I/O     O       STD  FAST 
-ram_odd_cs                                                                                        5     5     FB2_5   30   I/O     O       STD  FAST 
+ram_evn_cs                                                                                        1     4     FB2_2   29   I/O     O       STD  FAST 
+ram_odd_cs                                                                                        1     4     FB2_5   30   I/O     O       STD  FAST 
 berr                                                                                              3     7     FB2_6   31   I/O     O       STD  FAST RESET
-duart_cs                                                                                          4     5     FB2_8   32   I/O     O       STD  FAST 
-dtack_out                                                                                         2     6     FB2_15  37   I/O     O       STD  FAST 
+duart_cs                                                                                          1     4     FB2_8   32   I/O     O       STD  FAST 
+dtack_out                                                                                         4     7     FB2_15  37   I/O     O       STD  FAST 
 ipl<2>                                                                                            1     1     FB4_5   20   I/O     O       STD  FAST 
 ipl<1>                                                                                            0     0     FB4_8   21   I/O     O       STD  FAST 
 ipl<0>                                                                                            0     0     FB4_11  22   I/O     O       STD  FAST 
 oe                                                                                                1     1     FB4_14  23   I/O     O       STD  FAST 
-rom_evn_cs                                                                                        5     6     FB4_15  27   I/O     O       STD  FAST 
-rom_odd_cs                                                                                        5     6     FB4_17  28   I/O     O       STD  FAST 
+rom_evn_cs                                                                                        2     5     FB4_15  27   I/O     O       STD  FAST 
+rom_odd_cs                                                                                        2     5     FB4_17  28   I/O     O       STD  FAST 
 
 ** 13 Buried Nodes **
 
 Signal                                                                                            Total Total Loc     Pwr  Reg Init
 Name                                                                                              Pts   Inps          Mode State
-MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2  1     3     FB1_10  STD  
-MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2  1     2     FB1_12  STD  
-$OpTx$$OpTx$FX_DC$11_INV$39                                                                       1     2     FB1_13  STD  
-MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF                                      2     4     FB1_14  STD  
-MEM_DECODER_MOD/as_count<3>                                                                       2     6     FB1_15  STD  RESET
-MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF                                      3     5     FB1_16  STD  
-MEM_DECODER_MOD/as_count<2>                                                                       2     4     FB1_17  STD  RESET
-MEM_DECODER_MOD/as_count<0>                                                                       2     3     FB1_18  STD  RESET
+MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2  1     3     FB1_15  STD  
+MEM_DECODER_MOD/as_count<3>                                                                       2     6     FB1_16  STD  RESET
+MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF                                      3     5     FB1_17  STD  
+MEM_DECODER_MOD/as_count<2>                                                                       2     4     FB1_18  STD  RESET
 MEM_DECODER_MOD/as_count<1>                                                                       2     5     FB3_14  STD  RESET
 BUS_ERR_MOD/berr_count<3>                                                                         3     6     FB3_15  STD  RESET
 BUS_ERR_MOD/berr_count<2>                                                                         3     5     FB3_16  STD  RESET
 BUS_ERR_MOD/berr_count<1>                                                                         3     4     FB3_17  STD  RESET
 BUS_ERR_MOD/berr_count<0>                                                                         3     6     FB3_18  STD  RESET
+MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2  1     2     FB4_12  STD  
+$OpTx$$OpTx$FX_DC$19_INV$47                                                                       1     2     FB4_13  STD  
+MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF                                      2     4     FB4_16  STD  
+MEM_DECODER_MOD/as_count<0>                                                                       2     3     FB4_18  STD  RESET
 
 ** 10 Inputs **
 
@@ -145,22 +145,18 @@ Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB1_7         (b)     
 (unused)              0       0     0   5     FB1_8   42    I/O     
 (unused)              0       0     0   5     FB1_9   43    GCK/I/O I
-MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2
-                      1       0     0   4     FB1_10        (b)     (b)
+(unused)              0       0     0   5     FB1_10        (b)     
 clk_out               1       0     0   4     FB1_11  44    GCK/I/O O
-MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2
-                      1       0     0   4     FB1_12        (b)     (b)
-$OpTx$$OpTx$FX_DC$11_INV$39
-                      1       0     0   4     FB1_13        (b)     (b)
-MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF
-                      2       0     0   3     FB1_14  1     GCK/I/O (b)
+(unused)              0       0     0   5     FB1_12        (b)     
+(unused)              0       0     0   5     FB1_13        (b)     
+(unused)              0       0     0   5     FB1_14  1     GCK/I/O 
+MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2
+                      1       0     0   4     FB1_15  2     I/O     I
 MEM_DECODER_MOD/as_count<3>
-                      2       0     0   3     FB1_15  2     I/O     I
+                      2       0     0   3     FB1_16        (b)     (b)
 MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF
-                      3       0     0   2     FB1_16        (b)     (b)
+                      3       0     0   2     FB1_17  3     I/O     I
 MEM_DECODER_MOD/as_count<2>
-                      2       0     0   3     FB1_17  3     I/O     I
-MEM_DECODER_MOD/as_count<0>
                       2       0     0   3     FB1_18        (b)     (b)
 
 Signals Used by Logic in Function Block
@@ -170,64 +166,55 @@ Signals Used by Logic in Function Block
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
+clk_out              .......X................................ 1
 MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 
                      .XXX.................................... 3
-clk_out              .......X................................ 1
-MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 
-                     .XX..................................... 2
-$OpTx$$OpTx$FX_DC$11_INV$39 
-                     .XX..................................... 2
-MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF 
-                     .XX..XX................................. 4
 MEM_DECODER_MOD/as_count<3> 
                      XXXX.XX................................. 6
 MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF 
                      .XXX.XX................................. 5
 MEM_DECODER_MOD/as_count<2> 
                      X...XXX................................. 4
-MEM_DECODER_MOD/as_count<0> 
-                     .X...XX................................. 3
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB2  ***********************************
-Number of function block inputs used/remaining:               18/36
-Number of signals used by logic mapping into function block:  18
+Number of function block inputs used/remaining:               13/41
+Number of signals used by logic mapping into function block:  13
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB2_1         (b)     
-ram_evn_cs            5       0     0   0     FB2_2   29    I/O     O
+ram_evn_cs            1       0     0   4     FB2_2   29    I/O     O
 (unused)              0       0     0   5     FB2_3         (b)     
 (unused)              0       0     0   5     FB2_4         (b)     
-ram_odd_cs            5       0     0   0     FB2_5   30    I/O     O
+ram_odd_cs            1       0     0   4     FB2_5   30    I/O     O
 berr                  3       0     0   2     FB2_6   31    I/O     O
 (unused)              0       0     0   5     FB2_7         (b)     
-duart_cs              4       0     0   1     FB2_8   32    I/O     O
+duart_cs              1       0     0   4     FB2_8   32    I/O     O
 (unused)              0       0     0   5     FB2_9   33    GSR/I/O 
 (unused)              0       0     0   5     FB2_10        (b)     
 (unused)              0       0     0   5     FB2_11  34    GTS/I/O 
 (unused)              0       0     0   5     FB2_12        (b)     
 (unused)              0       0     0   5     FB2_13        (b)     
 (unused)              0       0     0   5     FB2_14  36    GTS/I/O 
-dtack_out             2       0     0   3     FB2_15  37    I/O     O
+dtack_out             4       0     0   1     FB2_15  37    I/O     O
 (unused)              0       0     0   5     FB2_16        (b)     
 (unused)              0       0     0   5     FB2_17  38    I/O     
 (unused)              0       0     0   5     FB2_18        (b)     
 
 Signals Used by Logic in Function Block
-  1: BUS_ERR_MOD/berr_count<0>     7: a21               13: lds 
-  2: BUS_ERR_MOD/berr_count<1>     8: as                14: ram_evn_cs 
-  3: BUS_ERR_MOD/berr_count<2>     9: berr              15: ram_odd_cs 
-  4: BUS_ERR_MOD/berr_count<3>    10: duart_cs          16: rom_evn_cs 
-  5: MEM_DECODER_MOD/as_count<3>  11: duart_dtack       17: rom_odd_cs 
-  6: a17                          12: e                 18: uds 
+  1: BUS_ERR_MOD/berr_count<0>     6: a17               10: duart_dtack 
+  2: BUS_ERR_MOD/berr_count<1>     7: a21               11: e 
+  3: BUS_ERR_MOD/berr_count<2>     8: as                12: lds 
+  4: BUS_ERR_MOD/berr_count<3>     9: berr              13: uds 
+  5: MEM_DECODER_MOD/as_count<3> 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-ram_evn_cs           ....X.XX.....X...X...................... 5
-ram_odd_cs           ....X.XX....X.X......................... 5
-berr                 XXXX...XX..X............................ 7
-duart_cs             ....XXXX.X.............................. 5
-dtack_out            .........XX..XXXX....................... 6
+ram_evn_cs           ....X.XX....X........................... 4
+ram_odd_cs           ....X.XX...X............................ 4
+berr                 XXXX...XX.X............................. 7
+duart_cs             ....XXXX................................ 4
+dtack_out            ....XXXX.X.XX........................... 7
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB3  ***********************************
@@ -260,7 +247,7 @@ BUS_ERR_MOD/berr_count<0>
                       3       0     0   2     FB3_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: $OpTx$$OpTx$FX_DC$11_INV$39   5: BUS_ERR_MOD/berr_count<3>                                                                          8: MEM_DECODER_MOD/as_count<3> 
+  1: $OpTx$$OpTx$FX_DC$19_INV$47   5: BUS_ERR_MOD/berr_count<3>                                                                          8: MEM_DECODER_MOD/as_count<3> 
   2: BUS_ERR_MOD/berr_count<0>     6: MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2   9: as 
   3: BUS_ERR_MOD/berr_count<1>     7: MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF                                      10: e 
   4: BUS_ERR_MOD/berr_count<2>   
@@ -295,28 +282,40 @@ ipl<1>                0       0     0   5     FB4_8   21    I/O     O
 (unused)              0       0     0   5     FB4_9         (b)     
 (unused)              0       0     0   5     FB4_10        (b)     
 ipl<0>                0       0     0   5     FB4_11  22    I/O     O
-(unused)              0       0     0   5     FB4_12        (b)     
-(unused)              0       0     0   5     FB4_13        (b)     
+MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2
+                      1       0     0   4     FB4_12        (b)     (b)
+$OpTx$$OpTx$FX_DC$19_INV$47
+                      1       0     0   4     FB4_13        (b)     (b)
 oe                    1       0     0   4     FB4_14  23    I/O     O
-rom_evn_cs            5       0     0   0     FB4_15  27    I/O     O
-(unused)              0       0     0   5     FB4_16        (b)     
-rom_odd_cs            5       0     0   0     FB4_17  28    I/O     O
-(unused)              0       0     0   5     FB4_18        (b)     
+rom_evn_cs            2       0     0   3     FB4_15  27    I/O     O
+MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF
+                      2       0     0   3     FB4_16        (b)     (b)
+rom_odd_cs            2       0     0   3     FB4_17  28    I/O     O
+MEM_DECODER_MOD/as_count<0>
+                      2       0     0   3     FB4_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: MEM_DECODER_MOD/as_count<3>   5: duart_irq          8: rom_odd_cs 
-  2: a17                           6: lds                9: rw 
-  3: a21                           7: rom_evn_cs        10: uds 
-  4: as                          
+  1: MEM_DECODER_MOD/as_count<0>   5: a21                8: lds 
+  2: MEM_DECODER_MOD/as_count<1>   6: as                 9: rw 
+  3: MEM_DECODER_MOD/as_count<3>   7: duart_irq         10: uds 
+  4: a17                         
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-ipl<2>               ....X................................... 1
+ipl<2>               ......X................................. 1
 ipl<1>               ........................................ 0
 ipl<0>               ........................................ 0
+MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 
+                     XX...................................... 2
+$OpTx$$OpTx$FX_DC$19_INV$47 
+                     XX...................................... 2
 oe                   ........X............................... 1
-rom_evn_cs           XXXX..X..X.............................. 6
-rom_odd_cs           XXXX.X.X................................ 6
+rom_evn_cs           ..XXXX...X.............................. 5
+MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF 
+                     XXX..X.................................. 4
+rom_odd_cs           ..XXXX.X................................ 5
+MEM_DECODER_MOD/as_count<0> 
+                     X.X..X.................................. 3
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *******************************  Equations  ********************************
@@ -324,7 +323,7 @@ rom_odd_cs           XXXX.X.X................................ 6
 ********** Mapped Logic **********
 
 
-$OpTx$$OpTx$FX_DC$11_INV$39 <= (NOT MEM_DECODER_MOD/as_count(0) AND 
+$OpTx$$OpTx$FX_DC$19_INV$47 <= (NOT MEM_DECODER_MOD/as_count(0) AND 
 	NOT MEM_DECODER_MOD/as_count(1));
 
 FTCPE_BUS_ERR_MOD/berr_count0: FTCPE port map (BUS_ERR_MOD/berr_count(0),BUS_ERR_MOD/berr_count_T(0),e,'0','0');
@@ -358,41 +357,41 @@ MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add
 	MEM_DECODER_MOD/as_count(1) AND MEM_DECODER_MOD/as_count(2));
 
 FDCPE_MEM_DECODER_MOD/as_count0: FDCPE port map (MEM_DECODER_MOD/as_count(0),'0','0',MEM_DECODER_MOD/as_count_CLR(0),MEM_DECODER_MOD/as_count_PRE(0));
-MEM_DECODER_MOD/as_count_CLR(0) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+MEM_DECODER_MOD/as_count_CLR(0) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 	MEM_DECODER_MOD/as_count(0));
-MEM_DECODER_MOD/as_count_PRE(0) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+MEM_DECODER_MOD/as_count_PRE(0) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 	NOT MEM_DECODER_MOD/as_count(0));
 
 
-MEM_DECODER_MOD/as_count(1)/MEM_DECODER_MOD/as_count(1)_SETF <= ((as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+MEM_DECODER_MOD/as_count(1)/MEM_DECODER_MOD/as_count(1)_SETF <= ((NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 	MEM_DECODER_MOD/as_count(0) AND NOT MEM_DECODER_MOD/as_count(1))
-	OR (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+	OR (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 	NOT MEM_DECODER_MOD/as_count(0) AND MEM_DECODER_MOD/as_count(1)));
 
 FDCPE_MEM_DECODER_MOD/as_count1: FDCPE port map (MEM_DECODER_MOD/as_count(1),'0','0',MEM_DECODER_MOD/as_count_CLR(1),MEM_DECODER_MOD/as_count_PRE(1));
-MEM_DECODER_MOD/as_count_CLR(1) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+MEM_DECODER_MOD/as_count_CLR(1) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 	NOT MEM_DECODER_MOD/as_count(1)/MEM_DECODER_MOD/as_count(1)_SETF);
-MEM_DECODER_MOD/as_count_PRE(1) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
-	NOT MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 AND NOT $OpTx$$OpTx$FX_DC$11_INV$39);
+MEM_DECODER_MOD/as_count_PRE(1) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+	NOT MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2 AND NOT $OpTx$$OpTx$FX_DC$19_INV$47);
 
 
-MEM_DECODER_MOD/as_count(2)/MEM_DECODER_MOD/as_count(2)_RSTF <= ((as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+MEM_DECODER_MOD/as_count(2)/MEM_DECODER_MOD/as_count(2)_RSTF <= ((NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 	NOT MEM_DECODER_MOD/as_count(0) AND NOT MEM_DECODER_MOD/as_count(2))
-	OR (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+	OR (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 	NOT MEM_DECODER_MOD/as_count(1) AND NOT MEM_DECODER_MOD/as_count(2))
-	OR (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+	OR (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 	MEM_DECODER_MOD/as_count(0) AND MEM_DECODER_MOD/as_count(1) AND 
 	MEM_DECODER_MOD/as_count(2)));
 
 FDCPE_MEM_DECODER_MOD/as_count2: FDCPE port map (MEM_DECODER_MOD/as_count(2),'0','0',MEM_DECODER_MOD/as_count(2)/MEM_DECODER_MOD/as_count(2)_RSTF,MEM_DECODER_MOD/as_count_PRE(2));
-MEM_DECODER_MOD/as_count_PRE(2) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+MEM_DECODER_MOD/as_count_PRE(2) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 	NOT MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2 AND 
 	NOT MEM_DECODER_MOD/as_count(2)/MEM_DECODER_MOD/as_count(2)_RSTF);
 
 FDCPE_MEM_DECODER_MOD/as_count3: FDCPE port map (MEM_DECODER_MOD/as_count(3),'0','0',MEM_DECODER_MOD/as_count_CLR(3),MEM_DECODER_MOD/as_count_PRE(3));
-MEM_DECODER_MOD/as_count_CLR(3) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+MEM_DECODER_MOD/as_count_CLR(3) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 	NOT MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2);
-MEM_DECODER_MOD/as_count_PRE(3) <= (as AND NOT MEM_DECODER_MOD/as_count(3) AND 
+MEM_DECODER_MOD/as_count_PRE(3) <= (NOT as AND NOT MEM_DECODER_MOD/as_count(3) AND 
 	MEM_DECODER_MOD/as_count(0) AND MEM_DECODER_MOD/as_count(1) AND 
 	MEM_DECODER_MOD/as_count(2));
 
@@ -406,15 +405,14 @@ berr_D <= ((NOT as AND NOT berr)
 clk_out <= NOT clk;
 
 
-dtack_out <= ((NOT duart_cs AND duart_dtack)
-	OR (duart_cs AND ram_evn_cs AND ram_odd_cs AND rom_evn_cs AND 
-	rom_odd_cs));
+dtack_out <= ((as)
+	OR (a21 AND a17 AND MEM_DECODER_MOD/as_count(3) AND 
+	duart_dtack)
+	OR (NOT a21 AND MEM_DECODER_MOD/as_count(3) AND uds AND lds)
+	OR (NOT a17 AND MEM_DECODER_MOD/as_count(3) AND uds AND lds));
 
 
-duart_cs <= ((NOT as)
-	OR (duart_cs AND NOT a17)
-	OR (duart_cs AND NOT MEM_DECODER_MOD/as_count(3))
-	OR (duart_cs AND NOT a21));
+duart_cs <= NOT ((NOT as AND a21 AND a17 AND MEM_DECODER_MOD/as_count(3)));
 
 
 ipl(0) <= '0';
@@ -429,34 +427,18 @@ ipl(2) <= NOT duart_irq;
 oe <= NOT rw;
 
 
-ram_evn_cs <= ((NOT as)
-	OR (ram_evn_cs AND NOT MEM_DECODER_MOD/as_count(3))
-	OR (ram_evn_cs AND a21)
-	OR (ram_evn_cs AND MEM_DECODER_MOD/as_count(3) AND uds)
-	OR (MEM_DECODER_MOD/as_count(3) AND NOT a21 AND uds));
+ram_evn_cs <= NOT ((NOT as AND NOT a21 AND MEM_DECODER_MOD/as_count(3) AND NOT uds));
 
 
-ram_odd_cs <= ((NOT as)
-	OR (ram_odd_cs AND NOT MEM_DECODER_MOD/as_count(3))
-	OR (ram_odd_cs AND a21)
-	OR (ram_odd_cs AND MEM_DECODER_MOD/as_count(3) AND lds)
-	OR (MEM_DECODER_MOD/as_count(3) AND NOT a21 AND lds));
+ram_odd_cs <= NOT ((NOT as AND NOT a21 AND MEM_DECODER_MOD/as_count(3) AND NOT lds));
 
 
-rom_evn_cs <= ((NOT as)
-	OR (rom_evn_cs AND a17 AND MEM_DECODER_MOD/as_count(3))
-	OR (rom_evn_cs AND MEM_DECODER_MOD/as_count(3) AND NOT a21)
-	OR (rom_evn_cs AND MEM_DECODER_MOD/as_count(3) AND a21 AND 
-	uds)
-	OR (NOT a17 AND MEM_DECODER_MOD/as_count(3) AND a21 AND uds));
+rom_evn_cs <= NOT (((NOT as AND NOT MEM_DECODER_MOD/as_count(3))
+	OR (NOT as AND a21 AND NOT a17 AND NOT uds)));
 
 
-rom_odd_cs <= ((NOT as)
-	OR (rom_odd_cs AND a17 AND MEM_DECODER_MOD/as_count(3))
-	OR (rom_odd_cs AND MEM_DECODER_MOD/as_count(3) AND NOT a21)
-	OR (rom_odd_cs AND MEM_DECODER_MOD/as_count(3) AND a21 AND 
-	lds)
-	OR (NOT a17 AND MEM_DECODER_MOD/as_count(3) AND a21 AND lds));
+rom_odd_cs <= NOT (((NOT as AND NOT MEM_DECODER_MOD/as_count(3))
+	OR (NOT as AND a21 AND NOT a17 AND NOT lds)));
 
 Register Legend:
  FDCPE (Q,D,C,CLR,PRE,CE); 

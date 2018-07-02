@@ -3,14 +3,12 @@
 <script src="paths.js"></script><script src="eqns.js"></script><script>
       var design = "cpld";
       var device = "XC9572XL";
-      signals = new Array("BUS_ERR_MODberr_count0_SPECSIG","BUS_ERR_MODberr_count1_SPECSIG","BUS_ERR_MODberr_count2_SPECSIG","BUS_ERR_MODberr_count3_SPECSIG","MEM_DECODER_MODMadd_as_count_add0000__and0000MEM_DECODER_MODMadd_as_count_add0000__and0000_D2_SPECSIG","MEM_DECODER_MODMadd_as_count_add0000__and0001MEM_DECODER_MODMadd_as_count_add0000__and0001_D2_SPECSIG","MEM_DECODER_MODas_count0_SPECSIG","MEM_DECODER_MODas_count1MEM_DECODER_MODas_count<1>_SETF_SPECSIG","MEM_DECODER_MODas_count1_SPECSIG","MEM_DECODER_MODas_count2MEM_DECODER_MODas_count<2>_RSTF_SPECSIG","MEM_DECODER_MODas_count2_SPECSIG","MEM_DECODER_MODas_count3_SPECSIG","OpTxOpTxFX_DC11_INV39_SPECSIG","berr","clk_out","dtack_out","duart_cs","ipl0_SPECSIG","ipl1_SPECSIG","ipl2_SPECSIG","oe","ram_evn_cs","ram_odd_cs","rom_evn_cs","rom_odd_cs");
-      sigNegs = new Array("ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF");
+      signals = new Array("BUS_ERR_MODberr_count0_SPECSIG","BUS_ERR_MODberr_count1_SPECSIG","BUS_ERR_MODberr_count2_SPECSIG","BUS_ERR_MODberr_count3_SPECSIG","MEM_DECODER_MODMadd_as_count_add0000__and0000MEM_DECODER_MODMadd_as_count_add0000__and0000_D2_SPECSIG","MEM_DECODER_MODMadd_as_count_add0000__and0001MEM_DECODER_MODMadd_as_count_add0000__and0001_D2_SPECSIG","MEM_DECODER_MODas_count0_SPECSIG","MEM_DECODER_MODas_count1MEM_DECODER_MODas_count<1>_SETF_SPECSIG","MEM_DECODER_MODas_count1_SPECSIG","MEM_DECODER_MODas_count2MEM_DECODER_MODas_count<2>_RSTF_SPECSIG","MEM_DECODER_MODas_count2_SPECSIG","MEM_DECODER_MODas_count3_SPECSIG","OpTxOpTxFX_DC19_INV47_SPECSIG","berr","clk_out","dtack_out","duart_cs","ipl0_SPECSIG","ipl1_SPECSIG","ipl2_SPECSIG","oe","ram_evn_cs","ram_odd_cs","rom_evn_cs","rom_odd_cs");
+      sigNegs = new Array("ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","ON","OFF","OFF","OFF","OFF","ON","ON","ON","ON");
       sigTypes = new Array("T","D","T","T","","","D","","D","","D","D","","D","","","","","","","","","","","");
 
       
         specSig["b_SPECSIG"]=new Array("(b)");
-      
-        specSig["MEM_DECODER_MODas_count1MEM_DECODER_MODas_count<1>_SETF_SPECSIG"]=new Array("MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF");
       
         specSig["MEM_DECODER_MODas_count1_SPECSIG"]=new Array("MEM_DECODER_MOD/as_count<1>");
       
@@ -26,10 +24,6 @@
       
         specSig["MEM_DECODER_MODMadd_as_count_add0000__and0001MEM_DECODER_MODMadd_as_count_add0000__and0001_D2_SPECSIG"]=new Array("MEM_DECODER_MOD/Madd_as_count_add0000__and0001/MEM_DECODER_MOD/Madd_as_count_add0000__and0001_D2");
       
-        specSig["MEM_DECODER_MODMadd_as_count_add0000__and0000MEM_DECODER_MODMadd_as_count_add0000__and0000_D2_SPECSIG"]=new Array("MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2");
-      
-        specSig["OpTxOpTxFX_DC11_INV39_SPECSIG"]=new Array("$OpTx$$OpTx$FX_DC$11_INV$39");
-      
         specSig["MEM_DECODER_MODas_count3_SPECSIG"]=new Array("MEM_DECODER_MOD/as_count<3>");
       
         specSig["MEM_DECODER_MODas_count2MEM_DECODER_MODas_count<2>_RSTF_SPECSIG"]=new Array("MEM_DECODER_MOD/as_count<2>/MEM_DECODER_MOD/as_count<2>_RSTF");
@@ -42,55 +36,33 @@
       
         specSig["BUS_ERR_MODberr_count2_SPECSIG"]=new Array("BUS_ERR_MOD/berr_count<2>");
       
-            pterms["FB1_10_1"]=new Array("MEM_DECODER_MODas_count0_SPECSIG","MEM_DECODER_MODas_count1_SPECSIG","MEM_DECODER_MODas_count2_SPECSIG");
-          
+        specSig["OpTxOpTxFX_DC19_INV47_SPECSIG"]=new Array("$OpTx$$OpTx$FX_DC$19_INV$47");
+      
+        specSig["MEM_DECODER_MODMadd_as_count_add0000__and0000MEM_DECODER_MODMadd_as_count_add0000__and0000_D2_SPECSIG"]=new Array("MEM_DECODER_MOD/Madd_as_count_add0000__and0000/MEM_DECODER_MOD/Madd_as_count_add0000__and0000_D2");
+      
+        specSig["MEM_DECODER_MODas_count1MEM_DECODER_MODas_count<1>_SETF_SPECSIG"]=new Array("MEM_DECODER_MOD/as_count<1>/MEM_DECODER_MOD/as_count<1>_SETF");
+      
             pterms["FB1_11_1"]=new Array("/clk");
           
-            pterms["FB1_12_1"]=new Array("MEM_DECODER_MODas_count0_SPECSIG","MEM_DECODER_MODas_count1_SPECSIG");
+            pterms["FB1_15_1"]=new Array("MEM_DECODER_MODas_count0_SPECSIG","MEM_DECODER_MODas_count1_SPECSIG","MEM_DECODER_MODas_count2_SPECSIG");
           
-            pterms["FB1_13_1"]=new Array("/MEM_DECODER_MODas_count0_SPECSIG","/MEM_DECODER_MODas_count1_SPECSIG");
+            pterms["FB1_16_1"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODMadd_as_count_add0000__and0001MEM_DECODER_MODMadd_as_count_add0000__and0001_D2_SPECSIG");
           
-            pterms["FB1_14_1"]=new Array("as","/MEM_DECODER_MODas_count3_SPECSIG","MEM_DECODER_MODas_count0_SPECSIG","/MEM_DECODER_MODas_count1_SPECSIG");
+            pterms["FB1_16_2"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG","MEM_DECODER_MODas_count0_SPECSIG","MEM_DECODER_MODas_count1_SPECSIG","MEM_DECODER_MODas_count2_SPECSIG");
           
-            pterms["FB1_14_2"]=new Array("as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODas_count0_SPECSIG","MEM_DECODER_MODas_count1_SPECSIG");
+            pterms["FB1_17_1"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODas_count0_SPECSIG","/MEM_DECODER_MODas_count2_SPECSIG");
           
-            pterms["FB1_15_1"]=new Array("as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODMadd_as_count_add0000__and0001MEM_DECODER_MODMadd_as_count_add0000__and0001_D2_SPECSIG");
+            pterms["FB1_17_2"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODas_count1_SPECSIG","/MEM_DECODER_MODas_count2_SPECSIG");
           
-            pterms["FB1_15_2"]=new Array("as","/MEM_DECODER_MODas_count3_SPECSIG","MEM_DECODER_MODas_count0_SPECSIG","MEM_DECODER_MODas_count1_SPECSIG","MEM_DECODER_MODas_count2_SPECSIG");
+            pterms["FB1_17_3"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG","MEM_DECODER_MODas_count0_SPECSIG","MEM_DECODER_MODas_count1_SPECSIG","MEM_DECODER_MODas_count2_SPECSIG");
           
-            pterms["FB1_16_1"]=new Array("as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODas_count0_SPECSIG","/MEM_DECODER_MODas_count2_SPECSIG");
+            pterms["FB1_18_1"]=new Array("MEM_DECODER_MODas_count2MEM_DECODER_MODas_count<2>_RSTF_SPECSIG");
           
-            pterms["FB1_16_2"]=new Array("as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODas_count1_SPECSIG","/MEM_DECODER_MODas_count2_SPECSIG");
+            pterms["FB1_18_2"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODMadd_as_count_add0000__and0001MEM_DECODER_MODMadd_as_count_add0000__and0001_D2_SPECSIG","/MEM_DECODER_MODas_count2MEM_DECODER_MODas_count<2>_RSTF_SPECSIG");
           
-            pterms["FB1_16_3"]=new Array("as","/MEM_DECODER_MODas_count3_SPECSIG","MEM_DECODER_MODas_count0_SPECSIG","MEM_DECODER_MODas_count1_SPECSIG","MEM_DECODER_MODas_count2_SPECSIG");
+            pterms["FB2_2_1"]=new Array("/as","/a21","MEM_DECODER_MODas_count3_SPECSIG","/uds");
           
-            pterms["FB1_17_1"]=new Array("MEM_DECODER_MODas_count2MEM_DECODER_MODas_count<2>_RSTF_SPECSIG");
-          
-            pterms["FB1_17_2"]=new Array("as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODMadd_as_count_add0000__and0001MEM_DECODER_MODMadd_as_count_add0000__and0001_D2_SPECSIG","/MEM_DECODER_MODas_count2MEM_DECODER_MODas_count<2>_RSTF_SPECSIG");
-          
-            pterms["FB1_18_1"]=new Array("as","/MEM_DECODER_MODas_count3_SPECSIG","MEM_DECODER_MODas_count0_SPECSIG");
-          
-            pterms["FB1_18_2"]=new Array("as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODas_count0_SPECSIG");
-          
-            pterms["FB2_2_1"]=new Array("/as");
-          
-            pterms["FB2_2_2"]=new Array("ram_evn_cs","/MEM_DECODER_MODas_count3_SPECSIG");
-          
-            pterms["FB2_2_3"]=new Array("ram_evn_cs","a21");
-          
-            pterms["FB2_2_4"]=new Array("ram_evn_cs","MEM_DECODER_MODas_count3_SPECSIG","uds");
-          
-            pterms["FB2_2_5"]=new Array("MEM_DECODER_MODas_count3_SPECSIG","/a21","uds");
-          
-            pterms["FB2_5_1"]=new Array("/as");
-          
-            pterms["FB2_5_2"]=new Array("ram_odd_cs","/MEM_DECODER_MODas_count3_SPECSIG");
-          
-            pterms["FB2_5_3"]=new Array("ram_odd_cs","a21");
-          
-            pterms["FB2_5_4"]=new Array("ram_odd_cs","MEM_DECODER_MODas_count3_SPECSIG","lds");
-          
-            pterms["FB2_5_5"]=new Array("MEM_DECODER_MODas_count3_SPECSIG","/a21","lds");
+            pterms["FB2_5_1"]=new Array("/as","/a21","MEM_DECODER_MODas_count3_SPECSIG","/lds");
           
             pterms["FB2_6_1"]=new Array("/as","/berr");
           
@@ -98,21 +70,19 @@
           
             pterms["FB2_6_3"]=new Array("e");
           
-            pterms["FB2_8_1"]=new Array("/as");
+            pterms["FB2_8_1"]=new Array("/as","a21","a17","MEM_DECODER_MODas_count3_SPECSIG");
           
-            pterms["FB2_8_2"]=new Array("duart_cs","/a17");
+            pterms["FB2_15_1"]=new Array("as");
           
-            pterms["FB2_8_3"]=new Array("duart_cs","/MEM_DECODER_MODas_count3_SPECSIG");
+            pterms["FB2_15_2"]=new Array("a21","a17","MEM_DECODER_MODas_count3_SPECSIG","duart_dtack");
           
-            pterms["FB2_8_4"]=new Array("duart_cs","/a21");
+            pterms["FB2_15_3"]=new Array("/a21","MEM_DECODER_MODas_count3_SPECSIG","uds","lds");
           
-            pterms["FB2_15_1"]=new Array("/duart_cs","duart_dtack");
+            pterms["FB2_15_4"]=new Array("/a17","MEM_DECODER_MODas_count3_SPECSIG","uds","lds");
           
-            pterms["FB2_15_2"]=new Array("duart_cs","ram_evn_cs","ram_odd_cs","rom_evn_cs","rom_odd_cs");
+            pterms["FB3_14_1"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODas_count1MEM_DECODER_MODas_count<1>_SETF_SPECSIG");
           
-            pterms["FB3_14_1"]=new Array("as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODas_count1MEM_DECODER_MODas_count<1>_SETF_SPECSIG");
-          
-            pterms["FB3_14_2"]=new Array("as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODMadd_as_count_add0000__and0000MEM_DECODER_MODMadd_as_count_add0000__and0000_D2_SPECSIG","/OpTxOpTxFX_DC11_INV39_SPECSIG");
+            pterms["FB3_14_2"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODMadd_as_count_add0000__and0000MEM_DECODER_MODMadd_as_count_add0000__and0000_D2_SPECSIG","/OpTxOpTxFX_DC19_INV47_SPECSIG");
           
             pterms["FB3_15_1"]=new Array("as","BUS_ERR_MODberr_count3_SPECSIG");
           
@@ -140,47 +110,35 @@
           
             pterms["FB4_5_1"]=new Array("/duart_irq");
           
+            pterms["FB4_12_1"]=new Array("MEM_DECODER_MODas_count0_SPECSIG","MEM_DECODER_MODas_count1_SPECSIG");
+          
+            pterms["FB4_13_1"]=new Array("/MEM_DECODER_MODas_count0_SPECSIG","/MEM_DECODER_MODas_count1_SPECSIG");
+          
             pterms["FB4_14_1"]=new Array("/rw");
           
-            pterms["FB4_15_1"]=new Array("/as");
+            pterms["FB4_15_1"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG");
           
-            pterms["FB4_15_2"]=new Array("rom_evn_cs","a17","MEM_DECODER_MODas_count3_SPECSIG");
+            pterms["FB4_15_2"]=new Array("/as","a21","/a17","/uds");
           
-            pterms["FB4_15_3"]=new Array("rom_evn_cs","MEM_DECODER_MODas_count3_SPECSIG","/a21");
+            pterms["FB4_16_1"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG","MEM_DECODER_MODas_count0_SPECSIG","/MEM_DECODER_MODas_count1_SPECSIG");
           
-            pterms["FB4_15_4"]=new Array("rom_evn_cs","MEM_DECODER_MODas_count3_SPECSIG","a21","uds");
+            pterms["FB4_16_2"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODas_count0_SPECSIG","MEM_DECODER_MODas_count1_SPECSIG");
           
-            pterms["FB4_15_5"]=new Array("/a17","MEM_DECODER_MODas_count3_SPECSIG","a21","uds");
+            pterms["FB4_17_1"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG");
           
-            pterms["FB4_17_1"]=new Array("/as");
+            pterms["FB4_17_2"]=new Array("/as","a21","/a17","/lds");
           
-            pterms["FB4_17_2"]=new Array("rom_odd_cs","a17","MEM_DECODER_MODas_count3_SPECSIG");
+            pterms["FB4_18_1"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG","MEM_DECODER_MODas_count0_SPECSIG");
           
-            pterms["FB4_17_3"]=new Array("rom_odd_cs","MEM_DECODER_MODas_count3_SPECSIG","/a21");
-          
-            pterms["FB4_17_4"]=new Array("rom_odd_cs","MEM_DECODER_MODas_count3_SPECSIG","a21","lds");
-          
-            pterms["FB4_17_5"]=new Array("/a17","MEM_DECODER_MODas_count3_SPECSIG","a21","lds");
-          
-          d2["MEM_DECODER_MODMadd_as_count_add0000__and0001MEM_DECODER_MODMadd_as_count_add0000__and0001_D2_SPECSIG"]=new Array("FB1_10_1");
-          
-            d2imp["MEM_DECODER_MODMadd_as_count_add0000__and0001MEM_DECODER_MODMadd_as_count_add0000__and0001_D2_SPECSIG"]=new Array("1");
+            pterms["FB4_18_2"]=new Array("/as","/MEM_DECODER_MODas_count3_SPECSIG","/MEM_DECODER_MODas_count0_SPECSIG");
           
           d2["clk_out"]=new Array("FB1_11_1");
           
             d2imp["clk_out"]=new Array("1");
           
-          d2["MEM_DECODER_MODMadd_as_count_add0000__and0000MEM_DECODER_MODMadd_as_count_add0000__and0000_D2_SPECSIG"]=new Array("FB1_12_1");
+          d2["MEM_DECODER_MODMadd_as_count_add0000__and0001MEM_DECODER_MODMadd_as_count_add0000__and0001_D2_SPECSIG"]=new Array("FB1_15_1");
           
-            d2imp["MEM_DECODER_MODMadd_as_count_add0000__and0000MEM_DECODER_MODMadd_as_count_add0000__and0000_D2_SPECSIG"]=new Array("1");
-          
-          d2["OpTxOpTxFX_DC11_INV39_SPECSIG"]=new Array("FB1_13_1");
-          
-            d2imp["OpTxOpTxFX_DC11_INV39_SPECSIG"]=new Array("1");
-          
-          d2["MEM_DECODER_MODas_count1MEM_DECODER_MODas_count<1>_SETF_SPECSIG"]=new Array("FB1_14_1","FB1_14_2");
-          
-            d2imp["MEM_DECODER_MODas_count1MEM_DECODER_MODas_count<1>_SETF_SPECSIG"]=new Array("1","1");
+            d2imp["MEM_DECODER_MODMadd_as_count_add0000__and0001MEM_DECODER_MODMadd_as_count_add0000__and0001_D2_SPECSIG"]=new Array("1");
           
           d2["MEM_DECODER_MODas_count3_SPECSIG"]=new Array("GND");
           
@@ -190,15 +148,15 @@
               
                 clkimp["MEM_DECODER_MODas_count3_SPECSIG"]=new Array("1");
               
-              set["MEM_DECODER_MODas_count3_SPECSIG"]=new Array("FB1_15_2");
+              set["MEM_DECODER_MODas_count3_SPECSIG"]=new Array("FB1_16_2");
               
                 setimp["MEM_DECODER_MODas_count3_SPECSIG"]=new Array("1");
               
-              rst["MEM_DECODER_MODas_count3_SPECSIG"]=new Array("FB1_15_1");
+              rst["MEM_DECODER_MODas_count3_SPECSIG"]=new Array("FB1_16_1");
               
                 rstimp["MEM_DECODER_MODas_count3_SPECSIG"]=new Array("1");
               prld["MEM_DECODER_MODas_count3_SPECSIG"]="GND";
-          d2["MEM_DECODER_MODas_count2MEM_DECODER_MODas_count<2>_RSTF_SPECSIG"]=new Array("FB1_16_1","FB1_16_2","FB1_16_3");
+          d2["MEM_DECODER_MODas_count2MEM_DECODER_MODas_count<2>_RSTF_SPECSIG"]=new Array("FB1_17_1","FB1_17_2","FB1_17_3");
           
             d2imp["MEM_DECODER_MODas_count2MEM_DECODER_MODas_count<2>_RSTF_SPECSIG"]=new Array("1","1","1");
           
@@ -210,37 +168,21 @@
               
                 clkimp["MEM_DECODER_MODas_count2_SPECSIG"]=new Array("1");
               
-              set["MEM_DECODER_MODas_count2_SPECSIG"]=new Array("FB1_17_2");
+              set["MEM_DECODER_MODas_count2_SPECSIG"]=new Array("FB1_18_2");
               
                 setimp["MEM_DECODER_MODas_count2_SPECSIG"]=new Array("1");
               
-              rst["MEM_DECODER_MODas_count2_SPECSIG"]=new Array("FB1_17_1");
+              rst["MEM_DECODER_MODas_count2_SPECSIG"]=new Array("FB1_18_1");
               
                 rstimp["MEM_DECODER_MODas_count2_SPECSIG"]=new Array("1");
               prld["MEM_DECODER_MODas_count2_SPECSIG"]="GND";
-          d2["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("GND");
+          d2["ram_evn_cs"]=new Array("FB2_2_1");
           
-            d2imp["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("1");
+            d2imp["ram_evn_cs"]=new Array("1");
           
-              clk["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("GND");
-              
-                clkimp["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("1");
-              
-              set["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("FB1_18_2");
-              
-                setimp["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("1");
-              
-              rst["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("FB1_18_1");
-              
-                rstimp["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("1");
-              prld["MEM_DECODER_MODas_count0_SPECSIG"]="GND";
-          d2["ram_evn_cs"]=new Array("FB2_2_1","FB2_2_2","FB2_2_3","FB2_2_4","FB2_2_5");
+          d2["ram_odd_cs"]=new Array("FB2_5_1");
           
-            d2imp["ram_evn_cs"]=new Array("1","1","1","1","1");
-          
-          d2["ram_odd_cs"]=new Array("FB2_5_1","FB2_5_2","FB2_5_3","FB2_5_4","FB2_5_5");
-          
-            d2imp["ram_odd_cs"]=new Array("1","1","1","1","1");
+            d2imp["ram_odd_cs"]=new Array("1");
           
           d2["berr"]=new Array("FB2_6_1","FB2_6_2");
           
@@ -250,13 +192,13 @@
               
                 clkimp["berr"]=new Array("1");
               prld["berr"]="GND";
-          d2["duart_cs"]=new Array("FB2_8_1","FB2_8_2","FB2_8_3","FB2_8_4");
+          d2["duart_cs"]=new Array("FB2_8_1");
           
-            d2imp["duart_cs"]=new Array("1","1","1","1");
+            d2imp["duart_cs"]=new Array("1");
           
-          d2["dtack_out"]=new Array("FB2_15_1","FB2_15_2");
+          d2["dtack_out"]=new Array("FB2_15_1","FB2_15_2","FB2_15_3","FB2_15_4");
           
-            d2imp["dtack_out"]=new Array("1","1");
+            d2imp["dtack_out"]=new Array("1","1","1","1");
           
           d2["MEM_DECODER_MODas_count1_SPECSIG"]=new Array("GND");
           
@@ -318,18 +260,46 @@
           
             d2imp["ipl0_SPECSIG"]=new Array("1");
           
+          d2["MEM_DECODER_MODMadd_as_count_add0000__and0000MEM_DECODER_MODMadd_as_count_add0000__and0000_D2_SPECSIG"]=new Array("FB4_12_1");
+          
+            d2imp["MEM_DECODER_MODMadd_as_count_add0000__and0000MEM_DECODER_MODMadd_as_count_add0000__and0000_D2_SPECSIG"]=new Array("1");
+          
+          d2["OpTxOpTxFX_DC19_INV47_SPECSIG"]=new Array("FB4_13_1");
+          
+            d2imp["OpTxOpTxFX_DC19_INV47_SPECSIG"]=new Array("1");
+          
           d2["oe"]=new Array("FB4_14_1");
           
             d2imp["oe"]=new Array("1");
           
-          d2["rom_evn_cs"]=new Array("FB4_15_1","FB4_15_2","FB4_15_3","FB4_15_4","FB4_15_5");
+          d2["rom_evn_cs"]=new Array("FB4_15_1","FB4_15_2");
           
-            d2imp["rom_evn_cs"]=new Array("1","1","1","1","1");
+            d2imp["rom_evn_cs"]=new Array("1","1");
           
-          d2["rom_odd_cs"]=new Array("FB4_17_1","FB4_17_2","FB4_17_3","FB4_17_4","FB4_17_5");
+          d2["MEM_DECODER_MODas_count1MEM_DECODER_MODas_count<1>_SETF_SPECSIG"]=new Array("FB4_16_1","FB4_16_2");
           
-            d2imp["rom_odd_cs"]=new Array("1","1","1","1","1");
+            d2imp["MEM_DECODER_MODas_count1MEM_DECODER_MODas_count<1>_SETF_SPECSIG"]=new Array("1","1");
           
+          d2["rom_odd_cs"]=new Array("FB4_17_1","FB4_17_2");
+          
+            d2imp["rom_odd_cs"]=new Array("1","1");
+          
+          d2["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("GND");
+          
+            d2imp["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("1");
+          
+              clk["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("GND");
+              
+                clkimp["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("1");
+              
+              set["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("FB4_18_2");
+              
+                setimp["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("1");
+              
+              rst["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("FB4_18_1");
+              
+                rstimp["MEM_DECODER_MODas_count0_SPECSIG"]=new Array("1");
+              prld["MEM_DECODER_MODas_count0_SPECSIG"]="GND";
 
       uimSignals = new Array();
 

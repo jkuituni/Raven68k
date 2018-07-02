@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Mon Jul 02 12:24:26 2018">
+  <application stringID="Xst" timeStamp="Mon Jul 02 15:26:22 2018">
     <section stringID="XST_HDL_SYNTHESIS_REPORT">
       <item dataType="int" stringID="XST_ADDERSSUBTRACTORS" value="1"></item>
       <item dataType="int" stringID="XST_COUNTERS" value="1">
@@ -42,11 +42,11 @@
         <item stringID="XST_IOS" value="25"/>
       </section>
       <section stringID="XST_CELL_USAGE">
-        <item dataType="int" stringID="XST_BELS" value="64">
+        <item dataType="int" stringID="XST_BELS" value="62">
           <item dataType="int" stringID="XST_GND" value="2"/>
-          <item dataType="int" stringID="XST_INV" value="23"/>
+          <item dataType="int" stringID="XST_INV" value="22"/>
         </item>
-        <item dataType="int" stringID="XST_FLIPFLOPSLATCHES" value="14">
+        <item dataType="int" stringID="XST_FLIPFLOPSLATCHES" value="9">
           <item dataType="int" stringID="XST_FDCE" value="5"/>
         </item>
         <item dataType="int" stringID="XST_IO_BUFFERS" value="22">
@@ -57,8 +57,8 @@
     </section>
     <section stringID="XST_ERRORS_STATISTICS">
       <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_ERRORS" value="0"/>
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="10"/>
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="2"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="6"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="0"/>
     </section>
   </application>
 

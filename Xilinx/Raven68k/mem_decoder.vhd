@@ -46,54 +46,59 @@ architecture Behavioral of mem_decoder is
 
 	-- internal signals
 	signal as_count : STD_LOGIC_VECTOR(3 downto 0) := "0000";
+	signal t_duart_cs : STD_LOGIC := '1';
+	signal t_rom_evn_cs : STD_LOGIC := '1';
+	signal t_rom_odd_cs : STD_LOGIC := '1';
+	signal t_ram_evn_cs : STD_LOGIC := '1';
+	signal t_ram_odd_cs : STD_LOGIC := '1';
+	
 	
 begin
 	
-	process (as, a21, a17, uds, lds, as_count)
+	process (as, a21, a17, uds, lds)
+		
 	begin
 		
-		if as = '1' then
+		t_duart_cs <= '1';
+		t_rom_evn_cs <= '1';
+		t_rom_odd_cs <= '1';
+		t_ram_evn_cs <= '1';
+		t_ram_odd_cs <= '1';
+
+		if as = '0' then
 			if as_count < "1000" then
-				rom_evn_cs <= '0';
-				rom_odd_cs <= '0';
+				t_rom_evn_cs <= '0';
+				t_rom_odd_cs <= '0';
 				as_count <= STD_LOGIC_VECTOR(unsigned(as_count) + 1);
 			else
 				if a21 = '1' then
 					if a17 = '1' then					-- I/O devices
-						duart_cs <= '0';
+						t_duart_cs <= '0';
 					else
 						if uds = '0' then				-- ROM access
-							rom_evn_cs <= '0';
-						else
-							rom_evn_cs <= '1';
+							t_rom_evn_cs <= '0';
 						end if;
 						if lds = '0' then
-							rom_odd_cs <= '0';
-						else
-							rom_odd_cs <= '1';
+							t_rom_odd_cs <= '0';
 						end if;
 					end if;
 				else										-- RAM access
 					if uds = '0' then
-						ram_evn_cs <= '0';
-					else
-						ram_evn_cs <= '1';
+						t_ram_evn_cs <= '0';
 					end if;
 					if lds = '0' then
-						ram_odd_cs <= '0';
-					else
-						ram_odd_cs <= '1';
+						t_ram_odd_cs <= '0';
 					end if;
 				end if;
 			end if;
-		else
-			ram_evn_cs <= '1';
-			ram_odd_cs <= '1';
-			rom_evn_cs <= '1';
-			rom_odd_cs <= '1';
-			duart_cs <= '1';		
 		end if;
-
+		
+		duart_cs <= t_duart_cs;
+		rom_evn_cs <= t_rom_evn_cs;
+		rom_odd_cs <= t_rom_odd_cs;
+		ram_evn_cs <= t_ram_evn_cs;
+		ram_odd_cs <= t_ram_odd_cs;
+		
 	end process;
 
 end Behavioral;
