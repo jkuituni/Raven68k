@@ -1,0 +1,13 @@
+This directory holds the validation test benches used to make sure the code worked.
+
+You can use these by elaborating and running with ghdl, then viewing through GTKWave.
+
+Ex:
+	Check Syntax:	ghdl -s --ieee=synopsys tb_dtack.vhd dtack.vhd
+	Analyze:	ghdl -a --ieee=synopsys tb_dtack.vhd dtack.vhd
+	Elaborate:	ghdl -e --ieee=synopsys tb_dtack		<-- this is the entity name
+	Simulate:	ghdl -r --ieee=synopsys tb_dtack --vcd=tb_dtack.vcd --stop-time=500ms
+	View:		gtkwave tb_dtack.vcd
+
+Note that OSX versions of GTKWave do not seem to act properly. Open GTK manually, then
+File -> Open New Tab, then naviate to tb_dtack.vcd 
