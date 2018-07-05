@@ -16,7 +16,7 @@ SEARCH_DIR(.)  /* include CRT0.S */
   */ 
   /* moved before sections -JS */ 
 MEMORY { 
-   rom : ORIGIN = 0x00110000, LENGTH = 64K 
+   rom : ORIGIN = 0x00100000, LENGTH = 64K 
    ram : ORIGIN = 0x00000400, LENGTH = 1023k /* after the 1k byte of vectors */
 } 
 
@@ -24,12 +24,12 @@ SECTIONS
 { 
          /* Text section at start of ROM 
           * The next line tells the linker that the EPROM on my board starts 
-          * at 0x00110000. The command AT (0) places the code on address 0 in
+          * at 0x00100000. The command AT (0) places the code on address 0 in
           * the S-Record output file, ready for burning in an EPROM. 
           */ 
-         .text   0x00110000 : AT (0) 
+         .text   0x00100000 : AT (0) 
          { 
-         LONG (0x00110000)       /* RESET SSP - JS */ 
+         LONG (0x00100000)       /* RESET SSP - JS */ 
          LONG (___main)          /* RESET PC - JS */ 
                  __s_text = . ;  /* Define a symbol */ 
                  *     (.text) 

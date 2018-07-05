@@ -1,4 +1,4 @@
-#define   DUART_BASE   0xFF0000                                  /* Base of I/O port addresses */
+#define   DUART_BASE   0x110000                                  /* Base of I/O port addresses */
 #define   MR1A         (* (char *) (DUART_BASE+1) )              /* Mode register 1A */
 #define   MR2A         (* (char *) (DUART_BASE+1) )              /* Mode register 2A */
 #define   CSRA         (* (char *) (DUART_BASE+3) )              /* Clock Select register A */
@@ -32,8 +32,23 @@ char putch(char c) {
   TBRA = c;
 }
 
+void ascii(void) {
+  unsigned int count = 32;
+
+  for (; count < 127; count++) {
+    putch(count);
+  }
+}
+
 void main(void) {
+  unsigned int count = 0;
   char c;
+
+  for (; count < 10; count++) {
+    ascii();
+  }
+  putch('\n');
+  
   while (1) {
     c = getch();
     putch(c);
