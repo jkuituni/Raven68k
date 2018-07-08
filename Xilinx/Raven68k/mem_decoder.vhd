@@ -58,14 +58,13 @@ begin
 	process (as, a21, a17, uds, lds)
 		
 	begin
-		
 		t_duart_cs <= '1';
 		t_rom_evn_cs <= '1';
 		t_rom_odd_cs <= '1';
 		t_ram_evn_cs <= '1';
 		t_ram_odd_cs <= '1';
-
-		if as = '0' then
+		
+		if as = '1' then
 			if as_count < "1000" then
 				t_rom_evn_cs <= '0';
 				t_rom_odd_cs <= '0';
@@ -92,14 +91,14 @@ begin
 				end if;
 			end if;
 		end if;
-		
+
 		duart_cs <= t_duart_cs;
 		rom_evn_cs <= t_rom_evn_cs;
 		rom_odd_cs <= t_rom_odd_cs;
 		ram_evn_cs <= t_ram_evn_cs;
-		ram_odd_cs <= t_ram_odd_cs;
-		
+		ram_odd_cs <= t_ram_odd_cs;		
+				
 	end process;
-
+	
 end Behavioral;
 
