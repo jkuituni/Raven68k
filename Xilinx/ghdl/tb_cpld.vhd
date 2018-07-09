@@ -39,99 +39,70 @@ ARCHITECTURE behavior OF tb_cpld IS
 
     COMPONENT cpld
     PORT(
-         clk : IN  std_logic;
-         duart_dtack : IN  std_logic;
-         duart_irq : IN  std_logic;
-         rw : IN  std_logic;
-         as : IN  std_logic;
-         lds : IN  std_logic;
-         uds : IN  std_logic;
-         e : IN  std_logic;
-         a7 : IN  std_logic;
-         a8 : IN  std_logic;
-         a9 : IN  std_logic;
-         a17 : IN  std_logic;
-         a21 : IN  std_logic;
-         clk_out : OUT  std_logic;
-         ipl : OUT  std_logic_vector(2 downto 0);
-         oe : OUT  std_logic;
-         rom_evn_cs : INOUT  std_logic;
-         rom_odd_cs : INOUT  std_logic;
-         ram_evn_cs : INOUT  std_logic;
-         ram_odd_cs : INOUT  std_logic;
-         berr : OUT  std_logic;
-         duart_cs : OUT  std_logic;
-         dtack_out : OUT  std_logic
+         reset : in  STD_LOGIC;
+         dtack_in : in  STD_LOGIC;
+         duart_irq : in  STD_LOGIC;
+         rw : in  STD_LOGIC;
+         as : in  STD_LOGIC;
+         lds : in  STD_LOGIC;
+         uds : in  STD_LOGIC;
+         a17 : in  STD_LOGIC;
+         a21 : in  STD_LOGIC;
+         ipl : out STD_LOGIC_VECTOR(2 downto 0);
+         oe : out  STD_LOGIC;
+         rom_evn_cs : out  STD_LOGIC;
+         rom_odd_cs : out  STD_LOGIC;
+         ram_evn_cs : out  STD_LOGIC;
+         ram_odd_cs : out  STD_LOGIC;
+         duart_cs : out  STD_LOGIC;
+         dtack_out : out  STD_LOGIC
         );
     END COMPONENT;
 
 
    --Inputs
-   signal clk : std_logic := '0';
-   signal duart_dtack : std_logic := '1';
+   signal dtack_in : std_logic := '1';
    signal duart_irq : std_logic := '1';
    signal rw : std_logic := '1';
    signal as : std_logic := '1';
    signal lds : std_logic := '1';
    signal uds : std_logic := '1';
-   signal e : std_logic := '1';
-   signal a7 : std_logic := '0';
-   signal a8 : std_logic := '0';
-   signal a9 : std_logic := '0';
    signal a17 : std_logic := '0';
    signal a21 : std_logic := '0';
+   signal reset : std_logic := '1';
 
-	--BiDirs
-   signal rom_evn_cs : std_logic;
-   signal rom_odd_cs : std_logic;
-   signal ram_evn_cs : std_logic;
-   signal ram_odd_cs : std_logic;
-
- 	--Outputs
-   signal clk_out : std_logic;
+   --Outputs
    signal ipl : std_logic_vector(2 downto 0);
    signal oe : std_logic;
-   signal berr : std_logic;
    signal duart_cs : std_logic;
    signal dtack_out : std_logic;
+   signal ram_evn_cs : std_logic;
+   signal ram_odd_cs : std_logic;
+   signal rom_evn_cs : std_logic;
+   signal rom_odd_cs : std_logic;
 
 BEGIN
 
-	-- Instantiate the Unit Under Test (UUT)
+  -- Instantiate the Unit Under Test (UUT)
    uut: cpld PORT MAP (
-          clk => clk,
-          duart_dtack => duart_dtack,
+          reset => reset,
+          dtack_in => dtack_in,
           duart_irq => duart_irq,
           rw => rw,
           as => as,
           lds => lds,
           uds => uds,
-          e => e,
-          a7 => a7,
-          a8 => a8,
-          a9 => a9,
           a17 => a17,
           a21 => a21,
-          clk_out => clk_out,
           ipl => ipl,
           oe => oe,
           rom_evn_cs => rom_evn_cs,
           rom_odd_cs => rom_odd_cs,
           ram_evn_cs => ram_evn_cs,
           ram_odd_cs => ram_odd_cs,
-          berr => berr,
           duart_cs => duart_cs,
           dtack_out => dtack_out
         );
-
-   -- Clock process definitions
-   clk_process :process
-   begin
-		clk <= '0';
-		wait for 125 ns;
-		clk <= '1';
-		wait for 125 ns;
-   end process;
 
    -- Stimulus process
    stim_proc: process
@@ -139,11 +110,18 @@ BEGIN
       -- hold reset state for 100ms.
       wait for 100 ms;
 
+      -- Validate that changing RW also changes OE
+      rw <= '0';
+      wait for 25 ms;
+      rw <= '1';
+      wait for 25 ms;
+      rw <= '0';
+      wait for 50 ms;
+
       -- Validate that CS also handles DTACK
       a21 <= '1';
       a17 <= '1';
       uds <= '0';
-      duart_dtack <= '0';
       for i in 1 to 10 loop
         as <= '0';
         wait for 20 ms;
@@ -152,14 +130,6 @@ BEGIN
       end loop;
       wait for 50 ms;
 
-      a21 <= '0';
-      lds <= '0';
-      for i in 1 to 5 loop
-        as <= '0';
-        wait for 20 ms;
-        as <= '1';
-        wait for 20 ms;
-      end loop;
       wait;
    end process;
 

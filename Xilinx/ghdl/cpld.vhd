@@ -1,20 +1,20 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    13:49:29 06/29/2018 
--- Design Name: 
--- Module Name:    cpld - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
+-- Company:
+-- Engineer:
 --
--- Dependencies: 
+-- Create Date:    13:49:29 06/29/2018
+-- Design Name:
+-- Module Name:    cpld - Behavioral
+-- Project Name:
+-- Target Devices:
+-- Tool versions:
+-- Description:
 --
--- Revision: 
+-- Dependencies:
+--
+-- Revision:
 -- Revision 0.01 - File Created
--- Additional Comments: 
+-- Additional Comments:
 --
 ----------------------------------------------------------------------------------
 library IEEE;
@@ -27,146 +27,108 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity cpld is
-    Port ( clk : in  STD_LOGIC;
-			  duart_dtack : in  STD_LOGIC;
-			  duart_irq : in  STD_LOGIC;
-           rw : in  STD_LOGIC;
-           as : in  STD_LOGIC;
-           lds : in  STD_LOGIC;
-           uds : in  STD_LOGIC;
-           -- fc0 : in  STD_LOGIC;
-           -- fc1 : in  STD_LOGIC;
-           -- fc2 : in  STD_LOGIC;
-			  e : in  STD_LOGIC;
-			  a7 : in  STD_LOGIC;
-			  a8 : in  STD_LOGIC;
-			  a9 : in  STD_LOGIC;
-			  a17 : in  STD_LOGIC;
-			  a21 : in  STD_LOGIC;
-			  clk_out : out  STD_LOGIC;
-			  ipl : out STD_LOGIC_VECTOR(2 downto 0);
-           oe : out  STD_LOGIC;
-			  rom_evn_cs : out  STD_LOGIC;
-			  rom_odd_cs : out  STD_LOGIC;
-			  ram_evn_cs : out  STD_LOGIC;
-			  ram_odd_cs : out  STD_LOGIC;
-			  berr : out  STD_LOGIC;
-			  duart_cs : out  STD_LOGIC;
-			  dtack_out : out  STD_LOGIC
-			);
+    Port (  reset : in  STD_LOGIC;
+            dtack_in : in  STD_LOGIC;
+            duart_irq : in  STD_LOGIC;
+            rw : in  STD_LOGIC;
+            as : in  STD_LOGIC;
+            lds : in  STD_LOGIC;
+            uds : in  STD_LOGIC;
+            a17 : in  STD_LOGIC;
+            a21 : in  STD_LOGIC;
+            ipl : out STD_LOGIC_VECTOR(2 downto 0);
+            oe : out  STD_LOGIC;
+            rom_evn_cs : out  STD_LOGIC;
+            rom_odd_cs : out  STD_LOGIC;
+            ram_evn_cs : out  STD_LOGIC;
+            ram_odd_cs : out  STD_LOGIC;
+            duart_cs : out  STD_LOGIC;
+            dtack_out : out  STD_LOGIC
+      );
 end cpld;
 
 architecture Behavioral of cpld is
 
-	-- internal signals
-	signal decoder_duart_cs : STD_LOGIC;
-	signal decoder_rom_evn_cs : STD_LOGIC;
-	signal decoder_rom_odd_cs : STD_LOGIC;
-	signal decoder_ram_evn_cs : STD_LOGIC;
-	signal decoder_ram_odd_cs : STD_LOGIC;
-	
-	-- components
-	COMPONENT irq
-	PORT(
-		duart_irq : IN std_logic;          
-		ipl : OUT std_logic_vector(2 downto 0)
-		);
-	END COMPONENT;
-	
-	COMPONENT bus_error
-	PORT(
-		e : IN std_logic;
-		as : IN std_logic;          
-		berr : OUT std_logic
-		);
-	END COMPONENT;
+  -- internal signals
+  signal as_count : integer := 0;
 
-	COMPONENT mem_decoder
-	PORT(
-		as : IN std_logic;
-		lds : IN std_logic;
-		uds : IN std_logic;
-		a7 : IN std_logic;
-		a8 : IN std_logic;
-		a9 : IN std_logic;
-		a17 : IN std_logic;
-		a21 : IN std_logic;          
-		duart_cs : OUT std_logic;
-		rom_evn_cs : OUT std_logic;
-		rom_odd_cs : OUT std_logic;
-		ram_evn_cs : OUT std_logic;
-		ram_odd_cs : OUT std_logic
-		);
-	END COMPONENT;
-
-	COMPONENT dtack
-	PORT(
-		duart_dtack : IN std_logic;
-		ram_evn_cs : IN std_logic;
-		ram_odd_cs : IN std_logic;
-		rom_evn_cs : IN std_logic;
-		rom_odd_cs : IN std_logic;
-		duart_cs : IN std_logic;          
-		dtack : OUT std_logic
-		);
-	END COMPONENT;
-	
 begin
 
-	-- instantiate modules
-	
-	IRQ_MOD : irq PORT MAP(
-		duart_irq => duart_irq,
-		ipl => ipl
-	);
-		
-	BUS_ERR_MOD : bus_error PORT MAP(
-		e => e,
-		as => as,
-		berr => berr
-	);
-	
-	MEM_DECODER_MOD : mem_decoder PORT MAP(
-		as => as,
-		lds => lds,
-		uds => uds,
-		a7 => a7,
-		a8 => a8,
-		a9 => a9,
-		a17 => a17,
-		a21 => a21,
-		duart_cs => decoder_duart_cs,
-		rom_evn_cs => decoder_rom_evn_cs,
-		rom_odd_cs => decoder_rom_odd_cs,
-		ram_evn_cs => decoder_ram_evn_cs,
-		ram_odd_cs => decoder_ram_odd_cs
-	);
-	
-	DTACK_MOD : dtack PORT MAP(
-		duart_dtack => duart_dtack,
-		ram_evn_cs => decoder_ram_evn_cs,
-		ram_odd_cs => decoder_ram_odd_cs,
-		rom_evn_cs => decoder_rom_evn_cs,
-		rom_odd_cs => decoder_rom_odd_cs,
-		duart_cs => decoder_duart_cs,
-		dtack => dtack_out
-	);
-	
-	process (rw, clk, decoder_duart_cs, decoder_ram_evn_cs, decoder_ram_odd_cs, 
-				decoder_rom_evn_cs, decoder_rom_odd_cs)
-	begin
-		
-		-- always set
-		oe <= not rw;
-		clk_out <= not clk;
-		
-		duart_cs <= decoder_duart_cs;
-		ram_odd_cs <= decoder_ram_odd_cs;
-		ram_evn_cs <= decoder_ram_evn_cs;
-		rom_odd_cs <= decoder_rom_odd_cs;
-		rom_evn_cs <= decoder_rom_evn_cs;
-		
-	end process;
+  process (rw, as, a17, a21, dtack_in)
+    variable rom_selected : boolean := false;
+    variable ram_selected : boolean := false;
+  begin
+    if reset = '0' then
+     ipl <= "000";
+     oe <= '1';
+     duart_cs <= '1';
+     dtack_out <= '1';
+     ram_evn_cs <= '1';
+     ram_odd_cs <= '1';
+     rom_evn_cs <= '1';
+     rom_odd_cs <= '1';
+     as_count <= 0;
+     rom_selected := false;
+     ram_selected := false;
+    else
+
+      -- always set
+      oe <= not rw;
+
+      if as = '1' then
+        duart_cs <= '1';
+        ram_evn_cs <= '1';
+        ram_odd_cs <= '1';
+        rom_evn_cs <= '1';
+        rom_odd_cs <= '1';
+        dtack_out <= '1';
+        rom_selected := false;
+        ram_selected := false;
+      end if;
+
+      if as = '0' then
+        report "as = 0";
+        if as_count < 8 then
+          rom_selected := true;
+          rom_evn_cs <= '0';
+          rom_odd_cs <= '0';
+          as_count <= as_count + 1;
+        else
+          if a21 = '1' then
+  					if a17 = '1' then					-- I/O devices
+  						duart_cs <= '0';
+  					else
+  						if uds = '0' then				-- ROM access
+  							rom_evn_cs <= '0';
+  						end if;
+  						if lds = '0' then
+  							rom_odd_cs <= '0';
+  						end if;
+  					end if;
+  				else										-- RAM access
+  					if uds = '0' then
+  						ram_evn_cs <= '0';
+  					end if;
+  					if lds = '0' then
+  						ram_odd_cs <= '0';
+  					end if;
+  				end if;
+        end if;
+      end if;
+
+      if dtack_in = '1' and rom_selected = false and ram_selected = false then
+        dtack_out <= '1';
+      end if;
+
+      if dtack_in = '0' then
+        dtack_out <= dtack_in;
+      end if;
+
+      if ram_selected = true or rom_selected = true then
+        dtack_out <= '0';
+      end if;
+
+    end if;
+  end process;
 
 end Behavioral;
-

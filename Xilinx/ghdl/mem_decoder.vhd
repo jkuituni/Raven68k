@@ -58,7 +58,6 @@ begin
 	process (as, a21, a17, uds, lds)
 
 	begin
-
 		t_duart_cs <= '1';
 		t_rom_evn_cs <= '1';
 		t_rom_odd_cs <= '1';
@@ -66,7 +65,9 @@ begin
 		t_ram_odd_cs <= '1';
 
 		if as = '0' then
-			if as_count < "1000" then
+			report "as = 1";
+			if as_count < 8 then
+				report
 				t_rom_evn_cs <= '0';
 				t_rom_odd_cs <= '0';
 				as_count <= STD_LOGIC_VECTOR(unsigned(as_count) + 1);
