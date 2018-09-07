@@ -44,6 +44,7 @@ void main(void) {
   unsigned int count = 0;
   char c;
 
+  setup_duart();
   for (; count < 10; count++) {
     ascii();
   }
