@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:Raven68k-rescue
 LIBS:Memory_RAM
 LIBS:power
 LIBS:device
