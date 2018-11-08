@@ -35,8 +35,7 @@ entity cpld is
             lds : in  STD_LOGIC;
             uds : in  STD_LOGIC;
             a17 : in  STD_LOGIC;
-            a21 : in  STD_LOGIC;
-            ipl : out STD_LOGIC_VECTOR(2 downto 0);
+				    a21 : in  STD_LOGIC;
             oe : out  STD_LOGIC;
             rom_evn_cs : out  STD_LOGIC;
             rom_odd_cs : out  STD_LOGIC;
@@ -50,85 +49,63 @@ end cpld;
 architecture Behavioral of cpld is
 
   -- internal signals
-  signal as_count : integer := 0;
+  signal as_count : std_logic_vector(3 downto 0) := "0000";
+  signal rom_selected : boolean := false;
+  signal ram_selected : boolean := false;
+
+	function bool_to_logic(b : boolean) return STD_LOGIC is
+	begin
+		if (b) then
+			return '1';
+		else
+			return '0';
+		end if;
+	end function bool_to_logic;
+
+	function active_low(b : boolean) return STD_LOGIC is
+	begin
+		if (b) then
+			return '0';
+		else
+			return '1';
+		end if;
+	end function active_low;
 
 begin
 
-  process (rw, as, a17, a21, dtack_in)
-    variable rom_selected : boolean := false;
-    variable ram_selected : boolean := false;
+  process (reset, as, a17, a21, uds, lds, as_count, rom_selected, ram_selected, dtack_in)
   begin
-    if reset = '0' then
-     ipl <= "000";
-     oe <= '1';
-     duart_cs <= '1';
-     dtack_out <= '1';
-     ram_evn_cs <= '1';
-     ram_odd_cs <= '1';
-     rom_evn_cs <= '1';
-     rom_odd_cs <= '1';
-     as_count <= 0;
-     rom_selected := false;
-     ram_selected := false;
-    else
-
-      -- always set
-      oe <= not rw;
-
-      if as = '1' then
-        duart_cs <= '1';
-        ram_evn_cs <= '1';
-        ram_odd_cs <= '1';
-        rom_evn_cs <= '1';
-        rom_odd_cs <= '1';
-        dtack_out <= '1';
-        rom_selected := false;
-        ram_selected := false;
+	if falling_edge(as) then
+      if as_count < "1000" then
+  		  as_count <= std_logic_vector(to_unsigned(to_integer(unsigned(as_count))+1,4));
       end if;
+      -- RAM select
+  		ram_evn_cs <= active_low(as_count = "1000" and a17 = '0' and a21 = '0' and uds = '1');
+  		ram_odd_cs <= active_low(as_count = "1000" and a17 = '0' and a21 = '0' and lds = '1');
+  		ram_selected <= (a17 = '0' and a21 = '0' and (uds = '1' or lds = '1'));
 
-      if as = '0' then
-        report "as = 0";
-        if as_count < 8 then
-          rom_selected := true;
-          rom_evn_cs <= '0';
-          rom_odd_cs <= '0';
-          as_count <= as_count + 1;
-        else
-          if a21 = '1' then
-  					if a17 = '1' then					-- I/O devices
-  						duart_cs <= '0';
-  					else
-  						if uds = '0' then				-- ROM access
-  							rom_evn_cs <= '0';
-  						end if;
-  						if lds = '0' then
-  							rom_odd_cs <= '0';
-  						end if;
-  					end if;
-  				else										-- RAM access
-  					if uds = '0' then
-  						ram_evn_cs <= '0';
-  					end if;
-  					if lds = '0' then
-  						ram_odd_cs <= '0';
-  					end if;
-  				end if;
-        end if;
-      end if;
+  		-- ROM select
+      rom_evn_cs <= active_low(as_count < "1000" or (as = '0' and a17 = '1' and a21 = '0' and uds = '1'));
+  		rom_odd_cs <= active_low(as_count < "1000" or (as = '0' and a17 = '1' and a21 = '0' and lds = '1'));
+  		rom_selected <= (as_count < "1000" or (as = '0' and a17 = '1' and a21 = '0' and (uds = '1' or lds = '1')));
 
-      if dtack_in = '1' and rom_selected = false and ram_selected = false then
-        dtack_out <= '1';
-      end if;
+  		-- I/O devices
+  		duart_cs <= active_low(as = '0' and as_count = "1000" and a17 = '1' and a21 = '1');
 
-      if dtack_in = '0' then
-        dtack_out <= dtack_in;
-      end if;
-
-      if ram_selected = true or rom_selected = true then
-        dtack_out <= '0';
-      end if;
-
+		-- DTACK
+		dtack_out <= active_low(rom_selected = true or ram_selected = true or dtack_in = '0');
     end if;
+  end process;
+
+	process (reset, rw, dtack_in, as, rom_selected, ram_selected)
+	begin
+
+    if reset = '0' then
+      oe <= '0';
+    else
+  		oe <= not rw;
+    end if;
+
   end process;
 
 end Behavioral;

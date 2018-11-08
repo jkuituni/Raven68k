@@ -1,6 +1,6 @@
 EESchema Schematic File Version 2
+LIBS:Raven68k-rescue
 LIBS:Memory_RAM
-LIBS:Oscillator
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -31,8 +31,6 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:Logic_74xx
-LIBS:xc9572xl
-LIBS:Timer_RTC
 LIBS:ds1501y
 LIBS:cp2102
 LIBS:Raven68k-cache
@@ -257,7 +255,7 @@ NoConn ~ 6350 2300
 NoConn ~ 6850 2650
 NoConn ~ 6950 2650
 $Comp
-L USB_B J2
+L USB_B-RESCUE-Raven68k J2
 U 1 1 5A654AF7
 P 9400 1950
 F 0 "J2" H 9200 2400 50  0000 L CNN

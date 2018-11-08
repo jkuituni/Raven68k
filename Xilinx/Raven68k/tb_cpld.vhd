@@ -1,42 +1,42 @@
 --------------------------------------------------------------------------------
--- Company: 
+-- Company:
 -- Engineer:
 --
 -- Create Date:   10:54:56 07/02/2018
--- Design Name:   
+-- Design Name:
 -- Module Name:   C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/tb_cpld.vhd
 -- Project Name:  cpld
--- Target Device:  
--- Tool versions:  
--- Description:   
--- 
+-- Target Device:
+-- Tool versions:
+-- Description:
+--
 -- VHDL Test Bench Created by ISE for module: cpld
--- 
+--
 -- Dependencies:
--- 
+--
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
 --
--- Notes: 
+-- Notes:
 -- This testbench has been automatically generated using types std_logic and
 -- std_logic_vector for the ports of the unit under test.  Xilinx recommends
 -- that these types always be used for the top-level I/O of a design in order
--- to guarantee that the testbench will bind correctly to the post-implementation 
+-- to guarantee that the testbench will bind correctly to the post-implementation
 -- simulation model.
 --------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.std_logic_unsigned.all;
 USE ieee.numeric_std.ALL;
- 
+
 ENTITY tb_cpld IS
 END tb_cpld;
- 
-ARCHITECTURE behavior OF tb_cpld IS 
- 
+
+ARCHITECTURE behavior OF tb_cpld IS
+
     -- Component Declaration for the Unit Under Test (UUT)
- 
+
     COMPONENT cpld
     PORT(
          clk : IN  std_logic;
@@ -64,7 +64,7 @@ ARCHITECTURE behavior OF tb_cpld IS
          dtack_out : OUT  std_logic
         );
     END COMPONENT;
-    
+
 
    --Inputs
    signal clk : std_logic := '0';
@@ -96,11 +96,11 @@ ARCHITECTURE behavior OF tb_cpld IS
    signal dtack_out : std_logic;
 
    -- Clock period definitions
-   constant clk_period : time := 1us;
-   constant clk_out_period : time := 1us;
- 
+   constant clk_period : time := 1 us;
+   constant clk_out_period : time := 1 us;
+
 BEGIN
- 
+
 	-- Instantiate the Unit Under Test (UUT)
    uut: cpld PORT MAP (
           clk => clk,
@@ -139,9 +139,9 @@ BEGIN
 
    -- Stimulus process
    stim_proc: process
-   begin		
+   begin
       -- hold reset state for 100ms.
-      wait for 100ms;	
+      wait for 100 ms;
 
       -- Validate that CS also handles DTACK
       a21 <= '1';
@@ -153,7 +153,16 @@ BEGIN
         as <= '1';
         wait for 20 ms;
       end loop;
-		
+      wait for 20 ms;
+
+      -- Validate that duart_dtack sets dtack
+      as <= '0';
+      wait for 5 ms;
+      duart_dtack <= '0';
+      wait for 15 ms;
+      as <= '1';
+      wait for 20 ms;
+
       wait;
    end process;
 

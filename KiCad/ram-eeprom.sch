@@ -1,6 +1,6 @@
 EESchema Schematic File Version 2
+LIBS:Raven68k-rescue
 LIBS:Memory_RAM
-LIBS:Oscillator
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -31,8 +31,6 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:Logic_74xx
-LIBS:xc9572xl
-LIBS:Timer_RTC
 LIBS:ds1501y
 LIBS:cp2102
 LIBS:Raven68k-cache

@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name soic-footprint)(type KiCad)(uri /home/ccureau/soic-footprint)(options "")(descr ""))
+  (lib (name footprints)(type KiCad)(uri ${KIPRJMOD}/lib/footprints.pretty)(options "")(descr ""))
+)
