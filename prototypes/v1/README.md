@@ -8,6 +8,26 @@ This is the first publicly available release of the Raven68k project as generate
 
 The Rev0 software is available in this repository under the /rom/v1 directory.
 
+## RAM and ROM locations
+
+| Type 	| Start Address 	| Size   	|
+|------	|---------------	|--------	|
+| RAM  	| $000000       	| 1 MiB  	|
+| ROM  	| $FFFF00       	| 64 KiB 	|
+
+## Device Select Logic
+
+| Hexadecimal | Decimal | Device     |
+|-------------|---------|------------|
+| 1048576     | $100000 | Dual UART  |
+| 1048704     | $100080 | Unassigned |
+| 1048832     | $100100 | Unassigned |
+| 1048960     | $100180 | Unassigned |
+| 1049088     | $100200 | Unassigned |
+| 1049216     | $100280 | Unassigned |
+| 1049344     | $100300 | Unassigned |
+| 1049472     | $100380 | Unassigned |
+
 ## Errata
 
 ### ROM Decoding logic
