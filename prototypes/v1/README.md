@@ -17,16 +17,18 @@ The Rev0 software is available in this repository under the /rom/v1 directory.
 
 ## Device Select Logic
 
-| Hexadecimal | Decimal | Device     |
-|-------------|---------|------------|
-| 1048576     | $100000 | Dual UART  |
-| 1048704     | $100080 | Unassigned |
-| 1048832     | $100100 | Unassigned |
-| 1048960     | $100180 | Unassigned |
-| 1049088     | $100200 | Unassigned |
-| 1049216     | $100280 | Unassigned |
-| 1049344     | $100300 | Unassigned |
-| 1049472     | $100380 | Unassigned |
+Each peripheral has 64 bytes (32 words) of address space available to it.  As the 68681 has 16 registers, it is only using 1/2 of the available space.  This probably has the unintended effect of mirroring into the unused half of I/O space, making it unavailable for other use.
+
+| Decimal | Hexadecimal | Device     |
+|---------|-------------|------------|
+| 1048576 |   $100000   | Dual UART  |
+| 1048704 |   $100080   | Unassigned |
+| 1048832 |   $100100   | Unassigned |
+| 1048960 |   $100180   | Unassigned |
+| 1049088 |   $100200   | Unassigned |
+| 1049216 |   $100280   | Unassigned |
+| 1049344 |   $100300   | Unassigned |
+| 1049472 |   $100380   | Unassigned |
 
 ## Errata
 
@@ -39,7 +41,7 @@ The Rev0 software is available in this repository under the /rom/v1 directory.
  
      NOT(ROM_CS) AND A16=HIGH
 
-The extra NOT gate between ROM_CS effectively turn it on when the ROM is active.
+The NAND gate (U11B) is not necessary and should be removed. All of this can be hooked directly to the 74HC138 (U13)
 
 ### Map ROM to RAM for boot
 
