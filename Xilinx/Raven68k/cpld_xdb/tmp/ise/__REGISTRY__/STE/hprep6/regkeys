@@ -1,6 +1,0 @@
-CommandLine
-C:\Xilinx\10.1\ISE\bin\nt64\unwrapped\hprep6.exe -ise C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise -s IEEE1149 -n cpld -i cpld
-s
-FormatString
-hprep6 [-i <design[.vm6]>] [--intstyle ise|xflow|silent] [-n <signature>] [-tmv <TMV>] [-nopullup] [-s ieee1532|IEEE1532|ieee1149|IEEE1149] [-autosig] [--holistic] [--r <reportType>] [--a] [--l <output>] [--q] [--annotate] [--bypass cr2s|CR2S] 
-s

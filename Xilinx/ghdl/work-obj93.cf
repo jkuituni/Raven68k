@@ -1,7 +1,0 @@
-v 4
-file . "cpld.vhd" "19e28056a7beaefa63180cee610cf2e0f6387ea3" "20180711190845.850":
-  entity cpld at 20( 451) + 0 on 245;
-  architecture behavioral of cpld at 49( 1291) + 0 on 246;
-file . "tb_cpld.vhd" "c297c12211942a4453fea1fe55538897e8385c0a" "20180711190845.849":
-  entity tb_cpld at 28( 887) + 0 on 243;
-  architecture behavior of tb_cpld at 36( 1022) + 0 on 244;

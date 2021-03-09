@@ -1,6 +1,0 @@
-CommandLine
-C:\Xilinx\10.1\ISE\bin\nt64\unwrapped\tsim.exe -ise C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise -intstyle ise cpld cpld.nga
-s
-FormatString
-tsim <design[.vm6]> [--intstyle ise|xflow|silent] [<outfile>] 
-s

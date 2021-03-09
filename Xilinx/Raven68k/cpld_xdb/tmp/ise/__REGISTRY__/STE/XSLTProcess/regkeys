@@ -1,6 +1,0 @@
-CommandLine
-C:\Xilinx\10.1\ISE\bin\nt64\unwrapped\XSLTProcess.exe -ise C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise cpld_build.xml
-s
-FormatString
-xsltprocess [--intstyle ise|xflow|silent] <xmlfile> [-a] [-w] [--libxslt <limit:-1,10>] 
-s

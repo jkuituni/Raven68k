@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP KM684000BLP-7L
-D OTP EPROM 512 KiBit
-K OTP EPROM 512KiBit
-F https://pdf1.alldatasheet.com/datasheet-pdf/view/37316/SAMSUNG/KM684000BLP-7L.html
-$ENDCMP
-#
-#End Doc Library

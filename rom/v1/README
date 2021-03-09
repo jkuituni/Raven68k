@@ -1,9 +1,0 @@
-For posterity...
-
-The m68k.ld, crt0.S, and Makefile originally came from a blog post 
-at http://bitsnbikes.blogspot.com/2010/02/das-blinklicht-with-gcc-elf-m68k.html
-which was linked to comp.sys.m68k newsgroup at
-https://groups.google.com/forum/#!topic/comp.sys.m68k/nupIo9ypu2E
-
-This code requires srecord to be installed to do the conversion from SREC format
-to writable ROMs. 

@@ -1,4 +1,0 @@
-(sym_lib_table
-  (lib (name raven)(type Legacy)(uri /home/ccureau/raven-prototypes/raven.lib)(options "")(descr "")(disabled))
-  (lib (name raven-prototypes)(type Legacy)(uri /home/ccureau/raven-prototypes/raven-prototypes.lib)(options "")(descr ""))
-)

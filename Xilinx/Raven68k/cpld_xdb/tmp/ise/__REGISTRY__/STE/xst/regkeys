@@ -1,6 +1,0 @@
-CommandLine
-C:\Xilinx\10.1\ISE\bin\nt64\unwrapped\xst.exe -ise C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.ise -intstyle ise -ifn C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.xst -ofn C:/Users/Chris/git/Raven68k/Xilinx/Raven68k/cpld.syr -finalclean 1
-s
-FormatString
-xst [-ifn <InputFile>] [-ofn <OutputFile>] [-ise <iseProjectFile>] [--quiet] [-intstyle <Style>] [--deb <DebugLevel>] [--finalclean <Clean>] [--PcubeFlow] [--globOptFlow] [--XstNtrc]
-s

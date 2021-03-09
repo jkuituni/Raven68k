@@ -1,7 +1,0 @@
-(sym_lib_table
-  (lib (name Raven68k-rescue)(type Legacy)(uri ${KIPRJMOD}/Raven68k-rescue.lib)(options "")(descr ""))
-  (lib (name Memory_RAM1)(type Legacy)(uri /home/ccureau/git/Raven68k/kicad-lib/Memory_RAM/Memory_RAM.lib)(options "")(descr ""))
-  (lib (name Logic_74xx)(type Legacy)(uri /home/ccureau/git/Raven68k/kicad-lib/Logic_74xx/Logic_74xx.lib)(options "")(descr ""))
-  (lib (name ds1501y)(type Legacy)(uri /home/ccureau/git/Raven68k/kicad-lib/maxim/ds1501y.lib)(options "")(descr ""))
-  (lib (name cp2102)(type Legacy)(uri /home/ccureau/git/Raven68k/kicad-lib/silicon_labs/cp2102.lib)(options "")(descr ""))
-)

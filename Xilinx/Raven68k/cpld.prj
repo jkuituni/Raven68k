@@ -1,5 +1,0 @@
-vhdl work "mem_decoder.vhd"
-vhdl work "irq.vhd"
-vhdl work "dtack.vhd"
-vhdl work "bus_error.vhd"
-vhdl work "cpld.vhd"
