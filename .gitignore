@@ -68,3 +68,7 @@ fp-info-cache
 # Exported BOM files
 *.xml
 *.csv
+
+# compiled files
+*.a
+*.bin

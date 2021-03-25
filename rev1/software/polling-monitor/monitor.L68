@@ -1,0 +1,773 @@
+00201000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 3/9/2021 6:34:53 AM
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      : 68k Homebrew ROM Monitor
+00000000                             3  * Written by : Hayden Kroepfl (ChartreuseK)
+00000000                             4  * Date       : August 24th 2015
+00000000                             5  * Description: A simple ROM monitor for my homebrew 68k
+00000000                             6  *              breadboard computer.
+00000000                             7  *-----------------------------------------------------------
+00000000                             8  *
+00000000                             9  * To make this responsive to different terminal widths we need to change the number of bytes printed
+00000000                            10  * on a line from 16, which fits exactly on a 72 column screen, to an ammount based on a formula.
+00000000                            11  *  Sizes: 
+00000000                            12  *   Address:      "000000: " 8
+00000000                            13  *   Each Byte:    "00 "      3
+00000000                            14  *   Start ASCII:  "|"        1
+00000000                            15  *   Each ASCII:   "."        1
+00000000                            16  *   End ASCII:    "|"        1
+00000000                            17  *
+00000000                            18  *   Width = 8 + numBytes*(3 + 1) + 2
+00000000                            19  *   numBytes = (Width - 10)/4 = (Width - 10)>>2
+00000000                            20  *  Examples:
+00000000                            21  *    (80 - 10)/4 = 70/4 = 16 Bytes
+00000000                            22  *    (40 - 10)/4 = 30/4 =  7 Bytes
+00000000                            23  *    (32 - 10)/4 = 22/4 =  5 Bytes
+00000000                            24  * On small screens we should not show the start and end characters on the ASCII section
+00000000                            25  * 40 Characters wide or less
+00000000                            26  *    (40 - 8)/4  = 32/4 =  8 Bytes
+00000000                            27  *    (32 - 8)/4  = 24/4 =  6 Bytes
+00000000                            28  
+00000000                            29  
+00000000                            30  
+00000000                            31  **********************************
+00000000                            32  * Defines
+00000000                            33  *
+00000000  =00200000                 34  RAM_START           equ     $200000
+00000000  =00300000                 35  RAM_END             equ     $300000
+00000000  =00000050                 36  MAX_LINE_LENGTH     equ     80
+00000000                            37  
+00000000                            38  *********************************
+00000000                            39  * 68681 Duart Register Addresses
+00000000                            40  *
+00000000  =00400000                 41  DUART equ $400000       * Base Addr of DUART
+00000000  =00400001                 42  MRA   equ DUART+1       * Mode Register A           (R/W)
+00000000  =00400003                 43  SRA   equ DUART+3       * Status Register A         (r)
+00000000  =00400003                 44  CSRA  equ DUART+3       * Clock Select Register A   (w)
+00000000  =00400005                 45  CRA   equ DUART+5       * Commands Register A       (w)
+00000000  =00400007                 46  RBA   equ DUART+7       * Receiver Buffer A         (r)
+00000000  =00400007                 47  TBA   equ DUART+7       * Transmitter Buffer A      (w)
+00000000  =00400009                 48  ACR   equ DUART+9       * Aux. Control Register     (R/W)
+00000000  =0040000B                 49  ISR   equ DUART+11      * Interrupt Status Register (R)
+00000000  =0040000B                 50  IMR   equ DUART+11      * Interrupt Mask Register   (W)
+00000000  =00400011                 51  MRB   equ DUART+17      * Mode Register B           (R/W)
+00000000  =00400013                 52  SRB   equ DUART+19      * Status Register B         (R)
+00000000  =00400013                 53  CSRB  equ DUART+19      * Clock Select Register B   (W)
+00000000  =00400015                 54  CRB   equ DUART+21      * Commands Register B       (W)
+00000000  =00400017                 55  RBB   equ DUART+23      * Reciever Buffer B         (R)
+00000000  =00400017                 56  TBB   equ DUART+23      * Transmitter Buffer B      (W)
+00000000  =00400019                 57  IVR   equ DUART+25      * Interrupt Vector Register (R/W)
+00000000                            58  
+00000000                            59  **********************************
+00000000                            60  * ASCII Control Characters
+00000000                            61  *
+00000000  =00000007                 62  BEL   equ $07
+00000000  =00000008                 63  BKSP  equ $08       * CTRL-H
+00000000  =00000009                 64  TAB   equ $09
+00000000  =0000000A                 65  LF    equ $0A
+00000000  =0000000D                 66  CR    equ $0D
+00000000  =0000001B                 67  ESC   equ $1B
+00000000                            68  
+00000000  =00000003                 69  CTRLC   EQU $03     
+00000000  =00000018                 70  CTRLX   EQU $18     * Line Clear
+00000000                            71  
+00000000                            72  
+00000000                            73  **********************************
+00000000                            74  * Variables
+00000000                            75  *
+00000000  =002FFFFC                 76  varCurAddr  equ     RAM_END-4                        * Last address accessed
+00000000  =002FFFAA                 77  varLineBuf  equ     varCurAddr-MAX_LINE_LENGTH-2     * Line buffer
+00000000                            78  
+00000000  =002FFFAA                 79  varLast     equ     varLineBuf
+00000000                            80  
+00000000                            81  
+00000000                            82  **********************************
+00000000                            83  * Defines 2 
+00000000                            84  *
+00000000  =002FFFAA                 85  STACK_START         equ     varLast
+00000000                            86  
+00000000                            87  
+00000000                            88  
+00000000                            89  **** PROGRAM STARTS HERE ****
+00000000                            90      
+00201000                            91      ORG     $201000
+00201000                            92      
+00201000                            93  ********************************************
+00201000                            94  * Cold start entry point
+00201000                            95  *
+00201000                            96  START:
+00201000  4FF9 002FFFAA             97      lea     STACK_START, SP     * Set our stack pointer to be sure
+00201006                            98  
+00201006                            99  monitorStart:
+00201006  41F9 00201420            100      lea     msgBanner, A0   * Show our banner
+0020100C  6100 0344                101      bsr.w   printString
+00201010  41F9 00201463            102      lea     msgHelp,   A0   * And the command help message
+00201016  6100 033A                103      bsr.w   printString
+0020101A                           104  
+0020101A                           105  monitorLine:                * Our main monitor loop
+0020101A  41F9 002014AA            106      lea     msgPrompt, a0   * Prompt
+00201020  6100 0330                107      bsr.w   printString     
+00201024  6100 0294                108      bsr.w   readLine        * Read in the line
+00201028  6100 0008                109      bsr.w   lineToUpper     * Convert to upper-case for ease of parsing
+0020102C  6100 0022                110      bsr.w   parseLine       * Then parse and respond to the line
+00201030                           111      
+00201030  60E8                     112      bra.s   monitorLine
+00201032                           113      
+00201032                           114      
+00201032                           115      
+00201032                           116      
+00201032                           117  ***************************************
+00201032                           118  * Converts input line to uppercase
+00201032                           119  lineToUpper:
+00201032  41F9 002FFFAA            120      lea     varLineBuf, a0   * Get the start of the line buffer
+00201038                           121   .loop:
+00201038  1010                     122      move.b  (a0), d0         * Read in a character
+0020103A  B03C 0061                123      cmp.b   #'a', d0         
+0020103E  6D0A                     124      blt.s   .next            * Is it less than lower-case 'a', then move on
+00201040  B03C 007A                125      cmp.b   #'z', d0
+00201044  6E04                     126      bgt.s   .next            * Is it greater than lower-case 'z', then move on
+00201046  0400 0020                127      sub.b   #$20, d0         * Then convert a to A, b to B, etc.
+0020104A                           128   .next:
+0020104A  10C0                     129      move.b  d0, (a0)+        * Store the character back into a0, and move to the next
+0020104C  66EA                     130      bne.s   .loop            * Keep going till we hit a null terminator
+0020104E  4E75                     131      rts
+00201050                           132  
+00201050                           133  ***************************************
+00201050                           134  * Parse Line
+00201050                           135  parseLine:
+00201050  48E7 0030                136      movem.l a2-a3, -(SP)        * Save registers
+00201054  41F9 002FFFAA            137      lea     varLineBuf, a0
+0020105A                           138   .findCommand:
+0020105A  1018                     139      move.b  (a0)+, d0
+0020105C  B03C 0020                140      cmp.b   #' ', d0            * Ignore spaces
+00201060  6700 FFF8                141      beq.w   .findCommand    
+00201064  B03C 0045                142      cmp.b   #'E', d0            * Examine command
+00201068  6700 0030                143      beq.w   .examine
+0020106C  B03C 0044                144      cmp.b   #'D', d0            * Deposit command
+00201070  6700 00B0                145      beq.w   .deposit
+00201074  B03C 0052                146      cmp.b   #'R', d0            * Run command
+00201078  6700 0106                147      beq.w   .run
+0020107C  B03C 0048                148      cmp.b   #'H', d0            * Help command
+00201080  6700 0110                149      beq.w   .help
+00201084  B03C 0000                150      cmp.b   #0, d0              * Ignore blank lines
+00201088  670A                     151      beq.s   .exit               
+0020108A                           152   .invalid:   
+0020108A  41F9 002014AD            153      lea     msgInvalidCommand, a0
+00201090  6100 02C0                154      bsr.w   printString
+00201094                           155   .exit:
+00201094  4CDF 0C00                156      movem.l (SP)+, a2-a3        * Restore registers
+00201098  4E75                     157      rts
+0020109A                           158  
+0020109A                           159  **********************
+0020109A                           160  * Examines memory addresses
+0020109A                           161  * Valid modes:
+0020109A                           162  *   e ADDR                  Displays a single byte
+0020109A                           163  *   e ADDR-ADDR             Dispalys all bytes between the two addresses
+0020109A                           164  *   e ADDR+LEN              Dispays LEN bytes after ADDR
+0020109A                           165  *   e ADDR;                 Interactive mode, space shows 16 lines, enter shows 1.
+0020109A                           166  *   e ADDR.                 Quick line, displays one line 
+0020109A                           167   .examine:
+0020109A  6100 0120                168      bsr.w   parseNumber         * Read in the start address
+0020109E  4A01                     169      tst.b   d1                  * Make sure it's valid (parseNumber returns non-zero in d1 for failure)
+002010A0  6600 00FE                170      bne.w   .invalidAddr        
+002010A4  2640                     171      move.l  d0, a3              * Save the start address
+002010A6                           172   .exloop:
+002010A6  1018                     173      move.b  (a0)+, d0
+002010A8  B03C 0020                174      cmp.b   #' ', d0            * Ignore spaces
+002010AC  67F8                     175      beq.s   .exloop
+002010AE  B03C 002D                176      cmp.b   #'-', d0            * Check if it's a range specifier
+002010B2  6716                     177      beq.s   .exrange
+002010B4  B03C 002B                178      cmp.b   #'+', d0            * Check if it's a length specifier
+002010B8  6722                     179      beq.s   .exlength
+002010BA  B03C 003B                180      cmp.b   #';', d0            * Check if we're going interactive
+002010BE  672E                     181      beq.s   .exinter
+002010C0  B03C 002E                182      cmp.b   #'.', d0            * Check if quick 16 
+002010C4  6712                     183      beq.s   .exquick
+002010C6  7001                     184      move.l  #1, d0              * Otherwise read in a single byte
+002010C8  601C                     185      bra.s   .exend              
+002010CA                           186   .exrange:
+002010CA  6100 00F0                187      bsr.w   parseNumber         * Find the end address
+002010CE  4A01                     188      tst.b   d1                  * Check if we found a valid address
+002010D0  6600 00CE                189      bne.w   .invalidAddr
+002010D4  908B                     190      sub.l   a3, d0              * Get the length
+002010D6  600E                     191      bra.s   .exend
+002010D8                           192   .exquick:                      * Quick mode means show one line of 16 bytes
+002010D8  7010                     193      move.l  #$10, d0
+002010DA  600A                     194      bra.s   .exend
+002010DC                           195   .exlength:                     * Length mode means a length is specified
+002010DC  6100 00DE                196      bsr.w   parseNumber         * Find the length
+002010E0  4A01                     197      tst.b   d1
+002010E2  6600 00BC                198      bne.w   .invalidAddr
+002010E6                           199   .exend:                        * We're done parsing, give the parameters to dumpRAM and exit
+002010E6  204B                     200      move.l  a3, a0
+002010E8  6100 0132                201      bsr.w   dumpRAM
+002010EC  60A6                     202      bra.s   .exit
+002010EE                           203   .exinter:                      * Interactive mode, Space shows 16 lines, enter shows 1.
+002010EE  204B                     204      move.l  a3, a0              * Current Address
+002010F0  7010                     205      move.l  #$10, d0            * 16 bytes
+002010F2  6100 0128                206      bsr.w   dumpRAM             * Dump this line
+002010F6  D7FC 00000010            207      add.l   #$10, a3            * Move up the current address 16 bytes
+002010FC                           208   .exinterend:
+002010FC  6100 02CE                209      bsr.w   inChar
+00201100  B03C 000D                210      cmp.b   #CR, d0             * Display another line
+00201104  67E8                     211      beq.s   .exinter
+00201106  B03C 0020                212      cmp.b   #' ', d0            * Display a page (256 bytes at a time)
+0020110A  6702                     213      beq.s   .exinterpage
+0020110C  6086                     214      bra.s   .exit               * Otherwise exit
+0020110E                           215   .exinterpage:
+0020110E  204B                     216      move.l  a3, a0
+00201110  203C 00000100            217      move.l  #$100, d0           * 256 bytes
+00201116  6100 0104                218      bsr.w   dumpRAM             * Dump 16 lines of RAM
+0020111A  D7FC 00000100            219      add.l   #$100, a3           * Move up the current address by 256
+00201120  60DA                     220      bra.s   .exinterend
+00201122                           221  
+00201122                           222  ****************************************
+00201122                           223  * Deposit values into RAM
+00201122                           224  * d ADDR VAL VAL            Deposit value(s) into RAM
+00201122                           225  * d ADDR VAL VAL;           Deposit values, continue with values on next line
+00201122                           226  *  VAL VAL VAL;              - Continuing with further continue
+00201122                           227  * d: VAL VAL                Continue depositing values after the last address written to
+00201122                           228   .deposit:
+00201122  1010                     229      move.b  (a0), d0
+00201124  B03C 003A                230      cmp.b   #':', d0            * Check if we want to continue from last
+00201128  6728                     231      beq.s   .depCont
+0020112A                           232      
+0020112A  6100 0090                233      bsr.w   parseNumber         * Otherwise read the address
+0020112E  4A01                     234      tst.b   d1
+00201130  666E                     235      bne.s   .invalidAddr
+00201132  2640                     236      move.l  d0, a3              * Save the start address
+00201134                           237   .depLoop:
+00201134  1010                     238      move.b  (a0), d0            
+00201136  B03C 003B                239      cmp.b   #';', d0            * Check for continue
+0020113A  6720                     240      beq.s   .depMultiline
+0020113C  4A40                     241      tst     d0                  * Check for the end of line
+0020113E  6700 0036                242      beq     .depEnd
+00201142                           243      
+00201142  6178                     244      bsr.s   parseNumber         * Otherwise read a value
+00201144  4A01                     245      tst.b   d1
+00201146  6666                     246      bne.s   .invalidVal
+00201148  B07C 00FF                247      cmp.w   #255, d0            * Make sure it's a byte
+0020114C  6E60                     248      bgt.s   .invalidVal
+0020114E                           249      
+0020114E  16C0                     250      move.b  d0, (a3)+           * Store the value into memory
+00201150  60E2                     251      bra.s   .depLoop
+00201152                           252      
+00201152                           253   .depCont:
+00201152  2679 002FFFFC            254      move.l  varCurAddr, a3      * Read in the last address 
+00201158  5288                     255      addq.l  #1, a0              * Skip over the ':'
+0020115A  60D8                     256      bra.s   .depLoop
+0020115C                           257      
+0020115C                           258   .depMultiline:
+0020115C  41F9 002014A7            259      lea     msgDepositPrompt, a0
+00201162  6100 01EE                260      bsr.w   printString
+00201166  6100 0152                261      bsr.w   readLine            * Read in the next line to be parsed
+0020116A  6100 FEC6                262      bsr.w   lineToUpper         * Convert to uppercase
+0020116E  41F9 002FFFAA            263      lea     varLineBuf, a0      * Reset our buffer pointer
+00201174  60BE                     264      bra.s   .depLoop            * And jump back to decoding
+00201176                           265   .depEnd:
+00201176  23CB 002FFFFC            266      move.l  a3, varCurAddr
+0020117C  6000 FF16                267      bra.w   .exit
+00201180                           268  ****************************************
+00201180                           269  * 
+00201180                           270   .run:
+00201180  6100 003A                271      bsr.w   parseNumber         * Otherwise read the address
+00201184  4A01                     272      tst.b   d1
+00201186  6618                     273      bne.s   .invalidAddr
+00201188  2040                     274      move.l  d0, a0
+0020118A  4E90                     275      jsr     (a0)                * Jump to the code! 
+0020118C                           276                                  * Go as subroutine to allow code to return to us
+0020118C  4EB9 00201006            277      jsr     monitorStart        * Warm start after returning so everything is in
+00201192                           278                                  * a known state.
+00201192                           279      
+00201192                           280   .help:
+00201192  41F9 00201463            281      lea     msgHelp, a0
+00201198  6100 01B8                282      bsr.w   printString
+0020119C  6000 FEF6                283      bra.w   .exit
+002011A0                           284   .invalidAddr:
+002011A0  41F9 002014BF            285      lea     msgInvalidAddress, a0
+002011A6  6100 01AA                286      bsr.w   printString
+002011AA  6000 FEE8                287      bra.w   .exit
+002011AE                           288   .invalidVal:
+002011AE  41F9 002014D1            289      lea     msgInvalidValue, a0
+002011B4  6100 019C                290      bsr.w   printString
+002011B8  6000 FEDA                291      bra.w   .exit
+002011BC                           292      
+002011BC                           293      
+002011BC                           294  **************************************
+002011BC                           295  * Find and parse a hex number
+002011BC                           296  *  Starting address in A0
+002011BC                           297  *  Number returned in D0
+002011BC                           298  *  Status in D1   (0 success, 1 fail)
+002011BC                           299  *  TODO: Try and merge first digit code with remaining digit code
+002011BC                           300  parseNumber:
+002011BC  B180                     301      eor.l   d0, d0           * Zero out d0
+002011BE  1018                     302      move.b  (a0)+, d0
+002011C0  B03C 0020                303      cmp.b   #' ', d0         * Ignore all leading spaces
+002011C4  67F6                     304      beq.s   parseNumber
+002011C6  B03C 0030                305      cmp.b   #'0', d0         * Look for hex digits 0-9
+002011CA  6D12                     306      blt.s   .invalid
+002011CC  B03C 0039                307      cmp.b   #'9', d0
+002011D0  6F16                     308      ble.s   .firstdigit1
+002011D2                           309  
+002011D2  B03C 0041                310      cmp.b   #'A', d0         * Look for hex digits A-F
+002011D6  6D06                     311      blt.s   .invalid    
+002011D8  B03C 0046                312      cmp.b   #'F', d0
+002011DC  6F04                     313      ble.s   .firstdigit2
+002011DE                           314   .invalid:
+002011DE  7201                     315      move.l  #1, d1          * Invalid character, mark failure and return
+002011E0  4E75                     316      rts
+002011E2                           317   .firstdigit2:
+002011E2  0400 0037                318      sub.b   #'7', d0        * Turn 'A' to 10
+002011E6  6004                     319      bra.s   .loop
+002011E8                           320   .firstdigit1:
+002011E8  0400 0030                321      sub.b   #'0', d0        * Turn '0' to 0
+002011EC                           322   .loop:
+002011EC  1218                     323      move.b  (a0)+, d1       * Read in a digit
+002011EE  B23C 0030                324      cmp.b   #'0', d1        * Look for hex digits 0-9
+002011F2  6D12                     325      blt.s   .end            * Any other characters mean we're done reading
+002011F4  B23C 0039                326      cmp.b   #'9', d1
+002011F8  6F18                     327      ble.s   .digit1
+002011FA  B23C 0041                328      cmp.b   #'A', d1        * Look for hex digits A-F
+002011FE  6D06                     329      blt.s   .end
+00201200  B23C 0046                330      cmp.b   #'F', d1
+00201204  6F06                     331      ble.s   .digit2
+00201206                           332  
+00201206                           333  .end:                       * We hit a non-hex digit character, we're done parsing
+00201206  5388                     334      subq.l  #1, a0          * Move the pointer back before the end character we read
+00201208  7200                     335      move.l  #0, d1
+0020120A  4E75                     336      rts
+0020120C                           337   .digit2:
+0020120C  0401 0037                338      sub.b   #'7', d1        * Turn 'A' to 10
+00201210  6004                     339      bra.s   .digit3
+00201212                           340   .digit1:
+00201212  0401 0030                341      sub.b   #'0', d1        * Turn '0' to 0
+00201216                           342   .digit3:
+00201216  E988                     343      lsl.l   #4, d0          * Shift over to the next nybble
+00201218  D001                     344      add.b   d1, d0          * Place in our current nybble (could be or.b instead)
+0020121A  60D0                     345      bra.s   .loop
+0020121C                           346      
+0020121C                           347      
+0020121C                           348  ****************************************
+0020121C                           349  * Dumps a section of RAM to the screen
+0020121C                           350  * Displays both hex values and ASCII characters
+0020121C                           351  * d0 - Number of bytes to dump
+0020121C                           352  * a0 - Start Address
+0020121C                           353  dumpRAM:
+0020121C  48E7 3820                354      movem.l d2-d4/a2, -(SP)  * Save registers
+00201220  2448                     355      move.l  a0, a2           * Save the start address
+00201222  2400                     356      move.l  d0, d2           * And the number of bytes
+00201224                           357   .line:
+00201224  200A                     358      move.l  a2, d0          
+00201226  6100 013E                359      bsr.w   printHexAddr     * Starting address of this line
+0020122A  41F9 0020150C            360      lea     msgColonSpace, a0
+00201230  6100 0120                361      bsr.w   printString
+00201234  7610                     362      move.l  #16, d3          * 16 Bytes can be printed on a line
+00201236  2803                     363      move.l  d3, d4           * Save number of bytes on this line
+00201238                           364   .hexbyte:
+00201238  4A82                     365      tst.l   d2               * Check if we're out of bytes
+0020123A  6718                     366      beq.s   .endbytesShort
+0020123C  4A03                     367      tst.b   d3               * Check if we're done this line
+0020123E  673A                     368      beq.s   .endbytes    
+00201240  101A                     369      move.b  (a2)+, d0        * Read a byte in from RAM
+00201242  6100 014A                370      bsr.w   printHexByte     * Display it
+00201246  103C 0020                371      move.b  #' ', d0
+0020124A  6100 016E                372      bsr.w   outChar          * Space out bytes
+0020124E  5383                     373      subq.l  #1, d3    
+00201250  5382                     374      subq.l  #1, d2        
+00201252  60E4                     375      bra.s   .hexbyte
+00201254                           376   .endbytesShort:
+00201254  9803                     377      sub.b   d3, d4           * Make d4 the actual number of bytes on this line
+00201256  103C 0020                378      move.b  #' ', d0
+0020125A                           379   .endbytesShortLoop:
+0020125A  4A03                     380      tst.b   d3               * Check if we ended the line
+0020125C  671C                     381      beq.s   .endbytes
+0020125E  103C 0020                382      move.b  #' ', d0
+00201262  6100 0156                383      bsr.w   outChar          * Three spaces to pad out
+00201266  103C 0020                384      move.b  #' ', d0
+0020126A  6100 014E                385      bsr.w   outChar
+0020126E  103C 0020                386      move.b  #' ', d0
+00201272  6100 0146                387      bsr.w   outChar
+00201276                           388      
+00201276  5303                     389      subq.b  #1, d3
+00201278  60E0                     390      bra.s   .endbytesShortLoop
+0020127A                           391   .endbytes:
+0020127A  95C4                     392      suba.l  d4, a2           * Return to the start address of this line
+0020127C                           393   .endbytesLoop:
+0020127C  4A04                     394      tst.b   d4               * Check if we're done printing ascii
+0020127E  6700 0022                395      beq     .endline    
+00201282  5304                     396      subq.b  #1, d4
+00201284  101A                     397      move.b  (a2)+, d0        * Read the byte again
+00201286  B03C 0020                398      cmp.b   #' ', d0         * Lowest printable character
+0020128A  6D0C                     399      blt.s   .unprintable
+0020128C  B03C 007E                400      cmp.b   #'~', d0         * Highest printable character
+00201290  6E06                     401      bgt.s   .unprintable
+00201292  6100 0126                402      bsr.w   outChar
+00201296  60E4                     403      bra.s   .endbytesLoop
+00201298                           404   .unprintable:
+00201298  103C 002E                405      move.b  #'.', d0
+0020129C  6100 011C                406      bsr.w   outChar
+002012A0  60DA                     407      bra.s   .endbytesLoop
+002012A2                           408   .endline:
+002012A2  41F9 00201509            409      lea     msgNewline, a0
+002012A8  6100 00A8                410      bsr.w   printString
+002012AC  4A82                     411      tst.l   d2
+002012AE  6F04                     412      ble.s   .end
+002012B0  6000 FF72                413      bra.w   .line
+002012B4                           414   .end:
+002012B4  4CDF 041C                415      movem.l (SP)+, d2-d4/a2  * Restore registers
+002012B8  4E75                     416      rts
+002012BA                           417      
+002012BA                           418      
+002012BA                           419          
+002012BA                           420      
+002012BA                           421  ******
+002012BA                           422  * Read in a line into the line buffer
+002012BA                           423  readLine:
+002012BA  48E7 2020                424      movem.l d2/a2, -(SP)     * Save changed registers
+002012BE  45F9 002FFFAA            425      lea     varLineBuf, a2   * Start of the lineBuffer
+002012C4  B542                     426      eor.w   d2, d2           * Clear the character counter
+002012C6                           427   .loop:
+002012C6  6100 0104                428      bsr.w   inChar           * Read a character from the serial port
+002012CA  B03C 0008                429      cmp.b   #BKSP, d0        * Is it a backspace?
+002012CE  6722                     430      beq.s   .backspace
+002012D0  B03C 0018                431      cmp.b   #CTRLX, d0       * Is it Ctrl-H (Line Clear)?
+002012D4  673A                     432      beq.s   .lineclear
+002012D6  B03C 000D                433      cmp.b   #CR, d0          * Is it a carriage return?
+002012DA  6758                     434      beq.s   .endline
+002012DC  B03C 000A                435      cmp.b   #LF, d0          * Is it anything else but a LF?
+002012E0  67E4                     436      beq.s   .loop            * Ignore LFs and get the next character
+002012E2                           437   .char:                      * Normal character to be inserted into the buffer
+002012E2  B47C 0050                438      cmp.w   #MAX_LINE_LENGTH, d2
+002012E6  6CDE                     439      bge.s   .loop            * If the buffer is full ignore the character
+002012E8  14C0                     440      move.b  d0, (a2)+        * Otherwise store the character
+002012EA  5242                     441      addq.w  #1, d2           * Increment character count
+002012EC  6100 00CC                442      bsr.w   outChar          * Echo the character
+002012F0  60D4                     443      bra.s   .loop            * And get the next one
+002012F2                           444   .backspace:
+002012F2  4A42                     445      tst.w   d2               * Are we at the beginning of the line?
+002012F4  67D0                     446      beq.s   .loop            * Then ignore it
+002012F6  6100 00C2                447      bsr.w   outChar          * Backspace
+002012FA  103C 0020                448      move.b  #' ', d0
+002012FE  6100 00BA                449      bsr.w   outChar          * Space
+00201302  103C 0008                450      move.b  #BKSP, d0
+00201306  6100 00B2                451      bsr.w   outChar          * Backspace
+0020130A  538A                     452      subq.l  #1, a2           * Move back in the buffer
+0020130C  5382                     453      subq.l  #1, d2           * And current character count
+0020130E  60B6                     454      bra.s   .loop            * And goto the next character
+00201310                           455   .lineclear:
+00201310  4A42                     456      tst     d2               * Anything to clear?
+00201312  67B2                     457      beq.s   .loop            * If not, fetch the next character
+00201314  95C2                     458      suba.l  d2, a2           * Return to the start of the buffer
+00201316                           459   .lineclearloop:
+00201316  103C 0008                460      move.b  #BKSP, d0
+0020131A  6100 009E                461      bsr.w   outChar          * Backspace
+0020131E  103C 0020                462      move.b  #' ', d0
+00201322  6100 0096                463      bsr.w   outChar          * Space
+00201326  103C 0008                464      move.b  #BKSP, d0
+0020132A  6100 008E                465      bsr.w   outChar          * Backspace
+0020132E  5342                     466      subq.w  #1, d2          
+00201330  66E4                     467      bne.s   .lineclearloop   * Go till the start of the line
+00201332  6092                     468      bra.s   .loop   
+00201334                           469   .endline:
+00201334  6100 0084                470      bsr.w   outChar          * Echo the CR
+00201338  103C 000A                471      move.b  #LF, d0
+0020133C  6100 007C                472      bsr.w   outChar          * Line feed to be safe
+00201340  14BC 0000                473      move.b  #0, (a2)         * Terminate the line (Buffer is longer than max to allow this at full length)
+00201344  204A                     474      movea.l a2, a0           * Ready the pointer to return (if needed)
+00201346  4CDF 0404                475      movem.l (SP)+, d2/a2     * Restore registers
+0020134A  4E75                     476      rts                      * And return
+0020134C                           477  
+0020134C                           478  
+0020134C                           479  
+0020134C                           480  
+0020134C                           481      
+0020134C                           482  ******
+0020134C                           483  * Prints a newline (CR, LF)
+0020134C                           484  printNewline:
+0020134C  41F9 00201509            485      lea     msgNewline, a0
+00201352                           486  ******
+00201352                           487  * Print a null terminated string
+00201352                           488  *
+00201352                           489  printString:
+00201352                           490   .loop:
+00201352  1018                     491      move.b  (a0)+, d0    * Read in character
+00201354  6704                     492      beq.s   .end         * Check for the null
+00201356                           493      
+00201356  6162                     494      bsr.s   outChar      * Otherwise write the character
+00201358  60F8                     495      bra.s   .loop        * And continue
+0020135A                           496   .end:
+0020135A  4E75                     497      rts
+0020135C                           498  
+0020135C                           499  ** KEEP All printHex functions together **
+0020135C                           500  ******
+0020135C                           501  * Print a hex word
+0020135C                           502  printHexWord:
+0020135C  2F02                     503      move.l  d2, -(SP)    * Save D2
+0020135E  2400                     504      move.l  d0, d2       * Save the address in d2
+00201360                           505      
+00201360  E19A                     506      rol.l   #8, d2       * 4321 -> 3214
+00201362  E19A                     507      rol.l   #8, d2       * 3214 -> 2143 
+00201364  6018                     508      bra.s   printHex_wordentry  * Print out the last 16 bits
+00201366                           509  *****
+00201366                           510  * Print a hex 24-bit address
+00201366                           511  printHexAddr:
+00201366  2F02                     512      move.l d2, -(SP)     * Save D2
+00201368  2400                     513      move.l d0, d2          * Save the address in d2
+0020136A                           514      
+0020136A  E19A                     515      rol.l   #8, d2       * 4321 -> 3214
+0020136C  600A                     516      bra.s   printHex_addrentry  * Print out the last 24 bits
+0020136E                           517  ******
+0020136E                           518  * Print a hex long
+0020136E                           519  printHexLong:
+0020136E  2F02                     520      move.l  d2, -(SP)     * Save D2
+00201370  2400                     521      move.l  d0, d2        * Save the address in d2
+00201372                           522      
+00201372  E19A                     523      rol.l   #8, d2        * 4321 -> 3214 high byte in low
+00201374  2002                     524      move.l  d2, d0
+00201376  6116                     525      bsr.s   printHexByte  * Print the high byte (24-31)
+00201378                           526  printHex_addrentry:     
+00201378  E19A                     527      rol.l   #8, d2        * 3214 -> 2143 middle-high byte in low
+0020137A  2002                     528      move.l  d2, d0              
+0020137C  6110                     529      bsr.s   printHexByte  * Print the high-middle byte (16-23)
+0020137E                           530  printHex_wordentry:    
+0020137E  E19A                     531      rol.l   #8, d2        * 2143 -> 1432 Middle byte in low
+00201380  2002                     532      move.l  d2, d0
+00201382  610A                     533      bsr.s   printHexByte  * Print the middle byte (8-15)
+00201384  E19A                     534      rol.l   #8, d2
+00201386  2002                     535      move.l  d2, d0
+00201388  6104                     536      bsr.s   printHexByte  * Print the low byte (0-7)
+0020138A                           537      
+0020138A  241F                     538      move.l (SP)+, d2      * Restore D2
+0020138C  4E75                     539      RTS
+0020138E                           540      
+0020138E                           541  ******
+0020138E                           542  * Print a hex byte
+0020138E                           543  *  - Takes byte in D0
+0020138E                           544  printHexByte:
+0020138E  2F02                     545      move.l  D2, -(SP)
+00201390  1400                     546      move.b  D0, D2
+00201392  E808                     547      lsr.b   #$4, D0
+00201394  0600 0030                548      add.b   #'0', D0
+00201398  B03C 0039                549      cmp.b   #'9', D0     * Check if the hex number was from 0-9
+0020139C  6F02                     550      ble.s   .second
+0020139E  5E00                     551      add.b   #7, D0       * Shift 0xA-0xF from ':' to 'A'
+002013A0                           552  .second:
+002013A0  6118                     553      bsr.s   outChar      * Print the digit
+002013A2  0202 000F                554      andi.b  #$0F, D2     * Now we want the lower digit Mask only the lower digit
+002013A6  0602 0030                555      add.b   #'0', D2
+002013AA  B43C 0039                556      cmp.b   #'9', D2     * Same as before    
+002013AE  6F02                     557      ble.s   .end
+002013B0  5E02                     558      add.b   #7, D2
+002013B2                           559  .end:
+002013B2  1002                     560      move.b  D2, D0
+002013B4  6104                     561      bsr.s   outChar      * Print the lower digit
+002013B6  241F                     562      move.l  (SP)+, D2
+002013B8  4E75                     563      rts
+002013BA                           564      
+002013BA                           565      
+002013BA                           566      
+002013BA                           567      
+002013BA                           568      
+002013BA                           569      
+002013BA                           570  *****
+002013BA                           571  * Writes a character to Port A, blocking if not ready (Full buffer)
+002013BA                           572  *  - Takes a character in D0
+002013BA                           573  outChar:
+002013BA  0839 0002 00400003       574      btst    #2, SRA      * Check if transmitter ready bit is set
+002013C2  67F6                     575      beq     outChar     
+002013C4  13C0 00400007            576      move.b  d0, TBA      * Transmit Character
+002013CA  4E75                     577      rts
+002013CC                           578  
+002013CC                           579  *****
+002013CC                           580  * Reads in a character from Port A, blocking if none available
+002013CC                           581  *  - Returns character in D0
+002013CC                           582  *    
+002013CC                           583  inChar:
+002013CC  0839 0000 00400003       584      btst    #0,  SRA     * Check if receiver ready bit is set
+002013D4  67F6                     585      beq     inChar
+002013D6  1039 00400007            586      move.b  RBA, d0      * Read Character into D0
+002013DC  4E75                     587      rts
+002013DE                           588      
+002013DE                           589  *****
+002013DE                           590  * Initializes the 68681 DUART port A as 9600 8N1 
+002013DE                           591  initDuart:
+002013DE  13FC 0030 00400005       592      move.b  #$30, CRA       * Reset Transmitter
+002013E6  13FC 0020 00400005       593      move.b  #$20, CRA       * Reset Reciever
+002013EE  13FC 0010 00400005       594      move.b  #$10, CRA       * Reset Mode Register Pointer
+002013F6                           595      
+002013F6  13FC 0080 00400009       596      move.b  #$80, ACR       * Baud Rate Set #2
+002013FE  13FC 00BB 00400003       597      move.b  #$BB, CSRA      * Set Tx and Rx rates to 9600
+00201406  13FC 0093 00400001       598      move.b  #$93, MRA       * 7-bit, No Parity ($93 for 8-bit, $92 for 7-bit)
+0020140E  13FC 0007 00400001       599      move.b  #$07, MRA       * Normal Mode, Not CTS/RTS, 1 stop bit
+00201416                           600      
+00201416  13FC 0005 00400005       601      move.b  #$05, CRA       * Enable Transmit/Recieve
+0020141E  4E75                     602      rts    
+00201420                           603  
+00201420                           604  
+00201420                           605  
+00201420                           606  
+00201420                           607  
+00201420                           608  
+00201420                           609  **********************************
+00201420                           610  * Strings
+00201420                           611  *
+00201420                           612  msgBanner:
+00201420= 0D 0A 43 68 61 72 ...    613      dc.b CR,LF,'Chartreuse''s 68000 ROM Monitor',CR,LF
+00201442= 3D 3D 3D 3D 3D 3D ...    614      dc.b       '==============================',CR,LF,0
+00201463                           615  msgHelp:
+00201463= 41 76 61 69 6C 61 ...    616      dc.b 'Available Commands: ',CR,LF
+00201479= 20 28 45 29 78 61 ...    617      dc.b ' (E)xamine    (D)eposit    (R)un     (H)elp',CR,LF,0
+002014A7                           618  msgDepositPrompt:
+002014A7= 3A 20 00                 619      dc.b ': ',0
+002014AA                           620  msgPrompt:
+002014AA= 3E 20 00                 621      dc.b '> ',0
+002014AD                           622  msgInvalidCommand:
+002014AD= 49 6E 76 61 6C 69 ...    623      dc.b 'Invalid Command',CR,LF,0
+002014BF                           624  msgInvalidAddress:
+002014BF= 49 6E 76 61 6C 69 ...    625      dc.b 'Invalid Address',CR,LF,0
+002014D1                           626  msgInvalidValue:
+002014D1= 49 6E 76 61 6C 69 ...    627      dc.b 'Invalid Value',CR,LF,0
+002014E1                           628  msgRamCheck:
+002014E1= 43 68 65 63 6B 69 ...    629      dc.b 'Checking RAM...',CR,LF,0
+002014F3                           630  msgRamFail:
+002014F3= 46 61 69 6C 65 64 ...    631      dc.b 'Failed at: ',0
+002014FF                           632  msgRamPass:
+002014FF= 50 61 73 73 65 64 ...    633      dc.b 'Passed.',CR,LF,0
+00201509                           634  msgNewline:
+00201509= 0D 0A 00                 635      dc.b CR,LF,0
+0020150C                           636  msgColonSpace:
+0020150C= 3A 20 00                 637      dc.b ': ',0
+0020150F                           638  msgTermWidth:
+0020150F= 54 65 72 6D 20 57 ...    639      dc.b 'Term Width? ',0
+0020151C                           640  
+0020151C                           641  
+0020151C                           642  
+0020151C                           643  
+0020151C                           644  
+0020151C                           645  
+0020151C                           646  
+0020151C                           647      END    START            * last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+ACR                 400009
+BEL                 7
+BKSP                8
+CR                  D
+CRA                 400005
+CRB                 400015
+CSRA                400003
+CSRB                400013
+CTRLC               3
+CTRLX               18
+DUART               400000
+DUMPRAM             20121C
+DUMPRAM:END         2012B4
+DUMPRAM:ENDBYTES    20127A
+DUMPRAM:ENDBYTESLOOP  20127C
+DUMPRAM:ENDBYTESSHORT  201254
+DUMPRAM:ENDBYTESSHORTLOOP  20125A
+DUMPRAM:ENDLINE     2012A2
+DUMPRAM:HEXBYTE     201238
+DUMPRAM:LINE        201224
+DUMPRAM:UNPRINTABLE  201298
+ESC                 1B
+IMR                 40000B
+INCHAR              2013CC
+INITDUART           2013DE
+ISR                 40000B
+IVR                 400019
+LF                  A
+LINETOUPPER         201032
+LINETOUPPER:LOOP    201038
+LINETOUPPER:NEXT    20104A
+MAX_LINE_LENGTH     50
+MONITORLINE         20101A
+MONITORSTART        201006
+MRA                 400001
+MRB                 400011
+MSGBANNER           201420
+MSGCOLONSPACE       20150C
+MSGDEPOSITPROMPT    2014A7
+MSGHELP             201463
+MSGINVALIDADDRESS   2014BF
+MSGINVALIDCOMMAND   2014AD
+MSGINVALIDVALUE     2014D1
+MSGNEWLINE          201509
+MSGPROMPT           2014AA
+MSGRAMCHECK         2014E1
+MSGRAMFAIL          2014F3
+MSGRAMPASS          2014FF
+MSGTERMWIDTH        20150F
+OUTCHAR             2013BA
+PARSELINE           201050
+PARSELINE:DEPCONT   201152
+PARSELINE:DEPEND    201176
+PARSELINE:DEPLOOP   201134
+PARSELINE:DEPMULTILINE  20115C
+PARSELINE:DEPOSIT   201122
+PARSELINE:EXAMINE   20109A
+PARSELINE:EXEND     2010E6
+PARSELINE:EXINTER   2010EE
+PARSELINE:EXINTEREND  2010FC
+PARSELINE:EXINTERPAGE  20110E
+PARSELINE:EXIT      201094
+PARSELINE:EXLENGTH  2010DC
+PARSELINE:EXLOOP    2010A6
+PARSELINE:EXQUICK   2010D8
+PARSELINE:EXRANGE   2010CA
+PARSELINE:FINDCOMMAND  20105A
+PARSELINE:HELP      201192
+PARSELINE:INVALID   20108A
+PARSELINE:INVALIDADDR  2011A0
+PARSELINE:INVALIDVAL  2011AE
+PARSELINE:RUN       201180
+PARSENUMBER         2011BC
+PARSENUMBER:DIGIT1  201212
+PARSENUMBER:DIGIT2  20120C
+PARSENUMBER:DIGIT3  201216
+PARSENUMBER:END     201206
+PARSENUMBER:FIRSTDIGIT1  2011E8
+PARSENUMBER:FIRSTDIGIT2  2011E2
+PARSENUMBER:INVALID  2011DE
+PARSENUMBER:LOOP    2011EC
+PRINTHEXADDR        201366
+PRINTHEXBYTE        20138E
+PRINTHEXBYTE:END    2013B2
+PRINTHEXBYTE:SECOND  2013A0
+PRINTHEXLONG        20136E
+PRINTHEXWORD        20135C
+PRINTHEX_ADDRENTRY  201378
+PRINTHEX_WORDENTRY  20137E
+PRINTNEWLINE        20134C
+PRINTSTRING         201352
+PRINTSTRING:END     20135A
+PRINTSTRING:LOOP    201352
+RAM_END             300000
+RAM_START           200000
+RBA                 400007
+RBB                 400017
+READLINE            2012BA
+READLINE:BACKSPACE  2012F2
+READLINE:CHAR       2012E2
+READLINE:ENDLINE    201334
+READLINE:LINECLEAR  201310
+READLINE:LINECLEARLOOP  201316
+READLINE:LOOP       2012C6
+SRA                 400003
+SRB                 400013
+STACK_START         2FFFAA
+START               201000
+TAB                 9
+TBA                 400007
+TBB                 400017
+VARCURADDR          2FFFFC
+VARLAST             2FFFAA
+VARLINEBUF          2FFFAA
