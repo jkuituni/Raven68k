@@ -1,0 +1,21 @@
+/* prometheus */
+.equ _uarts,     0x400000
+
+/* uarts */
+.equ _ua_mra,       0x01
+.equ _ua_sra,       0x03
+.equ _ua_csra,      0x03
+.equ _ua_cra,       0x05
+.equ _ua_rba,       0x07
+.equ _ua_tba,       0x07
+.equ _ua_acr,       0x09
+.equ _ua_isr,       0x0b
+.equ _ua_imr,       0x0b
+.equ _ua_mrb,       0x11
+.equ _ua_srb,       0x13
+.equ _ua_csrb,      0x13
+.equ _ua_crb,       0x15
+.equ _ua_rbb,       0x17
+.equ _ua_tbb,       0x17
+.equ _ua_ivr,       0x19
+.equ _ua_opcr,      0x1b
