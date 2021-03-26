@@ -21,9 +21,8 @@ entity main is
 		-- Control signals..
 		as: in std_logic;
 		fc: in std_logic_vector(2 downto 0);
-		ipl: out std_logic_vector(2 downto 0);
 		rw: in std_logic;
-		ah: in std_logic_vector(23 downto 21);
+		ah: in std_logic_vector(23 downto 20);
 		al: in std_logic_vector(3 downto 1);
 		lds: in std_logic;
 		uds: in std_logic;
@@ -38,14 +37,36 @@ entity main is
 		ram_uce: out std_logic;
 		ram_lce: out std_logic;
 		duart_ce: out std_logic;
-		rtc_ce: out std_logic
+		rtc_ce: out std_logic;
+		-- ROM overlay control
+		reset: in std_logic;
+		clk: in std_logic
   );
 end main;
 
 architecture rtl of main is
-	signal mem_dtack: std_logic;
+	shared variable rom_overlay : std_logic := '0';
 begin
+	-- Handle ROM overlay at bottom of the memory at reset
+	process (reset, clk)
+		variable clk_cnt : integer range 0 to 8 := 0;
+	begin
+		if reset = '0' then
+			clk_cnt := 0;
+			rom_overlay := '0';
+		else
+			if rising_edge(clk) then
+				if clk_cnt < 8 then
+					rom_overlay := '1';
+				else
+					clk_cnt := clk_cnt + 1;
+				end if;
+			end if;
+		end if;
+	end process;
+	
 	process(as, ah, uds, lds, rw, duart_dtack)
+		variable mem_dtack : std_logic := '0';
 	begin
 		-- Init the chip selects by default to '1'
 		rom_uce <= '1';
@@ -54,21 +75,32 @@ begin
 		ram_lce <= '1';
 		duart_ce <= '1';
 		rtc_ce <= '1';
-		mem_dtack <= '0';
+		mem_dtack := '0';
 
 		-- Do the memory map decoding..
 		if as = '0' then
-			case ah(23 downto 21) is
-				when "000" =>
-					if lds = '0' then 
-						rom_lce <= '0';
-					end if;
-					if uds = '0' then
-						rom_uce <= '0';
+			case ah(23 downto 20) is
+				when "0000" =>
+					if rom_overlay = '1' then
+						-- We're at RESET -> This is ROM
+						if lds = '0' then 
+							rom_lce <= '0';
+						end if;
+						if uds = '0' then
+							rom_uce <= '0';
+					else
+						-- We're post RESET -> This is RAM
+						if lds = '0' then 
+							ram_lce <= '0';
+						end if;
+						if uds = '0' then
+							ram_uce <= '0';
+						end if;
 					end if;
 					-- Set flag for memory op
-					mem_dtack <= '1';
-				when "001" =>
+					mem_dtack := '1';
+					end if;
+				when "0001" =>
 					if lds = '0' then 
 						ram_lce <= '0';
 					end if;
@@ -76,17 +108,25 @@ begin
 						ram_uce <= '0';
 					end if;
 					-- Set flag for memory op
-					mem_dtack <= '1';
-				when "010" =>
+					mem_dtack := '1';
+				when "0010" =>
 					-- DUART is byte wide only and at low byte
 					if lds = '0' and uds = '1' then
 						duart_ce <= '0';
 					end if;
-				when "011" =>
+				when "0011" =>
 					-- RTC is byte wide only and at low byte
 					if lds = '0' and uds = '1' then
 						rtc_ce <= '0';
 					end if;
+				when "1111" =>
+					-- ROM at top of memory
+						if lds = '0' then 
+							rom_lce <= '0';
+						end if;
+						if uds = '0' then
+							rom_uce <= '0';
+						end if;
 				when others => null;
 			end case;
 		end if;
