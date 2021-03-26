@@ -12,4 +12,7 @@ the machine up and running uCLinux. The initial minimal specifications for the m
 - Full Parallel IDE interface (SD connector optional)
 
 The project will be documented to a blog along with datasheets of all the components used.
+
+## Folder Structure
+*rev1* - Files relating to Revision 1 of the Raven68k 
  
