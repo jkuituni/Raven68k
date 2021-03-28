@@ -87,13 +87,13 @@
   jmp     .run                  | Jump back to main loop
 * ---- System RAM check
 .chkRam:
-  move.l  %d1,-(%sp)
+  move.l  %d1,-(%sp)            | d1 gets clobbered
   move.b  %d0,(%a0)             | Write test pattern to RAM
   move.b  (%a0)+,%d1            | Read from address location into d1
-  cmp.b  %d0,%d1             | Compare if it was written correctly
+  cmp.b   %d0,%d1               | Compare if it was written correctly
   bne.w   .prntRamError         | No -> Print error message
   bra     .chkRam               | Yes -> Loop
-  move.l  (%sp)+,%d1
+  move.l  (%sp)+,%d1            | restore d1
   rts                           | All done -> Return
 * ---- PrintChar ----
 .prntChar:
