@@ -1,0 +1,21 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP KM684000BLP-7L
+D 512K x 8 Low Power CMOS RAM, DIP-32
+K RAM SRAM CMOS MEMORY
+F https://pdf1.alldatasheet.com/datasheet-pdf/view/37316/SAMSUNG/KM684000BLP-7L/+25_2JUOYlSuOpdxSw.wYvzMXdxLb+/datasheet.pdf
+$ENDCMP
+#
+$CMP MAX233
+D 3.0V to 5.5V, Low-Power, up to 1Mbps, True RS-232 Transceivers Using Four 0.1μF External Capacitors
+K rs232 uart transceiver line-driver
+F https://datasheets.maximintegrated.com/en/ds/MAX3222-MAX3241.pdf
+$ENDCMP
+#
+$CMP XC9572XL-VQ44
+D CPLD, 72 Macrocells, 1600 Usable Gates
+K CPLD
+F http://www.xilinx.com/support/documentation/data_sheets/ds057.pdf
+$ENDCMP
+#
+#End Doc Library
