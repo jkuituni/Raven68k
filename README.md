@@ -1,13 +1,10 @@
 # Raven68k
-Raven 68k is a simple Motorola 68000-based single board computer. The machine will serve as a learning tool
-for building a 68000 based machine as well as for learning more about Linux. The goal is to eventually have
-the machine up and running Linux. The initial minimal specifications for the machine are:
-
-- Motorola 68000 CPU
-- 64kB of EEPROM for bootstrapping the Linux
-- 1MB of Static RAM
-- Motorola 68681 DUART with USB adapter on one UART and max233 on other
-- Dallas DS12887A Real Time Clock
+Raven 68k is a simple Motorola 68k family based single board computer. The machine will serve as a learning tool
+for building a 68k based machines for learning on how to interface various chips and add on expansions for the
+architecture. It is also aimed to be a platform for learning on how to write firmware and operating system level
+code and how to implement the required logic in VHDL code to tie in all of the functionality required. We are
+interested on eventually getting Linux up and running on the hardware as the Linux/m68k is still maintained and
+it supports many of the basic building blocks.
 
 The project will be documented to a blog along with datasheets of all the components used.
 
