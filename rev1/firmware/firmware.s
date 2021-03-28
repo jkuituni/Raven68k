@@ -305,7 +305,7 @@ _hex_ok:
   reset                         | Soft-Reset the CPU
 
 * ---- Utility routines
-.toUpper:
+.toupper:
   cmp.b   #'a',%d0
   ble.s   _notchar
   cmp.b   #'z',%d0
@@ -313,7 +313,7 @@ _hex_ok:
   sub.b   #32,%d0
   rts
 
-.toLower:
+.tolower:
   cmp.b   #'A',%d0
   ble.s   _notchar
   cmp.b   #'Z',%d0
