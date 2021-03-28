@@ -48,7 +48,7 @@
 .long   .prntMsg                | Print a message in a0
 .long   .initDuart              | Init the 68681 Duart to 9600,8,n,1
 .long   .SRecUpload             | Upload Motorola SRecord format binary
-.long   .SRecExec               | Execute Motorola SRecord format biary 
+.long   .SRecExec               | Execute Motorola SRecord format biary
 
 // ---- Firmware Init ----
 .init:
@@ -58,13 +58,13 @@
   jsr     .prntMsg              | Print out the message
   lea.l   _msgRamTst,%a0        | Set the RAM test message pointer
   jsr     .prntMsg              | Print out the message
-  lea.l   _ram_start,%a0        | Set the start of RAM
+  move.l  _ram_start,%a0        | Set the start of RAM
   move.l  _ram_end,%a1          | Set the end of RAM
   move.b  #0x00,%d0             | Set the test pattern
   jsr     .chkRam               | Check the RAM for errors
   move.b  #0xff,%d0             | Check another test pattern
   jsr     .chkRam               | Check the RAM for errors
-  lea.l   ._msgRamOK            | Set RAM pass message pointer
+  lea.l   _msgRamOK             | Set RAM pass message pointer
   jsr     .prntMsg              | Print out the message
 // ---- Main Run Loop
 .run:
@@ -149,7 +149,7 @@ _ld_s1:
   clr.l   %d0                   | Clear address accumulator
   jsr     _ld_get_byte          | Get MS byte of load address
   asl.l   #8, %d0               | Move it to MS position
-  jsr     _ld_get_byte          | Get LS byte in D2
+  jsr     _ld_get_byte          | Get LS byte in d2
   move.l  %d0, %a2              | a2 points to destination of data
   bra     _ld_data              | Load the data
 _ld_s2:
@@ -158,11 +158,11 @@ _ld_s2:
   sub.b   #4, %d0               | Calculate size of data field
   move.b  %d0, %d2              | d2 contains data bytes to read
   clr.l   %d0                   | Clear address accumulator
-  jsr     _ld_get_byte          | Read most sig byte of address
+  jsr     _ld_get_byte          | Read MS byte of address
   asl.l   #8, %d0               | Move it one byte left
   jsr     _ld_get_byte          | Read middle byte of address
   asl.l   #8, %d0               | Move it one byte left
-  jsr     _ld_get_byte          | Read least sig byte of address
+  jsr     _ld_get_byte          | Read LS byte of address
   move.l  %d0, %a2              | a2 points to destination of record
   bra     _ld_data              | Load the data
 _ld_s8:
@@ -170,11 +170,11 @@ _ld_s8:
   jsr     _ld_get_byte          | Read the S8 byte count and address
   move.b  %d0, %d2              | d2 contains data bytes to read
   clr.l   %d0                   | Clear address accumulator
-  jsr     _ld_get_byte          | Read most sig byte of address
+  jsr     _ld_get_byte          | Read MS byte of address
   asl.l   #8, %d0               | Move it one byte left
   jsr     _ld_get_byte          | Read middle byte of address
   asl.l   #8, %d0               | Move it one byte left
-  jsr     _ld_get_byte          | Read least sig byte of address
+  jsr     _ld_get_byte          | Read LS byte of address
   move.l  %d0, %a2              | a2 points to destination of record
   bra     _ld_terminate         | Return
 _ld_s9:
@@ -195,7 +195,7 @@ _ld_data:
   jsr     _ld_get_byte          | Read checksum
   add.b   #1, %d3               | Add 1 to total checksum
   beq     _ld_data_ok           | If zero then  draw a dot to console
-  or.b    #0b00001000, %d7      | Else set checksum error bit,
+  or.b    #0b00001000, %d7      | Else set checksum error bit
 _ld_terminate:
   btst.b  #0, %d7               | Test for input errors
   beq     _ld_chksum            | If no errors check the checksum
@@ -225,7 +225,7 @@ _ld_get_byte:
 .send_hex_n:
   movem.l %d0, %a7@-            | Save d0 to stack
   and.b   #0x0f, %d0            | Mask off MS nybble
-  add.b   #0x30, %d0            | Convert to ascii
+  add.b   #0x30, %d0            | Convert to ASCII
   cmp.b   #0x39, %d0            | ASCII = HEX + 0x30
   bls     _send_low             | If ASCII <= 39 then print and exit
   add.b   #0x07, %d0            | Else ASCII = HEX + 7
@@ -240,14 +240,14 @@ _send_low:
   bra     .send_hex_n           | Send the LS nybble hex and return
 .send_hex_w:
   ror.w   #8, %d0               | Move MS byte to the LS byte
-  jsr     .send_hex_b           | Send the MS byte hex
+  jsr     .send_hex_b           | Send the MS byte HEX
   rol.w   #8, %d0               | Restore the LS byte
-  bra     .send_hex_b           | Send the LS byte hex and return
+  bra     .send_hex_b           | Send the LS byte HEX and return
 .send_hex_l:
   swap    %d0                   | Move MS word to the LS word
-  jsr     .send_hex_w           | Send the MS word hex
+  jsr     .send_hex_w           | Send the MS word HEX
   swap    %d0                   | Restore the LS word
-  bra     .send_hex_w           | Send the LS word hex and return
+  bra     .send_hex_w           | Send the LS word HEX and return
 .get_hex_n:
   jsr     .getChar              | Get character from console
   sub.b   #0x30, %d0            | Drop ASCII down to numbers
@@ -277,7 +277,7 @@ _hex_ok:
 .SRecExec:
   lea.l   _msgSRecRun,a0        | Set runSRec message pointer
   jsr     .prntMsg              | Print the message
-  jmp     %a2@                  | Jump to address in A2 register
+  jmp     %a2@                  | Jump to address in a2 register
 // -- General utility routines
 .prntRamError:
   move.l  %a0,%d0               | Save current RAM address
@@ -289,6 +289,8 @@ _hex_ok:
   lea.l   _msgHelp,%a0          | Set Help message pointer
   jsr     .prntMsg              | Print the message
   jmp     .run                  | Jump back to main routine
+
+// ---- Autovector handling routines
 .stop:
   jmp .stop                     | Busy-Loop jumping to STOP
 .unhandled:
@@ -300,7 +302,7 @@ _hex_ok:
 .align(2)
 _msgBanner:     .ascii  "::::: Raven68k - A Simple 68000 based computer\r\n"
                 .ascii  ":::: Hardware revision 1.0\r\n"
-                .asciz  "::: Firmware version v0.0.1\r\n"
+                .asciz  "::: Firmware version v0.0.1\r\n\r\n"
 .align(2)
 _msgRamTst:     .asciz  "Checking RAM memory...\r\n"
 .align(2)
@@ -320,12 +322,11 @@ _msgHelp:       .ascii  "Commands:\r\n"
 .align(2)
 _msgUnknown:    .asciz  "Unknown command!\r\n"
 .align(2)
-_msgErrNotHex:  .asciz  "NOT A HEX VALUE!\r\n"
+_msgErrNotHex:  .asciz  "Invalid HEX value!\r\n"
 .align(2)
-_msgErrChksum:  .asciz  "CHECKSUM ERROR!\r\n"
+_msgErrChksum:  .asciz  "Checksum Error!\r\n"
 .align(2)
-_msgSRecErr:    .ascii  "\r\nThere was an error loading the SRec data (as shown above).\r\n"
-                .asciz  "Press 'R' to reset system...\r\n"
+_msgSRecErr:    .asciz  "\r\nThere was an error loading the SRec data (as shown above).\r\n"
 .align(2)
 _msgSRecLoaded: .asciz  "\r\nSRec data downloaded. The starting address is 0x"
 .align(2)
