@@ -23,8 +23,8 @@
 
 .include "raven68k.inc"
 
-// ---- Vector locations ----
-
+* ---- Vector locations ----
+.section .vectors, "a"
 .long   _stack_start            | Initial StackPointer
 .long   .init                   | Initial ProgramCounter
 .long   .unhandled              | Bus error
@@ -39,8 +39,11 @@
 .endr
 .rept   0x80
 .long   .reset
+.endr
 
-// ---- Firmware Jump-Table ----
+* ---- Firmware Jump-Table ----
+.section .text
+
 .long   .init                   | Firmware init routine
 .long   .chkRam                 | System RAM check
 .long   .prntChar               | Print a char in d0
@@ -48,9 +51,9 @@
 .long   .prntMsg                | Print a message in a0
 .long   .initDuart              | Init the 68681 Duart to 9600,8,n,1
 .long   .SRecUpload             | Upload Motorola SRecord format binary
-.long   .SRecExec               | Execute Motorola SRecord format biary
+.long   .SRecExec               | Execute Motorola SRecord format binary
 
-// ---- Firmware Init ----
+* ---- Firmware Init ----
 .init:
   move.w  #0x2700, %sr          | mask interrupts and set supervisor mode
   jsr     .initDuart            | Init the DUART serial port console connection
@@ -64,9 +67,9 @@
   jsr     .chkRam               | Check the RAM for errors
   move.b  #0xff,%d0             | Check another test pattern
   jsr     .chkRam               | Check the RAM for errors
-  lea.l   _msgRamOK             | Set RAM pass message pointer
+  lea.l   _msgRamOK,%a0         | Set RAM pass message pointer
   jsr     .prntMsg              | Print out the message
-// ---- Main Run Loop
+* ---- Main Run Loop
 .run:
   lea.l   _msgPrompt,%a0        | Set the prompt message pointer
   jsr     .prntMsg              | Print out the message
@@ -82,14 +85,17 @@
   lea.l   _msgUnknown,%a0       | Unknown command!
   jsr     .prntMsg              | Complain about it..
   jmp     .run                  | Jump back to main loop
-// ---- System RAM check
+* ---- System RAM check
 .chkRam:
-  move.b  %d0,%a0               | Write test pattern to RAM
-  cmpi.b  %d0,%a0               | Compare if it was written correctly
-  bne.s   .prntRamError         | No -> Print error message
-  dbra    %a1,chkRam            | Yes -> Loop
+  move.l  %d1,-(%sp)
+  move.b  %d0,(%a0)             | Write test pattern to RAM
+  move.b  (%a0)+,%d1            | Read from address location into d1
+  cmp.b  %d0,%d1             | Compare if it was written correctly
+  bne.w   .prntRamError         | No -> Print error message
+  bra     .chkRam               | Yes -> Loop
+  move.l  (%sp)+,%d1
   rts                           | All done -> Return
-// ---- PrintChar ----
+* ---- PrintChar ----
 .prntChar:
   lea     _uarts, %a5           | Load UART base address
 _ctxrdy:
@@ -97,7 +103,7 @@ _ctxrdy:
   beq.s   _ctxrdy               | Not ready yet -> loop
   move.b  %d0, %a5@(_ua_tba)    | Send character in d0 to console
   rts                           | Return
-// -- GetChar ----
+* -- GetChar ----
 .getChar:
   lea     _uarts, %a5           | Load UART base address
 _crxrdy:
@@ -105,7 +111,7 @@ _crxrdy:
   beq.s   _crxrdy               | Not ready yet -> loop
   move.b  %a5@(_ua_rba), %d0    | Read character from console to d0
   rts                           | Return
-// ---- PrintMsg ----
+* ---- PrintMsg ----
 .prntMsg:
 .prntLoop:
   move.b  %a0@+,%d0             | Load first char from message
@@ -113,7 +119,7 @@ _crxrdy:
   tst.b   %a0@                  | Check if there's more to send
   bne     .prntLoop             | Yes -> loop
   rts                           | No -> return
-// ---- Init 68681 DUART ----
+* ---- Init 68681 DUART ----
 .initDuart:
   lea     _uarts, %a0
   move.b  #0x30, %a0@(_ua_cra)  | Reset RX
@@ -126,7 +132,7 @@ _crxrdy:
   move.b  #0x05, %a0@(_ua_cra)  | Enable TX and RX
   rts                           | Return
 
-// -- SRecord utility routines
+* -- SRecord utility routines
 .SRecUpload:
   jsr     .getChar              | Get a character from host
   cmp.b   #'S', %d0             | Records must start with 'S'
@@ -271,14 +277,14 @@ _hex_ok:
   movem.l %a7@+, %d1            | Restore d1 from stack
   rts
 .SRecError:
-  lea     _msgSRecErr, %a0      | Set SRec Error message pointer
+  lea     _msgSRecErr,%a0       | Set SRec Error message pointer
   jsr     .prntMsg              | Print the message
   jmp     .run                  | Jump back to main routine
 .SRecExec:
-  lea.l   _msgSRecRun,a0        | Set runSRec message pointer
+  lea.l   _msgSRecRun,%a0       | Set runSRec message pointer
   jsr     .prntMsg              | Print the message
   jmp     %a2@                  | Jump to address in a2 register
-// -- General utility routines
+* -- General utility routines
 .prntRamError:
   move.l  %a0,%d0               | Save current RAM address
   lea.l   _msgRamErr,%a0        | Set RAM Error message pointer
@@ -290,7 +296,7 @@ _hex_ok:
   jsr     .prntMsg              | Print the message
   jmp     .run                  | Jump back to main routine
 
-// ---- Autovector handling routines
+* ---- Autovector handling routines
 .stop:
   jmp .stop                     | Busy-Loop jumping to STOP
 .unhandled:
@@ -298,7 +304,25 @@ _hex_ok:
 .reset:
   reset                         | Soft-Reset the CPU
 
-// ---- Various system messages and prompts ----
+* ---- Utility routines
+.toUpper:
+  cmp.b   #'a',%d0
+  ble.s   _notchar
+  cmp.b   #'z',%d0
+  bgt.s   _notchar
+  sub.b   #32,%d0
+  rts
+
+.toLower:
+  cmp.b   #'A',%d0
+  ble.s   _notchar
+  cmp.b   #'Z',%d0
+  bgt.s   _notchar
+  add.b   #32,%d0
+_notchar:
+  rts
+
+* ---- Various system messages and prompts ----
 .align(2)
 _msgBanner:     .ascii  "::::: Raven68k - A Simple 68000 based computer\r\n"
                 .ascii  ":::: Hardware revision 1.0\r\n"
