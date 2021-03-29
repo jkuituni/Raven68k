@@ -87,20 +87,20 @@
   jmp     .run                  | Jump back to main loop
 * ---- System RAM check
 .chkRam:
-  move.l  %d1,-(%sp)            | d1 gets clobbered
+  move.l  %d1,%d2               | d1 gets trashed, save it to d2
   move.b  %d0,(%a0)             | Write test pattern to RAM
   move.b  (%a0)+,%d1            | Read from address location into d1
   cmp.b   %d0,%d1               | Compare if it was written correctly
-  bne.w   .prntRamError         | No -> Print error message
+  bne     .prntRamError         | No -> Print error message
   bra     .chkRam               | Yes -> Loop
-  move.l  (%sp)+,%d1            | restore d1
+  move.l  %d2,%d1               | Restore d1 from d2
   rts                           | All done -> Return
 * ---- PrintChar ----
 .prntChar:
   lea     _uarts, %a5           | Load UART base address
 _ctxrdy:
   btst    #2, %a5@(_ua_sra)     | Test TxRDY bit in status register
-  beq.s   _ctxrdy               | Not ready yet -> loop
+  beq     _ctxrdy               | Not ready yet -> loop
   move.b  %d0, %a5@(_ua_tba)    | Send character in d0 to console
   rts                           | Return
 * -- GetChar ----
@@ -108,7 +108,7 @@ _ctxrdy:
   lea     _uarts, %a5           | Load UART base address
 _crxrdy:
   btst    #0, %a5@(_ua_sra)     | Test RxRDY bit in status register
-  beq.s   _crxrdy               | Not ready yet -> loop
+  beq     _crxrdy               | Not ready yet -> loop
   move.b  %a5@(_ua_rba), %d0    | Read character from console to d0
   rts                           | Return
 * ---- PrintMsg ----
