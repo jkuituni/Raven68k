@@ -52,14 +52,18 @@ begin
 		variable clk_cnt : integer range 0 to 8 := 0;
 	begin
 		if reset = '0' then
+			-- In Reset -> Init count and set ROM overlay
 			clk_cnt := 0;
-			rom_overlay := '0';
+			rom_overlay := '1';
 		else
-			if rising_edge(clk) then
+			-- Nopt in Reset but ROM overlay still needed?
+			if rom_overlay = '1' and rising_edge(clk) then
 				if clk_cnt < 8 then
-					rom_overlay := '1';
-				else
+					--  Yes and not yet 8 clocks -> keep counting..
 					clk_cnt := clk_cnt + 1;
+				else
+					-- Yes and count reached -> Clear ROM overlay flag.
+					rom_overlay := '0';
 				end if;
 			end if;
 		end if;
