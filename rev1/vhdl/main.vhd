@@ -31,16 +31,14 @@ entity main is
 		we: out std_logic;
 		oe: out std_logic;
 		duart_iack: out std_logic;
+		reset: in std_logic;
 		-- Chip selects
 		rom_uce: out std_logic;
 		rom_lce: out std_logic;
 		ram_uce: out std_logic;
 		ram_lce: out std_logic;
 		duart_ce: out std_logic;
-		rtc_ce: out std_logic;
-		-- ROM overlay control
-		reset: in std_logic;
-		clk: in std_logic
+		rtc_ce: out std_logic
   );
 end main;
 
@@ -48,19 +46,19 @@ architecture rtl of main is
 	shared variable rom_overlay : std_logic := '0';
 begin
 	-- Handle ROM overlay at bottom of the memory at reset
-	process (reset, clk)
-		variable clk_cnt : integer range 0 to 8 := 0;
+	process (reset, as)
+		variable as_cnt : integer range 0 to 8 := 0;
 	begin
 		if reset = '0' then
 			-- In Reset -> Init count and set ROM overlay
-			clk_cnt := 0;
+			as_cnt := 0;
 			rom_overlay := '1';
 		else
 			-- Nopt in Reset but ROM overlay still needed?
-			if rom_overlay = '1' and rising_edge(clk) then
-				if clk_cnt < 8 then
+			if rom_overlay = '1' and rising_edge(as) then
+				if as_cnt < 8 then
 					--  Yes and not yet 8 clocks -> keep counting..
-					clk_cnt := clk_cnt + 1;
+					as_cnt := as_cnt + 1;
 				else
 					-- Yes and count reached -> Clear ROM overlay flag.
 					rom_overlay := '0';
