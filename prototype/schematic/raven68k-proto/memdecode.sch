@@ -263,8 +263,6 @@ Wire Wire Line
 	4450 4600 4350 4600
 Text GLabel 4350 4150 0    50   Input ~ 0
 SHADOW_RAM
-Text HLabel 4350 4600 0    50   Input ~ 0
-~AS
 $Comp
 L 74xx:74LS00 U?
 U 1 1 6067B2AF
@@ -305,6 +303,12 @@ Text HLabel 6650 4550 2    50   Output ~ 0
 ~ROM_CS
 Wire Wire Line
 	6550 4550 6650 4550
+Text HLabel 4350 4600 0    50   Input ~ 0
+~AS
+Wire Wire Line
+	2000 2650 1900 2650
 Wire Bus Line
 	1650 4100 1650 4400
+Text HLabel 1900 2650 0    50   Input ~ 0
+~AS
 $EndSCHEMATC
