@@ -2,9 +2,9 @@
 --
 -- Raven 68K System CPLD Implementation
 --
--- Handles the main glue logic tasks and some control signal 
+-- Handles the main glue logic tasks and some control signal
 -- generation:
---  
+--
 -- * CPU DTACK generation
 -- * Address decoding
 -- * Chip Select generation
@@ -56,7 +56,7 @@ begin
 		else
 			-- Nopt in Reset but ROM overlay still needed?
 			if rom_overlay = '1' and rising_edge(as) then
-				if as_cnt < 8 then
+				if as_cnt < 4 then
 					--  Yes and not yet 8 clocks -> keep counting..
 					as_cnt := as_cnt + 1;
 				else
@@ -66,7 +66,7 @@ begin
 			end if;
 		end if;
 	end process;
-	
+
 	process(as, ah, uds, lds, rw, duart_dtack)
 		variable mem_dtack : std_logic := '0';
 	begin
@@ -85,14 +85,14 @@ begin
 				when "0000" =>
 					if rom_overlay = '1' then
 						-- We're at RESET -> This is ROM
-						if lds = '0' then 
+						if lds = '0' then
 							rom_lce <= '0';
 						end if;
 						if uds = '0' then
 							rom_uce <= '0';
 					else
 						-- We're post RESET -> This is RAM
-						if lds = '0' then 
+						if lds = '0' then
 							ram_lce <= '0';
 						end if;
 						if uds = '0' then
@@ -103,7 +103,7 @@ begin
 					mem_dtack := '1';
 					end if;
 				when "0001" =>
-					if lds = '0' then 
+					if lds = '0' then
 						ram_lce <= '0';
 					end if;
 					if uds = '0' then
@@ -123,7 +123,7 @@ begin
 					end if;
 				when "1111" =>
 					-- ROM at top of memory
-						if lds = '0' then 
+						if lds = '0' then
 							rom_lce <= '0';
 						end if;
 						if uds = '0' then
@@ -149,7 +149,7 @@ begin
 			end if;
 		end if;
 	end process;
- 
+
  process(fc, al, as)
  begin
 	-- Init the DUART IACK signal to '0'
@@ -160,9 +160,8 @@ begin
 			when "001" =>
 				duart_iack <= '1';
 			when others => null;
-		end case;		
+		end case;
 	end if;
  end process;
- 
-end rtl;
 
+end rtl;
