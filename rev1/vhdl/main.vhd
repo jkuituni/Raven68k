@@ -38,7 +38,8 @@ entity main is
 		ram_uce: out std_logic;
 		ram_lce: out std_logic;
 		duart_ce: out std_logic;
-		rtc_ce: out std_logic
+		rtc_ce: out std_logic;
+		ide_ce: out std_logic
   );
 end main;
 
@@ -54,7 +55,7 @@ begin
 			as_cnt := 0;
 			rom_overlay := '1';
 		else
-			-- Nopt in Reset but ROM overlay still needed?
+			-- Not in Reset but ROM overlay still needed
 			if rom_overlay = '1' and rising_edge(as) then
 				if as_cnt < 4 then
 					--  Yes and not yet 8 clocks -> keep counting..
@@ -67,89 +68,113 @@ begin
 		end if;
 	end process;
 
-	process(as, ah, uds, lds, rw, duart_dtack)
-		variable mem_dtack : std_logic := '0';
+	process(as, ah, uds, lds, duart_dtack)
+		variable mem_dtack : std_logic;
+		variable tmp_rom_uce : std_logic;
+		variable tmp_rom_lce : std_logic;
+		variable tmp_ram_uce : std_logic;
+		variable tmp_ram_lce : std_logic;
+		variable tmp_duart_ce : std_logic;
+		variable tmp_rtc_ce: std_logic;
+		variable tmp_ide_ce: std_logic;
 	begin
 		-- Init the chip selects by default to '1'
-		rom_uce <= '1';
-		rom_lce <= '1';
-		ram_uce <= '1';
-		ram_lce <= '1';
-		duart_ce <= '1';
-		rtc_ce <= '1';
+		tmp_rom_uce := '1';
+		tmp_rom_lce := '1';
+		tmp_ram_uce := '1';
+		tmp_ram_lce := '1';
+		tmp_duart_ce := '1';
+		tmp_rtc_ce := '1';
+		tmp_ide_ce := '1';
 		mem_dtack := '0';
 
 		-- Do the memory map decoding..
 		if as = '0' then
 			case ah(23 downto 20) is
 				when "0000" =>
+					-- SRAM from $000000-$0FFFFF
+					-- Also for first 4 clocks, ROM
 					if rom_overlay = '1' then
 						-- We're at RESET -> This is ROM
 						if lds = '0' then
-							rom_lce <= '0';
+							tmp_rom_lce := '0';
 						end if;
 						if uds = '0' then
-							rom_uce <= '0';
+							tmp_rom_uce := '0';
+						end if;
 					else
 						-- We're post RESET -> This is RAM
 						if lds = '0' then
-							ram_lce <= '0';
+							tmp_ram_lce := '0';
 						end if;
 						if uds = '0' then
-							ram_uce <= '0';
+							tmp_ram_uce := '0';
 						end if;
 					end if;
 					-- Set flag for memory op
 					mem_dtack := '1';
-					end if;
 				when "0001" =>
+					-- SRAM from $100000-$1FFFFF
 					if lds = '0' then
-						ram_lce <= '0';
+						tmp_ram_lce := '0';
 					end if;
 					if uds = '0' then
-						ram_uce <= '0';
+						tmp_ram_uce := '0';
 					end if;
 					-- Set flag for memory op
 					mem_dtack := '1';
 				when "0010" =>
+					-- DUART from $200000-$2FFFFF
 					-- DUART is byte wide only and at low byte
-					if lds = '0' and uds = '1' then
-						duart_ce <= '0';
+					if lds = '0' then
+						tmp_duart_ce := '0';
 					end if;
 				when "0011" =>
+					-- RTC from $300000-$3FFFFF
 					-- RTC is byte wide only and at low byte
-					if lds = '0' and uds = '1' then
-						rtc_ce <= '0';
+					if lds = '0' then
+						tmp_rtc_ce := '0';
 					end if;
+				when "0100" =>
+					-- IDE from $400000-$4FFFFF
+					-- IDE is word wide with only one chip select
+						if lds = '0' or uds = '0' then
+							tmp_ide_ce := '0';
+						end if;					
 				when "1111" =>
+					-- ROM from $F00000-$FFFFFF
 					-- ROM at top of memory
 						if lds = '0' then
-							rom_lce <= '0';
+							tmp_rom_lce := '0';
 						end if;
 						if uds = '0' then
-							rom_uce <= '0';
+							tmp_rom_uce := '0';
 						end if;
 				when others => null;
 			end case;
 		end if;
+		-- Set output from temp variables
+		rom_uce <= tmp_rom_uce;
+		rom_lce <= tmp_rom_lce;
+		ram_uce <= tmp_ram_uce;
+		ram_lce <= tmp_ram_lce;
+		duart_ce <= tmp_duart_ce;
+		rtc_ce <= tmp_rtc_ce;
+		ide_ce <= tmp_ide_ce;
 		-- Handle DTACK generation..
 		if mem_dtack = '0' then
 			dtack <= duart_dtack;
 		else
 			dtack <= not mem_dtack;
 		end if;
-		-- Generate separate WE and OE
-		if lds = '0' and uds = '0' then
-			if rw = '1' then
-				oe <= '0';
-				we <= '1';
-			else
-				oe <= '1';
-				we <= '0';
-			end if;
-		end if;
 	end process;
 
+ process(rw)
+ begin
+     we <= rw;
+	  oe <= not rw;
+ end process;
+ 
  process(fc, al, as)
  begin
 	-- Init the DUART IACK signal to '0'
