@@ -89,7 +89,16 @@ begin
 		mem_dtack := '0';
 
 		-- Do the memory map decoding..
-		if as = '0' then
+		if as = '1' then
+			tmp_rom_uce := '1';
+			tmp_rom_lce := '1';
+			tmp_ram_uce := '1';
+			tmp_ram_lce := '1';
+			tmp_duart_ce := '1';
+			tmp_rtc_ce := '1';
+			tmp_ide_ce := '1';
+			mem_dtack := '0';		
+		else -- as = '0'
 			case ah(23 downto 20) is
 				when "0000" =>
 					-- SRAM from $000000-$0FFFFF
@@ -140,7 +149,7 @@ begin
 					-- IDE is word wide with only one chip select
 						if lds = '0' or uds = '0' then
 							tmp_ide_ce := '0';
-						end if;					
+						end if;				
 				when "1111" =>
 					-- ROM from $F00000-$FFFFFF
 					-- ROM at top of memory
