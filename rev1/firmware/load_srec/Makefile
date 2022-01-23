@@ -28,10 +28,11 @@ all:	$(MAIN)
 $(MAIN): $(OBJS)
 	$(LD) $(LDFLAGS) -o $(MAIN).a $(OBJS)
 	$(COPY) -O $(FMT) $(MAIN).a $(PREFIX)$(MAIN).bin
-	$(COPY) -b 0 -i 2 --interleave-width=1 -O $(FMT) $(MAIN).a $(PREFIX)$(MAIN)-even.bin
+	$(COPY) -b 0 -i 2 --interleave-width=1 -j .text -O $(FMT) $(MAIN).a $(PREFIX)$(MAIN)-even.bin
 	truncate -s 32768 $(PREFIX)$(MAIN)-even.bin
-	$(COPY) -b 1 -i 2 --interleave-width=1 -O $(FMT) $(MAIN).a $(PREFIX)$(MAIN)-odd.bin
+	$(COPY) -b 1 -i 2 --interleave-width=1 -j .text -O $(FMT) $(MAIN).a $(PREFIX)$(MAIN)-odd.bin
 	truncate -s 32768 $(PREFIX)$(MAIN)-odd.bin
+
 
 clean:
 	rm -f *.o $(PREFIX)$(MAIN)-even.bin $(PREFIX)$(MAIN)-odd.bin $(PREFIX)$(MAIN).bin $(MAIN).a

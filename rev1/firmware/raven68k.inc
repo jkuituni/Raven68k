@@ -1,5 +1,5 @@
 /* Raven68k Include and Definitions file  */
-.equ _uarts,     0x400000
+.equ _uarts,     0x200000
 
 /* uarts */
 .equ _ua_mra,       0x01
@@ -19,9 +19,6 @@
 .equ _ua_tbb,       0x17
 .equ _ua_ivr,       0x19
 .equ _ua_opcr,      0x1b
-
-.equ _ram_start,    0x200000
-.equ _ram_end,      0x300000
 
 .equ _max_line_length, 0x80
 .equ _bel,    0x07

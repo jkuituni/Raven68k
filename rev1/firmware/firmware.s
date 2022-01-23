@@ -25,21 +25,17 @@
 
 * ---- Vector locations ----
 .section .vectors, "a"
-.long   _stack_start            | Initial StackPointer
-.long   .init                   | Initial ProgramCounter
-.long   .unhandled              | Bus error
-.long   .unhandled              | Address error
-.long   .unhandled              | Illegal instruction
-.long   .unhandled              | Divide by zero
-.rept   0x2e
-.long   .reset
+.title "Init vectors"
+.long   _stack_start
+.long   .init
+.long   .unhandled  | bus error
+.long   .unhandled  | addr error
+.long   .unhandled  | illegal instruction
+.long   .unhandled  | divide by zero
+.rept 0xfa
+.long .unhandled
 .endr
-.rept   0x40
-.long   0xffffffff
-.endr
-.rept   0x80
-.long   .reset
-.endr
+
 
 * ---- Firmware Jump-Table ----
 .section .text
@@ -61,39 +57,41 @@
   jsr     .prntMsg              | Print out the message
   lea.l   _msgRamTst,%a0        | Set the RAM test message pointer
   jsr     .prntMsg              | Print out the message
-  move.l  _ram_start,%a0        | Set the start of RAM
-  move.l  _ram_end,%a1          | Set the end of RAM
-  move.b  #0x00,%d0             | Set the test pattern
-  jsr     .chkRam               | Check the RAM for errors
-  move.b  #0xff,%d0             | Check another test pattern
-  jsr     .chkRam               | Check the RAM for errors
+*  move.l  _ram_start,%a0        | Set the start of RAM
+*  move.l  #0x80000,%d0          | Set the end of RAM
+*  move.b  #0x00,%d1             | Set the test pattern
+*  jsr     .chkRam               | Check the RAM for errors
+*  move.l  _ram_start,%a0        | Set the start of RAM
+*  move.l  _ram_end,%d0          | Set the end of RAM
+*  move.b  #0xff,%d1             | Check another test pattern
+*  jsr     .chkRam               | Check the RAM for errors
   lea.l   _msgRamOK,%a0         | Set RAM pass message pointer
   jsr     .prntMsg              | Print out the message
 * ---- Main Run Loop
+  jsr     .prntHelp
 .run:
   lea.l   _msgPrompt,%a0        | Set the prompt message pointer
   jsr     .prntMsg              | Print out the message
   jsr     .getChar              | Get command
   cmpi.b  #'U',%d0              | Is it 'U'pload?
-  bne     .SRecUpload           | Go to SRec upload routine
+  beq     .SRecUpload           | Go to SRec upload routine
   cmpi.b  #'E',%d0              | Is it 'E'xecute?
-  bne     .SRecExec             | Go to SRecExecute routine
+  beq     .SRecExec             | Go to SRecExecute routine
   cmpi.b  #'H',%d0              | Is it 'H'elp?
-  bne     .prntHelp             | Go to Print Help routine
+  beq     .prntHelp             | Go to Print Help routine
   cmpi.b  #'R',%d0              | Is it 'R'eset?
-  bne     .reset                | Go to Reset routine
+  beq     .reset                | Go to Reset routine
   lea.l   _msgUnknown,%a0       | Unknown command!
   jsr     .prntMsg              | Complain about it..
   jmp     .run                  | Jump back to main loop
 * ---- System RAM check
+* ---- d0 = ram end, d1 = pattern
 .chkRam:
-  move.l  %d1,%d2               | d1 gets trashed, save it to d2
-  move.b  %d0,(%a0)             | Write test pattern to RAM
-  move.b  (%a0)+,%d1            | Read from address location into d1
-  cmp.b   %d0,%d1               | Compare if it was written correctly
+  move.b  %d1,(%a0)             | Write test pattern to RAM
+  move.b  (%a0)+,%d2            | Read from address location into d1
+  cmp.b   %d1,%d2               | Compare if it was written correctly
   bne     .prntRamError         | No -> Print error message
-  bra     .chkRam               | Yes -> Loop
-  move.l  %d2,%d1               | Restore d1 from d2
+  dbra    %d0,.chkRam           | Yes -> Loop
   rts                           | All done -> Return
 * ---- PrintChar ----
 .prntChar:

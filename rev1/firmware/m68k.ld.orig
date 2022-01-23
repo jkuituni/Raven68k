@@ -1,7 +1,7 @@
 MEMORY
 {
-    ROM (rx) : ORIGIN = 0xFF0000, LENGTH = 0x10000
-    RAM (xrw) : ORIGIN = 0x000000, LENGTH = 0x100000
+    ROM (rx) : ORIGIN = 0x00000000, LENGTH = 0x10000
+    RAM (xrw) : ORIGIN = 0x200000, LENGTH = 0x100000
 }
 
 /* stack location */
@@ -14,20 +14,21 @@ _stack_end = _stack_start - stack_size;
 _ram_start = ORIGIN(RAM);
 _ram_end = ORIGIN(RAM)+LENGTH(RAM);
 
-/* rom location */
-_rom_start = ORIGIN(ROM);
-_rom_end = ORIGIN(ROM)+LENGTH(ROM);
-
 SECTIONS { 
-  .text _rom_start : {
+  .vectors 0x00 :
+  {
     . = ALIGN(4);
     KEEP(*(.vectors))
+    . = ALIGN(4);
+  } > ROM
+
+  .text 0x400 : {
     . = ALIGN(4);
     *(.text)
     . = ALIGN(4);
   } > ROM
 
-  .data : { *(.data) } > ROM
+  .data : { *(.data) } > RAM
   .bss :  { *(.bss)  *(COMMON) } > RAM
 }
 

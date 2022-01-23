@@ -1,9 +1,10 @@
 /*
  * Memory Map
  * --------------
- * 0x000000-0x1FFFFF ROM    (Actual: 0x000000-0x007FFF)
- * 0x200000-0x3FFFFF RAM    (Actual: 0x200000-0x2FFFFF)       
- * 0x400000-0x5FFFFF DUART  (Actual: 0x400000-0x400020)
+ * 0x000000-0x0FFFFF RAM bank 0  
+ * 0x100000-0x1FFFFF RAM bank 1 (not currently populated)
+ * 0x200000-0x2FFFFF DUART  (Actual: 0x200001-0x200021)
+ * 0xFF0000-0x2FFFFF DUART  (Actual: 0x200001-0x200021)
  *
  */
 
@@ -17,14 +18,8 @@
     .long   .unhandled  | addr error
     .long   .unhandled  | illegal instruction
     .long   .unhandled  | divide by zero
-    .rept 0x2e
-    .long .reset
-    .endr
-    .rept 0x40
-    .long 0xffffffff
-    .endr
-    .rept 0x80
-    .long .reset
+    .rept 0xfa
+    .long .unhandled
     .endr
 
 .section .text
@@ -36,6 +31,15 @@
 *
 .init:
             move.w      #0x2700, %sr                | mask interrupts and set supervisor mode
+
+	    move.l	#_rom_start, %a0	    | copy vector table from ROM to RAM
+	    move.w	#0, %a1	
+            move.w      #0x400, %a2
+.vec_loop:
+	    move.l	%a0@+, %d0
+	    move.l	%d0, %a1@+
+	    cmpa.l	%a1, %a2
+	    bhi		.vec_loop
 
 *************************************************************************
 *
