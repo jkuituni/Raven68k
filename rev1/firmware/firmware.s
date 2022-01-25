@@ -86,7 +86,7 @@
 .chkRamLoop:
   move.b  #0x00,%d1             | Set the first test pattern
   move.b  %d1,(%a0)             | Write test pattern to RAM
-  move.b  (%a0)+,%d0            | Read from address location into d0
+  move.b  (%a0),%d0             | Read from address location into d0
   cmp.b   %d1,%d0               | Compare if it was written correctly
   bne     .prntRamError         | No -> Print error message
   move.b  #0xff,%d1             | Set second test pattern
