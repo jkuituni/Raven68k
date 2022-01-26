@@ -81,8 +81,8 @@
   jmp     .run                  | Jump back to main loop
 * ---- System RAM check
 .chkRam:
-  move.l  _ram_start,%a0        | Set the start of RAM
-  move.l  _ram_end,%a1          | Set the end of RAM
+  move.l  #_ram_start,%a0        | Set the start of RAM
+  move.l  #_ram_end,%a1          | Set the end of RAM
 .chkRamLoop:
   move.b  #0x00,%d1             | Set the first test pattern
   move.b  %d1,(%a0)             | Write test pattern to RAM
@@ -239,7 +239,7 @@ _ld_exit:
 _ld_get_byte:
   jsr     .get_hex_b
   add.b   %d0, %d3              | Update checksum
-  jmp     .run                  | SRec loaded -> Back to main routine
+  rts                           | SRec loaded -> Back to main routine
 .send_hex_n:
   movem.l %d0, %a7@-            | Save d0 to stack
   and.b   #0x0f, %d0            | Mask off MS nybble
