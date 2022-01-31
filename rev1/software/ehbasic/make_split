@@ -1,0 +1,8 @@
+#!/bin/bash
+
+srec_cat Basic68s3.52.S68 -o basic.bin -binary
+dd if=basic.bin of=basic.rom bs=64K skip=255
+truncate -s +51121 basic.rom 
+srec_cat -o basic.high -binary basic.rom -binary -split 2 0
+srec_cat -o basic.low -binary basic.rom -binary -split 2 1
+
