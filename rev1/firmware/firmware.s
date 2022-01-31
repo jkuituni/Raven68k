@@ -1,5 +1,5 @@
 /*
- * ::: Raven68k Firmware version 0.0.1 :::
+ * ::: Raven68k Firmware version 0.0.2 :::
  *
  * WORK-IN-PROGRESS
  *
@@ -57,14 +57,9 @@
   jsr     .prntMsg              | Print out the message
   lea.l   _msgRamTst,%a0        | Set the RAM test message pointer
   jsr     .prntMsg              | Print out the message
-*  move.l  _ram_start,%a0        | Set the start of RAM
-*  move.l  #0x80000,%d0          | Set the end of RAM
-*  move.b  #0x00,%d1             | Set the test pattern
-*  jsr     .chkRam               | Check the RAM for errors
-*  move.l  _ram_start,%a0        | Set the start of RAM
-*  move.l  _ram_end,%d0          | Set the end of RAM
-*  move.b  #0xff,%d1             | Check another test pattern
-*  jsr     .chkRam               | Check the RAM for errors
+.ramtst:
+  jmp     .chkRam               | Jump to check RAM
+.ramtstok:
   lea.l   _msgRamOK,%a0         | Set RAM pass message pointer
   jsr     .prntMsg              | Print out the message
 * ---- Main Run Loop
@@ -85,14 +80,23 @@
   jsr     .prntMsg              | Complain about it..
   jmp     .run                  | Jump back to main loop
 * ---- System RAM check
-* ---- d0 = ram end, d1 = pattern
 .chkRam:
+  move.l  #_ram_start,%a0        | Set the start of RAM
+  move.l  #_ram_end,%a1          | Set the end of RAM
+.chkRamLoop:
+  move.b  #0x00,%d1             | Set the first test pattern
   move.b  %d1,(%a0)             | Write test pattern to RAM
-  move.b  (%a0)+,%d2            | Read from address location into d1
-  cmp.b   %d1,%d2               | Compare if it was written correctly
+  move.b  (%a0),%d0             | Read from address location into d0
+  cmp.b   %d1,%d0               | Compare if it was written correctly
   bne     .prntRamError         | No -> Print error message
-  dbra    %d0,.chkRam           | Yes -> Loop
-  rts                           | All done -> Return
+  move.b  #0xff,%d1             | Set second test pattern
+  move.b  %d1,(%a0)             | Write test pattern to RAM
+  move.b  (%a0)+,%d0            | Read from address location into d0
+  cmp.b   %d1,%d0               | Compare if it was written correctly
+  bne     .prntRamError         | No -> Print error message
+  cmpa.l  %a0,%a1               | Are we at the end of memory range?
+  bne     .chkRamLoop           | No -> Loop
+  jmp     .ramtstok             | All done -> Return
 * ---- PrintChar ----
 .prntChar:
   lea     _uarts, %a5           | Load UART base address
@@ -135,6 +139,7 @@ _crxrdy:
   jsr     .getChar              | Get a character from host
   cmp.b   #'S', %d0             | Records must start with 'S'
   bne     .SRecUpload           | If not, repeat getting chars until we get an 'S'
+  
   jsr     .getChar              | Get character after 'S'
   cmp.b   #'9', %d0             | Test for an S9 terminator
   beq     _ld_s9                | Handle it..
@@ -145,6 +150,7 @@ _crxrdy:
   cmp.b   #'2', %d0             | Test for an S2 record
   beq     _ld_s2                | Handle it..
   bra     .SRecUpload           | Unknown terminator -> Go back to beginning
+
 _ld_s1:
   clr.b   %d3                   | Clear the checksum
   jsr     _ld_get_byte          | Read the S1 byte count and address
@@ -156,6 +162,7 @@ _ld_s1:
   jsr     _ld_get_byte          | Get LS byte in d2
   move.l  %d0, %a2              | a2 points to destination of data
   bra     _ld_data              | Load the data
+
 _ld_s2:
   clr.b   %d3                   | Clear the checksum
   jsr     _ld_get_byte          | Read the S2 byte count and address
@@ -169,6 +176,7 @@ _ld_s2:
   jsr     _ld_get_byte          | Read LS byte of address
   move.l  %d0, %a2              | a2 points to destination of record
   bra     _ld_data              | Load the data
+
 _ld_s8:
   clr.b   %d3                   | Clear the checksum
   jsr     _ld_get_byte          | Read the S8 byte count and address
@@ -181,6 +189,7 @@ _ld_s8:
   jsr     _ld_get_byte          | Read LS byte of address
   move.l  %d0, %a2              | a2 points to destination of record
   bra     _ld_terminate         | Return
+
 _ld_s9:
   clr.b   %d3                   | Clear the checksum
   jsr     _ld_get_byte          | Read the S9 byte count and address
@@ -191,6 +200,7 @@ _ld_s9:
   jsr     _ld_get_byte          | Get LS byte in D2
   move.l  %d0, %a2              | a2 points to destination of data
   bra     _ld_terminate         | Return
+
 _ld_data:
   jsr     _ld_get_byte          | Get byte of data for loading
   move.b  %d0, %a2@+            | Store it
@@ -200,21 +210,25 @@ _ld_data:
   add.b   #1, %d3               | Add 1 to total checksum
   beq     _ld_data_ok           | If zero then  draw a dot to console
   or.b    #0b00001000, %d7      | Else set checksum error bit
+
 _ld_terminate:
   btst.b  #0, %d7               | Test for input errors
   beq     _ld_chksum            | If no errors check the checksum
   lea     _msgErrNotHex, %a0    | Send error message to console
   jsr     .prntMsg
+
 _ld_chksum:
   btst.b  #3, %d7               | Test for checksum errors
   beq     _ld_exit              | If no errors return
   lea     _msgErrChksum, %a0    | Send error message to console
   jsr     .prntMsg
   bra     _ld_exit
+
 _ld_data_ok:
   move.b  #'.', %d0             | Send a '.' to console
   jsr     .prntChar
   bra     .SRecUpload           | Get next record
+
 _ld_exit:
   cmpi.l  #0, %d7               | Check for errors
   bne     .SRecError            | Errors found, offer to reset
@@ -225,7 +239,7 @@ _ld_exit:
 _ld_get_byte:
   jsr     .get_hex_b
   add.b   %d0, %d3              | Update checksum
-  jmp     .run                  | SRec loaded -> Back to main routine
+  rts                           | SRec loaded -> Back to main routine
 .send_hex_n:
   movem.l %d0, %a7@-            | Save d0 to stack
   and.b   #0x0f, %d0            | Mask off MS nybble
@@ -324,7 +338,7 @@ _notchar:
 .align(2)
 _msgBanner:     .ascii  "::::: Raven68k - A Simple 68000 based computer\r\n"
                 .ascii  ":::: Hardware revision 1.0\r\n"
-                .asciz  "::: Firmware version v0.0.1\r\n\r\n"
+                .asciz  "::: Firmware version v0.0.2\r\n\r\n"
 .align(2)
 _msgRamTst:     .asciz  "Checking RAM memory...\r\n"
 .align(2)

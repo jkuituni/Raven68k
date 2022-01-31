@@ -34,7 +34,7 @@ $(MAIN): $(OBJS)
 	truncate -s 32768 $(PREFIX)$(MAIN)-odd.bin
 
 clean:
-	rm -f *.o $(PREFIX)$(MAIN)-even.bin $(PREFIX)$(MAIN)-odd.bin $(PREFIX)$(MAIN).bin $(MAIN).a
+	rm -f *.o $(PREFIX)$(MAIN)-even.bin $(PREFIX)$(MAIN)-odd.bin $(PREFIX)$(MAIN).bin $(MAIN).a *.map
 
 prog_even:
 	@echo Programming $(MAIN)-even onto $(EEPROM)
