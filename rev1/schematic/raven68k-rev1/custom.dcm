@@ -1,5 +1,10 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP IDE-44-PIN
+D Conn Unshrouded Header HDR 44 POS 2mm Solder ST Thru-Hole Bulk
+F https://www.arrow.com/en/products/57102-g06-22lf/amphenol-fci
+$ENDCMP
+#
 $CMP KM684000BLP-7L
 D 512K x 8 Low Power CMOS RAM, DIP-32
 K RAM SRAM CMOS MEMORY
