@@ -151,9 +151,9 @@ INIT_DUART
     move.b  #$20,5(a0)       * Reset Reciever
     move.b  #$10,5(a0)       * Reset Mode Register Pointer
     
-    move.b  #$80,9(a0)       * Baud Rate Set #2
-    move.b  #$BB,3(a0)       * Set Tx and Rx rates to 9600
-    move.b  #$13,1(a0)       * 7-bit, No Parity ($93 for 8-bit, $92 for 7-bit)
+    move.b  #$00,9(a0)       * Baud Rate Set #1
+    move.b  #$CC,3(a0)       * Set Tx and Rx rates to 38400
+    move.b  #$13,1(a0)       * 8-bit, No Parity ($93 for 8-bit, $92 for 7-bit)
     move.b  #$07,1(a0)       * Normal Mode, Not CTS/RTS, 1 stop bit
     
     move.b  #$05,5(a0)       * Enable Transmit/Recieve
@@ -9759,6 +9759,7 @@ LAB_SMSG
 	END	code_start
 
 *************************************************************************************
+
 
 
 

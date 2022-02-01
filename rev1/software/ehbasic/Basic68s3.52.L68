@@ -1,6 +1,6 @@
 00FF007A Starting Address
 Assembler used: EASy68K Editor/Assembler v5.16.01
-Created On: 1/29/2022 7:31:02 AM
+Created On: 2/1/2022 4:16:26 PM
 
 00000000                             1  *************************************************************************************
 00000000                             2  *                                                       *
@@ -313,9 +313,9 @@ Created On: 1/29/2022 7:31:02 AM
 00FF004E  117C 0020 0005           309      move.b  #$20,5(a0)       * Reset Reciever
 00FF0054  117C 0010 0005           310      move.b  #$10,5(a0)       * Reset Mode Register Pointer
 00FF005A                           311      
-00FF005A  117C 0080 0009           312      move.b  #$80,9(a0)       * Baud Rate Set #2
-00FF0060  117C 00BB 0003           313      move.b  #$BB,3(a0)       * Set Tx and Rx rates to 9600
-00FF0066  117C 0013 0001           314      move.b  #$13,1(a0)       * 7-bit, No Parity ($93 for 8-bit, $92 for 7-bit)
+00FF005A  117C 0000 0009           312      move.b  #$00,9(a0)       * Baud Rate Set #1
+00FF0060  117C 00CC 0003           313      move.b  #$CC,3(a0)       * Set Tx and Rx rates to 38400
+00FF0066  117C 0013 0001           314      move.b  #$13,1(a0)       * 8-bit, No Parity ($93 for 8-bit, $92 for 7-bit)
 00FF006C  117C 0007 0001           315      move.b  #$07,1(a0)       * Normal Mode, Not CTS/RTS, 1 stop bit
 00FF0072                           316      
 00FF0072  117C 0005 0005           317      move.b  #$05,5(a0)       * Enable Transmit/Recieve
