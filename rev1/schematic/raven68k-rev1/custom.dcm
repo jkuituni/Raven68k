@@ -1,5 +1,10 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP 40-PIN-HEADER
+D Header Assy, Vertical Low Profile Amp-Latch.
+F http://catalog.tycoelectronics.com/TE/bin/TE.Connect?C=1&M=BYPN&TCPN=5103308-8&RQPN=5103308-8
+$ENDCMP
+#
 $CMP IDE-44-PIN
 D Conn Unshrouded Header HDR 44 POS 2mm Solder ST Thru-Hole Bulk
 F https://www.arrow.com/en/products/57102-g06-22lf/amphenol-fci
@@ -11,10 +16,20 @@ K RAM SRAM CMOS MEMORY
 F https://pdf1.alldatasheet.com/datasheet-pdf/view/37316/SAMSUNG/KM684000BLP-7L/+25_2JUOYlSuOpdxSw.wYvzMXdxLb+/datasheet.pdf
 $ENDCMP
 #
+$CMP L5970D013TR
+D L5970D013TR, Switching Regulator, Buck Controller, 1A, Adjustable, 275 kHz, 8-Pin SO
+F http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00002173.pdf
+$ENDCMP
+#
 $CMP MAX233
 D 3.0V to 5.5V, Low-Power, up to 1Mbps, True RS-232 Transceivers Using Four 0.1μF External Capacitors
 K rs232 uart transceiver line-driver
 F https://datasheets.maximintegrated.com/en/ds/MAX3222-MAX3241.pdf
+$ENDCMP
+#
+$CMP SRN5040TA-101K
+D Inductor SMD 4.95x4.95x3.8mm 100uH 0.72A
+F https://www.bourns.com/docs/product-datasheets/SRN5040TA.pdf
 $ENDCMP
 #
 $CMP XC9572XL-VQ44

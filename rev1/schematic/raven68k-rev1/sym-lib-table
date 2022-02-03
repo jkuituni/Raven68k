@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name custom)(type Legacy)(uri ${KIPRJMOD}/custom.lib)(options "")(descr ""))
+  (lib (name raven68k-rev1-rescue)(type Legacy)(uri ${KIPRJMOD}/raven68k-rev1-rescue.lib)(options "")(descr ""))
 )
