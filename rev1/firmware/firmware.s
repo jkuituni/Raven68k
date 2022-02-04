@@ -323,24 +323,6 @@ _hex_ok:
 .reset:
   reset                         | Soft-Reset the CPU
 
-* ---- Utility routines
-.toupper:
-  cmp.b   #'a',%d0
-  ble.s   _notchar
-  cmp.b   #'z',%d0
-  bgt.s   _notchar
-  sub.b   #32,%d0
-  rts
-
-.tolower:
-  cmp.b   #'A',%d0
-  ble.s   _notchar
-  cmp.b   #'Z',%d0
-  bgt.s   _notchar
-  add.b   #32,%d0
-_notchar:
-  rts
-
 * ---- Various system messages and prompts ----
 .align(2)
 _msgBanner:     .ascii  "::::: Raven68k - A Simple 68000 based computer\r\n"
