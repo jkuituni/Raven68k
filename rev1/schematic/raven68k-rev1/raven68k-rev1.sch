@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 6
+Sheet 1 5
 Title "The Raven68k Experience"
 Date "2021-03-25"
 Rev "Rev 1.0.0"
@@ -19,7 +19,7 @@ U 1 1 605CB01F
 P 900 2450
 F 0 "X1" H 1244 2496 50  0000 L CNN
 F 1 "CLOCK" H 1244 2405 50  0000 L CNN
-F 2 "Oscillator:Oscillator_DIP-14" H 1350 2100 50  0001 C CNN
+F 2 "Oscillator:Oscillator_DIP-14_LargePads" H 1350 2100 50  0001 C CNN
 F 3 "http://cdn-reichelt.de/documents/datenblatt/B400/OSZI.pdf" H 800 2450 50  0001 C CNN
 	1    900  2450
 	1    0    0    -1  
@@ -33,38 +33,6 @@ Wire Wire Line
 	4550 2650 4700 2650
 Wire Wire Line
 	4550 2750 4700 2750
-Wire Wire Line
-	4550 2850 4700 2850
-Wire Wire Line
-	4550 2950 4700 2950
-Wire Wire Line
-	4550 3050 4700 3050
-Wire Wire Line
-	4550 3150 4700 3150
-Wire Wire Line
-	4550 3250 4700 3250
-Wire Wire Line
-	4550 3350 4700 3350
-Wire Wire Line
-	4550 3450 4700 3450
-Wire Wire Line
-	4550 3550 4700 3550
-Wire Wire Line
-	4550 3650 4700 3650
-Wire Wire Line
-	4550 3750 4700 3750
-Wire Wire Line
-	4550 3850 4700 3850
-Wire Wire Line
-	4550 3950 4700 3950
-Wire Wire Line
-	4550 4050 4700 4050
-Wire Wire Line
-	4550 4150 4700 4150
-Wire Wire Line
-	4550 4250 4700 4250
-Wire Wire Line
-	4550 4350 4700 4350
 Wire Wire Line
 	4550 4450 4700 4450
 Wire Wire Line
@@ -99,8 +67,6 @@ Wire Wire Line
 	4550 6150 4700 6150
 Wire Wire Line
 	4550 6250 4700 6250
-Wire Wire Line
-	4550 6350 4700 6350
 Wire Wire Line
 	4550 6650 4700 6650
 Wire Wire Line
@@ -189,8 +155,6 @@ Wire Bus Line
 	4800 4850 4900 4850
 Text GLabel 4900 2450 2    50   Output ~ 0
 A[1..23]
-Text GLabel 4900 4850 2    50   BiDi ~ 0
-D[0..15]
 Text GLabel 4900 6550 2    50   Output ~ 0
 ~AS
 Text GLabel 4700 6650 2    50   Output ~ 0
@@ -232,7 +196,7 @@ U 1 1 606154E4
 P 1400 5950
 F 0 "U1" H 1171 5996 50  0000 R CNN
 F 1 "MCP100-465D" H 1171 5905 50  0000 R CNN
-F 2 "Package_TO_SOT_THT:TO-92L_Inline_Wide" H 1000 6100 50  0001 C CNN
+F 2 "" H 1000 6100 50  0001 C CNN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/11187f.pdf" H 1100 6200 50  0001 C CNN
 	1    1400 5950
 	1    0    0    -1  
@@ -286,10 +250,10 @@ Wire Wire Line
 Wire Wire Line
 	2550 3150 1950 3150
 $Comp
-L power:+5V #PWR02
+L power:+5V #PWR04
 U 1 1 60660F3A
 P 1300 5100
-F 0 "#PWR02" H 1300 4950 50  0001 C CNN
+F 0 "#PWR04" H 1300 4950 50  0001 C CNN
 F 1 "+5V" H 1315 5273 50  0000 C CNN
 F 2 "" H 1300 5100 50  0001 C CNN
 F 3 "" H 1300 5100 50  0001 C CNN
@@ -310,10 +274,10 @@ $EndComp
 Wire Wire Line
 	1300 5550 1300 5400
 $Comp
-L power:GND #PWR01
+L power:GND #PWR03
 U 1 1 60665AD2
 P 900 5500
-F 0 "#PWR01" H 900 5250 50  0001 C CNN
+F 0 "#PWR03" H 900 5250 50  0001 C CNN
 F 1 "GND" H 905 5327 50  0000 C CNN
 F 2 "" H 900 5500 50  0001 C CNN
 F 3 "" H 900 5500 50  0001 C CNN
@@ -323,10 +287,10 @@ $EndComp
 Wire Wire Line
 	900  5400 900  5500
 $Comp
-L power:GND #PWR03
+L power:GND #PWR05
 U 1 1 60667F46
 P 1300 6450
-F 0 "#PWR03" H 1300 6200 50  0001 C CNN
+F 0 "#PWR05" H 1300 6200 50  0001 C CNN
 F 1 "GND" H 1305 6277 50  0000 C CNN
 F 2 "" H 1300 6450 50  0001 C CNN
 F 3 "" H 1300 6450 50  0001 C CNN
@@ -385,18 +349,6 @@ Connection ~ 1800 3250
 Wire Wire Line
 	1800 3250 1700 3250
 Wire Wire Line
-	2550 2750 2400 2750
-Wire Wire Line
-	2550 2850 2400 2850
-Wire Wire Line
-	2550 2950 2400 2950
-Entry Wire Line
-	2400 2750 2300 2850
-Entry Wire Line
-	2400 2850 2300 2950
-Entry Wire Line
-	2400 2950 2300 3050
-Wire Wire Line
 	4550 5650 4700 5650
 $Comp
 L CPU_NXP_68000:68010D U2
@@ -404,24 +356,20 @@ U 1 1 605C834A
 P 3550 4650
 F 0 "U2" H 3000 7100 50  0000 C CNN
 F 1 "68010D" H 3050 7000 50  0000 C CNN
-F 2 "Package_DIP:DIP-64_W25.4mm_Socket" H 3550 4650 50  0001 C CNN
+F 2 "Package_DIP:DIP-64_W25.4mm_Socket_LongPads" H 3550 4650 50  0001 C CNN
 F 3 "https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf" H 3550 4650 50  0001 C CNN
 	1    3550 4650
 	1    0    0    -1  
 $EndComp
-Wire Bus Line
-	2300 2750 2250 2750
-Text GLabel 2250 2750 0    50   Input ~ 0
-IPL[0..2]
 Wire Wire Line
 	4550 6550 4900 6550
 Wire Wire Line
 	4550 6750 4900 6750
 $Comp
-L power:GND #PWR05
+L power:GND #PWR02
 U 1 1 606A1DBE
 P 900 2850
-F 0 "#PWR05" H 900 2600 50  0001 C CNN
+F 0 "#PWR02" H 900 2600 50  0001 C CNN
 F 1 "GND" H 905 2677 50  0000 C CNN
 F 2 "" H 900 2850 50  0001 C CNN
 F 3 "" H 900 2850 50  0001 C CNN
@@ -429,10 +377,10 @@ F 3 "" H 900 2850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR04
+L power:+5V #PWR01
 U 1 1 606A214D
 P 900 2050
-F 0 "#PWR04" H 900 1900 50  0001 C CNN
+F 0 "#PWR01" H 900 1900 50  0001 C CNN
 F 1 "+5V" H 915 2223 50  0000 C CNN
 F 2 "" H 900 2050 50  0001 C CNN
 F 3 "" H 900 2050 50  0001 C CNN
@@ -469,10 +417,10 @@ F 3 "http://www.xilinx.com/support/documentation/data_sheets/ds057.pdf" H 7450 3
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR013
+L power:GND #PWR016
 U 1 1 606B7743
 P 7850 5300
-F 0 "#PWR013" H 7850 5050 50  0001 C CNN
+F 0 "#PWR016" H 7850 5050 50  0001 C CNN
 F 1 "GND" H 7855 5127 50  0000 C CNN
 F 2 "" H 7850 5300 50  0001 C CNN
 F 3 "" H 7850 5300 50  0001 C CNN
@@ -490,17 +438,9 @@ Wire Wire Line
 Wire Wire Line
 	8250 3000 8400 3000
 Wire Wire Line
-	6650 2900 6500 2900
-Wire Wire Line
-	6650 3000 6500 3000
-Wire Wire Line
-	6650 3100 6500 3100
-Wire Wire Line
-	6650 3200 6500 3200
-Wire Wire Line
 	6650 3300 6500 3300
 $Sheet
-S 3450 650  950  1050
+S 3450 650  950  1100
 U 60A4B12C
 F0 "DUART and RTC" 50
 F1 "DUART.sch" 50
@@ -510,13 +450,13 @@ F4 "R~W" I L 3450 1050 50
 F5 "~DUART_IACK" I R 4400 1050 50 
 F6 "~RESET" I L 3450 1200 50 
 F7 "~DUART_DTACK" O R 4400 1200 50 
-F8 "~DUART_IRQ" O R 4400 750 50 
-F9 "A[1..23]" I L 3450 900 50 
-F10 "~RTC_IRQ" O R 4400 1350 50 
-F11 "SQW" O L 3450 1350 50 
-F12 "~RTC_CS" I R 4400 1500 50 
-F13 "NOT_AS" I L 3450 1500 50 
-F14 "NOT_DS" I L 3450 1650 50 
+F8 "A[1..23]" I L 3450 900 50 
+F9 "~RTC_CS" I R 4400 1500 50 
+F10 "NOT_AS" I L 3450 1500 50 
+F11 "NOT_DS" I L 3450 1650 50 
+F12 "~IPL1" O R 4400 1350 50 
+F13 "IPL2" O L 3450 1350 50 
+F14 "~IPL0" O R 4400 750 50 
 $EndSheet
 Wire Wire Line
 	3450 750  3300 750 
@@ -548,7 +488,7 @@ Wire Wire Line
 Text GLabel 3300 1200 0    50   Input ~ 0
 ~RESET
 Text GLabel 4550 750  2    50   Output ~ 0
-~DUART_IRQ
+~IPL0
 Text GLabel 4550 900  2    50   Input ~ 0
 ~DUART_CS
 Text GLabel 4550 1050 2    50   Input ~ 0
@@ -575,10 +515,10 @@ Wire Wire Line
 Wire Wire Line
 	8250 5000 9300 5000
 $Comp
-L power:+3V3 #PWR016
+L power:+3V3 #PWR018
 U 1 1 61084814
 P 9150 5350
-F 0 "#PWR016" H 9150 5200 50  0001 C CNN
+F 0 "#PWR018" H 9150 5200 50  0001 C CNN
 F 1 "+3V3" H 9165 5523 50  0000 C CNN
 F 2 "" H 9150 5350 50  0001 C CNN
 F 3 "" H 9150 5350 50  0001 C CNN
@@ -590,10 +530,10 @@ Wire Wire Line
 Wire Wire Line
 	9300 5350 9150 5350
 $Comp
-L power:GND #PWR015
+L power:GND #PWR017
 U 1 1 610901B5
 P 8850 5100
-F 0 "#PWR015" H 8850 4850 50  0001 C CNN
+F 0 "#PWR017" H 8850 4850 50  0001 C CNN
 F 1 "GND" H 8855 4927 50  0000 C CNN
 F 2 "" H 8850 5100 50  0001 C CNN
 F 3 "" H 8850 5100 50  0001 C CNN
@@ -602,78 +542,6 @@ F 3 "" H 8850 5100 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8850 5100 9300 5100
-$Sheet
-S 8600 750  950  1400
-U 610A1F9D
-F0 "Interrupts" 50
-F1 "Interrupts.sch" 50
-F2 "IPL[0..2]" O R 9550 1000 50 
-F3 "~IRQ1" I L 8600 1150 50 
-F4 "~IRQ2" I L 8600 1300 50 
-F5 "~IRQ3" I L 8600 1450 50 
-F6 "~IRQ4" I L 8600 1600 50 
-F7 "~IRQ5" I L 8600 1750 50 
-F8 "~IRQ6" I L 8600 1900 50 
-F9 "~IRQ7" I L 8600 2050 50 
-F10 "~AS" I L 8600 1000 50 
-F11 "FC[0..2]" I L 8600 850 50 
-F12 "A[1..23]" I R 9550 850 50 
-F13 "~IACK1" O R 9550 1150 50 
-F14 "~IACK2" O R 9550 1300 50 
-F15 "~IACK3" O R 9550 1450 50 
-F16 "~IACK4" O R 9550 1600 50 
-F17 "~IACK5" O R 9550 1750 50 
-F18 "~IACK6" O R 9550 1900 50 
-F19 "~IACK7" O R 9550 2050 50 
-$EndSheet
-Wire Wire Line
-	8600 850  8450 850 
-Wire Wire Line
-	8600 1000 8450 1000
-Wire Wire Line
-	8600 1150 8450 1150
-Wire Wire Line
-	8600 1300 8450 1300
-Wire Wire Line
-	8600 1450 8450 1450
-Wire Wire Line
-	8600 1600 8450 1600
-Wire Wire Line
-	8600 1750 8450 1750
-Wire Wire Line
-	8600 1900 8450 1900
-Wire Wire Line
-	8600 2050 8450 2050
-Wire Wire Line
-	9550 850  9700 850 
-Wire Wire Line
-	9550 1000 9700 1000
-Wire Wire Line
-	9550 1150 9700 1150
-Wire Wire Line
-	9550 1300 9700 1300
-Wire Wire Line
-	9550 1450 9700 1450
-Wire Wire Line
-	9550 1600 9700 1600
-Wire Wire Line
-	9550 1750 9700 1750
-Wire Wire Line
-	9550 1900 9700 1900
-Wire Wire Line
-	9550 2050 9700 2050
-Text GLabel 8450 850  0    50   Input ~ 0
-FC[0..2]
-Text GLabel 8450 1000 0    50   Input ~ 0
-~AS
-Text GLabel 8450 1150 0    50   Input ~ 0
-~DUART_IRQ
-Text GLabel 9700 1150 2    50   Output ~ 0
-~DUART_IACK
-Text GLabel 9700 850  2    50   Input ~ 0
-A[1..23]
-Text GLabel 9700 1000 2    50   Output ~ 0
-IPL[0..2]
 Wire Wire Line
 	8250 3200 8700 3200
 Wire Wire Line
@@ -798,43 +666,41 @@ Text Label 4550 4250 0    50   ~ 0
 A19
 Text Label 4550 4350 0    50   ~ 0
 A20
-Text Label 4550 4450 0    50   ~ 0
-A21
 Text Label 4550 4550 0    50   ~ 0
 A22
 Text Label 4550 4650 0    50   ~ 0
 A23
-Text Label 4550 4850 0    50   ~ 0
+Text Label 4575 4850 0    50   ~ 0
 D0
-Text Label 4550 4950 0    50   ~ 0
+Text Label 4575 4950 0    50   ~ 0
 D1
-Text Label 4550 5050 0    50   ~ 0
+Text Label 4575 5050 0    50   ~ 0
 D2
-Text Label 4550 5150 0    50   ~ 0
+Text Label 4575 5150 0    50   ~ 0
 D3
-Text Label 4550 5250 0    50   ~ 0
+Text Label 4575 5250 0    50   ~ 0
 D4
-Text Label 4550 5350 0    50   ~ 0
+Text Label 4575 5350 0    50   ~ 0
 D5
-Text Label 4550 5450 0    50   ~ 0
+Text Label 4575 5450 0    50   ~ 0
 D6
-Text Label 4550 5550 0    50   ~ 0
+Text Label 4575 5550 0    50   ~ 0
 D7
-Text Label 4550 5650 0    50   ~ 0
+Text Label 4575 5650 0    50   ~ 0
 D8
-Text Label 4550 5750 0    50   ~ 0
+Text Label 4575 5750 0    50   ~ 0
 D9
-Text Label 4550 5850 0    50   ~ 0
+Text Label 4575 5850 0    50   ~ 0
 D10
-Text Label 4550 5950 0    50   ~ 0
+Text Label 4575 5950 0    50   ~ 0
 D11
-Text Label 4550 6050 0    50   ~ 0
+Text Label 4575 6050 0    50   ~ 0
 D12
-Text Label 4550 6150 0    50   ~ 0
+Text Label 4575 6150 0    50   ~ 0
 D13
-Text Label 4550 6250 0    50   ~ 0
+Text Label 4575 6250 0    50   ~ 0
 D14
-Text Label 4550 6350 0    50   ~ 0
+Text Label 4575 6350 0    50   ~ 0
 D15
 Text GLabel 6400 4150 0    50   Input ~ 0
 ~LDS
@@ -884,10 +750,6 @@ Text GLabel 8700 3100 2    50   Input ~ 0
 ~RESET
 Wire Wire Line
 	8250 3100 8700 3100
-NoConn ~ 6500 2900
-NoConn ~ 6500 3000
-NoConn ~ 6500 3100
-NoConn ~ 6500 3200
 NoConn ~ 6500 3300
 NoConn ~ 6500 3400
 Text GLabel 3300 900  0    50   Input ~ 0
@@ -941,7 +803,7 @@ Wire Wire Line
 Wire Wire Line
 	1100 950  950  950 
 Text GLabel 4550 1350 2    50   Output ~ 0
-~RTC_IRQ
+~IPL1
 Text GLabel 4550 1500 2    50   Input ~ 0
 ~RTC_CS
 Wire Wire Line
@@ -949,27 +811,22 @@ Wire Wire Line
 Wire Wire Line
 	4550 1500 4400 1500
 Text GLabel 3300 1350 0    50   Output ~ 0
-SQU
+~IPL2
 Wire Wire Line
 	3300 1350 3450 1350
-Text GLabel 8450 2050 0    50   Input ~ 0
-SQU
-NoConn ~ 9700 2050
-Text GLabel 8450 1300 0    50   Input ~ 0
-~RTC_IRQ
 $Sheet
 S 5950 750  1050 1000
 U 622C4EA1
 F0 "IDE" 50
 F1 "ide.sch" 50
 F2 "~RESET" I L 5950 950 50 
-F3 "D[0..15]" B L 5950 1100 50 
-F4 "~WE" I L 5950 1250 50 
-F5 "~OE" I L 5950 1400 50 
-F6 "~IDE_IRQ" O R 7000 950 50 
-F7 "A[1..23]" I L 5950 1550 50 
-F8 "~IDE_CS1" I R 7000 1100 50 
-F9 "~IDE_CS2" I R 7000 1250 50 
+F3 "~WE" I L 5950 1250 50 
+F4 "~OE" I L 5950 1400 50 
+F5 "A[1..23]" I L 5950 1550 50 
+F6 "~IDE_CS1" I R 7000 1100 50 
+F7 "~IDE_CS2" I R 7000 1250 50 
+F8 "~IPL1" O R 7000 950 50 
+F9 "D[0..15]" B L 5950 1100 50 
 $EndSheet
 Wire Wire Line
 	5950 950  5850 950 
@@ -998,13 +855,11 @@ Wire Wire Line
 Wire Wire Line
 	7000 1250 7100 1250
 Text GLabel 7100 950  2    50   Output ~ 0
-~IDE_IRQ
+~IPL1
 Text GLabel 7100 1100 2    50   Input ~ 0
 ~IDE_CS1
 Text GLabel 7100 1250 2    50   Input ~ 0
 ~IDE_CS2
-Text GLabel 8450 1450 0    50   Input ~ 0
-~IDE_IRQ
 Wire Wire Line
 	8250 4050 8700 4050
 Entry Wire Line
@@ -1086,10 +941,10 @@ F0 "Power" 50
 F1 "power.sch" 50
 $EndSheet
 $Comp
-L power:+3.3V #PWR014
+L power:+3.3V #PWR013
 U 1 1 6270F6BE
 P 7600 2400
-F 0 "#PWR014" H 7600 2250 50  0001 C CNN
+F 0 "#PWR013" H 7600 2250 50  0001 C CNN
 F 1 "+3.3V" H 7615 2573 50  0000 C CNN
 F 2 "" H 7600 2400 50  0001 C CNN
 F 3 "" H 7600 2400 50  0001 C CNN
@@ -1126,7 +981,7 @@ U 1 1 62793743
 P 6400 6000
 F 0 "C1" V 6171 6000 50  0000 C CNN
 F 1 "0.1uF" V 6262 6000 50  0000 C CNN
-F 2 "" H 6400 6000 50  0001 C CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" H 6400 6000 50  0001 C CNN
 F 3 "~" H 6400 6000 50  0001 C CNN
 	1    6400 6000
 	-1   0    0    1   
@@ -1137,7 +992,7 @@ U 1 1 62793F38
 P 6750 6000
 F 0 "C2" V 6521 6000 50  0000 C CNN
 F 1 "0.1uF" V 6612 6000 50  0000 C CNN
-F 2 "" H 6750 6000 50  0001 C CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" H 6750 6000 50  0001 C CNN
 F 3 "~" H 6750 6000 50  0001 C CNN
 	1    6750 6000
 	-1   0    0    1   
@@ -1157,10 +1012,10 @@ Connection ~ 6400 6100
 Wire Wire Line
 	6400 6100 6150 6100
 $Comp
-L power:GND #PWR060
+L power:GND #PWR015
 U 1 1 627B6FC7
 P 7700 6250
-F 0 "#PWR060" H 7700 6000 50  0001 C CNN
+F 0 "#PWR015" H 7700 6000 50  0001 C CNN
 F 1 "GND" H 7705 6077 50  0000 C CNN
 F 2 "" H 7700 6250 50  0001 C CNN
 F 3 "" H 7700 6250 50  0001 C CNN
@@ -1168,23 +1023,23 @@ F 3 "" H 7700 6250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C_Small C12
+L Device:C_Small C3
 U 1 1 627B6FCD
 P 7950 6000
-F 0 "C12" V 7721 6000 50  0000 C CNN
+F 0 "C3" V 7721 6000 50  0000 C CNN
 F 1 "0.1uF" V 7812 6000 50  0000 C CNN
-F 2 "" H 7950 6000 50  0001 C CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" H 7950 6000 50  0001 C CNN
 F 3 "~" H 7950 6000 50  0001 C CNN
 	1    7950 6000
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:C_Small C13
+L Device:C_Small C4
 U 1 1 627B6FD3
 P 8300 6000
-F 0 "C13" V 8071 6000 50  0000 C CNN
+F 0 "C4" V 8071 6000 50  0000 C CNN
 F 1 "0.1uF" V 8162 6000 50  0000 C CNN
-F 2 "" H 8300 6000 50  0001 C CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" H 8300 6000 50  0001 C CNN
 F 3 "~" H 8300 6000 50  0001 C CNN
 	1    8300 6000
 	-1   0    0    1   
@@ -1204,10 +1059,10 @@ Connection ~ 7950 6100
 Wire Wire Line
 	7950 6100 7700 6100
 $Comp
-L power:+3.3V #PWR059
+L power:+3.3V #PWR014
 U 1 1 627C821D
 P 7700 5800
-F 0 "#PWR059" H 7700 5650 50  0001 C CNN
+F 0 "#PWR014" H 7700 5650 50  0001 C CNN
 F 1 "+3.3V" H 7715 5973 50  0000 C CNN
 F 2 "" H 7700 5800 50  0001 C CNN
 F 3 "" H 7700 5800 50  0001 C CNN
@@ -1224,20 +1079,96 @@ Connection ~ 7600 2400
 Wire Wire Line
 	7600 2400 7500 2400
 NoConn ~ 7400 2500
-NoConn ~ 8450 1600
-NoConn ~ 8450 1750
-NoConn ~ 8450 1900
-NoConn ~ 9700 1300
-NoConn ~ 9700 1450
-NoConn ~ 9700 1600
-NoConn ~ 9700 1750
-NoConn ~ 9700 1900
 Wire Wire Line
 	900  2050 900  2150
+Entry Wire Line
+	6300 2900 6200 3000
+Entry Wire Line
+	6300 3000 6200 3100
+Entry Wire Line
+	6300 3100 6200 3200
+Wire Bus Line
+	6200 2950 6050 2950
+Text GLabel 6050 2950 0    50   Input ~ 0
+FC[0..2]
+Text Label 6450 2900 0    50   ~ 0
+FC0
+Text Label 6450 3000 0    50   ~ 0
+FC1
+Text Label 6450 3100 0    50   ~ 0
+FC2
+Text GLabel 6000 3200 0    50   Output ~ 0
+~DUART_IACK
+Wire Wire Line
+	6450 3200 6450 3250
+Wire Wire Line
+	6450 3200 6650 3200
+Wire Wire Line
+	6300 2900 6650 2900
+Wire Wire Line
+	6300 3000 6650 3000
+Wire Wire Line
+	6300 3100 6650 3100
+Wire Wire Line
+	6000 3200 6150 3200
+Wire Wire Line
+	6150 3200 6150 3250
+Wire Wire Line
+	6150 3250 6450 3250
+Wire Wire Line
+	2300 2750 2550 2750
+Wire Wire Line
+	2300 2850 2550 2850
+Wire Wire Line
+	2300 2950 2550 2950
+Text GLabel 2300 2750 0    50   Input ~ 0
+~IPL0
+Text GLabel 2300 2850 0    50   Input ~ 0
+~IPL1
+Text GLabel 2300 2950 0    50   Input ~ 0
+~IPL2
+Text Label 4550 4450 0    50   ~ 0
+A21
+Wire Wire Line
+	4700 4350 4550 4350
+Wire Wire Line
+	4700 4250 4550 4250
+Wire Wire Line
+	4700 4150 4550 4150
+Wire Wire Line
+	4700 4050 4550 4050
+Wire Wire Line
+	4700 3950 4550 3950
+Wire Wire Line
+	4700 3850 4550 3850
+Wire Wire Line
+	4700 3750 4550 3750
+Wire Wire Line
+	4700 3650 4550 3650
+Wire Wire Line
+	4700 3550 4550 3550
+Wire Wire Line
+	4700 3450 4550 3450
+Wire Wire Line
+	4700 3350 4550 3350
+Wire Wire Line
+	4700 3250 4550 3250
+Wire Wire Line
+	4700 3150 4550 3150
+Wire Wire Line
+	4700 3050 4550 3050
+Wire Wire Line
+	4700 2950 4550 2950
+Wire Wire Line
+	4700 2850 4550 2850
+Text GLabel 4900 4850 2    50   BiDi ~ 0
+D[0..15]
+Wire Wire Line
+	4700 6350 4550 6350
 Wire Bus Line
 	2300 3650 2300 3950
 Wire Bus Line
-	2300 2750 2300 3050
+	6200 2950 6200 3200
 Wire Bus Line
 	8800 3200 8800 4050
 Wire Bus Line
