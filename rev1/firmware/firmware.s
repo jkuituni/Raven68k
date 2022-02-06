@@ -1,5 +1,5 @@
 /*
- * ::: Raven68k Firmware version 0.0.2 :::
+ * ::: Raven68k Firmware version 0.0.3 :::
  *
  * WORK-IN-PROGRESS
  *
@@ -136,10 +136,12 @@ _crxrdy:
 
 * -- SRecord utility routines
 .SRecUpload:
+  movem.l d0-d7/a0-a6,(sp)+     | Save registers to stack
+_ld_up:
   jsr     .getChar              | Get a character from host
   cmp.b   #'S', %d0             | Records must start with 'S'
-  bne     .SRecUpload           | If not, repeat getting chars until we get an 'S'
-  
+  bne     .ld_up                | If not, repeat getting chars until we get an 'S'
+
   jsr     .getChar              | Get character after 'S'
   cmp.b   #'9', %d0             | Test for an S9 terminator
   beq     _ld_s9                | Handle it..
@@ -149,18 +151,20 @@ _crxrdy:
   beq     _ld_s1                | Handle it..
   cmp.b   #'2', %d0             | Test for an S2 record
   beq     _ld_s2                | Handle it..
-  bra     .SRecUpload           | Unknown terminator -> Go back to beginning
+  bra     .ld_up                | Unknown terminator -> Go back to beginning
 
 _ld_s1:
   clr.b   %d3                   | Clear the checksum
   jsr     _ld_get_byte          | Read the S1 byte count and address
   sub.b   #3, %d0               | Subtract 3 from record length
   move.b  %d0, %d2              | Save byte count in d2
+  move.l  %d2, _SRecLoadSize    | Store loadsize
   clr.l   %d0                   | Clear address accumulator
   jsr     _ld_get_byte          | Get MS byte of load address
   asl.l   #8, %d0               | Move it to MS position
   jsr     _ld_get_byte          | Get LS byte in d2
   move.l  %d0, %a2              | a2 points to destination of data
+  move.l  %a2, _SRecLoadAddr    | Store load address
   bra     _ld_data              | Load the data
 
 _ld_s2:
@@ -227,15 +231,18 @@ _ld_chksum:
 _ld_data_ok:
   move.b  #'.', %d0             | Send a '.' to console
   jsr     .prntChar
-  bra     .SRecUpload           | Get next record
+  bra     .ld_up                | Get next record
 
 _ld_exit:
   cmpi.l  #0, %d7               | Check for errors
   bne     .SRecError            | Errors found, offer to reset
   lea     _msgSRecLoaded, %a0   | Send SRec loaded message
   jsr     .prntMsg
-  move.l  %a2, %d0              | Get start address from SRec
-  jsr     .send_hex_l           | Output the starting address
+  move.l  %d2, %d0              | Get SRec size
+  jsr     .send_hex_l           | Output the size
+  move.l  %a2, %d0              | Get load address
+  loa     _msgSRecLoaded2, %a0  | Get rest of the message line
+  jsr     .PrintMsg
 _ld_get_byte:
   jsr     .get_hex_b
   add.b   %d0, %d3              | Update checksum
@@ -316,29 +323,11 @@ _hex_ok:
 .reset:
   reset                         | Soft-Reset the CPU
 
-* ---- Utility routines
-.toupper:
-  cmp.b   #'a',%d0
-  ble.s   _notchar
-  cmp.b   #'z',%d0
-  bgt.s   _notchar
-  sub.b   #32,%d0
-  rts
-
-.tolower:
-  cmp.b   #'A',%d0
-  ble.s   _notchar
-  cmp.b   #'Z',%d0
-  bgt.s   _notchar
-  add.b   #32,%d0
-_notchar:
-  rts
-
 * ---- Various system messages and prompts ----
 .align(2)
 _msgBanner:     .ascii  "::::: Raven68k - A Simple 68000 based computer\r\n"
                 .ascii  ":::: Hardware revision 1.0\r\n"
-                .asciz  "::: Firmware version v0.0.2\r\n\r\n"
+                .asciz  "::: Firmware version v0.0.3\r\n\r\n"
 .align(2)
 _msgRamTst:     .asciz  "Checking RAM memory...\r\n"
 .align(2)
@@ -364,6 +353,12 @@ _msgErrChksum:  .asciz  "Checksum Error!\r\n"
 .align(2)
 _msgSRecErr:    .asciz  "\r\nThere was an error loading the SRec data (as shown above).\r\n"
 .align(2)
-_msgSRecLoaded: .asciz  "\r\nSRec data downloaded. The starting address is 0x"
+_msgSRecLoaded: .asciz  "\r\nLoaded
+.align(2)
+_msgSRecLoaded2: .asciz " bytes starting from "
 .align(2)
 _msgSRecRun:    .asciz  "Executing downloaded SRec..\r\n"
+.align(2)
+_SRecLoadAddr:  dc.l 0;
+.align(2)
+_SRecLoadSize:  dc.l 0;
