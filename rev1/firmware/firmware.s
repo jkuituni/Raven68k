@@ -1,5 +1,5 @@
 /*
- * ::: Raven68k Firmware version 0.0.3 :::
+ * ::: Raven68k Firmware version 0.0.4 :::
  *
  * WORK-IN-PROGRESS
  *
@@ -246,6 +246,7 @@ _ld_exit:
 _ld_get_byte:
   jsr     .get_hex_b
   add.b   %d0, %d3              | Update checksum
+  movem.l (sp)+,d0-d7/a0-a6     | Restore stored registers from stack
   rts                           | SRec loaded -> Back to main routine
 .send_hex_n:
   movem.l %d0, %a7@-            | Save d0 to stack
@@ -302,6 +303,7 @@ _hex_ok:
 .SRecExec:
   lea.l   _msgSRecRun,%a0       | Set runSRec message pointer
   jsr     .prntMsg              | Print the message
+  lea.l   _SRecLoadAddr,%a2     | Load the pointer to loaded SRec
   jmp     %a2@                  | Jump to address in a2 register
 * -- General utility routines
 .prntRamError:
@@ -327,7 +329,7 @@ _hex_ok:
 .align(2)
 _msgBanner:     .ascii  "::::: Raven68k - A Simple 68000 based computer\r\n"
                 .ascii  ":::: Hardware revision 1.0\r\n"
-                .asciz  "::: Firmware version v0.0.3\r\n\r\n"
+                .asciz  "::: Firmware version v0.0.4\r\n\r\n"
 .align(2)
 _msgRamTst:     .asciz  "Checking RAM memory...\r\n"
 .align(2)
