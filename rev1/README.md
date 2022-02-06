@@ -11,12 +11,14 @@ The specifications for the first revision 1 version of Raven68k are as follows:
 
 ## Folder structure
 
-*firmware/* - ROM images to boot and initialize the system
+*firmware/* - ROM images to boot and initialize the system.
 
-*software/* - S68 programs that can be loaded from the firmware. Many of these are built with [EASy68k](http://easy68k.com/)
+*software/* - S68 programs that can be loaded from the firmware. Many of these are built with [EASy68k](http://easy68k.com/).
 
 *schematic/* - KiCad schematics for this revision.
 
-*vhdl/* - The VHDL source for the CPLD that manages most of the TTL logic present on the development system
+*vhdl/* - The VHDL source for the CPLD that manages most of the TTL logic present on the development system.
 
-*xilinx/* - The ISE WebPack (14.2) project itself, which targets a QFP44 XC9572XL breakout board
+*xilinx/* - The ISE WebPack (14.2) project itself, which targets a QFP44 XC9572XL breakout board.
+
+*datasheets/* - The datasheets for all the ICs used in this project.
