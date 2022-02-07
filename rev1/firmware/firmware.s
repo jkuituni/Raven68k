@@ -1,5 +1,5 @@
 /*
- * ::: Raven68k Firmware version 0.0.4 :::
+ * ::: Raven68k Firmware version 0.1.0 :::
  *
  * WORK-IN-PROGRESS
  *
@@ -23,6 +23,20 @@
 
 .include "raven68k.inc"
 
+* ---- Variables and Defines
+MAX_LINE_LENGTH     equ     80
+BEL                 equ $07
+BKSP                equ $08
+TAB                 equ $09
+LF                  equ $0A
+CR                  equ $0D
+ESC                 equ $1B
+CTRLC	              equ	$03
+CTRLX	              equ	$18
+varCurAddr          equ _ram_end-4
+varLineBuf          equ varCurAddr-MAX_LINE_LENGTH-2
+varLast             equ varLineBuf
+
 * ---- Vector locations ----
 .section .vectors, "a"
 .title "Init vectors"
@@ -35,7 +49,6 @@
 .rept 0xfa
 .long .unhandled
 .endr
-
 
 * ---- Firmware Jump-Table ----
 .section .text
@@ -72,6 +85,8 @@
   beq     .SRecUpload           | Go to SRec upload routine
   cmpi.b  #'E',%d0              | Is it 'E'xecute?
   beq     .SRecExec             | Go to SRecExecute routine
+  cmpi.b  #'M',%d0              | Is it 'M'achine monitor?
+  beq     monitorStart          | Go to built-in Machine Monitor
   cmpi.b  #'H',%d0              | Is it 'H'elp?
   beq     .prntHelp             | Go to Print Help routine
   cmpi.b  #'R',%d0              | Is it 'R'eset?
@@ -141,7 +156,6 @@ _ld_up:
   jsr     .getChar              | Get a character from host
   cmp.b   #'S', %d0             | Records must start with 'S'
   bne     .ld_up                | If not, repeat getting chars until we get an 'S'
-
   jsr     .getChar              | Get character after 'S'
   cmp.b   #'9', %d0             | Test for an S9 terminator
   beq     _ld_s9                | Handle it..
@@ -152,7 +166,6 @@ _ld_up:
   cmp.b   #'2', %d0             | Test for an S2 record
   beq     _ld_s2                | Handle it..
   bra     .ld_up                | Unknown terminator -> Go back to beginning
-
 _ld_s1:
   clr.b   %d3                   | Clear the checksum
   jsr     _ld_get_byte          | Read the S1 byte count and address
@@ -166,7 +179,6 @@ _ld_s1:
   move.l  %d0, %a2              | a2 points to destination of data
   move.l  %a2, _SRecLoadAddr    | Store load address
   bra     _ld_data              | Load the data
-
 _ld_s2:
   clr.b   %d3                   | Clear the checksum
   jsr     _ld_get_byte          | Read the S2 byte count and address
@@ -180,7 +192,6 @@ _ld_s2:
   jsr     _ld_get_byte          | Read LS byte of address
   move.l  %d0, %a2              | a2 points to destination of record
   bra     _ld_data              | Load the data
-
 _ld_s8:
   clr.b   %d3                   | Clear the checksum
   jsr     _ld_get_byte          | Read the S8 byte count and address
@@ -193,7 +204,6 @@ _ld_s8:
   jsr     _ld_get_byte          | Read LS byte of address
   move.l  %d0, %a2              | a2 points to destination of record
   bra     _ld_terminate         | Return
-
 _ld_s9:
   clr.b   %d3                   | Clear the checksum
   jsr     _ld_get_byte          | Read the S9 byte count and address
@@ -204,7 +214,6 @@ _ld_s9:
   jsr     _ld_get_byte          | Get LS byte in D2
   move.l  %d0, %a2              | a2 points to destination of data
   bra     _ld_terminate         | Return
-
 _ld_data:
   jsr     _ld_get_byte          | Get byte of data for loading
   move.b  %d0, %a2@+            | Store it
@@ -214,7 +223,6 @@ _ld_data:
   add.b   #1, %d3               | Add 1 to total checksum
   beq     _ld_data_ok           | If zero then  draw a dot to console
   or.b    #0b00001000, %d7      | Else set checksum error bit
-
 _ld_terminate:
   btst.b  #0, %d7               | Test for input errors
   beq     _ld_chksum            | If no errors check the checksum
@@ -227,12 +235,10 @@ _ld_chksum:
   lea     _msgErrChksum, %a0    | Send error message to console
   jsr     .prntMsg
   bra     _ld_exit
-
 _ld_data_ok:
   move.b  #'.', %d0             | Send a '.' to console
   jsr     .prntChar
   bra     .ld_up                | Get next record
-
 _ld_exit:
   cmpi.l  #0, %d7               | Check for errors
   bne     .SRecError            | Errors found, offer to reset
@@ -305,6 +311,381 @@ _hex_ok:
   jsr     .prntMsg              | Print the message
   lea.l   _SRecLoadAddr,%a2     | Load the pointer to loaded SRec
   jmp     %a2@                  | Jump to address in a2 register
+
+* -- Built-in machine monitor by Hayden Kroeplf
+* -- Ported to run for Raven from firmware ROM
+
+monitorStart:
+    lea     msgBanner, %a0      | Show monitor banner
+    jsr     .prntMsg            | Print the message
+    lea     msgHelp,   %a0      | And the command help message
+    jsr     .prntMsg            | Print the message
+monitorLine:                    | Our main monitor loop
+    lea     msgPrompt, %a0      | Prompt
+    jsr     .prntMsg            | Print the message
+    bsr.w   readLine            | Read in the line
+    bsr.w   lineToUpper         | Convert to upper-case for ease of parsing
+    bsr.w   parseLine           | Then parse and respond to the line
+    bra.s   monitorLine
+parseLine:
+    movem.l %a2-%a3, -(%sp)     | Save registers
+    lea     varLineBuf, %a0
+ .findCommand:
+    move.b  (%a0)+, %d0
+    cmp.b   #' ', %d0           | Ignore spaces
+    beq.w   .findCommand
+    cmp.b   #'E', %d0           | Examine command
+    beq.w   .examine
+    cmp.b   #'D', %d0           | Deposit command
+    beq.w   .deposit
+    cmp.b   #'R', %d0           | Run command
+    beq.w   .run
+    cmp.b   #'H', %d0           | Help command
+    beq.w   .help
+    cmp.b   #0, %d0             | Ignore blank lines
+    beq.s   .exit
+ .invalid:
+    lea     msgInvalidCommand, %a0
+    bsr.w   .prntMsg
+ .exit:
+    movem.l (sp)+, %a2-%a3      | Restore registers
+    rts
+ .examine:
+    bsr.w   parseNumber         | Read in the start address
+    tst.b   %d1                 | Make sure it's valid (parseNumber returns non-zero in d1 for failure)
+    bne.w   .invalidAddr
+    move.l  %d0, %a3            | Save the start address
+ .exloop:
+    move.b  (%a0)+, %d0
+    cmp.b   #' ', %d0           | Ignore spaces
+    beq.s   .exloop
+    cmp.b   #'-', %d0           | Check if it's a range specifier
+    beq.s   .exrange
+    cmp.b   #'+', %d0           | Check if it's a length specifier
+    beq.s   .exlength
+    cmp.b   #';', %d0           | Check if we're going interactive
+    beq.s   .exinter
+    cmp.b   #'.', %d0           | Check if quick 16
+    beq.s   .exquick
+    move.l  #1, %d0             | Otherwise read in a single byte
+    bra.s   .exend
+ .exrange:
+    bsr.w   parseNumber         | Find the end address
+    tst.b   %d1                 | Check if we found a valid address
+    bne.w   .invalidAddr
+    sub.l   %a3, %d0            | Get the length
+    bra.s   .exend
+ .exquick:                      | Quick mode means show one line of 16 bytes
+    move.l  #$10, %d0
+    bra.s   .exend
+ .exlength:                     | Length mode means a length is specified
+    bsr.w   parseNumber         | Find the length
+    tst.b   %d1
+    bne.w   .invalidAddr
+ .exend:                        | We're done parsing, give the parameters to dumpRAM and exit
+    move.l  %a3, %a0
+    bsr.w   dumpRAM
+    bra.s   .exit
+ .exinter:                      | Interactive mode, Space shows 16 lines, enter shows 1.
+    move.l  %a3, %a0            | Current Address
+    move.l  #$10, %d0           | 16 bytes
+    bsr.w   dumpRAM             | Dump this line
+    add.l   #$10, %a3           | Move up the current address 16 bytes
+ .exinterend:
+    bsr.w   inChar
+    cmp.b   #CR, %d0            | Display another line
+    beq.s   .exinter
+    cmp.b   #' ', %d0           | Display a page (256 bytes at a time)
+    beq.s   .exinterpage
+    bra.s   .exit               | Otherwise exit
+ .exinterpage:
+    move.l  %a3, %a0
+    move.l  #$100, %d0          | 256 bytes
+    bsr.w   dumpRAM             | Dump 16 lines of RAM
+    add.l   #$100, %a3          | Move up the current address by 256
+    bra.s   .exinterend
+ .deposit:
+    move.b  (%a0), %d0
+    cmp.b   #':', %d0           | Check if we want to continue from last
+    beq.s   .depCont
+    bsr.w   parseNumber         | Otherwise read the address
+    tst.b   %d1
+    bne.s   .invalidAddr
+    move.l  %d0, %a3            | Save the start address
+ .depLoop:
+    move.b  (%a0), %d0
+    cmp.b   #';', %d0           | Check for continue
+    beq.s   .depMultiline
+    tst     %d0                 | Check for the end of line
+    beq     .depEnd
+    bsr.s   parseNumber         | Otherwise read a value
+    tst.b   %d1
+    bne.s   .invalidVal
+    cmp.w   #255, %d0           | Make sure it's a byte
+    bgt.s   .invalidVal
+    move.b  %d0, (%a3)+         | Store the value into memory
+    bra.s   .depLoop
+
+ .depCont:
+    move.l  varCurAddr, %a3     | Read in the last address
+    addq.l  #1, %a0             | Skip over the ':'
+    bra.s   .depLoop
+
+ .depMultiline:
+    lea     msgDepositPrompt, %a0
+    bsr.w   .prntMsg
+    bsr.w   readLine            | Read in the next line to be parsed
+    bsr.w   lineToUpper         | Convert to uppercase
+    lea     varLineBuf, %a0     | Reset our buffer pointer
+    bra.s   .depLoop            | And jump back to decoding
+ .depEnd:
+    move.l  %a3, varCurAddr
+    bra.w   .exit
+ .run:
+    bsr.w   parseNumber         | Otherwise read the address
+    tst.b   %d1
+    bne.s   .invalidAddr
+    move.l  %d0, %a0
+    jsr     (%a0)               | Jump to the code!
+                                | Go as subroutine to allow code to return to us
+    jsr     monitorStart        | Warm start after returning so everything is in
+                                | a known state.
+ .help:
+    lea     msgHelp, %a0
+    bsr.w   .prntMsg
+    bra.w   .exit
+ .invalidAddr:
+    lea     msgInvalidAddress, %a0
+    bsr.w   .prntMsg
+    bra.w   .exit
+ .invalidVal:
+    lea     msgInvalidValue, %a0
+    bsr.w   .prntMsg
+    bra.w   .exit
+parseNumber:
+    eor.l   %d0, %d0            | Zero out d0
+    move.b  (%a0)+, %d0
+    cmp.b   #' ', %d0           | Ignore all leading spaces
+    beq.s   parseNumber
+    cmp.b   #'0', %d0           | Look for hex digits 0-9
+    blt.s   .invalid
+    cmp.b   #'9', %d0
+    ble.s   .firstdigit1
+    cmp.b   #'A', %d0           | Look for hex digits A-F
+    blt.s   .invalid
+    cmp.b   #'F', %d0
+    ble.s   .firstdigit2
+ .invalid:
+    move.l  #1, %d1             | Invalid character, mark failure and return
+    rts
+ .firstdigit2:
+    sub.b   #'7', %d0           | Turn 'A' to 10
+    bra.s   .loop
+ .firstdigit1:
+    sub.b   #'0', %d0           | Turn '0' to 0
+ .loop:
+    move.b  (%a0)+, %d1         | Read in a digit
+    cmp.b   #'0', %d1           | Look for hex digits 0-9
+    blt.s   .end                | Any other characters mean we're done reading
+    cmp.b   #'9', %d1
+    ble.s   .digit1
+    cmp.b   #'A', %d1           | Look for hex digits A-F
+    blt.s   .end
+    cmp.b   #'F', %d1
+    ble.s   .digit2
+.end:                           | We hit a non-hex digit character, we're done parsing
+    subq.l  #1, %a0             | Move the pointer back before the end character we read
+    move.l  #0, %d1
+    rts
+ .digit2:
+    sub.b   #'7', %d1           | Turn 'A' to 10
+    bra.s   .digit3
+ .digit1:
+    sub.b   #'0', %d1           | Turn '0' to 0
+ .digit3:
+    lsl.l   #4, %d0             | Shift over to the next nybble
+    add.b   %d1, %d0            | Place in our current nybble (could be or.b instead)
+    bra.s   .loop
+dumpRAM:
+    movem.l %d2-%d4/%a2, -(sp)  | Save registers
+    move.l  %a0, %a2            | Save the start address
+    move.l  %d0, %d2            | And the number of bytes
+ .line:
+    move.l  %a2, %d0
+    bsr.w   printHexAddr        | Starting address of this line
+    lea     msgColonSpace, %a0
+    bsr.w   .prntMsg
+    move.l  #16, %d3            | 16 Bytes can be printed on a line
+    move.l  %d3, %d4            | Save number of bytes on this line
+ .hexbyte:
+    tst.l   %d2                 | Check if we're out of bytes
+    beq.s   .endbytesShort
+    tst.b   %d3                 | Check if we're done this line
+    beq.s   .endbytes
+    move.b  (%a2)+, %d0         | Read a byte in from RAM
+    bsr.w   printHexByte        | Display it
+    move.b  #' ', %d0
+    bsr.w   .prntChar           | Space out bytes
+    subq.l  #1, %d3
+    subq.l  #1, %d2
+    bra.s   .hexbyte
+ .endbytesShort:
+    sub.b   %d3, %d4            | Make d4 the actual number of bytes on this line
+    move.b  #' ', %d0
+ .endbytesShortLoop:
+    tst.b   %d3                 | Check if we ended the line
+    beq.s   .endbytes
+    move.b  #' ', %d0
+    bsr.w   .prntChar           | Three spaces to pad out
+    move.b  #' ', %d0
+    bsr.w   .prntChar
+    move.b  #' ', %d0
+    bsr.w   .prntChar
+    subq.b  #1, %d3
+    bra.s   .endbytesShortLoop
+ .endbytes:
+    suba.l  %d4, %a2            | Return to the start address of this line
+ .endbytesLoop:
+    tst.b   %d4                 | Check if we're done printing ascii
+    beq     .endline
+    subq.b  #1, %d4
+    move.b  (%a2)+, %d0         | Read the byte again
+    cmp.b   #' ', %d0           | Lowest printable character
+    blt.s   .unprintable
+    cmp.b   #'~', %d0           | Highest printable character
+    bgt.s   .unprintable
+    bsr.w   .prntChar
+    bra.s   .endbytesLoop
+ .unprintable:
+    move.b  #'.', %d0
+    bsr.w   .prntChar
+    bra.s   .endbytesLoop
+ .endline:
+    lea     msgNewline, %a0
+    bsr.w   .prntMsg
+    tst.l   %d2
+    ble.s   .end
+    bra.w   .line
+ .end:
+    movem.l (sp)+, %d2-%d4/%a2  | Restore registers
+    rts
+readLine:
+    movem.l %d2/%a2, -(sp)      | Save changed registers
+    lea     varLineBuf, %a2     | Start of the lineBuffer
+    eor.w   %d2, %d2            | Clear the character counter
+ .loop:
+    bsr.w   .getChar            | Read a character from the serial port
+    cmp.b   #BKSP, %d0          | Is it a backspace?
+    beq.s   .backspace
+    cmp.b   #CTRLX, %d0         | Is it Ctrl-H (Line Clear)?
+    beq.s   .lineclear
+    cmp.b   #CR, %d0            | Is it a carriage return?
+    beq.s   .endline
+    cmp.b   #LF, %d0            | Is it anything else but a LF?
+    beq.s   .loop               | Ignore LFs and get the next character
+ .char:                         | Normal character to be inserted into the buffer
+    cmp.w   #MAX_LINE_LENGTH, %d2
+    bge.s   .loop               | If the buffer is full ignore the character
+    move.b  %d0, (%a2)+         | Otherwise store the character
+    addq.w  #1, %d2             | Increment character count
+    bsr.w   .prntChar           | Echo the character
+    bra.s   .loop               | And get the next one
+ .backspace:
+    tst.w   %d2                 | Are we at the beginning of the line?
+    beq.s   .loop               | Then ignore it
+    bsr.w   .prntChar           | Backspace
+    move.b  #' ', %d0
+    bsr.w   .prntChar           | Space
+    move.b  #BKSP, %d0
+    bsr.w   .prntChar           | Backspace
+    subq.l  #1, %a2             | Move back in the buffer
+    subq.l  #1, %d2             | And current character count
+    bra.s   .loop               | And goto the next character
+ .lineclear:
+    tst     %d2                 | Anything to clear?
+    beq.s   .loop               | If not, fetch the next character
+    suba.l  %d2, %a2            | Return to the start of the buffer
+ .lineclearloop:
+    move.b  #BKSP, %d0
+    bsr.w   .prntChar           | Backspace
+    move.b  #' ', %d0
+    bsr.w   .prntChar           | Space
+    move.b  #BKSP, %d0
+    bsr.w   .prntChar           | Backspace
+    subq.w  #1, %d2
+    bne.s   .lineclearloop      | Go till the start of the line
+    bra.s   .loop
+ .endline:
+    bsr.w   .prntChar           | Echo the CR
+    move.b  #LF, %d0
+    bsr.w   .prntChar           | Line feed to be safe
+    move.b  #0, (%a2)           | Terminate the line (Buffer is longer than max to allow this at full length)
+    movea.l %a2, %a0            | Ready the pointer to return (if needed)
+    movem.l (sp)+, %d2/%a2      | Restore registers
+    rts                         | And return
+printNewline:
+    lea     msgNewline, %a0
+printString:
+ .loop:
+    move.b  (%a0)+, %d0         | Read in character
+    beq.s   .end                | Check for the null
+
+    bsr.s   .prntChar           | Otherwise write the character
+    bra.s   .loop               | And continue
+ .end:
+    rts
+printHexWord:
+    move.l  %d2, -(sp)          | Save d2
+    move.l  %d0, %d2            | Save the address in d2
+
+    rol.l   #8, %d2             | 4321 -> 3214
+    rol.l   #8, %d2             | 3214 -> 2143
+    bra.s   printHex_wordentry  | Print out the last 16 bits
+printHexAddr:
+    move.l %d2, -(sp)           | Save d2
+    move.l %d0, %d2             | Save the address in d2
+    rol.l   #8, %d2             | 4321 -> 3214
+    bra.s   printHex_addrentry  | Print out the last 24 bits
+printHexLong:
+    move.l  %d2, -(sp)          | Save d2
+    move.l  %d0, %d2            | Save the address in d2
+    rol.l   #8, %d2             | 4321 -> 3214 high byte in low
+    move.l  %d2, %d0
+    bsr.s   printHexByte        | Print the high byte (24-31)
+printHex_addrentry:
+    rol.l   #8, %d2             | 3214 -> 2143 middle-high byte in low
+    move.l  %d2, %d0
+    bsr.s   printHexByte        | Print the high-middle byte (16-23)
+printHex_wordentry:
+    rol.l   #8, %d2             | 2143 -> 1432 Middle byte in low
+    move.l  %d2, %d0
+    bsr.s   printHexByte        | Print the middle byte (8-15)
+    rol.l   #8, %d2
+    move.l  %d2, %d0
+    bsr.s   printHexByte        | Print the low byte (0-7)
+    move.l (sp)+, %d2           | Restore d2
+    rts
+printHexByte:
+    move.l  %d2, -(sp)
+    move.b  %d0, %d2
+    lsr.b   #$4, %d0
+    add.b   #'0', %d0
+    cmp.b   #'9', %d0           | Check if the hex number was from 0-9
+    ble.s   .second
+    add.b   #7, %d0             | Shift 0xA-0xF from ':' to 'A'
+.second:
+    bsr.s   .prntChar           | Print the digit
+    andi.b  #$0F, %d2           | Now we want the lower digit Mask only the lower digit
+    add.b   #'0', %d2
+    cmp.b   #'9', %d2           | Same as before
+    ble.s   .end
+    add.b   #7, %d2
+.end:
+    move.b  %d2, %d0
+    bsr.s   .prntChar           | Print the lower digit
+    move.l  (sp)+, %d2
+    rts
+
 * -- General utility routines
 .prntRamError:
   move.l  %a0,%d0               | Save current RAM address
@@ -316,6 +697,19 @@ _hex_ok:
   lea.l   _msgHelp,%a0          | Set Help message pointer
   jsr     .prntMsg              | Print the message
   jmp     .run                  | Jump back to main routine
+lineToUpper:
+  lea     varLineBuf, %a0   * Get the start of the line buffer
+.loop:
+  move.b  (%a0), %d0         * Read in a character
+  cmp.b   #'a', %d0
+  blt.s   .next            * Is it less than lower-case 'a', then move on
+  cmp.b   #'z', %d0
+  bgt.s   .next            * Is it greater than lower-case 'z', then move on
+  sub.b   #$20, %d0         * Then convert a to A, b to B, etc.
+.next:
+  move.b  %d0, (%a0)+        * Store the character back into a0, and move to the next
+  bne.s   .loop            * Keep going till we hit a null terminator
+  rts
 
 * ---- Autovector handling routines
 .stop:
@@ -329,7 +723,7 @@ _hex_ok:
 .align(2)
 _msgBanner:     .ascii  "::::: Raven68k - A Simple 68000 based computer\r\n"
                 .ascii  ":::: Hardware revision 1.0\r\n"
-                .asciz  "::: Firmware version v0.0.4\r\n\r\n"
+                .asciz  "::: Firmware version v0.1.0\r\n\r\n"
 .align(2)
 _msgRamTst:     .asciz  "Checking RAM memory...\r\n"
 .align(2)
@@ -344,6 +738,7 @@ _msgPrompt:     .asciz  "Ready:\r\n"
 _msgHelp:       .ascii  "Commands:\r\n"
                 .ascii  "(U)pload SRec (S19/S28) file\r\n"
                 .ascii  "(E)xecute SRec file\r\n"
+                .ascii  "(M)achine monitor file\r\n"
                 .ascii  "(H)elp\r\n"
                 .asciz  "(R)eset\r\n\r\n"
 .align(2)
@@ -364,3 +759,27 @@ _msgSRecRun:    .asciz  "Executing downloaded SRec..\r\n"
 _SRecLoadAddr:  dc.l 0;
 .align(2)
 _SRecLoadSize:  dc.l 0;
+.align(2)
+msgBanner:
+               .ascii "Chartreuse's 68000 ROM Monitor"
+               .ascii "** Ported for Raven **
+               .asciz "=============================="
+.align(2)
+msgHelp:
+               .ascii "Available Commands: "
+               .asciz "(E)xamine    (D)eposit    (R)un     (H)elp"
+.align(2)
+msgDepositPrompt:
+               .asciz ': ',0
+.align(2)
+msgPrompt:
+               .asciz '> ',0
+.align(2)
+msgInvalidCommand:
+               .asciz 'Invalid Command',CR,LF,0
+.align(2)
+msgInvalidAddress:
+               .asciz 'Invalid Address',CR,LF,0
+.align(2)
+msgInvalidValue:
+               .asciz 'Invalid Value',CR,LF,0
