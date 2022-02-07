@@ -383,4 +383,75 @@ X TDI 9 800 -850 150 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
+#SamacSys ECAD Model TS02-66-170-BK-160-SCR-D
+#/15465530/216004/2.49/4/3/Switch
+DEF TS02-66-170-BK-160-SCR-D S 0 30 Y Y 1 F N
+F0 "S" 1050 300 50 H V L CNN
+F1 "TS02-66-170-BK-160-SCR-D" 1050 200 50 H V L CNN
+F2 "TS0266170BK160SCRD" 1050 100 50 H I L CNN
+F3 "https://www.cuidevices.com/product/resource/supplyframepdf/ts02.pdf" 1050 0 50 H I L CNN
+F4 "Tactile Switches 6 x 6 mm, 17 mm Act Height, 160 gf, Black, Short Crimped, Through Hole, SPST," 1050 -100 50 H I L CNN "Description"
+F5 "17.2" 1050 -200 50 H I L CNN "Height"
+F6 "CUI Inc." 1050 -300 50 H I L CNN "Manufacturer_Name"
+F7 "TS02-66-170-BK-160-SCR-D" 1050 -400 50 H I L CNN "Manufacturer_Part_Number"
+F8 "" 1050 -500 50 H I L CNN "Mouser Part Number"
+F9 "" 1050 -600 50 H I L CNN "Mouser Price/Stock"
+F10 "" 1050 -700 50 H I L CNN "Arrow Part Number"
+F11 "" 1050 -800 50 H I L CNN "Arrow Price/Stock"
+DRAW
+X NO_1 1 0 0 200 R 50 50 0 0 P
+X NO_2 2 1200 0 200 L 50 50 0 0 P
+X COM_1 3 0 -100 200 R 50 50 0 0 P
+X COM_2 4 1200 -100 200 L 50 50 0 0 P
+P 5 0 1 6 200 100 1000 100 1000 -200 200 -200 200 100 N
+ENDDRAW
+ENDDEF
+#
+#encoding utf-8
+#SamacSys ECAD Model GPTS203212B
+#/267439/216004/2.49/2/4/Switch
+DEF GPTS203212B S 0 30 Y Y 1 F N
+F0 "S" 750 300 50 H V L CNN
+F1 "GPTS203212B" 750 200 50 H V L CNN
+F2 "GPTS203212B" 750 100 50 H I L CNN
+F3 "http://switches-connectors-custom.cwind.com/Asset/GPTS203212BR2.pdf" 750 0 50 H I L CNN
+F4 "Pushbutton Switches SPST ON-OFF" 750 -100 50 H I L CNN "Description"
+F5 "12" 750 -200 50 H I L CNN "Height"
+F6 "CW Industries" 750 -300 50 H I L CNN "Manufacturer_Name"
+F7 "GPTS203212B" 750 -400 50 H I L CNN "Manufacturer_Part_Number"
+F8 "629-GPTS203212B" 750 -500 50 H I L CNN "Mouser Part Number"
+F9 "https://www.mouser.com/Search/Refine.aspx?Keyword=629-GPTS203212B" 750 -600 50 H I L CNN "Mouser Price/Stock"
+F10 "" 750 -700 50 H I L CNN "Arrow Part Number"
+F11 "" 750 -800 50 H I L CNN "Arrow Price/Stock"
+DRAW
+X ON 1 0 0 200 R 50 50 0 0 P
+X OFF 6 0 -100 200 R 50 50 0 0 P
+P 5 0 1 6 200 100 700 100 700 -200 200 -200 200 100 N
+ENDDRAW
+ENDDEF
+#
+#encoding utf-8
+#SamacSys ECAD Model RAPC722BK
+#/878296/216004/2.49/3/4/Connector
+DEF RAPC722BK J 0 30 Y Y 1 F N
+F0 "J" 650 300 50 H V L CNN
+F1 "RAPC722BK" 650 200 50 H V L CNN
+F2 "RAPC722BK" 650 100 50 H I L CNN
+F3 "http://www.mouser.com/datasheet/2/393/rapc722x_cd-371352.pdf" 650 0 50 H I L CNN
+F4 "SWITCHCRAFT/CONXALL - RAPC722BK - CONNECTOR, DC POWER, SOCKET, 5A, THT" 650 -100 50 H I L CNN "Description"
+F5 "11" 650 -200 50 H I L CNN "Height"
+F6 "Switchcraft" 650 -300 50 H I L CNN "Manufacturer_Name"
+F7 "RAPC722BK" 650 -400 50 H I L CNN "Manufacturer_Part_Number"
+F8 "502-RAPC722BK" 650 -500 50 H I L CNN "Mouser Part Number"
+F9 "https://www.mouser.co.uk/ProductDetail/Switchcraft/RAPC722BK?qs=Nl9mtr8tY%2Fsf3BOYJcSXfg%3D%3D" 650 -600 50 H I L CNN "Mouser Price/Stock"
+F10 "RAPC722BK" 650 -700 50 H I L CNN "Arrow Part Number"
+F11 "https://www.arrow.com/en/products/rapc722bk/switchcraft" 650 -800 50 H I L CNN "Arrow Price/Stock"
+DRAW
+X 1 1 0 0 200 R 50 50 0 0 P
+X 2 2 800 0 200 L 50 50 0 0 P
+X 3 3 0 -100 200 R 50 50 0 0 P
+P 5 0 1 6 200 100 600 100 600 -200 200 -200 200 100 N
+ENDDRAW
+ENDDEF
+#
 #End Library
