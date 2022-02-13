@@ -16,34 +16,34 @@
 * Print_character in %d0 to console
 * trashes %a5
 prntChar:
-*  lea.l     _uarts,%a5           		   | Load UART base address
-*1:
-*  btst    #2,%a5@(_ua_sra)     		   | Test TxRDY bit in status register
-*  beq     1b                     		 | Not ready yet -> loop
-*  move.b  %d0,%a5@(_ua_tba)    		   | Send_character in d0 to console
-*  rts
-  move.b  %d1,-(%sp)
-  move.b  %d0,%d1
-  move.b  #6,%d0
-  trap    #15
-  move.b  (%sp)+,%d1
+  lea.l     _uarts,%a5           		   | Load UART base address
+1:
+  btst    #2,%a5@(_ua_sra)     		   | Test TxRDY bit in status register
+  beq     1b                     		 | Not ready yet -> loop
+  move.b  %d0,%a5@(_ua_tba)    		   | Send_character in d0 to console
   rts
+*  move.b  %d1,-(%sp)
+*  move.b  %d0,%d1
+*  move.b  #6,%d0
+*  trap    #15
+*  move.b  (%sp)+,%d1
+*  rts
 
 * (BLOCKING) Get_character from console into %d0
 * trashes %a5,%d0
 getChar:
-*  lea.l     _uarts,%a5           		   | Load UART base address
-*1:
-*  btst    #0,%a5@(_ua_sra)     		   | Test RxRDY bit in status register
-*  beq     1b                     		 | Not ready yet -> loop
-*  move.b  %a5@(_ua_rba),%d0    		   | Read_character from console to d0
-*  rts
-  move.b  %d1,-(%sp)
-  move.b  #5,%d0
-  trap    #15
-  move.b  %d1,%d0
-  move.b  (%sp)+,%d1
+  lea.l     _uarts,%a5           		   | Load UART base address
+1:
+  btst    #0,%a5@(_ua_sra)     		   | Test RxRDY bit in status register
+  beq     1b                     		 | Not ready yet -> loop
+  move.b  %a5@(_ua_rba),%d0    		   | Read_character from console to d0
   rts
+*  move.b  %d1,-(%sp)
+*  move.b  #5,%d0
+*  trap    #15
+*  move.b  %d1,%d0
+*  move.b  (%sp)+,%d1
+*  rts
 
 * Prints null-terminated string at %a5 to console
 * trashes %a5
