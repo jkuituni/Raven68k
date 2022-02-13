@@ -4,7 +4,7 @@ LD=$(M68K)-ld
 COPY=$(M68K)-objcopy
 DUMP=$(M68K)-objdump
 
-ASFLAGS=-m68010 --warn --fatal-warnings
+ASFLAGS=-m68010 --warn --fatal-warnings --register-prefix-optional
 LDFLAGS=-T m68k.ld
 DUMPFLAGS=-m68010 -x -D
 
@@ -14,7 +14,7 @@ PREFIX=m68k-
 
 FMT=binary
 
-SRCS=firmware.s
+SRCS=utils.s firmware.s monitor.s
 OBJS=$(SRCS:.s=.o)
 MAIN=firmware
 
@@ -26,7 +26,8 @@ all:	$(MAIN)
 	$(AS) $(ASFLAGS) -o $@ $<
 
 $(MAIN): $(OBJS)
-	$(LD) $(LDFLAGS) -o $(MAIN).a $(OBJS) -Map=ld.map
+	$(LD) $(LDFLAGS) -o $(MAIN).a $(OBJS) -Map=$(MAIN).map
+	$(COPY) -O srec $(MAIN).a $(MAIN).S68
 	$(COPY) -O $(FMT) $(MAIN).a $(PREFIX)$(MAIN).bin
 	$(COPY) -b 0 -i 2 --interleave-width=1 -j .text -O $(FMT) $(MAIN).a $(PREFIX)$(MAIN)-even.bin
 	truncate -s 32768 $(PREFIX)$(MAIN)-even.bin
@@ -34,7 +35,7 @@ $(MAIN): $(OBJS)
 	truncate -s 32768 $(PREFIX)$(MAIN)-odd.bin
 
 clean:
-	rm -f *.o $(PREFIX)$(MAIN)-even.bin $(PREFIX)$(MAIN)-odd.bin $(PREFIX)$(MAIN).bin $(MAIN).a *.map
+	rm -f *.o $(PREFIX)$(MAIN)-even.bin $(PREFIX)$(MAIN)-odd.bin $(PREFIX)$(MAIN).bin *.map *.o
 
 prog_even:
 	@echo Programming $(MAIN)-even onto $(EEPROM)

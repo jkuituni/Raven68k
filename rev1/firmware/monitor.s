@@ -208,14 +208,14 @@ parseNumber:
  1:
     move.b  (%a0)+,%d1         | Read in a digit
     cmp.b   #'0',%d1           | Look for hex digits 0-9
-    blt.s   1f                 | Any other characters mean we're done reading
+    blt.s   2f                 | Any other characters mean we're done reading
     cmp.b   #'9',%d1
     ble.s   digit1
     cmp.b   #'A',%d1           | Look for hex digits A-F
-    blt.s   1f
+    blt.s   2f
     cmp.b   #'F',%d1
     ble.s   digit2
-1:                             | We hit a non-hex digit character,we're done parsing
+2:                             | We hit a non-hex digit character,we're done parsing
     subq.l  #1,%a0             | Move the pointer back before the end character we read
     move.l  #0,%d1
     rts

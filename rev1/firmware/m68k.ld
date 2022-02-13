@@ -18,7 +18,7 @@ _ram_end = ORIGIN(RAM)+LENGTH(RAM);
 _rom_start = ORIGIN(ROM);
 _rom_end = ORIGIN(ROM)+LENGTH(ROM);
 
-SECTIONS { 
+SECTIONS {
   .text _rom_start : {
     . = ALIGN(4);
     KEEP(*(.vectors))
@@ -28,6 +28,7 @@ SECTIONS {
   } > ROM
 
   .data : { *(.data) } > ROM
+  .rodata : { *(.rodata) } > ROM
   .bss :  { *(.bss)  *(COMMON) } > RAM
 }
 
