@@ -2302,7 +2302,7 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 1025d5e1-c233-4d58-8a4d-0b97db8296f4)
   )
-  (hierarchical_label "NOT_DS" (shape input) (at 247.65 118.11 0)
+  (hierarchical_label "NOT_LDS" (shape input) (at 247.65 118.11 0)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 11fcf97f-55fc-473a-9ce4-8d2e5789bbbe)
   )
