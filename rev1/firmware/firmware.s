@@ -28,6 +28,7 @@
 * ---- Vector locations ----
 .section .vectors,"a"
 .title "Init vectors"
+ROMStart:
 .long   _stack_start    | 0 - Supervisor stack pointer
 .long   initFirmware    | 1 - Initial Program Counter
 .long   unhandled       | 2 - bus error
@@ -115,6 +116,8 @@
 * ---- Firmware Init ----
 initFirmware:
   move.w  #0x2700,%sr           | mask interrupts and set supervisor mode
+  move.l  #0xFF0000, %d0
+  movec.l %d0,%vbr              | Point VBR at the top of ROM
   jsr     initDuart             | Init the DUART serial port console connection
   lea.l   _msgBanner,%a5        | Set the banner message pointer
   jsr     prntStr               | Print out the message
