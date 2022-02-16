@@ -2,11 +2,11 @@ M68K=m68k-elf
 AS=$(M68K)-as
 LD=$(M68K)-ld
 COPY=$(M68K)-objcopy
-DUMP=$(M68K)-objdump -m68010
+DUMP=$(M68K)-objdump 
 
-ASFLAGS=-m68010 --warn --fatal-warnings --register-prefix-optional
+ASFLAGS=-m68000 --warn --fatal-warnings --register-prefix-optional
 LDFLAGS=-T m68k.ld
-DUMPFLAGS=-m68010 -x -D
+DUMPFLAGS=-m68000 -x -D
 
 EEPROM=AT28C256
 #EEPROM=SST39SF010A
