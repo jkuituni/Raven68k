@@ -32,12 +32,13 @@
 .equ _xon,          0x11
 .equ _xoff,         0x13
 
-.equ _serBufSize,   0x100
+.equ _SRingSize,   0xFF
 
-.equ _varCurAddr,  _ram_end-4
-.equ _varLineBuf,  _varCurAddr-_max_line-2
-.equ _serBufTail,  _varLineBuf-1
-.equ _serBufHead,  _serBufTail-(_serBufSize+1)
-.equ _varLast,     _serBufHead
+.equ _varCurAddr,     _ram_end-4
+.equ _varLineBuf,     _varCurAddr-_max_line-2
+.equ _varSerialRing,  _varLineBuf-_SRingSize
+.equ _varSRingStart,  _varSerialRing-1
+.equ _varSRingEnd,    _varSRingStart-1
+.equ _varLast,        _varSRingEnd
 
 .equ _stack_start, _varLast

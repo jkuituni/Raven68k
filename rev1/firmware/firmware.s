@@ -28,15 +28,77 @@
 * ---- Vector locations ----
 .section .vectors,"a"
 .title "Init vectors"
-.long   _stack_start
-.long   initFirmware
-.long   unhandled  | bus error
-.long   unhandled  | addr error
-.long   unhandled  | illegal instruction
-.long   unhandled  | divide by zero
-.rept 0xfa
-.long   unhandled
+.long   _stack_start    | 0 - Supervisor stack pointer
+.long   initFirmware    | 1 - Initial Program Counter
+.long   unhandled       | 2 - bus error
+.long   unhandled       | 3 - addr error
+.long   unhandled       | 4 - illegal instruction
+.long   unhandled       | 5 - divide by zero
+.long   unhandled       | 6 - CHK
+.long   unhandled    		| 7 - TRAPV
+.long   unhandled    		| 8 - Privilage Violation
+.long   unhandled    		| 9 - Trace
+.long   unhandled    		| 10- Line 1010/Unused
+.long   unhandled    		| 11- Line 1111/Unused
+.long   unhandled    		| 12- Unused
+.long   unhandled    		| 13- Unused
+.long   unhandled    		| 14- Unused
+.long   unhandled    		| 15- Uninitialized Interrupt Vector
+.long   unhandled    		| 16- Unused
+.long   unhandled    		| 17- Unused
+.long   unhandled    		| 18- Unused
+.long   unhandled    		| 19- Unused
+.long   unhandled    		| 20- Unused
+.long   unhandled    		| 21- Unused
+.long   unhandled    		| 22- Unused
+.long   unhandled    		| 23- Unused
+.long   unhandled    		| 24- Spurious Interrupt
+.long   autovect1    		| 25- Autovector 1
+.long   unhandled    		| 26- Autovector 2
+.long   unhandled    		| 27- Autovector 3
+.long   unhandled    		| 28- Autovector 4
+.long   unhandled    		| 29- Autovector 5
+.long   unhandled    		| 30- Autovector 6
+.long   unhandled    		| 31- Autovector 7
+.long   unhandled    		| 32- TRAP #0
+.long   unhandled    		| 33- TRAP #1
+.long   unhandled    		| 34- TRAP #2
+.long   unhandled    		| 35- TRAP #3
+.long   unhandled    		| 36- TRAP #4
+.long   unhandled    		| 37- TRAP #5
+.long   unhandled    		| 38- TRAP #6
+.long   unhandled    		| 39- TRAP #7
+.long   unhandled    		| 40- TRAP #8
+.long   unhandled    		| 41- TRAP #9
+.long   unhandled    		| 42- TRAP #10
+.long   unhandled    		| 43- TRAP #11
+.long   unhandled    		| 44- TRAP #12
+.long   unhandled    		| 45- TRAP #13
+.long   unhandled    		| 46- TRAP #14
+.long   unhandled    		| 47- TRAP #15
+
+.long   unhandled    		| 48- Unassigned
+.long   unhandled    		| 49- Unassigned
+.long   unhandled    		| 50- Unassigned
+.long   unhandled    		| 51- Unassigned
+.long   unhandled    		| 52- Unassigned
+.long   unhandled    		| 53- Unassigned
+.long   unhandled    		| 54- Unassigned
+.long   unhandled    		| 55- Unassigned
+.long   unhandled    		| 56- Unassigned
+.long   unhandled    		| 57- Unassigned
+.long   unhandled    		| 58- Unassigned
+.long   unhandled    		| 59- Unassigned
+.long   unhandled    		| 60- Unassigned
+.long   unhandled    		| 61- Unassigned
+.long   unhandled    		| 62- Unassigned
+.long   unhandled    		| 63- Unassigned
+
+* 64-255 User
+.rept 0xc0              | 192 entries
+.long unhandled
 .endr
+
 
 * ---- Firmware Jump-Table ----
 .section .text
@@ -305,6 +367,19 @@ prntHelp:
 
 
 * ---- Autovector handling routines
+autovect1:
+  movem.l %d0-%d1/%a0-%a1,-(%sp)  | Save registers
+  btst.b  #1,_ua_isr              | Character received?
+  beq     1f
+  bsr     uartReadByte
+1:
+  btst.b  #3,_ua_isr              | Timer? (not yet handled)
+  beq     2f
+
+2:
+  movem.l (%sp)+,%d0-%d1/%a0-%a1  | Restore registers
+  rte
+
 stop:
   jmp stop                     | Busy-Loop jumping to STOP
 unhandled:

@@ -11,8 +11,8 @@ _stack_start = ORIGIN(RAM)+LENGTH(RAM)-0x10;
 _stack_end = _stack_start - stack_size;
 
 /* ram location */
-_ram_start = ORIGIN(RAM);
-_ram_end = ORIGIN(RAM)+LENGTH(RAM);
+_ram_start = ORIGIN(RAM)+0x400;   /* after vectors */
+_ram_end = ORIGIN(RAM)+LENGTH(RAM)-0x400;
 
 /* rom location */
 _rom_start = ORIGIN(ROM);
@@ -27,7 +27,6 @@ SECTIONS {
     . = ALIGN(4);
   } > ROM
 
-  .data : { *(.data) } > ROM
   .rodata : { *(.rodata) } > ROM
   .bss :  { *(.bss)  *(COMMON) } > RAM
 }
