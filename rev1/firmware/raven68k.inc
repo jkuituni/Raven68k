@@ -41,4 +41,11 @@
 .equ _varSRingEnd,    _varSRingStart-1
 .equ _varLast,        _varSRingEnd
 
-.equ _stack_start, _varLast
+/* Supervisor stack */
+.equ _stack_size, 1024
+.equ _stack_start, _varLast-1
+.equ _stack_end, _stack_start-_stack_size
+
+/* User stack */
+.equ _ustack_start, _stack_end-1
+.equ _ustack_size, _ustack_start-_stack_size

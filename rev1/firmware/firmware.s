@@ -128,6 +128,7 @@ initFirmware:
 *  move.l  #0xFF0000,%d0
 *  movec.l %d0,%vbr              | Point VBR at the top of ROM
   move.w  #0,%sr                | Enable interrupts, enter user mode
+  move.l  #_ustack_start,%sp    | Set up user mode stack
   jsr     initDuart             | Init the DUART serial port console connection
   lea.l   _msgBanner,%a5        | Set the banner message pointer
   jsr     prntStr               | Print out the message
@@ -180,14 +181,15 @@ chkRam:
 * ---- Init 68681 DUART ----
 initDuart:
   lea.l   _uarts,%a0
-  move.b  #0x30,%a0@(_ua_cra)   | Reset RX
-  move.b  #0x20,%a0@(_ua_cra)   | Reset TX
-  move.b  #0x10,%a0@(_ua_cra)
-  move.b  #0x00,%a0@(_ua_acr)   | Set 1 of BRG baud rates
-  move.b  #0xCC,%a0@(_ua_csra)  | Set TX and RX to 38400
-  move.b  #0x13,%a0@(_ua_mra)   | 8 bits,no parity,char error mode,char status in ISR for RX rather than full fifo
-  move.b  #0x07,%a0@(_ua_mra)   | Set one stop bit,no cts/rts,normal mode
-  move.b  #0x05,%a0@(_ua_cra)   | Enable TX and RX
+  move.b  #0x30,_ua_cra(%a0)    | Reset RX
+  move.b  #0x20,_ua_cra(%a0)    | Reset TX
+  move.b  #0x10,_ua_cra(%a0)
+  move.b  #0x00,_ua_acr(%a0)    | Set 1 of BRG baud rates
+  move.b  #0xCC,_ua_csra(%a0)   | Set TX and RX to 38400
+  move.b  #0x13,_ua_mra(%a0)    | 8 bits,no parity,char error mode,char status in ISR for RX rather than full fifo
+  move.b  #0x07,_ua_mra(%a0)    | Set one stop bit,no cts/rts,normal mode
+  move.b  #0x02,_ua_imr(%a0)    | Enable RxRDY interrupt
+  move.b  #0x05,_ua_cra(%a0)    | Enable TX and RX
   rts                           | Return
 
 * -- SRecord utility routines

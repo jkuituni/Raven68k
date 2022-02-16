@@ -4,12 +4,6 @@ MEMORY
     RAM (xrw) : ORIGIN = 0x000000, LENGTH = 0x100000
 }
 
-/* stack location */
-stack_size = 1024;
-
-_stack_start = ORIGIN(RAM)+LENGTH(RAM)-0x10;
-_stack_end = _stack_start - stack_size;
-
 /* ram location */
 _ram_start = ORIGIN(RAM)+0x400;   /* after vectors */
 _ram_end = ORIGIN(RAM)+LENGTH(RAM)-0x400;
