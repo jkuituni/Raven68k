@@ -115,9 +115,11 @@ ROMStart:
 
 * ---- Firmware Init ----
 initFirmware:
+  move.l  #_stack_start,%sp     | Push stack (should already be done, but...)
   move.w  #0x2700,%sr           | mask interrupts and set supervisor mode
-  move.l  #0xFF0000, %d0
+  move.l  #0xFF0000,%d0
   movec.l %d0,%vbr              | Point VBR at the top of ROM
+  move.w  #0,%sr                | Enable interrupts, enter user mode
   jsr     initDuart             | Init the DUART serial port console connection
   lea.l   _msgBanner,%a5        | Set the banner message pointer
   jsr     prntStr               | Print out the message

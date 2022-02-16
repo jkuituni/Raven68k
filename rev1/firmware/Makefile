@@ -2,7 +2,7 @@ M68K=m68k-elf
 AS=$(M68K)-as
 LD=$(M68K)-ld
 COPY=$(M68K)-objcopy
-DUMP=$(M68K)-objdump
+DUMP=$(M68K)-objdump -m68010
 
 ASFLAGS=-m68010 --warn --fatal-warnings --register-prefix-optional
 LDFLAGS=-T m68k.ld
