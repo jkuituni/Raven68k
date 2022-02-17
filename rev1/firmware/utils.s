@@ -16,13 +16,14 @@
 .section .text
 
 * Print_character in %d0 to console
-* trashes %a5
 prntChar:
+  move.l  %a5,-(%sp)                 | save %a5
   lea.l     _uarts,%a5           		 | Load UART base address
 1:
   btst    #2,%a5@(_ua_sra)     		   | Test TxRDY bit in status register
   beq     1b                     		 | Not ready yet -> loop
   move.b  %d0,%a5@(_ua_tba)    		   | Send_character in d0 to console
+  move.l  (%sp)+,%a5                 | restore %a5
   rts
 *  move.b  %d1,-(%sp)
 *  move.b  %d0,%d1

@@ -127,8 +127,8 @@ initFirmware:
 
 *  move.l  #0xFF0000,%d0
 *  movec.l %d0,%vbr              | Point VBR at the top of ROM
-  move.w  #0,%sr                | Enable interrupts, enter user mode
-  move.l  #_ustack_start,%sp    | Set up user mode stack
+  move.w  #0x2700,%sr                | Enable interrupts, enter user mode
+*  move.l  #_ustack_start,%sp    | Set up user mode stack
   jsr     initDuart             | Init the DUART serial port console connection
   lea.l   _msgBanner,%a5        | Set the banner message pointer
   jsr     prntStr               | Print out the message
