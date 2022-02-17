@@ -1,0 +1,8 @@
+#!/bin/bash
+
+srec_cat monitor-int.S68 -o monitor.bin -binary
+dd if=monitor.bin of=monitor.rom bs=64K skip=255
+truncate -s +63456 monitor.rom 
+srec_cat -o monitor.high -binary monitor.rom -binary -split 2 0
+srec_cat -o monitor.low -binary monitor.rom -binary -split 2 1
+rm monitor.bin
