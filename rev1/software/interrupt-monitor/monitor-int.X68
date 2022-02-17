@@ -43,8 +43,8 @@
 **********************************
 * Defines
 *
-RAM_START           equ     $200000
-RAM_END             equ     $300000
+RAM_START           equ     $000000
+RAM_END             equ     $100000
 MAX_LINE_LENGTH     equ     80
 SERIAL_RING_LENGTH  equ     128
 
@@ -91,7 +91,7 @@ COLOR_ERROR   equ COLOR_DRED
 *********************************
 * 68681 Duart Register Addresses
 *
-DUART equ $400000       * Base Addr of DUART
+DUART equ $200000       * Base Addr of DUART
 MRA   equ DUART+1       * Mode Register A           (R/W)
 SRA   equ DUART+3       * Status Register A         (r)
 CSRA  equ DUART+3       * Clock Select Register A   (w)
@@ -168,8 +168,7 @@ STACK_START         equ    varLast                   * Make sure stack is aligne
 
 **** PROGRAM STARTS HERE ****
     
-    ORG     $0
-    
+    ORG     $0FF0000    
 **** FIRST 8 bytes loaded after reset/Execption Vector Table ****
     DC.l    STACK_START  * 0 - Supervisor stack pointer
     DC.l    START        *     Initial PC    
@@ -270,37 +269,37 @@ START:
 ramCheck:
     lea     msgRamCheck, A0
     bsr.w   printString
-    lea     RAM_START, A2
- .loop:
-    move.b  #$AA, (A2)   * First test with 10101010
-    cmp.b   #$AA, (A2)
-    bne.s   .fail
-    move.b  #$55, (A2)   * Then with 01010101
-    cmp.b   #$55, (A2)
-    bne.s   .fail
-    move.b  #$00, (A2)   * And finally clear the memory
-    cmp.b   #$00, (A2)+  * And move to the next byte
-    bne.s   .fail 
-    cmp.l   #RAM_END, A2  
-    blt.s   .loop        * While we're still below the end of ram to check
-    bra.s   .succ
- .fail:                  * One of the bytes of RAM failed to readback test
-    lea     msgRamFail, A0
-    bsr.w   printString
-    move.l  A2, D0
-    bsr.w   printHexLong * Print out the address that failed
-    bsr.w   printNewline
- .haltloop:              * Sit forever in the halt loop
-    bra.s   .haltloop
- .succ:                  * All bytes passed the readback test
-    lea     msgRamPass, A0
-    bsr.w   printString
-
-
-    lea     varSRingStart, a0   * Ring buffer ends   
-    move.b  #0, (a0)
-    lea     varSRingEnd,   a0
-    move.b  #0, (a0)
+*    lea     RAM_START, A2
+* .loop:
+*    move.b  #$AA, (A2)   * First test with 10101010
+*    cmp.b   #$AA, (A2)
+*    bne.s   .fail
+*    move.b  #$55, (A2)   * Then with 01010101
+*    cmp.b   #$55, (A2)
+*    bne.s   .fail
+*    move.b  #$00, (A2)   * And finally clear the memory
+*    cmp.b   #$00, (A2)+  * And move to the next byte
+*    bne.s   .fail 
+*    cmp.l   #RAM_END, A2  
+*    blt.s   .loop        * While we're still below the end of ram to check
+*    bra.s   .succ
+* .fail:                  * One of the bytes of RAM failed to readback test
+*    lea     msgRamFail, A0
+*    bsr.w   printString
+*    move.l  A2, D0
+*    bsr.w   printHexLong * Print out the address that failed
+*    bsr.w   printNewline
+* .haltloop:              * Sit forever in the halt loop
+*    bra.s   .haltloop
+* .succ:                  * All bytes passed the readback test
+*    lea     msgRamPass, A0
+*    bsr.w   printString
+*
+*
+*    lea     varSRingStart, a0   * Ring buffer ends   
+*    move.b  #0, (a0)
+*    lea     varSRingEnd,   a0
+*    move.b  #0, (a0)
     * Enable Interrupts
     move.w #$2000, SR       * Supervisor mode, no trace, interrupt mask 000
 
@@ -1038,6 +1037,7 @@ msgColonSpace:
 *~Font size~10~
 *~Tab type~1~
 *~Tab size~4~
+
 
 
 
