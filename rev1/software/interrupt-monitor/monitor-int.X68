@@ -8,7 +8,7 @@
 *
 * To make this responsive to different terminal widths we need to change the number of bytes printed
 * on a line from 16, which fits exactly on a 72 column screen, to an ammount based on a formula.
-*  Sizes: 
+*  Sizes:
 *   Address:      "000000: " 8
 *   Each Byte:    "00 "      3
 *   Start ASCII:  "|"        1
@@ -54,7 +54,7 @@ TERM_HEIGHT         equ     24
 DUMP_BYTES_LINE     equ     6           * 8 For 72 width+
 DUMP_BYTES_QUICK    equ     16          * Still a handy width even if it wraps on small screens
 DUMP_BYTES_PAGE     equ     138         * 256 For 72 width+
- 
+
 **********************************
 * Colours
 COLOR_BLACK    equ 0
@@ -86,8 +86,8 @@ COLOR_ADDR    equ COLOR_MAGENTA
 COLOR_BYTES   equ COLOR_CYAN
 COLOR_ASCII   equ COLOR_WHITE
 COLOR_ERROR   equ COLOR_DRED
- 
- 
+
+
 *********************************
 * 68681 Duart Register Addresses
 *
@@ -129,7 +129,7 @@ LF    equ $0A
 CR    equ $0D
 ESC   equ $1B
 
-CTRLC	EQU	$03     
+CTRLC	EQU	$03
 CTRLX	EQU	$18     * Line Clear
 
 
@@ -155,8 +155,8 @@ varMYMCurByte  equ   varMYMFramePos-1                * Current byte value being 
 varMYMBitPos   equ   varMYMCurByte-1                 * Current bit in the above byte being examined
 varMYMFillBuf  equ   varMYMBitPos-1                  * Semaphore to fill buffer
 varMYMCurRegs  equ   varMYMFillBuf-16                * Previous value for the registers
-varMYMBuf      equ   varMYMCurRegs-2048              * 2k buffer for decompressed mym data 
-varLast        equ   varMYMBuf 
+varMYMBuf      equ   varMYMCurRegs-2048              * 2k buffer for decompressed mym data
+varLast        equ   varMYMBuf
 varLast        equ   varMYMBuf
 
 
@@ -167,11 +167,11 @@ STACK_START         equ    varLast                   * Make sure stack is aligne
 
 
 **** PROGRAM STARTS HERE ****
-    
-    ORG     $0FF0000    
+
+    ORG     $0FF0000
 **** FIRST 8 bytes loaded after reset/Execption Vector Table ****
     DC.l    STACK_START  * 0 - Supervisor stack pointer
-    DC.l    START        *     Initial PC    
+    DC.l    START        *     Initial PC
     DC.l    RESETVECT    * 2 - Bus Error
     DC.l    RESETVECT    * 3 - Address Error
     DC.l    RESETVECT    * 4 - ILLEGAL Instruction
@@ -254,7 +254,7 @@ STACK_START         equ    varLast                   * Make sure stack is aligne
     DC.l    UNHANDLED    * 64- User #14
     DC.l    AUTOVECT1    * 64- User #15
 
-  
+
 ********************************************
 * Cold start entry point
 *
@@ -262,10 +262,10 @@ START:
     lea     STACK_START, SP     * Set our stack pointer to be sure
     jsr     initDuart           * Setup the serial port
     jsr     clearScreen         * Clear the terminal
-    
+
 ********************************************
 * Simple Ram Readback Test
-*    
+*
 ramCheck:
     lea     msgRamCheck, A0
     bsr.w   printString
@@ -279,8 +279,8 @@ ramCheck:
 *    bne.s   .fail
 *    move.b  #$00, (A2)   * And finally clear the memory
 *    cmp.b   #$00, (A2)+  * And move to the next byte
-*    bne.s   .fail 
-*    cmp.l   #RAM_END, A2  
+*    bne.s   .fail
+*    cmp.l   #RAM_END, A2
 *    blt.s   .loop        * While we're still below the end of ram to check
 *    bra.s   .succ
 * .fail:                  * One of the bytes of RAM failed to readback test
@@ -296,7 +296,7 @@ ramCheck:
 *    bsr.w   printString
 *
 *
-*    lea     varSRingStart, a0   * Ring buffer ends   
+*    lea     varSRingStart, a0   * Ring buffer ends
 *    move.b  #0, (a0)
 *    lea     varSRingEnd,   a0
 *    move.b  #0, (a0)
@@ -313,7 +313,7 @@ monitorStart:
 
     lea     msgBanner, A0   * Show our banner
     bsr.w   printString
-    
+
     move.l  #COLOR_HELP, d0         * Bright Blue
     bsr.w   setColor
     lea     msgHelp,   A0   * And the command help message
@@ -323,20 +323,20 @@ monitorLine:                * Our main monitor loop
     move.l  #COLOR_PROMPT, d0         * Bright Magenta
     bsr.w   setColor
     lea     msgPrompt, a0   * Prompt
-    bsr.w   printString     
-    
+    bsr.w   printString
+
     move.l  #COLOR_INPUT, d0
     bsr.w   setColor
-    
+
     bsr.w   readLine        * Read in the line
     bsr.w   lineToUpper     * Convert to upper-case for ease of parsing
-    
+
     move.l  #COLOR_DEFAULT, d0         * Bright White
     bsr.w   setColor
     bsr.w   parseLine       * Then parse and respond to the line
-    
+
     bra.s   monitorLine
-    
+
 
 
 ***************************************
@@ -345,7 +345,7 @@ lineToUpper:
     lea     varLineBuf, a0   * Get the start of the line buffer
  .loop:
     move.b  (a0), d0         * Read in a character
-    cmp.b   #'a', d0         
+    cmp.b   #'a', d0
     blt.s   .next            * Is it less than lower-case 'a', then move on
     cmp.b   #'z', d0
     bgt.s   .next            * Is it greater than lower-case 'z', then move on
@@ -363,7 +363,7 @@ parseLine:
  .findCommand:
     move.b  (a0)+, d0
     cmp.b   #' ', d0            * Ignore spaces
-    beq.w   .findCommand    
+    beq.w   .findCommand
     cmp.b   #'E', d0            * Examine command
     beq.w   .examine
     cmp.b   #'D', d0            * Deposit command
@@ -373,11 +373,11 @@ parseLine:
     cmp.b   #'H', d0            * Help command
     beq.w   .help
     cmp.b   #0, d0              * Ignore blank lines
-    beq.s   .exit               
- .invalid:   
-    move.l  #COLOR_ERROR, d0    
+    beq.s   .exit
+ .invalid:
+    move.l  #COLOR_ERROR, d0
     bsr.w   setColor
-    
+
     lea     msgInvalidCommand, a0
     bsr.w   printString
  .exit:
@@ -391,11 +391,11 @@ parseLine:
 *   e ADDR-ADDR             Dispalys all bytes between the two addresses
 *   e ADDR+LEN              Dispays LEN bytes after ADDR
 *   e ADDR;                 Interactive mode, space shows a page, enter shows quick amount.
-*   e ADDR.                 Quick line, displays one line 
+*   e ADDR.                 Quick line, displays one line
  .examine:
     bsr.w   parseNumber         * Read in the start address
     tst.b   d1                  * Make sure it's valid (parseNumber returns non-zero in d1 for failure)
-    bne.w   .invalidAddr        
+    bne.w   .invalidAddr
     move.l  d0, a3              * Save the start address
  .exloop:
     move.b  (a0)+, d0
@@ -407,10 +407,10 @@ parseLine:
     beq.s   .exlength
     cmp.b   #';', d0            * Check if we're going interactive
     beq.s   .exinter
-    cmp.b   #'.', d0            * Check if quick 16 
+    cmp.b   #'.', d0            * Check if quick 16
     beq.s   .exquick
     move.l  #1, d0              * Otherwise read in a single byte
-    bra.s   .exend              
+    bra.s   .exend
  .exrange:
     bsr.w   parseNumber         * Find the end address
     tst.b   d1                  * Check if we found a valid address
@@ -437,14 +437,14 @@ parseLine:
     bsr.w   inChar
     cmp.b   #CR, d0             * Display another line
     beq.s   .exinter
-    cmp.b   #' ', d0            * Display a page 
+    cmp.b   #' ', d0            * Display a page
     beq.s   .exinterpage
     bra.s   .exit               * Otherwise exit
  .exinterpage:
     move.l  a3, a0
 
     move.l  #DUMP_BYTES_PAGE, d0  * 138 bytes can fit in the 32x24 screen, 256 is 16 lines on 80x25
-    bsr.w   dumpRAM               * Dump 
+    bsr.w   dumpRAM               * Dump
     add.l   #DUMP_BYTES_PAGE, a3  * Move up the current address by 256
     bra.s   .exinterend
 
@@ -458,42 +458,42 @@ parseLine:
     move.b  (a0), d0
     cmp.b   #':', d0            * Check if we want to continue from last
     beq.s   .depCont
-    
+
     bsr.w   parseNumber         * Otherwise read the address
     tst.b   d1
     bne.s   .invalidAddr
     move.l  d0, a3              * Save the start address
  .depLoop:
-    move.b  (a0), d0            
+    move.b  (a0), d0
     cmp.b   #';', d0            * Check for continue
     beq.s   .depMultiline
     tst     d0                  * Check for the end of line
     beq     .depEnd
-    
+
     bsr.w   parseNumber         * Otherwise read a value
     tst.b   d1
     bne.s   .invalidVal
     cmp.w   #255, d0            * Make sure it's a byte
     bgt.s   .invalidVal
-    
+
     move.b  d0, (a3)+           * Store the value into memory
     bra.s   .depLoop
-    
+
  .depCont:
-    move.l  varCurAddr, a3      * Read in the last address 
+    move.l  varCurAddr, a3      * Read in the last address
     addq.l  #1, a0              * Skip over the ':'
     bra.s   .depLoop
-    
+
  .depMultiline:
-    move.l  #COLOR_PROMPT, d0   
+    move.l  #COLOR_PROMPT, d0
     bsr.w   setColor
     lea     msgDepositPrompt, a0
     bsr.w   printString
-    
-    move.l  #COLOR_INPUT, d0   
+
+    move.l  #COLOR_INPUT, d0
     bsr.w   setColor
     bsr.w   readLine            * Read in the next line to be parsed
-    
+
     bsr.w   lineToUpper         * Convert to uppercase
     lea     varLineBuf, a0      * Reset our buffer pointer
     bra.s   .depLoop            * And jump back to decoding
@@ -501,17 +501,17 @@ parseLine:
     move.l  a3, varCurAddr
     bra.w   .exit
 ****************************************
-* 
+*
  .run:
     bsr.w   parseNumber         * Otherwise read the address
     tst.b   d1
     bne.s   .invalidAddr
     move.l  d0, a0
-    jsr     (a0)                * Jump to the code! 
+    jsr     (a0)                * Jump to the code!
                                 * Go as subroutine to allow code to return to us
     jmp     monitorStart        * Warm start after returning so everything is in
                                 * a known state.
-    
+
  .help:
     lea     msgHelp, a0
     bsr.w   printString
@@ -524,8 +524,8 @@ parseLine:
     lea     msgInvalidValue, a0
     bsr.w   printString
     bra.w   .exit
-    
-    
+
+
 **************************************
 * Find and parse a hex number
 *  Starting address in A0
@@ -543,7 +543,7 @@ parseNumber:
     ble.s   .firstdigit1
 
     cmp.b   #'A', d0         * Look for hex digits A-F
-    blt.s   .invalid    
+    blt.s   .invalid
     cmp.b   #'F', d0
     ble.s   .firstdigit2
  .invalid:
@@ -578,8 +578,8 @@ parseNumber:
     lsl.l   #4, d0          * Shift over to the next nybble
     add.b   d1, d0          * Place in our current nybble (could be or.b instead)
     bra.s   .loop
-    
-    
+
+
 ****************************************
 * Dumps a section of RAM to the screen
 * Displays both hex values and ASCII characters
@@ -590,13 +590,13 @@ dumpRAM:
     move.l  a0, a2           * Save the start address
     move.l  d0, d2           * And the number of bytes
  .line:
-    move.l  #COLOR_ADDR, d0   
-    bsr.w   setColor 
-    move.l  a2, d0          
-    bsr.w   printHexAddr     * Starting address of this line
-    move.l  #COLOR_BYTES, d0   
+    move.l  #COLOR_ADDR, d0
     bsr.w   setColor
-    
+    move.l  a2, d0
+    bsr.w   printHexAddr     * Starting address of this line
+    move.l  #COLOR_BYTES, d0
+    bsr.w   setColor
+
     move.b  #' ', d0
     bsr.w   outChar          * Space out bytes
 *    lea     msgColonSpace, a0
@@ -607,13 +607,13 @@ dumpRAM:
     tst.l   d2               * Check if we're out of bytes
     beq.s   .endbytesShort
     tst.b   d3               * Check if we're done this line
-    beq.s   .endbytes    
+    beq.s   .endbytes
     move.b  (a2)+, d0        * Read a byte in from RAM
     bsr.w   printHexByte     * Display it
     move.b  #' ', d0
     bsr.w   outChar          * Space out bytes
-    subq.l  #1, d3    
-    subq.l  #1, d2        
+    subq.l  #1, d3
+    subq.l  #1, d2
     bra.s   .hexbyte
  .endbytesShort:
     sub.b   d3, d4           * Make d4 the actual number of bytes on this line
@@ -627,16 +627,16 @@ dumpRAM:
     bsr.w   outChar
     move.b  #' ', d0
     bsr.w   outChar
-    
+
     subq.b  #1, d3
     bra.s   .endbytesShortLoop
  .endbytes:
     suba.l  d4, a2           * Return to the start address of this line
-    move.l  #COLOR_ASCII, d0   
+    move.l  #COLOR_ASCII, d0
     bsr.w   setColor
  .endbytesLoop:
     tst.b   d4               * Check if we're done printing ascii
-    beq     .endline    
+    beq     .endline
     subq.b  #1, d4
     move.b  (a2)+, d0        * Read the byte again
     cmp.b   #' ', d0         * Lowest printable character
@@ -658,10 +658,10 @@ dumpRAM:
  .end:
     movem.l (SP)+, d2-d4/a2  * Restore registers
     rts
-    
-    
-        
-    
+
+
+
+
 ******
 * Read in a line into the line buffer
 readLine:
@@ -707,9 +707,9 @@ readLine:
     bsr.w   outChar          * Space
     move.b  #BKSP, d0
     bsr.w   outChar          * Backspace
-    subq.w  #1, d2          
+    subq.w  #1, d2
     bne.s   .lineclearloop   * Go till the start of the line
-    bra.s   .loop   
+    bra.s   .loop
  .endline:
     bsr.w   outChar          * Echo the CR
    * move.b  #LF, d0
@@ -723,14 +723,14 @@ readLine:
 
 ******
 * Set Color
-* 
+*
 setColor:
     movem.l d2, -(SP)
     move.l  d0, d2          * Save our color argument
     bsr.s   printCSI         * Escape code start
     cmp.l   #15, d2         * Only colours 0-15 supported
     bgt.s   .ignore
-    
+
     move.b  #'0', d0
     cmp.l   #8, d2
     blt.s   .normal
@@ -742,16 +742,16 @@ setColor:
     bsr.w   outChar
     move.b  #'3', d0        * Foreground text is 30-37
     bsr.w   outChar
-    add.l   #'0', d2        * Adjust our color 
+    add.l   #'0', d2        * Adjust our color
     move.b  d2, d0
     bsr.w   outChar
  .ignore:
     move.b  #'m', d0        * End of escape sequence, graphical changes
     bsr.w   outChar
-    
+
     movem.l (SP)+, d2
     rts
-    
+
 ******
 * Clear screen
 clearScreen:
@@ -760,12 +760,12 @@ clearScreen:
    bsr.w    outChar
    move.b   #'J', d0
    bsr.w    outChar
-   
+
    bsr.s    printCSI    * Home the cursor
    move.b   #'H', d0
    bsr.w    outChar
    rts
-   
+
 ******
 * Prints the CSI (Control Sequence Indicatior) ESC[ to signal escape sequence
 printCSI:
@@ -785,7 +785,7 @@ printString:
  .loop:
     move.b  (a0)+, d0    * Read in character
     beq.s   .end         * Check for the null
-    
+
     bsr.s   outChar      * Otherwise write the character
     bra.s   .loop        * And continue
  .end:
@@ -797,16 +797,16 @@ printString:
 printHexWord:
     move.l  d2, -(SP)    * Save D2
     move.l  d0, d2       * Save the address in d2
-    
+
     rol.l   #8, d2       * 4321 -> 3214
-    rol.l   #8, d2       * 3214 -> 2143 
+    rol.l   #8, d2       * 3214 -> 2143
     bra.s   printHex_wordentry  * Print out the last 16 bits
 *****
 * Print a hex 24-bit address
 printHexAddr:
     move.l d2, -(SP)     * Save D2
     move.l d0, d2          * Save the address in d2
-    
+
     rol.l   #8, d2       * 4321 -> 3214
     bra.s   printHex_addrentry  * Print out the last 24 bits
 ******
@@ -814,25 +814,25 @@ printHexAddr:
 printHexLong:
     move.l  d2, -(SP)     * Save D2
     move.l  d0, d2        * Save the address in d2
-    
+
     rol.l   #8, d2        * 4321 -> 3214 high byte in low
     move.l  d2, d0
     bsr.s   printHexByte  * Print the high byte (24-31)
-printHex_addrentry:     
+printHex_addrentry:
     rol.l   #8, d2        * 3214 -> 2143 middle-high byte in low
-    move.l  d2, d0              
+    move.l  d2, d0
     bsr.s   printHexByte  * Print the high-middle byte (16-23)
-printHex_wordentry:    
+printHex_wordentry:
     rol.l   #8, d2        * 2143 -> 1432 Middle byte in low
     move.l  d2, d0
     bsr.s   printHexByte  * Print the middle byte (8-15)
     rol.l   #8, d2
     move.l  d2, d0
     bsr.s   printHexByte  * Print the low byte (0-7)
-    
+
     move.l (SP)+, d2      * Restore D2
     RTS
-    
+
 ******
 * Print a hex byte
 *  - Takes byte in D0
@@ -848,7 +848,7 @@ printHexByte:
     bsr.s   outChar      * Print the digit
     andi.b  #$0F, D2     * Now we want the lower digit Mask only the lower digit
     add.b   #'0', D2
-    cmp.b   #'9', D2     * Same as before    
+    cmp.b   #'9', D2     * Same as before
     ble.s   .end
     add.b   #7, D2
 .end:
@@ -856,17 +856,17 @@ printHexByte:
     bsr.s   outChar      * Print the lower digit
     move.l  (SP)+, D2
     rts
-    
-    
-    
-    
-    
+
+
+
+
+
 *****
 * Writes a character to Port A, blocking if not ready (Full buffer)
 *  - Takes a character in D0
 outChar:
     btst    #2, SRA      * Check if transmitter ready bit is set
-    beq     outChar     
+    beq     outChar
     move.b  d0, TBA      * Transmit Character
     rts
 
@@ -883,7 +883,7 @@ inChar:
     move.b  (a0), d0
     cmp.b   d0, d1     * Check if the ring buffer has data in it
     beq.s   .nodata
-    
+
     * POSSIBLE RACE CONDITION - if ring buffer is full when we read this byte
     *  the buffer may be double incremented (start and end) and lose bytes, I think?
     add.b   #1, (a0)     * Increment the start of the buffer
@@ -897,32 +897,32 @@ inChar:
     move.b (a1), d0      * We got this byte
 
     rts
-    
+
 *****
 * Reads in a character from Port A, blocking if none available
 *  - Returns character in D0
-*    
+*
 inCharPoll:
     btst    #0,  SRA     * Check if receiver ready bit is set
     beq     inChar
     move.b  RBA, d0      * Read Character into D0
     rts
-    
+
 *****
-* Initializes the 68681 DUART port A as 19200 8N1 
+* Initializes the 68681 DUART port A as 19200 8N1
 initDuart:
     move.b  #$30, CRA       * Reset Transmitter
     move.b  #$20, CRA       * Reset Reciever
     move.b  #$10, CRA       * Reset Mode Register Pointer
-    
-    move.b  #$F0, ACR       * Baud Rate Set #2, Timer (Crystal/16)
-    move.b  #$CC, CSRA      * Set Tx and Rx rates to 19.2k
+
+    move.b  #$00, ACR       * Baud Rate Set #1
+    move.b  #$CC, CSRA      * Set Tx and Rx rates to 38400
     move.b  #$13, MRA       * 8-bit, No Parity ($13 for 8-bit, $12 for 7-bit), RxRDY irq type
     move.b  #$07, MRA       * Normal Mode, Not CTS/RTS, 1 stop bit
-      
+
     move.b  #$02, IMR       * Enable Interrupts: RxRDYA interrupt (bit 1)
     move.b  #$05, CRA       * Enable Transmit/Recieve
-    rts    
+    rts
 
 
 
@@ -938,7 +938,7 @@ initDuart:
 * Unhandled vector
 UNHANDLED:
     rte
- 
+
 ********************************************
 * RESETVECT
 RESETVECT:
@@ -948,27 +948,27 @@ RESETVECT:
 * AUTOVECT1 - Currently 68681 DUART, only interrupting device
 AUTOVECT1:
     movem.l d0-d1/a0-a1, -(SP)        * Save registers touched by handler
-    
+
     * Check which interrupt the DUART is asserting
     btst.b   #1, ISR            * RxRDYA
     beq.s   .test2              * If no data is waiting
-    
+
     bsr.s   serialReadIntCharacter
  .test2:
     btst.b   #3, ISR            * Counter/Timer Ready
     beq     .done               * If the timer hasn't fired yet
-        
+
  .done:
     movem.l (SP)+, d0-d1/a0-a1     * Restore registers
     rte                         * Return from exception
-    
+
 ********************************************
 * Read the character from the DUART (assume it's there from interrupt)
 serialReadIntCharacter:
     * We've got data available
-    lea     varSRingStart, a0   * Ring buffer ends   
+    lea     varSRingStart, a0   * Ring buffer ends
     lea     varSRingEnd,   a1
-    
+
     eor.l   d0, d0              * Clear the full d0 register
     add.b   #1, (a1)            * Increment the end of the buffer
     cmp.b   #SERIAL_RING_LENGTH, (a1)
@@ -978,7 +978,7 @@ serialReadIntCharacter:
     move.b  (a1), d0
     move.b  (a0), d1
     cmp.b   d0, d1            * Check if the ring buffer is full
-    bne.s   .notfull            
+    bne.s   .notfull
     * When buffer is full we'll overwrite the oldest data
     add.b   #1, (a0)            * Make room by removing the oldest element
     cmp.b   #SERIAL_RING_LENGTH, (a0)
@@ -995,8 +995,8 @@ serialReadIntCharacter:
 
 ************************* ROM ROUTINES ********************************
 
-    
-    
+
+
 
 
 **********************************

@@ -1,6 +1,6 @@
 00FF0140 Starting Address
 Assembler used: EASy68K Editor/Assembler v5.16.01
-Created On: 2/17/2022 2:14:32 PM
+Created On: 2/17/2022 4:29:02 PM
 
 00000000                             1  *-----------------------------------------------------------
 00000000                             2  * Title      : 68k Homebrew ROM Monitor
@@ -919,7 +919,7 @@ Created On: 2/17/2022 2:14:32 PM
 00FF0626  13FC 0020 00200005       915      move.b  #$20, CRA       * Reset Reciever
 00FF062E  13FC 0010 00200005       916      move.b  #$10, CRA       * Reset Mode Register Pointer
 00FF0636                           917      
-00FF0636  13FC 00F0 00200009       918      move.b  #$F0, ACR       * Baud Rate Set #2, Timer (Crystal/16)
+00FF0636  13FC 0000 00200009       918      move.b  #$00, ACR       * Baud Rate Set #2, Timer (Crystal/16)
 00FF063E  13FC 00CC 00200003       919      move.b  #$CC, CSRA      * Set Tx and Rx rates to 19.2k
 00FF0646  13FC 0013 00200001       920      move.b  #$13, MRA       * 8-bit, No Parity ($13 for 8-bit, $12 for 7-bit), RxRDY irq type
 00FF064E  13FC 0007 00200001       921      move.b  #$07, MRA       * Normal Mode, Not CTS/RTS, 1 stop bit
@@ -946,98 +946,97 @@ Created On: 2/17/2022 2:14:32 PM
 00FF066A                           942  ********************************************
 00FF066A                           943  * RESETVECT
 00FF066A                           944  RESETVECT:
-00FF066A                           945  *    reset
-00FF066A                           946  *    rte
-00FF066A  4E72 0F00                947      stop #$f00
-00FF066E                           948  
-00FF066E                           949  ********************************************
-00FF066E                           950  * AUTOVECT1 - Currently 68681 DUART, only interrupting device
-00FF066E                           951  AUTOVECT1:
-00FF066E  48E7 C0C0                952      movem.l d0-d1/a0-a1, -(SP)        * Save registers touched by handler
-00FF0672                           953      
-00FF0672                           954      * Check which interrupt the DUART is asserting
-00FF0672  0839 0001 0020000B       955      btst.b   #1, ISR            * RxRDYA
-00FF067A  6702                     956      beq.s   .test2              * If no data is waiting
-00FF067C                           957      
-00FF067C  6112                     958      bsr.s   serialReadIntCharacter
-00FF067E                           959   .test2:
-00FF067E  0839 0003 0020000B       960      btst.b   #3, ISR            * Counter/Timer Ready
-00FF0686  6700 0002                961      beq     .done               * If the timer hasn't fired yet
-00FF068A                           962          
-00FF068A                           963   .done:
-00FF068A  4CDF 0303                964      movem.l (SP)+, d0-d1/a0-a1     * Restore registers
-00FF068E  4E73                     965      rte                         * Return from exception
-00FF0690                           966      
-00FF0690                           967  ********************************************
-00FF0690                           968  * Read the character from the DUART (assume it's there from interrupt)
-00FF0690                           969  serialReadIntCharacter:
-00FF0690                           970      * We've got data available
-00FF0690  41F9 000FFF27            971      lea     varSRingStart, a0   * Ring buffer ends   
-00FF0696  43F9 000FFF26            972      lea     varSRingEnd,   a1
-00FF069C                           973      
-00FF069C  B180                     974      eor.l   d0, d0              * Clear the full d0 register
-00FF069E  5211                     975      add.b   #1, (a1)            * Increment the end of the buffer
-00FF06A0  0C11 0080                976      cmp.b   #SERIAL_RING_LENGTH, (a1)
-00FF06A4  6D04                     977      blt.s   .noendwrap          * Check if we hit the end and need to wrap
-00FF06A6  0411 0080                978      sub.b   #SERIAL_RING_LENGTH, (a1)
-00FF06AA                           979   .noendwrap:
-00FF06AA  1011                     980      move.b  (a1), d0
-00FF06AC  1210                     981      move.b  (a0), d1
-00FF06AE  B200                     982      cmp.b   d0, d1            * Check if the ring buffer is full
-00FF06B0  660C                     983      bne.s   .notfull            
-00FF06B2                           984      * When buffer is full we'll overwrite the oldest data
-00FF06B2  5210                     985      add.b   #1, (a0)            * Make room by removing the oldest element
-00FF06B4  0C10 0080                986      cmp.b   #SERIAL_RING_LENGTH, (a0)
-00FF06B8  6D04                     987      blt.s   .notfull
-00FF06BA  0410 0080                988      sub.b   #SERIAL_RING_LENGTH, (a0)
-00FF06BE                           989   .notfull:
-00FF06BE  41F9 000FFF28            990      lea     varSerialRing, a0   * Ring buffer
-00FF06C4  D1C0                     991      add.l   d0, a0              * Offset of the last byte in ring buffer
-00FF06C6                           992                                  * d0 still contains the end offset
-00FF06C6                           993      * Read one byte from the DUART into the ring buffer
-00FF06C6  1039 00200007            994      move.b  RBA, d0             * Read Character into D0
-00FF06CC  1080                     995      move.b  d0, (a0)
-00FF06CE  4E75                     996      rts
-00FF06D0                           997  
-00FF06D0                           998  ************************* ROM ROUTINES ********************************
-00FF06D0                           999  
+00FF066A  4E70                     945      reset
+00FF066C  4E73                     946      rte
+00FF066E                           947  
+00FF066E                           948  ********************************************
+00FF066E                           949  * AUTOVECT1 - Currently 68681 DUART, only interrupting device
+00FF066E                           950  AUTOVECT1:
+00FF066E  48E7 C0C0                951      movem.l d0-d1/a0-a1, -(SP)        * Save registers touched by handler
+00FF0672                           952      
+00FF0672                           953      * Check which interrupt the DUART is asserting
+00FF0672  0839 0001 0020000B       954      btst.b   #1, ISR            * RxRDYA
+00FF067A  6702                     955      beq.s   .test2              * If no data is waiting
+00FF067C                           956      
+00FF067C  6112                     957      bsr.s   serialReadIntCharacter
+00FF067E                           958   .test2:
+00FF067E  0839 0003 0020000B       959      btst.b   #3, ISR            * Counter/Timer Ready
+00FF0686  6700 0002                960      beq     .done               * If the timer hasn't fired yet
+00FF068A                           961          
+00FF068A                           962   .done:
+00FF068A  4CDF 0303                963      movem.l (SP)+, d0-d1/a0-a1     * Restore registers
+00FF068E  4E73                     964      rte                         * Return from exception
+00FF0690                           965      
+00FF0690                           966  ********************************************
+00FF0690                           967  * Read the character from the DUART (assume it's there from interrupt)
+00FF0690                           968  serialReadIntCharacter:
+00FF0690                           969      * We've got data available
+00FF0690  41F9 000FFF27            970      lea     varSRingStart, a0   * Ring buffer ends   
+00FF0696  43F9 000FFF26            971      lea     varSRingEnd,   a1
+00FF069C                           972      
+00FF069C  B180                     973      eor.l   d0, d0              * Clear the full d0 register
+00FF069E  5211                     974      add.b   #1, (a1)            * Increment the end of the buffer
+00FF06A0  0C11 0080                975      cmp.b   #SERIAL_RING_LENGTH, (a1)
+00FF06A4  6D04                     976      blt.s   .noendwrap          * Check if we hit the end and need to wrap
+00FF06A6  0411 0080                977      sub.b   #SERIAL_RING_LENGTH, (a1)
+00FF06AA                           978   .noendwrap:
+00FF06AA  1011                     979      move.b  (a1), d0
+00FF06AC  1210                     980      move.b  (a0), d1
+00FF06AE  B200                     981      cmp.b   d0, d1            * Check if the ring buffer is full
+00FF06B0  660C                     982      bne.s   .notfull            
+00FF06B2                           983      * When buffer is full we'll overwrite the oldest data
+00FF06B2  5210                     984      add.b   #1, (a0)            * Make room by removing the oldest element
+00FF06B4  0C10 0080                985      cmp.b   #SERIAL_RING_LENGTH, (a0)
+00FF06B8  6D04                     986      blt.s   .notfull
+00FF06BA  0410 0080                987      sub.b   #SERIAL_RING_LENGTH, (a0)
+00FF06BE                           988   .notfull:
+00FF06BE  41F9 000FFF28            989      lea     varSerialRing, a0   * Ring buffer
+00FF06C4  D1C0                     990      add.l   d0, a0              * Offset of the last byte in ring buffer
+00FF06C6                           991                                  * d0 still contains the end offset
+00FF06C6                           992      * Read one byte from the DUART into the ring buffer
+00FF06C6  1039 00200007            993      move.b  RBA, d0             * Read Character into D0
+00FF06CC  1080                     994      move.b  d0, (a0)
+00FF06CE  4E75                     995      rts
+00FF06D0                           996  
+00FF06D0                           997  ************************* ROM ROUTINES ********************************
+00FF06D0                           998  
+00FF06D0                           999      
 00FF06D0                          1000      
-00FF06D0                          1001      
+00FF06D0                          1001  
 00FF06D0                          1002  
-00FF06D0                          1003  
-00FF06D0                          1004  **********************************
-00FF06D0                          1005  * Strings
-00FF06D0                          1006  *
-00FF06D0                          1007  msgBanner:
-00FF06D0= 0A 0D 43 68 61 72 ...   1008      dc.b LF,CR,'Chartreuse''s 68000 ROM Monitor',LF,CR
-00FF06F2= 3D 3D 3D 3D 3D 3D ...   1009      dc.b    '===============================',LF,CR,0
-00FF0714                          1010  msgHelp:
-00FF0714= 41 76 61 69 6C 61 ...   1011      dc.b 'Available Commands: ',LF,CR
-00FF072A= 20 28 45 29 78 61 ...   1012      dc.b ' (E)xamine    (D)eposit',LF,CR
-00FF0743= 20 28 52 29 75 6E ...   1013      dc.b ' (R)un        (H)elp',LF,CR,0
-00FF075A                          1014  msgDepositPrompt:
-00FF075A= 3A 20 00                1015      dc.b ': ',0
-00FF075D                          1016  msgPrompt:
-00FF075D= 3E 20 00                1017      dc.b '> ',0
-00FF0760                          1018  msgInvalidCommand:
-00FF0760= 49 6E 76 61 6C 69 ...   1019      dc.b 'Invalid Command',LF,CR,0
-00FF0772                          1020  msgInvalidAddress:
-00FF0772= 49 6E 76 61 6C 69 ...   1021      dc.b 'Invalid Address',LF,CR,0
-00FF0784                          1022  msgInvalidValue:
-00FF0784= 49 6E 76 61 6C 69 ...   1023      dc.b 'Invalid Value',LF,CR,0
-00FF0794                          1024  msgRamCheck:
-00FF0794= 43 68 65 63 6B 69 ...   1025      dc.b 'Checking RAM...',0
-00FF07A4                          1026  msgRamFail:
-00FF07A4= 46 61 69 6C 65 64 ...   1027      dc.b 'Failed at: ',0
-00FF07B0                          1028  msgRamPass:
-00FF07B0= 50 61 73 73 65 64 ...   1029      dc.b 'Passed.',LF,CR,0
-00FF07BA                          1030  msgNewline:
-00FF07BA= 0A 0D 00                1031      dc.b LF,CR,0
-00FF07BD                          1032  msgColonSpace:
-00FF07BD= 3A 20 00                1033      dc.b ': ',0
+00FF06D0                          1003  **********************************
+00FF06D0                          1004  * Strings
+00FF06D0                          1005  *
+00FF06D0                          1006  msgBanner:
+00FF06D0= 0A 0D 43 68 61 72 ...   1007      dc.b LF,CR,'Chartreuse''s 68000 ROM Monitor',LF,CR
+00FF06F2= 3D 3D 3D 3D 3D 3D ...   1008      dc.b    '===============================',LF,CR,0
+00FF0714                          1009  msgHelp:
+00FF0714= 41 76 61 69 6C 61 ...   1010      dc.b 'Available Commands: ',LF,CR
+00FF072A= 20 28 45 29 78 61 ...   1011      dc.b ' (E)xamine    (D)eposit',LF,CR
+00FF0743= 20 28 52 29 75 6E ...   1012      dc.b ' (R)un        (H)elp',LF,CR,0
+00FF075A                          1013  msgDepositPrompt:
+00FF075A= 3A 20 00                1014      dc.b ': ',0
+00FF075D                          1015  msgPrompt:
+00FF075D= 3E 20 00                1016      dc.b '> ',0
+00FF0760                          1017  msgInvalidCommand:
+00FF0760= 49 6E 76 61 6C 69 ...   1018      dc.b 'Invalid Command',LF,CR,0
+00FF0772                          1019  msgInvalidAddress:
+00FF0772= 49 6E 76 61 6C 69 ...   1020      dc.b 'Invalid Address',LF,CR,0
+00FF0784                          1021  msgInvalidValue:
+00FF0784= 49 6E 76 61 6C 69 ...   1022      dc.b 'Invalid Value',LF,CR,0
+00FF0794                          1023  msgRamCheck:
+00FF0794= 43 68 65 63 6B 69 ...   1024      dc.b 'Checking RAM...',0
+00FF07A4                          1025  msgRamFail:
+00FF07A4= 46 61 69 6C 65 64 ...   1026      dc.b 'Failed at: ',0
+00FF07B0                          1027  msgRamPass:
+00FF07B0= 50 61 73 73 65 64 ...   1028      dc.b 'Passed.',LF,CR,0
+00FF07BA                          1029  msgNewline:
+00FF07BA= 0A 0D 00                1030      dc.b LF,CR,0
+00FF07BD                          1031  msgColonSpace:
+00FF07BD= 3A 20 00                1032      dc.b ': ',0
+00FF07C0                          1033  
 00FF07C0                          1034  
-00FF07C0                          1035  
-00FF07C0                          1036      END    START            * last line of source
+00FF07C0                          1035      END    START            * last line of source
 
 No errors detected
 No warnings generated
