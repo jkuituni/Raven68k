@@ -44,7 +44,7 @@ ROMStart:
 .long   unhandled    		| 12- Unused
 .long   unhandled    		| 13- Unused
 .long   unhandled    		| 14- Unused
-.long   unhandled    		| 15- Uninitialized Interrupt Vector
+.long   autovect1    		| 15- Uninitialized Interrupt Vector
 .long   unhandled    		| 16- Unused
 .long   unhandled    		| 17- Unused
 .long   unhandled    		| 18- Unused
@@ -127,9 +127,9 @@ initFirmware:
 
 *  move.l  #0xFF0000,%d0
 *  movec.l %d0,%vbr              | Point VBR at the top of ROM
-  move.w  #0x2700,%sr                | Enable interrupts, enter user mode
 *  move.l  #_ustack_start,%sp    | Set up user mode stack
   jsr     initDuart             | Init the DUART serial port console connection
+  move.w  #0x2000,%sr                | Enable interrupts, enter user mode
   lea.l   _msgBanner,%a5        | Set the banner message pointer
   jsr     prntStr               | Print out the message
   lea.l   _msgRamTst,%a5        | Set the RAM test message pointer
