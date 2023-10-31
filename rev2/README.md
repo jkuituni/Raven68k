@@ -13,6 +13,6 @@ The specifications for the revision 2 version of Raven68k are as follows:
 
 *schematic/* - KiCad schematics for this revision.
 
-*vhdl/* - The VHDL source for the CPLD that manages most of the TTL logic present on the development system.
+*vhdl/* - The VHDL source for the CPLD that manages most of the TTL logic present and implements the DRAM controller. 
 
-*xilinx/* - The ISE WebPack (14.2) project itself, which targets a QFP44 XC9572XL breakout board.
+*xilinx/* - The ISE WebPack (14.2) project itself, which targets a QFP100 XC9572XL.
