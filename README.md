@@ -10,3 +10,4 @@ The project will be documented to a blog along with datasheets of all the compon
 
 ## Folder Structure
 *rev1* - Files relating to Revision 1 of the Raven68k
+*rev2* - Files related to Revision 2 of the Raven68k
