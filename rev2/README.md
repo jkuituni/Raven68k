@@ -9,6 +9,8 @@ The specifications for the revision 2 version of Raven68k are as follows:
 - Dallas DS12887A Real Time Clock
 - Xilinx XC9572XL CPLD as system glue logic.
 
+The revision 2 of Raven is intended as a minor improvement and bug fix version. Most likely no further revisions will be made and work will continue in a higher spec follow-up computer.
+
 ## Folder structure
 
 *schematic/* - KiCad schematics for this revision.
