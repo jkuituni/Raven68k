@@ -1,3 +1,5 @@
 (fp_lib_table
-  (lib (name raven68k-rev1)(type KiCad)(uri ${KIPRJMOD}/raven68k-rev1.pretty)(options "")(descr ""))
+  (version 7)
+  (lib (name "raven68k-rev1")(type "KiCad")(uri "${KIPRJMOD}/raven68k-rev1.pretty")(options "")(descr ""))
+  (lib (name "KISS68030 Rescue")(type "Legacy")(uri "/Users/janik/Desktop/kiss68030-kicad-006")(options "")(descr ""))
 )
