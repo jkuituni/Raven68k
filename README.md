@@ -9,7 +9,10 @@ it supports many of the basic building blocks.
 The project will be documented to a blog along with datasheets of all the components used.
 
 ## Folder Structure
-*datasheets* The datasheets of the components used in various revisions of Raven.
-*firmware* The firmware code.
-*hardware* KiCAD schematics and other files as well as VHDL code for the CPLD are located here. Contains revision sub-directories.
-*software* Some software to run on Raven. 
+*datasheets*/ -- The datasheets of the components used in various revisions of Raven.
+
+*firmware*/ -- The firmware code.
+
+*hardware*/ -- KiCAD schematics and other files as well as VHDL code for the CPLD are located here.
+
+*software*/ -- Some software to run on Raven. 
