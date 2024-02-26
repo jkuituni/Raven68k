@@ -9,10 +9,11 @@ it supports many of the basic building blocks.
 The project will be documented to a blog along with datasheets of all the components used.
 
 ## Folder Structure
-*datasheets*/ -- The datasheets of the components used in various revisions of Raven.
+*datasheets/* -- The datasheets of the components used in various revisions of Raven.
 
-*firmware*/ -- The firmware code.
+*firmware/* - ROM images to boot and initialize the system.
 
-*hardware*/ -- KiCAD schematics and other files as well as VHDL code for the CPLD are located here.
+*software/* - S68 programs that can be loaded from the firmware. Many of these are built with [EASy68k](http://easy68k.com/).
 
-*software*/ -- Some software to run on Raven. 
+*hardware/* -- KiCAD schematics and other files as well as VHDL code for the CPLD are located here.
+
