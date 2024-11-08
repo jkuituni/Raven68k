@@ -2147,12 +2147,6 @@
 		(uuid "0b5d033b-4f61-4ea8-8959-ccfd4a040e03")
 	)
 	(junction
-		(at 78.74 71.12)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "1aaa94ad-0288-48b0-8509-f925d0991f41")
-	)
-	(junction
 		(at 180.34 26.67)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2195,12 +2189,6 @@
 		(uuid "a22895ca-b9c9-4f36-b3b0-306ad54c09c0")
 	)
 	(junction
-		(at 203.2 33.02)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b8bc9bdb-a99d-4401-b332-2d26b47747ff")
-	)
-	(junction
 		(at 227.33 158.75)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2219,12 +2207,6 @@
 		(uuid "f50099f1-0d52-482a-a210-48cddce72dc7")
 	)
 	(junction
-		(at 204.47 102.87)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f6785634-109b-49f6-9c18-ca81ba662d76")
-	)
-	(junction
 		(at 227.33 26.67)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2235,12 +2217,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fa792221-2e7b-4776-a58f-ae6989c16e05")
-	)
-	(junction
-		(at 203.2 78.74)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "fc6db0d7-67bc-4888-bdda-b1ac09163a70")
 	)
 	(no_connect
 		(at 209.55 118.11)
@@ -3180,16 +3156,6 @@
 		)
 		(uuid "01369ec5-1ed9-49de-977b-9ba88fa00db6")
 	)
-	(wire
-		(pts
-			(xy 200.66 91.44) (xy 78.74 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "01395b01-9d5c-4e46-b58b-2e497bb523be")
-	)
 	(bus
 		(pts
 			(xy 254 125.73) (xy 254 128.27)
@@ -3199,16 +3165,6 @@
 			(type default)
 		)
 		(uuid "017b0c45-3d8a-417b-b0d7-a185cacd6d92")
-	)
-	(bus
-		(pts
-			(xy 194.31 102.87) (xy 204.47 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "040b04d0-9c7c-45eb-ab59-f25376eac6d7")
 	)
 	(wire
 		(pts
@@ -3392,16 +3348,6 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 91.44) (xy 78.74 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "10204f43-2fc7-4ac3-ba89-9c2e84546f99")
-	)
-	(wire
-		(pts
 			(xy 153.67 138.43) (xy 149.86 138.43)
 		)
 		(stroke
@@ -3519,16 +3465,6 @@
 			(type default)
 		)
 		(uuid "2416ecd4-9a1a-4905-a125-cde150443f9a")
-	)
-	(bus
-		(pts
-			(xy 204.47 102.87) (xy 204.47 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2454aaf9-b96a-4fb3-b5ba-062bb1bf7e6f")
 	)
 	(bus
 		(pts
@@ -3652,7 +3588,7 @@
 	)
 	(bus
 		(pts
-			(xy 203.2 78.74) (xy 203.2 83.82)
+			(xy 203.2 76.2) (xy 203.2 83.82)
 		)
 		(stroke
 			(width 0)
@@ -3802,7 +3738,7 @@
 	)
 	(wire
 		(pts
-			(xy 209.55 105.41) (xy 200.66 105.41)
+			(xy 199.39 105.41) (xy 209.55 105.41)
 		)
 		(stroke
 			(width 0)
@@ -3899,16 +3835,6 @@
 			(type default)
 		)
 		(uuid "45eed0d9-d735-4137-8bc9-0d6393c46656")
-	)
-	(bus
-		(pts
-			(xy 187.96 78.74) (xy 203.2 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4624c514-c565-4092-be5e-5d32675242e8")
 	)
 	(bus
 		(pts
@@ -4172,16 +4098,6 @@
 	)
 	(bus
 		(pts
-			(xy 203.2 76.2) (xy 203.2 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "640851bf-2afa-4967-b5fc-bddf4b79150c")
-	)
-	(bus
-		(pts
 			(xy 147.32 20.32) (xy 147.32 40.64)
 		)
 		(stroke
@@ -4199,16 +4115,6 @@
 			(type default)
 		)
 		(uuid "67b434cf-089e-4a95-bc2e-10af36b2e48d")
-	)
-	(wire
-		(pts
-			(xy 200.66 105.41) (xy 200.66 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6a9ce1fe-f8b1-474f-a754-118c3903c7cf")
 	)
 	(bus
 		(pts
@@ -4302,7 +4208,7 @@
 	)
 	(bus
 		(pts
-			(xy 254 87.63) (xy 254 90.17)
+			(xy 254 80.01) (xy 254 90.17)
 		)
 		(stroke
 			(width 0)
@@ -4590,16 +4496,6 @@
 		)
 		(uuid "8a09ec74-1ee9-4632-8a06-c445ba76bc78")
 	)
-	(bus
-		(pts
-			(xy 207.01 33.02) (xy 203.2 33.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8d860315-bb46-4cae-a6f5-b2f1ebb384ae")
-	)
 	(wire
 		(pts
 			(xy 153.67 120.65) (xy 149.86 120.65)
@@ -4672,16 +4568,6 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 71.12) (xy 78.74 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9357e94a-8e92-4c46-9ae8-5a3e23cb1944")
-	)
-	(wire
-		(pts
 			(xy 116.84 185.42) (xy 128.27 185.42)
 		)
 		(stroke
@@ -4742,7 +4628,7 @@
 	)
 	(bus
 		(pts
-			(xy 203.2 33.02) (xy 203.2 39.37)
+			(xy 203.2 38.1) (xy 203.2 39.37)
 		)
 		(stroke
 			(width 0)
@@ -4932,16 +4818,6 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 71.12) (xy 80.01 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b3db0b7b-187a-47f9-bc39-a72d0455cfb3")
-	)
-	(wire
-		(pts
 			(xy 163.83 158.75) (xy 166.37 158.75)
 		)
 		(stroke
@@ -4969,16 +4845,6 @@
 			(type default)
 		)
 		(uuid "b989cb36-69e5-4939-9f1b-7e6998abe77f")
-	)
-	(bus
-		(pts
-			(xy 203.2 27.94) (xy 203.2 33.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b9a1ba35-ca72-47d4-820c-6b9977111637")
 	)
 	(bus
 		(pts
@@ -5139,16 +5005,6 @@
 			(type default)
 		)
 		(uuid "c1f265d8-4b54-46c0-bab5-eb5580599883")
-	)
-	(bus
-		(pts
-			(xy 254 80.01) (xy 254 85.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c2b1f5e3-b2cc-4a17-9bfd-580676798c3c")
 	)
 	(wire
 		(pts
@@ -5579,16 +5435,6 @@
 			(type default)
 		)
 		(uuid "f1a57333-aaa9-47f8-a7cc-1b8e74eb8ea4")
-	)
-	(bus
-		(pts
-			(xy 194.31 87.63) (xy 194.31 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f453805b-b49b-47dd-8f8e-0e23722e8f91")
 	)
 	(bus
 		(pts
@@ -6398,6 +6244,7 @@
 	)
 	(label "RAS2"
 		(at 209.55 74.93 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6474,6 +6321,7 @@
 	)
 	(label "RAS0"
 		(at 209.55 72.39 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6528,6 +6376,7 @@
 	)
 	(label "RAS1"
 		(at 209.55 82.55 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6648,6 +6497,7 @@
 	)
 	(label "RAS3"
 		(at 209.55 85.09 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6950,7 +6800,7 @@
 	)
 	(hierarchical_label "CAS[0..3]"
 		(shape input)
-		(at 194.31 87.63 0)
+		(at 204.47 102.87 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6974,7 +6824,7 @@
 	)
 	(hierarchical_label "MA[0..11]"
 		(shape input)
-		(at 207.01 33.02 0)
+		(at 203.2 38.1 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6985,8 +6835,8 @@
 		(uuid "9a1f951f-0abd-471c-9ca2-a59b309c23d7")
 	)
 	(hierarchical_label "RAS[0..3]"
-		(shape input)
-		(at 187.96 78.74 180)
+		(shape output)
+		(at 203.2 78.74 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7010,13 +6860,13 @@
 	)
 	(hierarchical_label "~{WE}"
 		(shape input)
-		(at 80.01 71.12 0)
+		(at 199.39 105.41 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "b316698d-fbc7-44de-ad05-34452d0c2f18")
 	)
